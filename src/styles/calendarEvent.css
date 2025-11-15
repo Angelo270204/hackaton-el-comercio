@@ -1,0 +1,43 @@
+.calendar-event {
+  display: flex;
+  align-items: start;
+  gap: 1rem;
+}
+
+.calendar-event__icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: #dbeafe;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #1e40af;
+}
+
+.calendar-event__icon--highlight {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.calendar-event__content {
+  flex: 1;
+}
+
+.calendar-event__date {
+  font-size: 0.875rem;
+  color: #3b82f6;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.calendar-event__date--highlight {
+  color: #eab308;
+}
+
+.calendar-event__title {
+  font-size: 0.95rem;
+  color: #1e293b;
+  font-weight: 500;
+}

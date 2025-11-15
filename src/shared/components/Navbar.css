@@ -1,0 +1,154 @@
+.navbar {
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 2px solid #1e40af;
+}
+
+.navbar__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: #1e40af;
+  font-weight: 700;
+  font-size: 1.25rem;
+  transition: color 0.3s ease;
+}
+
+.navbar__logo:hover {
+  color: #1e3a8a;
+}
+
+.navbar__logo-text {
+  display: none;
+}
+
+.navbar__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #1e293b;
+  padding: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.navbar__toggle:hover {
+  color: #1e40af;
+}
+
+.navbar__menu {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.navbar__menu--open {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.navbar__item {
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.navbar__item:last-child {
+  border-bottom: none;
+}
+
+.navbar__link {
+  display: block;
+  padding: 1rem 1.5rem;
+  color: #334155;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar__link:hover {
+  background-color: #f8fafc;
+  color: #1e40af;
+}
+
+.navbar__link--cta {
+  color: #1e40af;
+  font-weight: 600;
+}
+
+.navbar__link--cta:hover {
+  background-color: #eff6ff;
+}
+
+/* Tablet and above */
+@media (min-width: 640px) {
+  .navbar__logo-text {
+    display: inline;
+  }
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  .navbar__toggle {
+    display: none;
+  }
+
+  .navbar__menu {
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: transparent;
+    box-shadow: none;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .navbar__item {
+    border-bottom: none;
+  }
+
+  .navbar__link {
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+  }
+
+  .navbar__link--cta {
+    background-color: #1e40af;
+    color: #ffffff;
+  }
+
+  .navbar__link--cta:hover {
+    background-color: #1e3a8a;
+    color: #ffffff;
+  }
+}
