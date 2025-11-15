@@ -1,0 +1,202 @@
+[
+  {
+    "id": 1,
+    "nombre": "Keiko Fujimori",
+    "partido": "Fuerza Popular",
+    "cargo_postula": "Presidenta",
+    "datos_publicos": {
+      "rol_publico": "Excongresista, lideresa de Fuerza Popular",
+      "elecciones_previas": "2011, 2016, 2021 (segunda vuelta)"
+    }
+  },
+  {
+    "id": 2,
+    "nombre": "Rafael López Aliaga",
+    "partido": "Renovación Popular",
+    "cargo_postula": "Presidente",
+    "datos_publicos": {
+      "rol_publico": "Alcalde de Lima",
+      "elecciones_previas": "Candidato presidencial 2021"
+    }
+  },
+  {
+    "id": 3,
+    "nombre": "Antauro Humala",
+    "partido": "Frente Patriótico",
+    "cargo_postula": "Presidente",
+    "datos_publicos": {
+      "rol_publico": "Activista político y militar retirado",
+      "elecciones_previas": "No ha postulado antes a la presidencia"
+    }
+  },
+  {
+    "id": 4,
+    "nombre": "Hernando de Soto",
+    "partido": "Avanza País",
+    "cargo_postula": "Presidente",
+    "datos_publicos": {
+      "rol_publico": "Economista, fundador del Instituto Libertad y Democracia",
+      "elecciones_previas": "Candidato presidencial 2021"
+    }
+  },
+  {
+    "id": 5",
+    "nombre": "George Forsyth",
+    "partido": "Somos Perú",
+    "cargo_postula": "Presidente",
+    "datos_publicos": {
+      "rol_publico": "Exalcalde de La Victoria",
+      "elecciones_previas": "Candidato presidencial 2021"
+    }
+  },
+  {
+    "id": 6,
+    "nombre": "César Acuña",
+    "partido": "Alianza Para el Progreso",
+    "cargo_postula": "Presidente",
+    "datos_publicos": {
+      "rol_publico": "Empresario, gobernador regional de La Libertad",
+      "elecciones_previas": "Candidato presidencial 2016"
+    }
+  },
+  {
+    "id": 7,
+    "nombre": "Pedro Cateriano",
+    "partido": "Independiente / por definir",
+    "cargo_postula": "Presidente",
+    "datos_publicos": {
+      "rol_publico": "Ex primer ministro",
+      "elecciones_previas": "No ha postulado a presidencia"
+    }
+  },
+  {
+    "id": 8,
+    "nombre": "Vladimir Cerrón",
+    "partido": "Perú Libre",
+    "cargo_postula": "Presidente",
+    "datos_publicos": {
+      "rol_publico": "Fundador y líder de Perú Libre",
+      "elecciones_previas": "No ha postulado a presidencia"
+    }
+  },
+  {
+    "id": 9,
+    "nombre": "Verónika Mendoza",
+    "partido": "Nuevo Perú / posible alianza",
+    "cargo_postula": "Presidenta",
+    "datos_publicos": {
+      "rol_publico": "Excongresista",
+      "elecciones_previas": "Candidata presidencial 2016 y 2021"
+    }
+  },
+  {
+    "id": 10,
+    "nombre": "Sigrid Bazán",
+    "partido": "Juntos por el Perú / Venceremos (por definir)",
+    "cargo_postula": "Presidenta",
+    "datos_publicos": {
+      "rol_publico": "Congresista",
+      "elecciones_previas": "Aún no postuló a presidencia"
+    }
+  },
+  {
+    "id": 11,
+    "nombre": "Salvador del Solar",
+    "partido": "Independiente / posible alianza",
+    "cargo_postula": "Presidente",
+    "datos_publicos": {
+      "rol_publico": "Expremier, actor y exministro",
+      "elecciones_previas": "No ha postulado a presidencia"
+    }
+  },
+  {
+    "id": 12,
+    "nombre": "Alfredo Barnechea",
+    "partido": "Acción Popular",
+    "cargo_postula": "Presidente",
+    "datos_publicos": {
+      "rol_publico": "Periodista, escritor",
+      "elecciones_previas": "Candidato presidencial 2016"
+    }
+  },
+  {
+    "id": 13,
+    "nombre": "Yohny Lescano",
+    "partido": "Cooperación Popular",
+    "cargo_postula": "Presidente",
+    "datos_publicos": {
+      "rol_publico": "Excongresista",
+      "elecciones_previas": "Candidato presidencial 2021"
+    }
+  },
+  {
+    "id": 14,
+    "nombre": "Marisol Pérez Tello",
+    "partido": "Primero La Gente",
+    "cargo_postula": "Presidenta",
+    "datos_publicos": {
+      "rol_publico": "Exministra de Justicia",
+      "elecciones_previas": "No ha postulado a presidencia"
+    }
+  },
+  {
+    "id": 15,
+    "nombre": "Francisco Diez Canseco",
+    "partido": "Perú Acción",
+    "cargo_postula": "Presidente",
+    "datos_publicos": {
+      "rol_publico": "Analista político",
+      "elecciones_previas": "No ha postulado a presidencia"
+    }
+  },
+  {
+    "id": 16,
+    "nombre": "Carlos Jaico",
+    "partido": "Perú Moderno",
+    "cargo_postula": "Presidente",
+    "datos_publicos": {
+      "rol_publico": "Ex secretario general de Palacio",
+      "elecciones_previas": "No ha postulado a presidencia"
+    }
+  },
+  {
+    "id": 17,
+    "nombre": "Roberto Chiabra",
+    "partido": "Unidad Nacional",
+    "cargo_postula": "Presidente",
+    "datos_publicos": {
+      "rol_publico": "Congresista y exministro de Defensa",
+      "elecciones_previas": "No ha postulado a presidencia"
+    }
+  },
+  {
+    "id": 18,
+    "nombre": "Álvaro Paz de la Barra",
+    "partido": "Fe en el Perú",
+    "cargo_postula": "Presidente",
+    "datos_publicos": {
+      "rol_publico": "Alcalde de La Molina (ex)",
+      "elecciones_previas": "No ha postulado a presidencia"
+    }
+  },
+  {
+    "id": 19,
+    "nombre": "Mauricio Mulder",
+    "partido": "APRA",
+    "cargo_postula": "Presidente",
+    "datos_publicos": {
+      "rol_publico": "Excongresista",
+      "elecciones_previas": "No ha postulado a presidencia"
+    }
+  },
+  {
+    "id": 20,
+    "nombre": "Flor Polo",
+    "partido": "Somos Perú",
+    "cargo_postula": "Presidenta",
+    "datos_publicos": {
+      "rol_publico": "Figura pública y política emergente",
+      "elecciones_previas": "No ha postulado a presidencia"
+    }
+  }
+]
