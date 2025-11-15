@@ -1,0 +1,124 @@
+.quick-access-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.quick-access-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #1e40af, #3b82f6);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.quick-access-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(30, 64, 175, 0.15);
+  border-color: #1e40af;
+}
+
+.quick-access-card:hover::before {
+  transform: scaleX(1);
+}
+
+.quick-access-card__icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  border-radius: 1rem;
+  color: #1e40af;
+  transition: all 0.3s ease;
+}
+
+.quick-access-card:hover .quick-access-card__icon {
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+  color: #ffffff;
+  transform: scale(1.1) rotate(5deg);
+}
+
+.quick-access-card__title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.75rem;
+  transition: color 0.3s ease;
+}
+
+.quick-access-card:hover .quick-access-card__title {
+  color: #1e40af;
+}
+
+.quick-access-card__description {
+  font-size: 0.9375rem;
+  color: #64748b;
+  line-height: 1.5;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.quick-access-card:hover .quick-access-card__description {
+  color: #475569;
+}
+
+/* Tablet */
+@media (min-width: 640px) {
+  .quick-access-card {
+    padding: 2.5rem 2rem;
+  }
+
+  .quick-access-card__icon {
+    width: 72px;
+    height: 72px;
+  }
+
+  .quick-access-card__title {
+    font-size: 1.25rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .quick-access-card {
+    padding: 2rem 1.5rem;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .quick-access-card,
+  .quick-access-card::before,
+  .quick-access-card__icon,
+  .quick-access-card__title,
+  .quick-access-card__description {
+    transition: none;
+  }
+
+  .quick-access-card:hover {
+    transform: none;
+  }
+
+  .quick-access-card:hover .quick-access-card__icon {
+    transform: none;
+  }
+}

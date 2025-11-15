@@ -1,0 +1,242 @@
+.home {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f8fafc 0%, #ffffff 100%);
+}
+
+.home__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Hero Section */
+.home__hero {
+  text-align: center;
+  padding: 3rem 0 4rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.home__hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #eff6ff;
+  color: #1e40af;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  border: 1px solid #dbeafe;
+}
+
+.home__hero-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #1e293b;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.home__hero-highlight {
+  color: #1e40af;
+  position: relative;
+  display: inline-block;
+}
+
+.home__hero-description {
+  font-size: 1.125rem;
+  color: #64748b;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home__hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.home__hero-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.home__hero-btn--primary {
+  background-color: #1e40af;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(30, 64, 175, 0.25);
+}
+
+.home__hero-btn--primary:hover {
+  background-color: #1e3a8a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(30, 64, 175, 0.35);
+}
+
+.home__hero-btn--secondary {
+  background-color: transparent;
+  color: #1e40af;
+  border-color: #1e40af;
+}
+
+.home__hero-btn--secondary:hover {
+  background-color: #eff6ff;
+  transform: translateY(-2px);
+}
+
+/* Countdown Section */
+.home__countdown-section {
+  margin-bottom: 4rem;
+}
+
+/* Section */
+.home__section {
+  margin-bottom: 4rem;
+}
+
+.home__section-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.home__section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+
+.home__section-subtitle {
+  font-size: 1.125rem;
+  color: #64748b;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Quick Access Grid */
+.home__quick-access-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+.home__card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Info Banner */
+.home__info-banner {
+  background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+  border-radius: 1rem;
+  padding: 3rem 2rem;
+  text-align: center;
+  color: #ffffff;
+  box-shadow: 0 10px 30px rgba(30, 64, 175, 0.2);
+  margin-bottom: 2rem;
+}
+
+.home__info-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.home__info-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.home__info-description {
+  font-size: 1.125rem;
+  color: #dbeafe;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.home__info-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #ffffff;
+  color: #1e40af;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.home__info-link:hover {
+  background-color: #f8fafc;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Tablet */
+@media (min-width: 640px) {
+  .home__hero-title {
+    font-size: 3rem;
+  }
+
+  .home__quick-access-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  .home__container {
+    padding: 3rem 1.5rem;
+  }
+
+  .home__hero {
+    padding: 4rem 0 5rem;
+  }
+
+  .home__hero-title {
+    font-size: 3.5rem;
+  }
+
+  .home__hero-description {
+    font-size: 1.25rem;
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1024px) {
+  .home__quick-access-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .home__info-banner {
+    padding: 4rem 3rem;
+  }
+}
+
+/* Mobile landscape fix */
+@media (max-height: 600px) and (orientation: landscape) {
+  .home__hero {
+    padding: 2rem 0 3rem;
+  }
+
+  .home__hero-title {
+    font-size: 2rem;
+  }
+}
