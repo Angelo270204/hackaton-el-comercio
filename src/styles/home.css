@@ -83,7 +83,8 @@
 }
 
 .home__hero-btn--primary:hover {
-  background-color: #1e3a8a;
+  background-color: #1d4ed8;
+  color: #ffffff;
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(30, 64, 175, 0.35);
 }

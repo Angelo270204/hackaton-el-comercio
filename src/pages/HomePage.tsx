@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { MapPin, Users, Calendar, BookOpen, Sparkles, ArrowRight } from 'lucide-react';
-import { CountdownTimer } from './CountdownTimer';
+
 import { QuickAccessCard } from './QuickAccessCard';
 import '../styles/home.css';
 
 export const HomePage: React.FC = () => {
-  const ELECTION_DATE = "2026-04-12T08:00:00";
+
 
   const quickAccessItems = [
     {
@@ -62,10 +62,7 @@ export const HomePage: React.FC = () => {
           </div>
         </section>
 
-        {/* Countdown Section */}
-        <section className="home__countdown-section">
-          <CountdownTimer targetDate={ELECTION_DATE} />
-        </section>
+
 
         {/* Quick Access Cards */}
         <section className="home__section">
