@@ -1,0 +1,795 @@
+/* Estilos para el módulo de Candidatos 2026
+   Comentarios y nombres en español. Paleta y tipografía según referencia. */
+
+/* Variables de color para la aplicación */
+:root {
+  --color-primario: #0056B3;        /* Azul Principal */
+  --color-acento: #28A745;          /* Verde de Acento */
+  --color-fondo: #F5F5F5;           /* Fondo general */
+  --color-neutro: #E0E0E0;          /* Gris Neutro */
+  --color-texto: #424242;           /* Gris Oscuro */
+  --color-texto-secundario: #616161; /* Gris medio */
+  --color-borde: #BDBDBD;           /* Gris borde */
+  --color-blanco: #FFFFFF;
+}
+
+/* ========================================
+   PÁGINA DE CANDIDATOS
+   ======================================== */
+
+.candidatos-page {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--color-fondo);
+}
+
+.candidatos-page__layout {
+  display: block;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px;
+  position: relative;
+}
+
+.candidatos-page__layout .candidatos-page__lista {
+  transition: margin-right 0.25s ease;
+}
+
+.candidatos-page__layout--con-detalle .candidatos-page__lista {
+  /* Reservar espacio para el panel fijo a la derecha */
+  margin-right: 520px; /* ancho del panel + margen */
+}
+
+.candidatos-page__lista {
+  min-width: 0;
+}
+
+.candidatos-page__detalle {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  width: 496px;
+  max-width: calc(100vw - 48px);
+  bottom: 24px;
+  max-height: calc(100vh - 48px);
+  height: auto;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable both-edges;
+  z-index: 50;
+  transform: translateX(110%);
+  opacity: 0.98;
+  transition: transform 0.25s ease;
+}
+
+.candidatos-page__detalle--visible {
+  transform: translateX(0);
+}
+
+.candidatos-page__cargando,
+.candidatos-page__error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  font-size: 18px;
+  color: var(--color-texto-secundario);
+}
+
+.candidatos-page__error {
+  color: #d32f2f;
+}
+
+/* ========================================
+   LISTA DE CANDIDATOS
+   ======================================== */
+
+.lista-candidatos {
+  width: 100%;
+}
+
+.lista-candidatos__encabezado {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.lista-candidatos__titulo-seccion {
+  flex: 1;
+}
+
+.lista-candidatos__titulo {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--color-primario);
+  margin: 0 0 8px 0;
+  letter-spacing: -0.5px;
+}
+
+.lista-candidatos__subtitulo {
+  font-size: 16px;
+  color: var(--color-texto-secundario);
+  margin: 0;
+}
+
+.lista-candidatos__controles {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.lista-candidatos__buscador {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-blanco);
+  border: 1px solid var(--color-borde);
+  border-radius: 10px;
+  padding: 10px 14px;
+  min-width: 280px;
+  flex: 1 1 360px;
+  transition: border-color 0.2s;
+}
+
+.lista-candidatos__buscador:focus-within {
+  border-color: var(--color-primario);
+  box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+}
+
+.lista-candidatos__buscador svg {
+  color: var(--color-texto-secundario);
+  flex-shrink: 0;
+}
+
+.lista-candidatos__input-busqueda {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 14px;
+  color: var(--color-texto);
+  background: transparent;
+}
+
+.lista-candidatos__input-busqueda::placeholder {
+  color: var(--color-texto-secundario);
+}
+
+.lista-candidatos__selector {
+  padding: 10px 14px;
+  border: 1px solid var(--color-borde);
+  border-radius: 10px;
+  background: var(--color-blanco);
+  color: var(--color-texto);
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  min-width: 200px;
+}
+
+.lista-candidatos__selector:hover {
+  border-color: var(--color-primario);
+}
+
+.lista-candidatos__selector:focus {
+  outline: none;
+  border-color: var(--color-primario);
+  box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+}
+
+/* Filtros por partido */
+
+
+.lista-candidatos__chip {
+  padding: 8px 16px;
+  border: 1px solid var(--color-borde);
+  border-radius: 999px;
+  background: var(--color-blanco);
+  color: var(--color-texto);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.lista-candidatos__chip:hover {
+  border-color: var(--color-primario);
+  color: var(--color-primario);
+}
+
+.lista-candidatos__chip--activo {
+  border-color: var(--color-primario);
+  background: var(--color-primario);
+  color: var(--color-blanco);
+}
+
+/* Grilla de candidatos */
+.lista-candidatos__grilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 220px));
+  gap: 24px;
+  justify-content: start;
+}
+
+.lista-candidatos__sin-resultados {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--color-texto-secundario);
+  font-size: 16px;
+}
+
+/* ========================================
+   TARJETA DE CANDIDATO
+   ======================================== */
+
+.tarjeta-candidato {
+  background: var(--color-blanco);
+  border: 2px solid var(--color-neutro);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 16px 18px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.tarjeta-candidato:hover {
+  border-color: var(--color-primario);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.tarjeta-candidato--seleccionada {
+  border-color: var(--color-primario);
+  box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.15);
+  background: rgba(0, 86, 179, 0.03);
+}
+
+/* Overlay con logo agrandado al hacer hover */
+.tarjeta-candidato__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.tarjeta-candidato:hover .tarjeta-candidato__overlay {
+  opacity: 1;
+}
+
+.tarjeta-candidato__overlay-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.tarjeta-candidato__imagen-contenedor {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--color-neutro);
+  margin-bottom: 12px;
+  border: 3px solid var(--color-blanco);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+.tarjeta-candidato__imagen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.tarjeta-candidato__info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  z-index: 1;
+}
+
+.tarjeta-candidato__nombre {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-texto);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.tarjeta-candidato__partido {
+  font-size: 13px;
+  color: var(--color-texto-secundario);
+  margin: 0 0 8px 0;
+}
+
+.tarjeta-candidato__logo-partido {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.tarjeta-candidato__enlace {
+  display: none;
+}
+
+/* ========================================
+   DETALLE DE PRECANDIDATOS
+   ======================================== */
+
+.detalle-precandidatos {
+  background: var(--color-blanco);
+  border: 1px solid var(--color-borde);
+  border-radius: 14px;
+  padding: 24px;
+  min-height: 400px;
+  position: relative;
+}
+
+.detalle-precandidatos__vacio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  text-align: center;
+  color: var(--color-texto-secundario);
+  font-size: 16px;
+  padding: 20px;
+}
+
+.detalle-precandidatos__contenido {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Botón cerrar del panel de detalle */
+.detalle-precandidatos__btn-cerrar {
+  position: sticky;
+  top: 8px;
+  margin-left: auto;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid var(--color-neutro);
+  background: var(--color-blanco);
+  color: var(--color-texto-secundario);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 5;
+}
+
+.detalle-precandidatos__btn-cerrar:hover {
+  color: var(--color-primario);
+  border-color: var(--color-primario);
+  box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.12);
+}
+
+/* Perfil del candidato */
+.detalle-precandidatos__perfil {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--color-neutro);
+}
+
+.detalle-precandidatos__avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--color-blanco);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.detalle-precandidatos__info-basica {
+  flex: 1;
+}
+
+.detalle-precandidatos__nombre {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-primario);
+  margin: 0 0 6px 0;
+}
+
+.detalle-precandidatos__partido {
+  font-size: 15px;
+  color: var(--color-texto-secundario);
+  margin: 0 0 4px 0;
+}
+
+.detalle-precandidatos__cargo {
+  font-size: 14px;
+  color: var(--color-texto);
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Resumen */
+.detalle-precandidatos__resumen {
+  padding: 16px;
+  background: var(--color-fondo);
+  border-radius: 10px;
+}
+
+.detalle-precandidatos__seccion-titulo {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-texto-secundario);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 10px 0;
+}
+
+.detalle-precandidatos__rol {
+  font-size: 14px;
+  color: var(--color-texto);
+  margin: 0 0 8px 0;
+  line-height: 1.5;
+}
+
+.detalle-precandidatos__elecciones-previas {
+  font-size: 13px;
+  color: var(--color-texto-secundario);
+  margin: 0;
+}
+
+.detalle-precandidatos__elecciones-previas strong {
+  color: var(--color-texto);
+}
+
+/* Propuestas */
+.detalle-precandidatos__propuestas-seccion {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.detalle-precandidatos__propuestas-titulo {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-primario);
+  margin: 0;
+}
+
+.detalle-precandidatos__tabs {
+  display: flex;
+  gap: 8px;
+  border-bottom: 2px solid var(--color-neutro);
+  padding-bottom: 2px;
+}
+
+.detalle-precandidatos__tab {
+  padding: 10px 16px;
+  border: none;
+  background: transparent;
+  color: var(--color-texto-secundario);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: all 0.2s;
+}
+
+.detalle-precandidatos__tab:hover {
+  color: var(--color-primario);
+}
+
+.detalle-precandidatos__tab--activo {
+  color: var(--color-primario);
+  border-bottom-color: var(--color-primario);
+}
+
+.detalle-precandidatos__propuestas-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.detalle-precandidatos__propuesta-item {
+  padding: 14px;
+  border: 1px solid var(--color-neutro);
+  border-radius: 10px;
+  background: var(--color-fondo);
+}
+
+.detalle-precandidatos__propuesta-titulo {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-texto);
+  margin: 0 0 8px 0;
+}
+
+.detalle-precandidatos__propuesta-texto {
+  font-size: 14px;
+  color: var(--color-texto-secundario);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ========================================
+   SECCIONES ADICIONALES DEL DETALLE
+   ======================================== */
+
+/* Hoja de Vida */
+.detalle-precandidatos__hoja-vida {
+  padding: 20px;
+  background: var(--color-fondo);
+  border-radius: 10px;
+  border: 1px solid var(--color-neutro);
+}
+
+.detalle-precandidatos__hoja-vida-titulo {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-primario);
+  margin: 0 0 16px 0;
+}
+
+.detalle-precandidatos__hoja-vida-seccion {
+  margin-bottom: 16px;
+}
+
+.detalle-precandidatos__hoja-vida-seccion:last-child {
+  margin-bottom: 0;
+}
+
+.detalle-precandidatos__hoja-vida-subtitulo {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-texto);
+  margin: 0 0 8px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detalle-precandidatos__hoja-vida-lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.detalle-precandidatos__hoja-vida-item {
+  padding: 8px 0 8px 16px;
+  border-left: 2px solid var(--color-primario);
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: var(--color-texto);
+  line-height: 1.5;
+}
+
+.detalle-precandidatos__hoja-vida-texto {
+  font-size: 14px;
+  color: var(--color-texto-secundario);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Actividades */
+.detalle-precandidatos__actividades {
+  padding: 20px;
+  background: var(--color-blanco);
+  border-radius: 10px;
+  border: 1px solid var(--color-neutro);
+}
+
+.detalle-precandidatos__actividades-titulo {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-primario);
+  margin: 0 0 16px 0;
+}
+
+.detalle-precandidatos__actividades-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.detalle-precandidatos__actividad-item {
+  padding: 14px;
+  background: var(--color-fondo);
+  border-radius: 8px;
+  border-left: 3px solid var(--color-primario);
+}
+
+.detalle-precandidatos__actividad-fecha {
+  font-size: 12px;
+  color: var(--color-texto-secundario);
+  margin: 0 0 6px 0;
+  font-weight: 600;
+}
+
+.detalle-precandidatos__actividad-titulo {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-texto);
+  margin: 0 0 4px 0;
+}
+
+.detalle-precandidatos__actividad-descripcion {
+  font-size: 13px;
+  color: var(--color-texto-secundario);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Noticias */
+.detalle-precandidatos__noticias {
+  padding: 20px;
+  background: var(--color-blanco);
+  border-radius: 10px;
+  border: 1px solid var(--color-neutro);
+}
+
+.detalle-precandidatos__noticias-titulo {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-primario);
+  margin: 0 0 16px 0;
+}
+
+.detalle-precandidatos__noticias-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.detalle-precandidatos__noticia-card {
+  padding: 14px;
+  background: var(--color-fondo);
+  border-radius: 8px;
+  border: 1px solid var(--color-neutro);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.detalle-precandidatos__noticia-card:hover {
+  border-color: var(--color-primario);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.detalle-precandidatos__noticia-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.detalle-precandidatos__noticia-fecha {
+  font-size: 11px;
+  color: var(--color-texto-secundario);
+  font-weight: 600;
+}
+
+.detalle-precandidatos__noticia-fuente {
+  font-size: 11px;
+  color: var(--color-primario);
+  font-weight: 600;
+}
+
+.detalle-precandidatos__noticia-titulo {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-texto);
+  margin: 0 0 6px 0;
+  line-height: 1.4;
+}
+
+.detalle-precandidatos__noticia-descripcion {
+  font-size: 13px;
+  color: var(--color-texto-secundario);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Mensaje sin datos */
+.detalle-precandidatos__sin-datos {
+  padding: 20px;
+  text-align: center;
+  color: var(--color-texto-secundario);
+  font-size: 14px;
+  font-style: italic;
+  background: var(--color-fondo);
+  border-radius: 8px;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 1200px) {
+  .candidatos-page__detalle {
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    max-width: 100%;
+    transform: translateY(110%);
+  }
+
+  .candidatos-page__detalle--visible {
+    transform: translateY(0);
+  }
+
+  .lista-candidatos__encabezado {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .lista-candidatos__controles {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .lista-candidatos__buscador,
+  .lista-candidatos__selector {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .candidatos-page__layout {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .lista-candidatos__titulo {
+    font-size: 24px;
+  }
+
+  .lista-candidatos__subtitulo {
+    font-size: 14px;
+  }
+
+  .lista-candidatos__grilla {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+  }
+
+  .tarjeta-candidato__imagen-contenedor {
+    height: 180px;
+  }
+
+  .detalle-precandidatos {
+    padding: 16px;
+  }
+
+  .detalle-precandidatos__perfil {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .detalle-precandidatos__tabs {
+    flex-wrap: wrap;
+  }
+}

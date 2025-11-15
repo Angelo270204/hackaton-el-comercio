@@ -1,0 +1,1 @@
+export { DetallePrecandidatos } from './DetallePrecandidatos'
