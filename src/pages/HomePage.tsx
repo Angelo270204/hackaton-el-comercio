@@ -88,6 +88,7 @@ export const HomePage: React.FC = () => {
           </div>
         </section>
 
+
         {/* Info Banner */}
         <section className="home__info-banner">
           <div className="home__info-content">
