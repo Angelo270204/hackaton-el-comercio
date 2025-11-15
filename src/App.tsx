@@ -2,9 +2,11 @@ import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router'
 import { Navbar } from './shared/components/Navbar'
 import { Footer } from './shared/components/Footer'
+import { ChatBot } from './shared/components/ChatBot'
 import { HomePage } from './pages/HomePage'
+import { CandidatosPage } from './pages/CandidatosPage'
 import Calendario from './pages/Calendario';
-import { DondeVotar } from './pages/DondeVotar';
+import { GuiaMiembrosPage } from './pages/GuiaMiembrosPage'
 
 function App() {
   return (
@@ -14,12 +16,14 @@ function App() {
         <main className="app__content">
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/candidatos" element={<CandidatosPage />} />
             <Route path="/calendario" element={<Calendario />} />
-            <Route path="/donde-votar" element={<DondeVotar />} />
+            <Route path="/guia-miembros" element={<GuiaMiembrosPage />} />
             {/* Agregar más rutas aquí */}
           </Routes>
         </main>
         <Footer />
+        <ChatBot />
       </div>
     </BrowserRouter>
   )

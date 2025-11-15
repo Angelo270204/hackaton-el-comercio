@@ -1,0 +1,946 @@
+.guia-miembros {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f8fafc 0%, #ffffff 100%);
+}
+
+.guia-miembros__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem 2rem;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+
+.guia-miembros__hero {
+  text-align: center;
+  padding: 0.5rem 0 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.guia-miembros__hero-content {
+  position: relative;
+}
+
+.guia-miembros__hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #eff6ff;
+  color: #1e40af;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  border: 1px solid #dbeafe;
+}
+
+.guia-miembros__hero-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1e293b;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.guia-miembros__hero-highlight {
+  color: #1e40af;
+  position: relative;
+}
+
+.guia-miembros__hero-description {
+  font-size: 1.125rem;
+  color: #64748b;
+  line-height: 1.7;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   TABS NAVIGATION
+   ============================================ */
+
+.guia-miembros__tabs {
+  margin: 3rem 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: linear-gradient(to bottom, #f8fafc 0%, #ffffff 100%);
+  padding: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.guia-miembros__tabs-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.5rem 1.5rem;
+  display: flex;
+  gap: 0.375rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.guia-miembros__tab {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.625rem 0.75rem;
+  background-color: #ffffff;
+  border: 2px solid #e2e8f0;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  flex: 0 1 auto;
+}
+
+.guia-miembros__tab:hover {
+  border-color: #1e40af;
+  color: #1e40af;
+  background-color: #eff6ff;
+}
+
+.guia-miembros__tab--active {
+  background-color: #1e40af;
+  color: #ffffff;
+  border-color: #1e40af;
+  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.2);
+}
+
+.guia-miembros__tab-label {
+  display: none;
+}
+
+/* ============================================
+   TAB CONTENT
+   ============================================ */
+
+.guia-miembros__content {
+  margin-top: 2rem;
+}
+
+.guia-miembros__tab-content {
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   SECTIONS
+   ============================================ */
+
+.guia-miembros__section {
+  margin-bottom: 3rem;
+}
+
+.guia-miembros__section-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.guia-miembros__section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.guia-miembros__section-title .inline-icon {
+  color: #1e40af;
+}
+
+.guia-miembros__section-subtitle {
+  font-size: 1.125rem;
+  color: #64748b;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   VIDEO SECTION
+   ============================================ */
+
+.guia-miembros__video-container {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  border-radius: 1rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  background-color: #000;
+}
+
+.guia-miembros__video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ============================================
+   INTRO SECTION
+   ============================================ */
+
+.guia-miembros__intro {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  padding: 2.5rem 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #1e40af;
+}
+
+.guia-miembros__intro-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.guia-miembros__intro-text {
+  font-size: 1.125rem;
+  color: #334155;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.guia-miembros__intro-text:last-child {
+  margin-bottom: 0;
+}
+
+.guia-miembros__intro-text strong {
+  color: #1e40af;
+  font-weight: 600;
+}
+
+/* ============================================
+   CARDS GRID
+   ============================================ */
+
+.guia-miembros__cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.guia-miembros__card {
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #e2e8f0;
+}
+
+.guia-miembros__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.guia-miembros__card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.guia-miembros__card-icon--primary {
+  background-color: #eff6ff;
+  color: #1e40af;
+}
+
+.guia-miembros__card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.75rem;
+}
+
+.guia-miembros__card-description {
+  font-size: 1rem;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+/* ============================================
+   TIMELINE
+   ============================================ */
+
+.guia-miembros__timeline-section {
+  background-color: #f8fafc;
+  border-radius: 1rem;
+  padding: 2.5rem 1.5rem;
+}
+
+.guia-miembros__timeline {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.guia-miembros__timeline::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, #1e40af, #60a5fa);
+}
+
+.guia-miembros__timeline-item {
+  position: relative;
+  padding-left: 60px;
+  margin-bottom: 2.5rem;
+}
+
+.guia-miembros__timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.guia-miembros__timeline-marker {
+  position: absolute;
+  left: 12px;
+  top: 4px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: #1e40af;
+  border: 3px solid #ffffff;
+  box-shadow: 0 0 0 3px #dbeafe;
+}
+
+.guia-miembros__timeline-content {
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+}
+
+.guia-miembros__timeline-time {
+  display: inline-block;
+  background-color: #fef3c7;
+  color: #92400e;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.guia-miembros__timeline-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+
+.guia-miembros__timeline-description {
+  font-size: 1rem;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+/* ============================================
+   BENEFITS GRID
+   ============================================ */
+
+.guia-miembros__benefits-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.guia-miembros__benefit-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border-radius: 0.75rem;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 2px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.guia-miembros__benefit-card:hover {
+  border-color: #1e40af;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(30, 64, 175, 0.1);
+}
+
+.guia-miembros__benefit-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1rem;
+  background-color: #eff6ff;
+  color: #1e40af;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.guia-miembros__benefit-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.75rem;
+}
+
+.guia-miembros__benefit-description {
+  font-size: 1rem;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+/* ============================================
+   INFO BOX
+   ============================================ */
+
+.guia-miembros__info-box {
+  background-color: #eff6ff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 2px solid #dbeafe;
+}
+
+.guia-miembros__info-box--warning {
+  background-color: #fef3c7;
+  border-color: #fde047;
+}
+
+.guia-miembros__info-box-content {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.guia-miembros__info-box-icon {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  background-color: #ffffff;
+  color: #1e40af;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.guia-miembros__info-box--warning .guia-miembros__info-box-icon {
+  color: #92400e;
+}
+
+.guia-miembros__info-box-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.75rem;
+}
+
+.guia-miembros__info-box-text {
+  font-size: 1rem;
+  color: #334155;
+  line-height: 1.7;
+}
+
+.guia-miembros__info-box-text strong {
+  color: #1e40af;
+  font-weight: 600;
+}
+
+.guia-miembros__info-box--warning .guia-miembros__info-box-text strong {
+  color: #92400e;
+}
+
+/* ============================================
+   CHECKLIST
+   ============================================ */
+
+.guia-miembros__checklist {
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.guia-miembros__checklist-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid #f1f5f9;
+  transition: background-color 0.2s ease;
+}
+
+.guia-miembros__checklist-item:last-child {
+  border-bottom: none;
+}
+
+.guia-miembros__checklist-item:hover {
+  background-color: #f8fafc;
+}
+
+.guia-miembros__checklist-icon {
+  color: #10b981;
+  flex-shrink: 0;
+}
+
+.guia-miembros__checklist-text {
+  font-size: 1rem;
+  color: #334155;
+  font-weight: 500;
+}
+
+/* ============================================
+   SANCTIONS
+   ============================================ */
+
+.guia-miembros__sanctions-section {
+  background-color: #fef2f2;
+  border-radius: 1rem;
+  padding: 2.5rem 1.5rem;
+  border: 2px solid #fecaca;
+}
+
+.guia-miembros__sanctions-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.guia-miembros__sanction-card {
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #dc2626;
+}
+
+.guia-miembros__sanction-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 0.5rem;
+  background-color: #fee2e2;
+  color: #dc2626;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.guia-miembros__sanction-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.75rem;
+}
+
+.guia-miembros__sanction-description {
+  font-size: 1rem;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+/* ============================================
+   FAQ CARD (Link to Footer)
+   ============================================ */
+
+.guia-miembros__faq-card {
+  background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+  border-radius: 1rem;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.2);
+}
+
+.guia-miembros__faq-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(30, 64, 175, 0.3);
+}
+
+.guia-miembros__faq-card-icon {
+  width: 64px;
+  height: 64px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.guia-miembros__faq-card-content {
+  flex: 1;
+}
+
+.guia-miembros__faq-card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.guia-miembros__faq-card-description {
+  font-size: 1rem;
+  color: #dbeafe;
+  line-height: 1.6;
+}
+
+.guia-miembros__faq-card-arrow {
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   DOWNLOADS
+   ============================================ */
+
+.guia-miembros__downloads-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.guia-miembros__download-card {
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.guia-miembros__download-card:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.guia-miembros__download-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 0.5rem;
+  background-color: #eff6ff;
+  color: #1e40af;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.guia-miembros__download-info {
+  flex: 1;
+}
+
+.guia-miembros__download-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.25rem;
+}
+
+.guia-miembros__download-description {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin-bottom: 0.5rem;
+}
+
+.guia-miembros__download-size {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.guia-miembros__download-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background-color: #1e40af;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.guia-miembros__download-btn:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+}
+
+/* ============================================
+   CALL TO ACTION
+   ============================================ */
+
+.guia-miembros__cta {
+  background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+  border-radius: 1rem;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  color: #ffffff;
+  box-shadow: 0 10px 30px rgba(30, 64, 175, 0.2);
+}
+
+.guia-miembros__cta-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.guia-miembros__cta-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.guia-miembros__cta-description {
+  font-size: 1.125rem;
+  color: #dbeafe;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.guia-miembros__cta-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.guia-miembros__cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.guia-miembros__cta-btn--primary {
+  background-color: #fbbf24;
+  color: #1e293b;
+  border-color: #fbbf24;
+}
+
+.guia-miembros__cta-btn--primary:hover {
+  background-color: #f59e0b;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(251, 191, 36, 0.4);
+}
+
+.guia-miembros__cta-btn--secondary {
+  background-color: transparent;
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.guia-miembros__cta-btn--secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   RESPONSIVE: TABLET
+   ============================================ */
+
+@media (min-width: 640px) {
+  .guia-miembros__tab-label {
+    display: inline;
+  }
+
+  .guia-miembros__tab {
+    font-size: 0.875rem;
+    padding: 0.75rem 1rem;
+    gap: 0.5rem;
+  }
+
+  .guia-miembros__tabs-container {
+    gap: 0.5rem;
+  }
+
+  .guia-miembros__cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .guia-miembros__benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .guia-miembros__sanctions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .guia-miembros__downloads-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .guia-miembros__download-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .guia-miembros__download-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ============================================
+   RESPONSIVE: DESKTOP
+   ============================================ */
+
+@media (min-width: 768px) {
+  .guia-miembros__container {
+    padding: 1.5rem 2rem 3rem;
+  }
+
+  .guia-miembros__intro,
+  .guia-miembros__info-box,
+  .guia-miembros__sanctions-section,
+  .guia-miembros__timeline-section,
+  .guia-miembros__cta {
+    padding: 3rem 2rem;
+  }
+
+  .guia-miembros__intro {
+    padding: 2.5rem 2rem;
+  }
+
+  .guia-miembros__hero {
+    padding: 4rem 0 2rem;
+  }
+
+  .guia-miembros__hero-title {
+    font-size: 3.5rem;
+  }
+
+  .guia-miembros__hero-description {
+    font-size: 1.25rem;
+  }
+
+  .guia-miembros__section-title {
+    font-size: 2.5rem;
+  }
+
+  .guia-miembros__tabs-container {
+    padding: 0.5rem 2rem;
+    flex-wrap: nowrap;
+    gap: 0.625rem;
+  }
+
+  .guia-miembros__tab {
+    font-size: 0.9375rem;
+    padding: 0.75rem 1.25rem;
+  }
+
+  .guia-miembros__info-box-content {
+    gap: 2rem;
+  }
+
+  .guia-miembros__faq-card {
+    padding: 2.5rem;
+  }
+}
+
+/* ============================================
+   RESPONSIVE: LARGE DESKTOP
+   ============================================ */
+
+@media (min-width: 1024px) {
+  .guia-miembros__cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .guia-miembros__benefits-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .guia-miembros__sanctions-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .guia-miembros__download-card {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .guia-miembros__download-btn {
+    width: auto;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .guia-miembros__card,
+  .guia-miembros__benefit-card,
+  .guia-miembros__download-card,
+  .guia-miembros__cta-btn,
+  .guia-miembros__download-btn,
+  .guia-miembros__tab,
+  .guia-miembros__faq-card {
+    transition: none;
+  }
+
+  @keyframes fadeIn {
+    from, to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+/* Focus states for accessibility */
+.guia-miembros__tab:focus-visible,
+.guia-miembros__download-btn:focus-visible,
+.guia-miembros__cta-btn:focus-visible,
+.guia-miembros__faq-card:focus {
+  outline: 3px solid #1e40af;
+  outline-offset: 2px;
+}

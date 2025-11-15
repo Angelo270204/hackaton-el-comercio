@@ -33,6 +33,16 @@ export const Navbar: React.FC = () => {
   const ELECTION_DATE = "2026-04-12T08:00:00";
   const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft(ELECTION_DATE));
 
+  const updateNavbarOffsetVar = () => {
+    try {
+      const nav = document.querySelector('.navbar') as HTMLElement | null;
+      if (nav) {
+        const height = nav.offsetHeight;
+        document.documentElement.style.setProperty('--navbar-altura', `${height}px`);
+      }
+    } catch {}
+  };
+
   useEffect(() => {
     const intervalId = setInterval(() => {
       setTimeLeft(calculateTimeLeft(ELECTION_DATE));
@@ -40,6 +50,17 @@ export const Navbar: React.FC = () => {
 
     return () => clearInterval(intervalId);
   }, []);
+
+  useEffect(() => {
+    updateNavbarOffsetVar();
+    const onResize = () => updateNavbarOffsetVar();
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
+  useEffect(() => {
+    updateNavbarOffsetVar();
+  }, [isMenuOpen]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
