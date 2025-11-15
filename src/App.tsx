@@ -7,6 +7,7 @@ import { HomePage } from './pages/HomePage'
 import { CandidatosPage } from './pages/CandidatosPage'
 import Calendario from './pages/Calendario';
 import { GuiaMiembrosPage } from './pages/GuiaMiembrosPage'
+import { DondeVotar } from './pages/DondeVotar'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/candidatos" element={<CandidatosPage />} />
             <Route path="/calendario" element={<Calendario />} />
             <Route path="/guia-miembros" element={<GuiaMiembrosPage />} />
+            <Route path="/donde-votar" element={<DondeVotar />} />
             {/* Agregar más rutas aquí */}
           </Routes>
         </main>
