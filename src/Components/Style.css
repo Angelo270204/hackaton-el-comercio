@@ -11,6 +11,16 @@
   --color-texto-secundario: #616161; /* Gris medio */
   --color-borde: #BDBDBD;           /* Gris borde */
   --color-blanco: #FFFFFF;
+  /* Altura combinada del navbar (top + bottom). Ajustable si cambia el diseño. */
+  --navbar-altura: 120px;
+  /* Mejora visual */
+  --sombra-suave: 0 6px 18px rgba(0,0,0,0.10);
+  --sombra-fuerte: 0 12px 32px rgba(0,0,0,0.14);
+  --grad-primario: linear-gradient(135deg, #2f6ed3 0%, #0056B3 60%, #003c80 100%);
+  --grad-claridad: radial-gradient(1200px 400px at 10% -10%, rgba(47,110,211,0.15), transparent 40%), radial-gradient(800px 300px at 100% 0%, rgba(0,86,179,0.12), transparent 42%);
+  --grad-impacto: radial-gradient(1000px 600px at 10% -10%, rgba(47,110,211,0.18), transparent 55%), radial-gradient(900px 420px at 95% -5%, rgba(0,86,179,0.14), transparent 52%);
+  --glass-bg: rgba(255,255,255,0.76);
+  --glass-blur: 8px;
 }
 
 /* ========================================
@@ -27,8 +37,10 @@
   display: block;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 24px;
+  padding: 20px 24px 24px;
   position: relative;
+  background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0));
+  border-radius: 14px;
 }
 
 .candidatos-page__layout .candidatos-page__lista {
@@ -36,8 +48,8 @@
 }
 
 .candidatos-page__layout--con-detalle .candidatos-page__lista {
-  /* Reservar espacio para el panel fijo a la derecha */
-  margin-right: 520px; /* ancho del panel + margen */
+  /* Reservar espacio para el panel fijo a la derecha + un pequeño colchón */
+  margin-right: calc(496px + 32px);
 }
 
 .candidatos-page__lista {
@@ -46,24 +58,27 @@
 
 .candidatos-page__detalle {
   position: fixed;
-  top: 24px;
-  right: 24px;
+  top: calc(var(--navbar-altura, 120px) + 12px);
+  right: 0;
+  bottom: 0;
   width: 496px;
   max-width: calc(100vw - 48px);
-  bottom: 24px;
-  max-height: calc(100vh - 48px);
-  height: auto;
   overflow-y: auto;
+  overflow-x: hidden;
   overscroll-behavior: contain;
-  scrollbar-gutter: stable both-edges;
-  z-index: 50;
-  transform: translateX(110%);
-  opacity: 0.98;
-  transition: transform 0.25s ease;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 86, 179, 0.3) rgba(0, 0, 0, 0.05);
+  z-index: 999; /* por debajo del navbar (1000) */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
+  background: transparent;
 }
 
 .candidatos-page__detalle--visible {
-  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
 }
 
 .candidatos-page__cargando,
@@ -92,8 +107,8 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 12px;
-  margin-bottom: 20px;
+  gap: 10px;
+  margin-bottom: 16px;
 }
 
 .lista-candidatos__titulo-seccion {
@@ -101,11 +116,23 @@
 }
 
 .lista-candidatos__titulo {
-  font-size: 32px;
+  font-size: 34px;
   font-weight: 800;
   color: var(--color-primario);
   margin: 0 0 8px 0;
   letter-spacing: -0.5px;
+  position: relative;
+}
+
+.lista-candidatos__titulo::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 64px;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--color-primario), color-mix(in srgb, var(--color-primario) 30%, transparent));
 }
 
 .lista-candidatos__subtitulo {
@@ -116,9 +143,38 @@
 
 .lista-candidatos__controles {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   align-items: center;
   flex-wrap: wrap;
+}
+
+.lista-candidatos__resumen {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 8px 2px 14px;
+}
+
+.lista-candidatos__contador {
+  font-size: 13px;
+  color: var(--color-texto-secundario);
+}
+
+.lista-candidatos__limpiar {
+  border: 1px solid var(--color-neutro);
+  background: var(--color-blanco);
+  color: var(--color-texto);
+  font-size: 13px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lista-candidatos__limpiar:hover {
+  border-color: var(--color-primario);
+  color: var(--color-primario);
+  box-shadow: 0 0 0 3px rgba(0,86,179,0.1);
 }
 
 .lista-candidatos__buscador {
@@ -126,17 +182,24 @@
   align-items: center;
   gap: 8px;
   background: var(--color-blanco);
-  border: 1px solid var(--color-borde);
-  border-radius: 10px;
-  padding: 10px 14px;
+  border: 1px solid var(--color-neutro);
+  border-radius: 12px;
+  padding: 10px 12px;
   min-width: 280px;
   flex: 1 1 360px;
   transition: border-color 0.2s;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
 }
 
 .lista-candidatos__buscador:focus-within {
   border-color: var(--color-primario);
   box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+}
+
+.lista-candidatos__buscador:focus-visible {
+  outline: none;
+  border-color: var(--color-primario);
+  box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.18);
 }
 
 .lista-candidatos__buscador svg {
@@ -158,15 +221,16 @@
 }
 
 .lista-candidatos__selector {
-  padding: 10px 14px;
-  border: 1px solid var(--color-borde);
-  border-radius: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--color-neutro);
+  border-radius: 12px;
   background: var(--color-blanco);
   color: var(--color-texto);
   font-size: 14px;
   cursor: pointer;
   transition: border-color 0.2s;
   min-width: 200px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 
 .lista-candidatos__selector:hover {
@@ -177,6 +241,12 @@
   outline: none;
   border-color: var(--color-primario);
   box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+}
+
+.lista-candidatos__selector:focus-visible {
+  outline: none;
+  border-color: var(--color-primario);
+  box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.18);
 }
 
 /* Filtros por partido */
@@ -208,8 +278,8 @@
 /* Grilla de candidatos */
 .lista-candidatos__grilla {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 220px));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px 18px;
   justify-content: start;
 }
 
@@ -226,71 +296,82 @@
    ======================================== */
 
 .tarjeta-candidato {
-  background: var(--color-blanco);
-  border: 2px solid var(--color-neutro);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid rgba(255,255,255,0.55);
   border-radius: 16px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 16px 18px;
+  padding: 18px 16px 16px;
   text-align: center;
   position: relative;
   overflow: hidden;
+  box-shadow: var(--sombra-suave);
+}
+
+/* Borde degradado animado */
+.tarjeta-candidato::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(from 220deg, color-mix(in srgb, var(--color-primario) 18%, #ffffff), rgba(255,255,255,0.7), color-mix(in srgb, var(--color-primario) 18%, #ffffff));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+/* Brillo transversal al pasar el mouse */
+.tarjeta-candidato::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(120deg, transparent 20%, rgba(255,255,255,0.45) 45%, transparent 60%);
+  transform: translateX(-120%);
+  transition: transform 700ms ease;
+  pointer-events: none;
 }
 
 .tarjeta-candidato:hover {
-  border-color: var(--color-primario);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  border-color: rgba(255,255,255,0.8);
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 14px 34px rgba(0,0,0,0.18);
+}
+
+.tarjeta-candidato:hover::after {
+  transform: translateX(120%);
 }
 
 .tarjeta-candidato--seleccionada {
-  border-color: var(--color-primario);
-  box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.15);
-  background: rgba(0, 86, 179, 0.03);
+  border-color: rgba(255,255,255,0.85);
+  box-shadow: 0 0 0 3px rgba(0,86,179,0.18), var(--sombra-fuerte);
+  background: linear-gradient(0deg, rgba(0,86,179,0.05), rgba(0,86,179,0.05)), var(--glass-bg);
 }
 
 /* Overlay con logo agrandado al hacer hover */
-.tarjeta-candidato__overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.75);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.tarjeta-candidato:hover .tarjeta-candidato__overlay {
-  opacity: 1;
-}
-
-.tarjeta-candidato__overlay-logo {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-  filter: brightness(0) invert(1);
-}
+/* Eliminado overlay de hover sobre tarjetas */
 
 .tarjeta-candidato__imagen-contenedor {
-  width: 110px;
-  height: 110px;
+  width: 112px;
+  height: 112px;
   border-radius: 50%;
   overflow: hidden;
   background: var(--color-neutro);
   margin-bottom: 12px;
-  border: 3px solid var(--color-blanco);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.10);
   position: relative;
   z-index: 1;
+  padding: 2px; /* anillo más sutil */
+  background-image: conic-gradient(from 180deg at 50% 50%, color-mix(in srgb, var(--color-primario) 22%, transparent), rgba(255,255,255,0.5), color-mix(in srgb, var(--color-primario) 22%, transparent));
 }
 
 .tarjeta-candidato__imagen {
@@ -298,6 +379,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  border-radius: 50%;
 }
 
 .tarjeta-candidato__info {
@@ -311,23 +393,66 @@
 }
 
 .tarjeta-candidato__nombre {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
-  color: var(--color-texto);
+  color: #1f2937;
   margin: 0;
   line-height: 1.3;
 }
 
 .tarjeta-candidato__partido {
-  font-size: 13px;
-  color: var(--color-texto-secundario);
-  margin: 0 0 8px 0;
+  font-size: 12px;
+  color: var(--color-primario);
+  margin: 2px 0 8px 0;
+  font-weight: 600;
+  background: rgba(0,86,179,0.06);
+  border: 1px solid rgba(0,86,179,0.18);
+  padding: 4px 8px;
+  border-radius: 999px;
 }
 
 .tarjeta-candidato__logo-partido {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   object-fit: contain;
+  display: block;
+  margin-top: 6px;
+  background: var(--color-blanco);
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.10);
+  padding: 4px;
+}
+
+.tarjeta-candidato:hover .tarjeta-candidato__imagen-contenedor {
+  transform: scale(1.03);
+}
+
+.tarjeta-candidato__cta {
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: #ffffff;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--color-primario) 92%, #ffffff), var(--color-primario));
+  border: 1px solid color-mix(in srgb, var(--color-primario) 60%, #ffffff);
+  padding: 6px 10px;
+  border-radius: 999px;
+  opacity: 0.95;
+  transition: all 0.2s ease;
+  box-shadow: 0 6px 16px rgba(0,86,179,0.20);
+}
+
+.tarjeta-candidato:hover .tarjeta-candidato__cta {
+  opacity: 1;
+  transform: translateY(-1px);
+  border-color: rgba(0,0,0,0.2);
+}
+
+/* Accesibilidad: enfoque visible en tarjetas */
+.tarjeta-candidato:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.28), var(--sombra-fuerte);
 }
 
 .tarjeta-candidato__enlace {
@@ -340,11 +465,14 @@
 
 .detalle-precandidatos {
   background: var(--color-blanco);
-  border: 1px solid var(--color-borde);
-  border-radius: 14px;
+  border-left: 1px solid var(--color-borde);
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
   padding: 24px;
-  min-height: 400px;
+  padding-top: 60px;
+  min-height: 100%;
   position: relative;
+  height: 100%;
 }
 
 .detalle-precandidatos__vacio {
@@ -366,29 +494,32 @@
 
 /* Botón cerrar del panel de detalle */
 .detalle-precandidatos__btn-cerrar {
-  position: sticky;
-  top: 8px;
-  margin-left: auto;
-  width: 32px;
-  height: 32px;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
+  border-radius: 50%;
   border: 1px solid var(--color-neutro);
   background: var(--color-blanco);
   color: var(--color-texto-secundario);
-  font-size: 18px;
+  font-size: 24px;
   line-height: 1;
   cursor: pointer;
   transition: all 0.2s ease;
-  z-index: 5;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .detalle-precandidatos__btn-cerrar:hover {
   color: var(--color-primario);
   border-color: var(--color-primario);
+  background: rgba(0, 86, 179, 0.05);
   box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.12);
+  transform: scale(1.05);
 }
 
 /* Perfil del candidato */
@@ -728,17 +859,23 @@
 
 @media (max-width: 1200px) {
   .candidatos-page__detalle {
-    top: 0;
+    position: fixed;
+    top: calc(var(--navbar-altura, 120px) + 12px);
     right: 0;
-    left: 0;
+    left: auto;
+    bottom: 0;
     width: 100%;
-    height: 100vh;
     max-width: 100%;
-    transform: translateY(110%);
+    height: auto;
+    transform: none;
   }
 
   .candidatos-page__detalle--visible {
-    transform: translateY(0);
+    transform: none;
+  }
+
+  .candidatos-page__layout--con-detalle .candidatos-page__lista {
+    margin-right: 0;
   }
 
   .lista-candidatos__encabezado {
@@ -777,7 +914,8 @@
   }
 
   .tarjeta-candidato__imagen-contenedor {
-    height: 180px;
+    width: 104px;
+    height: 104px;
   }
 
   .detalle-precandidatos {
