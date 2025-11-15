@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { ListaCandidatos } from '../Components/ListaCandidatos'
 import { DetallePrecandidatos } from '../Components/DetallePrecandidatos'
 import { obtenerCandidatos, type Candidato } from '../shared/servicios/candidatos.servicio'
@@ -13,6 +13,7 @@ export function CandidatosPage() {
   const [candidatoSeleccionado, setCandidatoSeleccionado] = useState<Candidato | null>(null)
   const [cargando, setCargando] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const detalleRef = useRef<HTMLDivElement | null>(null)
 
   // Cargar lista de candidatos al montar el componente
   useEffect(() => {
@@ -40,6 +41,16 @@ export function CandidatosPage() {
   const manejarSeleccion = (candidato: Candidato) => {
     setCandidatoSeleccionado(candidato)
   }
+
+  // Asegurar que el panel de detalle siempre inicie desde arriba
+  useEffect(() => {
+    if (candidatoSeleccionado && detalleRef.current) {
+      // resetear scroll del contenedor del panel
+      detalleRef.current.scrollTop = 0
+    }
+  }, [candidatoSeleccionado])
+
+  // Nota: Se permite scroll del fondo; el panel está fijo y no se mueve.
 
   // Mostrar estado de carga
   if (cargando) {
@@ -81,7 +92,7 @@ export function CandidatosPage() {
 
         {/* Columna derecha: Detalle del candidato seleccionado */}
         {candidatoSeleccionado && (
-          <div className="candidatos-page__detalle candidatos-page__detalle--visible">
+          <div ref={detalleRef} className="candidatos-page__detalle candidatos-page__detalle--visible">
             <DetallePrecandidatos
               candidato={candidatoSeleccionado}
               onCerrar={() => setCandidatoSeleccionado(null)}
