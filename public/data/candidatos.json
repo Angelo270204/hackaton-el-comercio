@@ -5,7 +5,7 @@
     "partido": "Fuerza Popular",
     "cargo_postula": "Presidenta",
     "foto": "/images/partido-candidato/keiko.jpg",
-    "icono_partido": "/images/partido-candidato/fuerza-popular/logo.png",
+    "icono_partido": "/images/partido-candidato/Fujimori.jpg",
     "datos_publicos": {
       "rol_publico": "Excongresista, lideresa de Fuerza Popular",
       "elecciones_previas": "2011, 2016, 2021 (segunda vuelta)"
@@ -15,8 +15,9 @@
     "id": 2,
     "nombre": "Rafael López Aliaga",
     "partido": "Renovación Popular",
-    "foto": "/images/partido-candidato/keiko.jpg",
-    "icono_partido": "/images/partido-candidato/renovacion-popular/logo.png",
+    "cargo_postula": "Presidente",
+    "foto": "/images/partido-candidato/rafael.jpg",
+    "icono_partido": "/images/partido-candidato/renovacion-popular.jpg",
     "datos_publicos": {
       "rol_publico": "Alcalde de Lima",
       "elecciones_previas": "Candidato presidencial 2021"
@@ -26,8 +27,9 @@
     "id": 3,
     "nombre": "Antauro Humala",
     "partido": "Frente Patriótico",
-    
-    "icono_partido": "/images/partido-candidato/frente-patriotico/logo.png",
+    "cargo_postula": "Presidente",
+    "foto": "/images/partido-candidato/antauro.jpg",
+    "icono_partido": "/images/partido-candidato/partido-patrio.jpg",
     "datos_publicos": {
       "rol_publico": "Activista político y militar retirado",
       "elecciones_previas": "No ha postulado antes a la presidencia"
@@ -37,15 +39,21 @@
     "id": 4,
     "nombre": "Hernando de Soto",
     "partido": "Avanza País",
-    
+    "cargo_postula": "Presidente",
+    "foto": "/images/partido-candidato/hernando.jpg",
+    "icono_partido": "/images/partido-candidato/avanza-pais.jpg",
+    "datos_publicos": {
       "rol_publico": "Economista, fundador del Instituto Libertad y Democracia",
       "elecciones_previas": "Candidato presidencial 2021"
+     }
     }, 
   {
     "id": 5,
     "nombre": "George Forsyth",
     "partido": "Somos Perú",
     "cargo_postula": "Presidente",
+    "foto": "/images/partido-candidato/george.jpg",
+    "icono_partido": "/images/partido-candidato/somos-peru.jpg",
     "datos_publicos": {
       "rol_publico": "Exalcalde de La Victoria",
       "elecciones_previas": "Candidato presidencial 2021"
@@ -56,6 +64,8 @@
     "nombre": "César Acuña",
     "partido": "Alianza Para el Progreso",
     "cargo_postula": "Presidente",
+    "foto": "/images/partido-candidato/cesar.jpg", 
+    "icono_partido": "/images/partido-candidato/alianza.jpg",
     "datos_publicos": {
       "rol_publico": "Empresario, gobernador regional de La Libertad",
       "elecciones_previas": "Candidato presidencial 2016"
@@ -64,8 +74,10 @@
   {
     "id": 7,
     "nombre": "Pedro Cateriano",
-    "partido": "Independiente / por definir",
+    "partido": "Libertad Popular",
     "cargo_postula": "Presidente",
+    "foto": "/images/partido-candidato/pedro.jpg",
+    "icono_partido": "/images/partido-candidato/libertad-p.jpg",
     "datos_publicos": {
       "rol_publico": "Ex primer ministro",
       "elecciones_previas": "No ha postulado a presidencia"
@@ -76,6 +88,8 @@
     "nombre": "Vladimir Cerrón",
     "partido": "Perú Libre",
     "cargo_postula": "Presidente",
+    "foto": "/images/partido-candidato/cerron.jpg",
+    "icono_partido": "/images/partido-candidato/peru-libre.jpg",
     "datos_publicos": {
       "rol_publico": "Fundador y líder de Perú Libre",
       "elecciones_previas": "No ha postulado a presidencia"
@@ -84,8 +98,10 @@
   {
     "id": 9,
     "nombre": "Verónika Mendoza",
-    "partido": "Nuevo Perú / posible alianza",
+    "partido": "Juntos por el Perú",
     "cargo_postula": "Presidenta",
+    "foto": "/images/partido-candidato/veronika.jpg",
+    "icono_partido": "/images/partido-candidato/juntos-peru.jpg",
     "datos_publicos": {
       "rol_publico": "Excongresista",
       "elecciones_previas": "Candidata presidencial 2016 y 2021"
@@ -94,8 +110,10 @@
   {
     "id": 10,
     "nombre": "Sigrid Bazán",
-    "partido": "Juntos por el Perú / Venceremos (por definir)",
+    "partido": "Juntos por el Perú",
     "cargo_postula": "Presidenta",
+    "foto": "/images/partido-candidato/sigrid.jpg",
+    "icono_partido": "/images/partido-candidato/juntos-peru.jpg",
     "datos_publicos": {
       "rol_publico": "Congresista",
       "elecciones_previas": "Aún no postuló a presidencia"
@@ -104,8 +122,10 @@
   {
     "id": 11,
     "nombre": "Salvador del Solar",
-    "partido": "Independiente / posible alianza",
+    "partido": "PKK",
     "cargo_postula": "Presidente",
+    "foto": "/images/partido-candidato/salvador.jpg",
+    "icono_partido": "/images/partido-candidato/pkk.jpg",
     "datos_publicos": {
       "rol_publico": "Expremier, actor y exministro",
       "elecciones_previas": "No ha postulado a presidencia"
@@ -116,6 +136,8 @@
     "nombre": "Alfredo Barnechea",
     "partido": "Acción Popular",
     "cargo_postula": "Presidente",
+    "foto": "/images/partido-candidato/alfredo.jpg",
+    "icono_partido": "/images/partido-candidato/accion-popular.jpg",
     "datos_publicos": {
       "rol_publico": "Periodista, escritor",
       "elecciones_previas": "Candidato presidencial 2016"
@@ -126,6 +148,8 @@
     "nombre": "Yohny Lescano",
     "partido": "Cooperación Popular",
     "cargo_postula": "Presidente",
+    "foto": "/images/partido-candidato/yhoni.jpg",
+    "icono_partido": "/images/partido-candidato/cooperacion.jpg",
     "datos_publicos": {
       "rol_publico": "Excongresista",
       "elecciones_previas": "Candidato presidencial 2021"
@@ -136,6 +160,8 @@
     "nombre": "Marisol Pérez Tello",
     "partido": "Primero La Gente",
     "cargo_postula": "Presidenta",
+    "foto": "/images/partido-candidato/marisol.jpg",
+    "icono_partido": "/images/partido-candidato/primero.jpg",
     "datos_publicos": {
       "rol_publico": "Exministra de Justicia",
       "elecciones_previas": "No ha postulado a presidencia"
@@ -146,6 +172,8 @@
     "nombre": "Francisco Diez Canseco",
     "partido": "Perú Acción",
     "cargo_postula": "Presidente",
+    "foto": "/images/partido-candidato/francisco.jpg",
+    "icono_partido": "/images/partido-candidato/peru-accion.jpg",
     "datos_publicos": {
       "rol_publico": "Analista político",
       "elecciones_previas": "No ha postulado a presidencia"
@@ -156,6 +184,8 @@
     "nombre": "Carlos Jaico",
     "partido": "Perú Moderno",
     "cargo_postula": "Presidente",
+    "foto": "/images/partido-candidato/carlos.jpg",
+    "icono_partido": "/images/partido-candidato/peru-moderno.jpg",
     "datos_publicos": {
       "rol_publico": "Ex secretario general de Palacio",
       "elecciones_previas": "No ha postulado a presidencia"
@@ -166,6 +196,8 @@
     "nombre": "Roberto Chiabra",
     "partido": "Unidad Nacional",
     "cargo_postula": "Presidente",
+    "foto": "/images/partido-candidato/roberto.jpg",
+    "icono_partido": "/images/partido-candidato/unidad.jpg",
     "datos_publicos": {
       "rol_publico": "Congresista y exministro de Defensa",
       "elecciones_previas": "No ha postulado a presidencia"
@@ -176,6 +208,8 @@
     "nombre": "Álvaro Paz de la Barra",
     "partido": "Fe en el Perú",
     "cargo_postula": "Presidente",
+    "foto": "/images/partido-candidato/alvaro.jpg",
+    "icono_partido": "/images/partido-candidato/fe-peru.jpg",
     "datos_publicos": {
       "rol_publico": "Alcalde de La Molina (ex)",
       "elecciones_previas": "No ha postulado a presidencia"
@@ -186,6 +220,8 @@
     "nombre": "Mauricio Mulder",
     "partido": "APRA",
     "cargo_postula": "Presidente",
+    "foto": "/images/partido-candidato/maurico.jpg",
+    "icono_partido": "/images/partido-candidato/Apra.jpg",
     "datos_publicos": {
       "rol_publico": "Excongresista",
       "elecciones_previas": "No ha postulado a presidencia"
@@ -196,6 +232,8 @@
     "nombre": "Flor Polo",
     "partido": "Somos Perú",
     "cargo_postula": "Presidenta",
+    "foto": "/images/partido-candidato/flor.jpg",
+    "icono_partido": "/images/partido-candidato/somos-peru.jpg",
     "datos_publicos": {
       "rol_publico": "Figura pública y política emergente",
       "elecciones_previas": "No ha postulado a presidencia"
