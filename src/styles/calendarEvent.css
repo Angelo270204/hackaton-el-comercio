@@ -1,3 +1,272 @@
+/* Responsivo para el contenedor de calendario y panel de eventos */
+.calendario-responsive-row {
+  display: flex;
+  gap: 2.5rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  width: 100%;
+}
+@media (max-width: 900px) {
+  .calendario-responsive-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+  }
+}
+.fechas-importantes-cuadros-grid.horizontal {
+  position: relative;
+}
+.fechas-importantes-cuadros-grid.horizontal .fechas-importantes-cuadro {
+  position: relative;
+}
+.fechas-importantes-cuadros-grid.horizontal
+  .fechas-importantes-cuadro:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  /* Eliminado: solo borde externo celeste */
+}
+.fechas-importantes-cuadros-grid.horizontal {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.fechas-importantes-cuadros.modelo-img {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid var(--color-border);
+}
+.fechas-importantes-cuadros-grid.modelo-img {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.fechas-importantes-cuadro.modelo-img {
+  background: #f8fafc;
+  border: 3px solid #48cae4;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 120px;
+  transition: box-shadow 0.2s, border 0.2s;
+}
+.fechas-importantes-cuadro.modelo-img:hover {
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.13); /* Updated hover shadow */
+  border-color: #2563eb;
+}
+.fechas-importantes-cuadro-icon.modelo-img {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.7rem;
+}
+.fechas-importantes-cuadro-numero.modelo-img {
+  font-size: 1.5rem;
+  color: #2563eb;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+  text-align: center;
+}
+.fechas-importantes-cuadro-titulo.modelo-img {
+  font-size: 1rem;
+  color: #1e293b;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.2rem;
+  line-height: 1.1;
+}
+.fechas-importantes-cuadro-fecha.modelo-img {
+  font-size: 0.95rem;
+  color: #64748b;
+  text-align: center;
+  font-weight: 500;
+}
+@media (max-width: 900px) {
+  .fechas-importantes-cuadros-grid.modelo-img {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    max-width: 600px;
+  }
+}
+@media (max-width: 600px) {
+  .fechas-importantes-cuadros-grid.modelo-img {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+    max-width: 350px;
+  }
+  .fechas-importantes-cuadro.modelo-img {
+    padding: 0.7rem 0.3rem 0.5rem 0.3rem;
+    min-height: 80px;
+  }
+  .fechas-importantes-cuadro-icon.modelo-img {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 0.3rem;
+  }
+  .fechas-importantes-cuadro-numero.modelo-img {
+    font-size: 1.1rem;
+  }
+  .fechas-importantes-cuadro-titulo.modelo-img {
+    font-size: 0.85rem;
+  }
+  .fechas-importantes-cuadro-fecha.modelo-img {
+    font-size: 0.8rem;
+  }
+}
+.fechas-importantes-timeline-event.fila {
+  min-width: 60px;
+  max-width: 80px;
+}
+.fechas-importantes-timeline-dot.compacto {
+  width: 14px;
+  height: 14px;
+  margin-bottom: 4px;
+}
+.fechas-importantes-timeline-icon-mini.grande {
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+}
+.fechas-importantes-timeline-titulo-mini {
+  font-size: 0.65rem;
+  max-width: 70px;
+}
+.fechas-importantes-timeline-fecha-mini {
+  font-size: 0.6rem;
+  margin-top: 1px;
+}
+.fechas-importantes-timeline-events.fila {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  height: auto;
+  position: relative;
+  margin-top: 0.5rem;
+}
+.fechas-importantes-timeline-event.fila {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 90px;
+  max-width: 120px;
+  position: relative;
+}
+.fechas-importantes-timeline-dot.compacto {
+  margin-bottom: 6px;
+}
+.fechas-importantes-timeline-titulo-mini {
+  margin-top: 0;
+  font-size: 0.78rem;
+  color: #1976d2;
+  font-weight: 500;
+  text-align: center;
+  max-width: 90px;
+  white-space: normal;
+  line-height: 1.1;
+}
+.fechas-importantes-timeline-fecha-mini {
+  font-size: 0.72rem;
+  color: #555;
+  text-align: center;
+  margin-top: 2px;
+  font-weight: 400;
+}
+.fechas-importantes-timeline-icon-mini.grande {
+  width: 28px;
+  height: 28px;
+  font-size: 28px;
+  color: #fff;
+}
+.fechas-importantes-timeline-titulo-mini {
+  margin-top: 6px;
+  font-size: 0.78rem;
+  color: #1976d2;
+  font-weight: 500;
+  text-align: center;
+  max-width: 90px;
+  white-space: normal;
+  line-height: 1.1;
+}
+.fechas-importantes-timeline-icon-mini {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.fechas-importantes-timeline-dot.compacto {
+  position: relative;
+}
+.fechas-importantes-timeline.compacto {
+  min-height: 70px;
+  padding-top: 1.2rem;
+}
+.fechas-importantes-timeline-events {
+  height: 70px;
+}
+.fechas-importantes-timeline-event.compacto {
+  min-width: 0;
+  max-width: 0;
+}
+.fechas-importantes-timeline-dot.compacto {
+  width: 18px;
+  height: 18px;
+  background: #48cae4;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  margin: 0 auto;
+  box-shadow: 0 0 0 2px #e0e0e0;
+  position: relative;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+.fechas-importantes-timeline-dot.compacto:focus,
+.fechas-importantes-timeline-dot.compacto:hover {
+  box-shadow: 0 0 0 4px #48cae4;
+}
+.fechas-importantes-timeline-tooltip {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: -60px;
+  transform: translateX(-50%);
+  background: #fff;
+  color: #1976d2;
+  border: 1px solid #48cae4;
+  border-radius: 6px;
+  padding: 0.5rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: pre-line;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+}
+.fechas-importantes-timeline-dot.compacto:hover
+  .fechas-importantes-timeline-tooltip,
+.fechas-importantes-timeline-dot.compacto:focus
+  .fechas-importantes-timeline-tooltip {
+  display: block;
+}
 /* Ajuste individual para los eventos 2, 4, 6, 8 (índices 1, 3, 5, 7) */
 .timeline-event--down.special-down {
   top: 150px;
@@ -612,117 +881,120 @@
 }
 
 /* Estilos para FechasImportantes */
-.fechas-importantes {
+
+.fechas-importantes-timeline {
   margin-top: 3rem;
   padding-top: 2rem;
   border-top: 2px solid var(--color-border);
-}
-
-.fechas-importantes-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+  position: relative;
+  width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 120px;
 }
 
-.fecha-importante-card {
-  background: white;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  transition: all var(--transition);
-  box-shadow: var(--shadow);
+.fechas-importantes-timeline-line {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  right: 5%;
+  height: 6px;
+  background: #e0e0e0;
+  border-radius: 3px;
+  z-index: 0;
 }
 
-.fecha-importante-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  border-color: #48cae4;
+.fechas-importantes-timeline-events {
+  position: relative;
+  width: 100%;
+  height: 120px;
 }
 
-.fecha-importante-icon {
-  width: 48px;
-  height: 48px;
+.fechas-importantes-timeline-event {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  min-width: 120px;
+  max-width: 160px;
+  z-index: 2;
+}
+
+.fechas-importantes-timeline-icon {
+  width: 40px;
+  height: 40px;
   background: #caf0f8;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #48cae4;
-  flex-shrink: 0;
+  margin: 0 auto 4px auto;
 }
 
-.fecha-importante-content {
-  flex: 1;
+.fechas-importantes-timeline-dot {
+  width: 18px;
+  height: 18px;
+  background: #48cae4;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  margin: 0 auto 6px auto;
+  box-shadow: 0 0 0 2px #e0e0e0;
 }
 
-.fecha-importante-titulo {
+.fechas-importantes-timeline-info {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 4px;
+}
+
+.fechas-importantes-timeline-titulo {
   font-weight: var(--font-semibold);
-  font-size: var(--font-size-base);
+  font-size: 0.95rem;
   color: var(--color-text);
-  margin-bottom: 0.25rem;
-  line-height: 1.3;
+  margin-bottom: 0.15rem;
+  line-height: 1.2;
 }
 
-.fecha-importante-fecha {
-  font-size: var(--font-size-sm);
+.fechas-importantes-timeline-fecha {
+  font-size: 0.8rem;
   color: #48cae4;
   font-weight: var(--font-medium);
-  margin-bottom: 0.125rem;
 }
 
-.fecha-importante-year {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
-  font-weight: var(--font-normal);
-}
-
-.fecha-importante-numero {
-  width: 36px;
-  height: 36px;
-  background: #48cae4;
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.fechas-importantes-timeline-numero {
+  font-size: 0.9rem;
+  color: #48cae4;
   font-weight: var(--font-bold);
-  font-size: var(--font-size-lg);
-  flex-shrink: 0;
+  margin-top: 2px;
 }
 
-/* Responsivo para fechas importantes */
-@media (max-width: 768px) {
-  .fechas-importantes {
-    margin-top: 2rem;
-    padding: 1rem;
+@media (max-width: 900px) {
+  .fechas-importantes-timeline-event {
+    min-width: 90px;
+    max-width: 120px;
   }
-
-  .fechas-importantes-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+  .fechas-importantes-timeline-info {
+    padding: 0.4rem 0.5rem;
   }
+}
 
-  .fecha-importante-card {
-    padding: 1rem;
+@media (max-width: 700px) {
+  .fechas-importantes-timeline {
+    min-height: 180px;
   }
-
-  .fecha-importante-icon {
-    width: 40px;
-    height: 40px;
+  .fechas-importantes-timeline-events {
+    height: 180px;
   }
-
-  .fecha-importante-titulo {
-    font-size: var(--font-size-sm);
+  .fechas-importantes-timeline-event {
+    min-width: 70px;
+    max-width: 90px;
   }
-
-  .fecha-importante-numero {
-    width: 32px;
-    height: 32px;
-    font-size: var(--font-size-base);
+  .fechas-importantes-timeline-info {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.3rem;
   }
 }
