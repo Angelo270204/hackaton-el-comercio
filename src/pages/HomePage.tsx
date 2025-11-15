@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { MapPin, Users, Calendar, BookOpen, Sparkles, ArrowRight } from 'lucide-react';
-import { CountdownTimer } from './CountdownTimer';
+
 import { QuickAccessCard } from './QuickAccessCard';
 import '../styles/home.css';
 
 export const HomePage: React.FC = () => {
-  const ELECTION_DATE = "2026-04-12T08:00:00";
+
 
   const quickAccessItems = [
     {
@@ -38,34 +38,41 @@ export const HomePage: React.FC = () => {
   return (
     <div className="home">
       <div className="home__container">
-        {/* Hero Section */}
+        {/* Hero Section with Banner */}
         <section className="home__hero">
-          <div className="home__hero-badge">
-            <Sparkles size={16} />
-            <span>Elecciones Generales Perú</span>
-          </div>
-          <h1 className="home__hero-title">
-            Prepárate para las <span className="home__hero-highlight">Elecciones 2026</span>
-          </h1>
-          <p className="home__hero-description">
-            Toda la información que necesitas para ejercer tu derecho al voto de manera informada.
-            Conoce a los candidatos, encuentra tu local de votación y mantente actualizado con el proceso electoral.
-          </p>
-          <div className="home__hero-actions">
-            <Link to="/candidatos" className="home__hero-btn home__hero-btn--primary">
-              Ver Candidatos
-              <ArrowRight size={20} />
-            </Link>
-            <Link to="/calendario" className="home__hero-btn home__hero-btn--secondary">
-              Ver Calendario
-            </Link>
+          <div className="home__hero-banner">
+            <img
+              src="/images/banner/banner-hackaton.png"
+              alt="Elecciones 2026 - Banner"
+              className="home__hero-banner-image"
+            />
+            <div className="home__hero-overlay"></div>
+            <div className="home__hero-content">
+              <div className="home__hero-badge">
+                <Sparkles size={16} />
+                <span>Elecciones Generales Perú</span>
+              </div>
+              <h1 className="home__hero-title">
+                Prepárate para las <span className="home__hero-highlight">Elecciones 2026</span>
+              </h1>
+              <p className="home__hero-description">
+                Toda la información que necesitas para ejercer tu derecho al voto de manera informada.
+                Conoce a los candidatos, encuentra tu local de votación y mantente actualizado con el proceso electoral.
+              </p>
+              <div className="home__hero-actions">
+                <Link to="/candidatos" className="home__hero-btn home__hero-btn--primary">
+                  Ver Candidatos
+                  <ArrowRight size={20} />
+                </Link>
+                <Link to="/calendario" className="home__hero-btn home__hero-btn--secondary">
+                  Ver Calendario
+                </Link>
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* Countdown Section */}
-        <section className="home__countdown-section">
-          <CountdownTimer targetDate={ELECTION_DATE} />
-        </section>
+
 
         {/* Quick Access Cards */}
         <section className="home__section">
@@ -87,6 +94,7 @@ export const HomePage: React.FC = () => {
             ))}
           </div>
         </section>
+
 
         {/* Info Banner */}
         <section className="home__info-banner">
