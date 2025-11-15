@@ -2,6 +2,7 @@ import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router'
 import { Navbar } from './shared/components/Navbar'
 import { Footer } from './shared/components/Footer'
+import { ChatBot } from './shared/components/ChatBot'
 import { HomePage } from './pages/HomePage'
 import { CandidatosPage } from './pages/CandidatosPage'
 import Calendario from './pages/Calendario';
@@ -22,6 +23,7 @@ function App() {
           </Routes>
         </main>
         <Footer />
+        <ChatBot />
       </div>
     </BrowserRouter>
   )
