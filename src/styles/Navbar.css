@@ -1,0 +1,332 @@
+.navbar {
+  background-color: var(--color-white);
+  position: relative;
+}
+
+/* ============================================
+   PRIMERA FILA: Logo y Timer
+   ============================================ */
+
+.navbar__top {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #1e3a8a 100%);
+  border-bottom: 2px solid var(--color-accent);
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  width: 100%;
+}
+
+.navbar__top-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.625rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: var(--color-white);
+  font-weight: var(--font-bold);
+  font-size: var(--font-size-xl);
+  transition: opacity 0.3s ease;
+}
+
+.navbar__logo:hover {
+  opacity: 0.9;
+}
+
+.navbar__logo-text {
+  display: none;
+}
+
+/* Timer/Countdown en el Navbar */
+.navbar__countdown {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  align-items: center;
+}
+
+.navbar__countdown-label {
+  font-size: 0.75rem;
+  font-weight: var(--font-semibold);
+  color: var(--color-white);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.navbar__countdown-grid {
+  display: flex;
+  gap: 0.375rem;
+  align-items: center;
+}
+
+.navbar__countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 0.375rem 0.5rem;
+  border-radius: 0.375rem;
+  min-width: 42px;
+  border: 2px solid var(--color-primary-hover);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar__countdown-number {
+  font-size: 1rem;
+  font-weight: var(--font-bold);
+  color: var(--color-gray-900);
+  line-height: 1;
+}
+
+.navbar__countdown-text {
+  font-size: 0.6rem;
+  font-weight: var(--font-semibold);
+  color: var(--color-gray-600);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.125rem;
+}
+
+/* ============================================
+   SEGUNDA FILA: Navegación
+   ============================================ */
+
+.navbar__bottom {
+  background-color: var(--color-white);
+  border-bottom: 3px solid var(--color-primary);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  position: relative;
+  z-index: 1;
+}
+
+.navbar__bottom-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 50px;
+}
+
+.navbar__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-gray-900);
+  padding: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.navbar__toggle:hover {
+  color: var(--color-primary);
+}
+
+.navbar__menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--color-white);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding-top: 60px; /* espacio para el top navbar */
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+  border-top: 2px solid var(--color-primary);
+  z-index: 999;
+}
+
+.navbar__menu--open {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.navbar__item {
+  border-bottom: 1px solid var(--color-gray-100);
+}
+
+.navbar__item:last-child {
+  border-bottom: none;
+}
+
+.navbar__link {
+  display: block;
+  padding: 1rem 1.5rem;
+  color: var(--color-gray-700);
+  text-decoration: none;
+  font-weight: var(--font-medium);
+  font-size: var(--font-size-base);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar__link:hover {
+  background-color: var(--color-gray-50);
+  color: var(--color-primary);
+}
+
+.navbar__link--cta {
+  color: var(--color-primary);
+  font-weight: var(--font-semibold);
+}
+
+.navbar__link--cta:hover {
+  background-color: var(--color-primary-light);
+}
+
+/* ============================================
+   RESPONSIVE: Tablet
+   ============================================ */
+
+@media (min-width: 640px) {
+  .navbar__logo-text {
+    display: inline;
+  }
+
+  .navbar__countdown-label {
+    font-size: 0.8rem;
+  }
+
+  .navbar__countdown-grid {
+    gap: 0.5rem;
+  }
+
+  .navbar__countdown-item {
+    min-width: 48px;
+    padding: 0.5rem;
+  }
+
+  .navbar__countdown-number {
+    font-size: 1.125rem;
+  }
+
+  .navbar__countdown-text {
+    font-size: 0.65rem;
+  }
+}
+
+/* ============================================
+   RESPONSIVE: Desktop
+   ============================================ */
+
+@media (min-width: 768px) {
+  .navbar__top-container {
+    padding: 0.625rem 1.5rem;
+  }
+
+  .navbar__logo {
+    font-size: 1.5rem;
+  }
+
+  .navbar__countdown-label {
+    font-size: 0.875rem;
+  }
+
+  .navbar__countdown-grid {
+    gap: 0.625rem;
+  }
+
+  .navbar__countdown-item {
+    min-width: 55px;
+    padding: 0.5rem 0.625rem;
+  }
+
+  .navbar__countdown-number {
+    font-size: 1.25rem;
+  }
+
+  .navbar__countdown-text {
+    font-size: 0.7rem;
+  }
+
+  .navbar__bottom-container {
+    justify-content: center;
+  }
+
+  .navbar__toggle {
+    display: none;
+  }
+
+  .navbar__menu {
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: transparent;
+    box-shadow: none;
+    transform: none;
+    opacity: 1;
+    padding:3px;
+    visibility: visible;
+    border-top: none;
+  }
+
+  .navbar__item {
+    border-bottom: none;
+  }
+
+  .navbar__link {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+  }
+
+  .navbar__link--cta {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 0.5rem 1rem;
+  }
+
+  .navbar__link--cta:hover {
+    background-color: var(--color-primary-hover);
+    color: var(--color-white);
+  }
+}
+
+/* ============================================
+   RESPONSIVE: Large Desktop
+   ============================================ */
+
+@media (min-width: 1024px) {
+  .navbar__countdown-item {
+    min-width: 60px;
+    padding: 0.625rem 0.75rem;
+  }
+
+  .navbar__countdown-number {
+    font-size: 1.375rem;
+  }
+
+  .navbar__countdown-text {
+    font-size: 0.75rem;
+  }
+
+  .navbar__link {
+    padding: 0.625rem 1.25rem;
+  }
+
+  .navbar__link--cta {
+    padding: 0.625rem 1.25rem;
+  }
+}
