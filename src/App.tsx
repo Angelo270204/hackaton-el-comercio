@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router'
 import { Navbar } from './shared/components/Navbar'
 import { Footer } from './shared/components/Footer'
 import { HomePage } from './pages/HomePage'
+import { CandidatosPage } from './pages/CandidatosPage'
 import Calendario from './pages/Calendario';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <main className="app__content">
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/candidatos" element={<CandidatosPage />} />
             <Route path="/calendario" element={<Calendario />} />
             {/* Agregar más rutas aquí */}
           </Routes>
