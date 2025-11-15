@@ -1,3 +1,303 @@
+/* Ajuste individual para los eventos 2, 4, 6, 8 (índices 1, 3, 5, 7) */
+.timeline-event--down.special-down {
+  top: 150px;
+}
+.timeline-event--up,
+.timeline-event--down {
+  left: 50%;
+  transform: translateX(-50%);
+}
+/* Zig-zag (six-sax) para eventos en desktop */
+
+/* Zig-zag alternando arriba y abajo */
+.timeline-events {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  min-height: 340px;
+}
+.timeline-event {
+  position: absolute;
+  width: 70px;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 0;
+}
+.timeline-event--up {
+  top: -40px;
+}
+.timeline-event--down {
+  top: 40px;
+}
+.timeline-event--up,
+.timeline-event--down {
+  left: calc(var(--event-left, 0));
+  transform: translateX(-50%);
+  transition: top 0.3s;
+}
+.timeline-event--up,
+.timeline-event--down {
+  left: 50%;
+  transform: translateX(-50%);
+  transition: top 0.3s;
+}
+
+@media (max-width: 700px) {
+  .timeline-events {
+    flex-direction: column;
+    align-items: center;
+    min-height: 0;
+  }
+  .timeline-event {
+    position: relative;
+    width: 90vw;
+    min-width: 90px;
+    max-width: 90vw;
+    top: 0 !important;
+    left: auto !important;
+    transform: none !important;
+    margin: 0 auto;
+  }
+  .timeline-event--up,
+  .timeline-event--down {
+    top: 0 !important;
+    left: auto !important;
+    transform: none !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .timeline-event--up,
+  .timeline-event--down {
+    top: 0;
+  }
+}
+/* Timeline styles */
+.timeline-wrapper {
+  margin: 4rem auto 1rem auto;
+  width: 90%;
+  position: relative;
+  font-family: var(--font-family);
+}
+
+.timeline {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 340px;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 42%;
+  left: 8%;
+  right: 8%;
+  height: 4px;
+  background: #e0e0e0;
+  z-index: 0;
+}
+
+.timeline-events {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.timeline-event {
+  flex: 1;
+  /*position: relative;*/
+  text-align: center;
+  min-width: 120px;
+  max-width: 120px;
+  box-sizing: border-box;
+  padding: 0 2px;
+}
+
+.timeline-icon {
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin: 0 auto 2px auto;
+  cursor: pointer;
+  border: 3px solid #fff;
+  transition: border 0.2s;
+}
+.timeline-event.active .timeline-icon {
+  border: 3px solid #1976d2;
+}
+
+.timeline-dot {
+  width: 20px;
+  height: 20px;
+  background: #e0e0e0;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  margin: 8px auto 10px auto;
+  box-shadow: none;
+  cursor: pointer;
+  z-index: 3;
+}
+.timeline-event.active .timeline-dot {
+  box-shadow: 0 0 0 4px #1976d2;
+}
+
+.timeline-title {
+  font-weight: var(--font-medium);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  word-break: break-word;
+  margin-top: 4px;
+  margin-bottom: 2px;
+  display: block;
+  line-height: 1.3;
+}
+.timeline-year {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-bottom: 2px;
+  display: block;
+  font-weight: var(--font-normal);
+}
+.timeline-number {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-semibold);
+  margin-bottom: 0px;
+  display: block;
+}
+
+/* Información del evento al lado de cada punto */
+.timeline-event-info {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160px;
+  background: #fff;
+  border: 2px solid #1976d2;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+  animation: fadeIn 0.3s ease;
+  z-index: 20;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+.timeline-event-info-content {
+  padding: 0.5rem;
+  position: relative;
+}
+.timeline-event-info-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #666;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+.timeline-event-info-close:hover {
+  background: #f5f5f5;
+}
+.timeline-event-info-title {
+  color: #1976d2;
+  margin: 0 0 0.4rem 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-align: justify;
+  line-height: 1.3;
+}
+.timeline-event-info-date {
+  margin: 0 0 0.4rem 0;
+  color: #555;
+  font-weight: 500;
+  font-size: 0.75rem;
+  text-align: justify;
+}
+.timeline-event-info-description {
+  margin: 0;
+  color: #666;
+  line-height: 1.3;
+  font-size: 0.7rem;
+  text-align: justify;
+}
+
+/* Responsivo */
+@media (max-width: 700px) {
+  .timeline-events {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .timeline-event {
+    min-width: 90px;
+    max-width: 90px;
+  }
+  .timeline-icon {
+    width: 36px;
+    height: 36px;
+  }
+  .timeline-dot {
+    width: 14px;
+    height: 14px;
+  }
+  .timeline-title {
+    font-size: 0.75rem;
+  }
+  .timeline-year {
+    font-size: 0.65rem;
+  }
+  .timeline-number {
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 600px) {
+  .timeline {
+    min-height: auto;
+  }
+  .timeline-line {
+    left: 50%;
+    right: auto;
+    width: 4px;
+    height: 100%;
+    top: 0;
+    transform: translateX(-50%);
+  }
+  .timeline-events {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+  .timeline-event {
+    min-width: 90vw;
+    max-width: 90vw;
+    margin: 0 auto;
+  }
+}
 .calendar-event {
   display: flex;
   align-items: start;
@@ -40,4 +340,389 @@
   font-size: 0.95rem;
   color: #1e293b;
   font-weight: 500;
+}
+
+/* Estilos para CalendarioGridView */
+.calendario-grid-wrapper {
+  max-width: 1000px;
+  margin: 0 auto 1.5rem auto;
+  padding: 1.5rem;
+  background: var(--color-bg-card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  font-family: var(--font-family);
+}
+
+.calendario-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+}
+
+.calendario-title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-bold);
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.calendario-nav-btn {
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.calendario-nav-btn:hover {
+  background: var(--color-primary-hover);
+}
+
+.calendario-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  background: var(--color-border);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.calendario-dia-header {
+  background: var(--color-primary);
+  color: white;
+  padding: 1rem 0.5rem;
+  text-align: center;
+  font-weight: var(--font-semibold);
+  font-size: var(--font-size-sm);
+}
+
+.calendario-dia {
+  background: white;
+  min-height: 80px;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+  transition: background var(--transition);
+  position: relative;
+}
+
+.calendario-dia:hover {
+  background: var(--color-gray-50);
+}
+
+.calendario-dia-vacio {
+  background: var(--color-gray-100);
+  cursor: default;
+}
+
+.calendario-dia-vacio:hover {
+  background: var(--color-gray-100);
+}
+
+.calendario-dia-evento {
+  background: #caf0f8;
+  border: 2px solid #48cae4;
+}
+
+.calendario-dia-evento:hover {
+  background: #b8e8f5;
+}
+
+.calendario-dia-seleccionado {
+  background: var(--color-primary-light) !important;
+  border: 2px solid var(--color-primary) !important;
+}
+
+.calendario-numero {
+  font-weight: var(--font-semibold);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  margin-bottom: 0.25rem;
+}
+
+.calendario-indicador-evento {
+  color: #48cae4;
+  margin-top: auto;
+}
+
+.calendario-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  will-change: opacity;
+}
+
+.calendario-modal-content {
+  background: white;
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius);
+  padding: 2rem;
+  position: relative;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  text-align: center;
+  animation: slideIn 0.15s ease-out;
+  will-change: transform, opacity;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.calendario-modal-cerrar {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background var(--transition);
+}
+
+.calendario-modal-cerrar:hover {
+  background: var(--color-gray-100);
+}
+
+.calendario-modal-icono {
+  color: #48cae4;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.calendario-modal-categoria {
+  background: #48cae4;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-medium);
+  display: inline-block;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.calendario-modal-titulo {
+  color: var(--color-primary);
+  margin: 0 0 1rem 0;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-bold);
+}
+
+.calendario-modal-fecha {
+  margin: 0 0 1rem 0;
+  color: var(--color-text);
+  font-weight: var(--font-medium);
+  font-size: var(--font-size-base);
+}
+
+.calendario-modal-descripcion {
+  margin: 0;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  font-size: var(--font-size-base);
+  text-align: justify;
+}
+
+/* Responsivo para el calendario */
+@media (max-width: 768px) {
+  .calendario-grid-wrapper {
+    padding: 1rem;
+    margin: 1rem;
+  }
+
+  .calendario-header {
+    margin-bottom: 1.1rem;
+  }
+
+  .calendario-title {
+    font-size: var(--font-size-xl);
+  }
+
+  .calendario-nav-btn {
+    width: 35px;
+    height: 35px;
+  }
+
+  .calendario-dia {
+    min-height: 60px;
+    padding: 0.25rem;
+  }
+
+  .calendario-dia-header {
+    padding: 0.75rem 0.25rem;
+    font-size: 0.75rem;
+  }
+
+  .calendario-numero {
+    font-size: 0.75rem;
+  }
+
+  .calendario-modal-content {
+    padding: 1.5rem;
+    width: 95%;
+  }
+
+  .calendario-modal-titulo {
+    font-size: var(--font-size-lg);
+  }
+
+  .calendario-modal-fecha,
+  .calendario-modal-descripcion {
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* Estilos para FechasImportantes */
+.fechas-importantes {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 2px solid var(--color-border);
+}
+
+.fechas-importantes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.fecha-importante-card {
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all var(--transition);
+  box-shadow: var(--shadow);
+}
+
+.fecha-importante-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-color: #48cae4;
+}
+
+.fecha-importante-icon {
+  width: 48px;
+  height: 48px;
+  background: #caf0f8;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #48cae4;
+  flex-shrink: 0;
+}
+
+.fecha-importante-content {
+  flex: 1;
+}
+
+.fecha-importante-titulo {
+  font-weight: var(--font-semibold);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  margin-bottom: 0.25rem;
+  line-height: 1.3;
+}
+
+.fecha-importante-fecha {
+  font-size: var(--font-size-sm);
+  color: #48cae4;
+  font-weight: var(--font-medium);
+  margin-bottom: 0.125rem;
+}
+
+.fecha-importante-year {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  font-weight: var(--font-normal);
+}
+
+.fecha-importante-numero {
+  width: 36px;
+  height: 36px;
+  background: #48cae4;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--font-bold);
+  font-size: var(--font-size-lg);
+  flex-shrink: 0;
+}
+
+/* Responsivo para fechas importantes */
+@media (max-width: 768px) {
+  .fechas-importantes {
+    margin-top: 2rem;
+    padding: 1rem;
+  }
+
+  .fechas-importantes-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .fecha-importante-card {
+    padding: 1rem;
+  }
+
+  .fecha-importante-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .fecha-importante-titulo {
+    font-size: var(--font-size-sm);
+  }
+
+  .fecha-importante-numero {
+    width: 32px;
+    height: 32px;
+    font-size: var(--font-size-base);
+  }
 }
