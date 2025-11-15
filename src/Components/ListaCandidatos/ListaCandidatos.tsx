@@ -17,23 +17,57 @@ export function ListaCandidatos({
   alSeleccionarCandidato
 }: PropiedadesListaCandidatos) {
   const [textoBusqueda, setTextoBusqueda] = useState('')
-  const [partidoSeleccionado, setPartidoSeleccionado] = useState<string>('Todos')
-  const [ordenarPor, setOrdenarPor] = useState<'nombre' | 'partido'>('nombre')
+  // Filtros de ubicación
+  const [departamento, setDepartamento] = useState<string>('Todos')
+  const [provincia, setProvincia] = useState<string>('Todos')
+  const [distrito, setDistrito] = useState<string>('Todos')
 
-  // Obtener lista única de partidos para los filtros
-  const partidos = useMemo(() => {
-    const partidosUnicos = new Set<string>(['Todos'])
-    candidatos.forEach((candidato) => partidosUnicos.add(candidato.partido))
-    return Array.from(partidosUnicos)
+  // Obtener listas únicas de ubicación desde los candidatos (si existen)
+  const departamentos = useMemo(() => {
+    const set = new Set<string>(['Todos'])
+    candidatos.forEach((c) => {
+      const dep = (c as any).departamento as string | undefined
+      if (dep) set.add(dep)
+    })
+    return Array.from(set)
   }, [candidatos])
+
+  const provincias = useMemo(() => {
+    const set = new Set<string>(['Todos'])
+    candidatos.forEach((c) => {
+      const dep = (c as any).departamento as string | undefined
+      const prov = (c as any).provincia as string | undefined
+      if (prov && (departamento === 'Todos' || dep === departamento)) set.add(prov)
+    })
+    return Array.from(set)
+  }, [candidatos, departamento])
+
+  const distritos = useMemo(() => {
+    const set = new Set<string>(['Todos'])
+    candidatos.forEach((c) => {
+      const dep = (c as any).departamento as string | undefined
+      const prov = (c as any).provincia as string | undefined
+      const dist = (c as any).distrito as string | undefined
+      const matchDep = departamento === 'Todos' || dep === departamento
+      const matchProv = provincia === 'Todos' || prov === provincia
+      if (dist && matchDep && matchProv) set.add(dist)
+    })
+    return Array.from(set)
+  }, [candidatos, departamento, provincia])
 
   // Filtrar y ordenar candidatos según los controles
   const candidatosFiltrados = useMemo(() => {
     let resultado = [...candidatos]
 
-    // Filtrar por partido
-    if (partidoSeleccionado !== 'Todos') {
-      resultado = resultado.filter((c) => c.partido === partidoSeleccionado)
+    // Filtrar por ubicación
+    if (departamento !== 'Todos') {
+      resultado = resultado.filter((c) => (c as any).departamento === departamento)
+    }
+    if (provincia !== 'Todos') {
+      resultado = resultado.filter((c) => (c as any).provincia === provincia)
+    }
+    if (distrito !== 'Todos') {
+      resultado = resultado.filter((c) => (c as any).distrito === distrito)
     }
 
     // Filtrar por búsqueda
@@ -46,11 +80,15 @@ export function ListaCandidatos({
       )
     }
 
-    // Ordenar
-    resultado.sort((a, b) => String(a[ordenarPor]).localeCompare(String(b[ordenarPor])))
-
     return resultado
-  }, [candidatos, partidoSeleccionado, textoBusqueda, ordenarPor])
+  }, [candidatos, textoBusqueda, departamento, provincia, distrito])
+
+  const limpiarFiltros = () => {
+    setTextoBusqueda('')
+    setDepartamento('Todos')
+    setProvincia('Todos')
+    setDistrito('Todos')
+  }
 
   // Función para obtener la ruta de la imagen
   const obtenerImagen = (candidato: Candidato) => {
@@ -91,32 +129,64 @@ export function ListaCandidatos({
             />
           </div>
 
-          {/* Filtro por partido (integrado en la barra) */}
-          <select
-            id="filtro-partido"
-            value={partidoSeleccionado}
-            onChange={(e) => setPartidoSeleccionado(e.target.value)}
-            className="lista-candidatos__selector"
-            aria-label="Filtrar por partido"
-          >
-            {partidos.map((partido) => (
-              <option key={partido} value={partido}>
-                {partido === 'Todos' ? 'Partido: Todos' : partido}
-              </option>
-            ))}
-          </select>
-
-          {/* Selector de ordenamiento */}
-          <select
-            value={ordenarPor}
-            onChange={(e) => setOrdenarPor(e.target.value as 'nombre' | 'partido')}
-            className="lista-candidatos__selector"
-          >
-            <option value="nombre">Ordenar: Nombre</option>
-            <option value="partido">Ordenar: Partido</option>
-          </select>
+          {/* Filtro por ubicación: departamento / provincia / distrito */}
+          <div className="lista-candidatos__geo-filtros">
+            <select
+              value={departamento}
+              onChange={(e) => {
+                setDepartamento(e.target.value)
+                setProvincia('Todos')
+                setDistrito('Todos')
+              }}
+              className="lista-candidatos__selector"
+              aria-label="Departamento"
+            >
+              {departamentos.map((dep) => (
+                <option key={dep} value={dep}>
+                  {dep === 'Todos' ? 'Departamento: Todos' : dep}
+                </option>
+              ))}
+            </select>
+            <select
+              value={provincia}
+              onChange={(e) => {
+                setProvincia(e.target.value)
+                setDistrito('Todos')
+              }}
+              className="lista-candidatos__selector"
+              aria-label="Provincia"
+            >
+              {provincias.map((prov) => (
+                <option key={prov} value={prov}>
+                  {prov === 'Todos' ? 'Provincia: Todos' : prov}
+                </option>
+              ))}
+            </select>
+            <select
+              value={distrito}
+              onChange={(e) => setDistrito(e.target.value)}
+              className="lista-candidatos__selector"
+              aria-label="Distrito"
+            >
+              {distritos.map((dist) => (
+                <option key={dist} value={dist}>
+                  {dist === 'Todos' ? 'Distrito: Todos' : dist}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
       </div>
+      {/* Resumen y acciones */}
+      <div className="lista-candidatos__resumen">
+        <span className="lista-candidatos__contador">{candidatosFiltrados.length} resultados</span>
+        {(textoBusqueda || departamento !== 'Todos' || provincia !== 'Todos' || distrito !== 'Todos') && (
+          <button type="button" className="lista-candidatos__limpiar" onClick={limpiarFiltros}>
+            Limpiar filtros
+          </button>
+        )}
+      </div>
+
       {/* Grilla de candidatos */}
       <div className="lista-candidatos__grilla">
         {candidatosFiltrados.length === 0 ? (
@@ -144,15 +214,6 @@ export function ListaCandidatos({
                   }
                 }}
               >
-                {/* Overlay con logo agrandado al hacer hover */}
-                <div className="tarjeta-candidato__overlay">
-                  <img
-                    src={(candidato as any).icono_partido || candidato.logo_partido || rutaImagen}
-                    alt={`Logo ${candidato.partido}`}
-                    className="tarjeta-candidato__overlay-logo"
-                  />
-                </div>
-
                 <div className="tarjeta-candidato__imagen-contenedor">
                   <img
                     src={rutaImagen}
@@ -181,6 +242,7 @@ export function ListaCandidatos({
                       className="tarjeta-candidato__logo-partido"
                     />
                   )}
+                  <div className="tarjeta-candidato__cta">Ver detalle</div>
                 </div>
               </article>
             )
