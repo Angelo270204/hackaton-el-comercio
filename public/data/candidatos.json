@@ -4,6 +4,8 @@
     "nombre": "Keiko Fujimori",
     "partido": "Fuerza Popular",
     "cargo_postula": "Presidenta",
+    "foto": "/images/partido-candidato/keiko.jpg",
+    "icono_partido": "/images/partido-candidato/fuerza-popular/logo.png",
     "datos_publicos": {
       "rol_publico": "Excongresista, lideresa de Fuerza Popular",
       "elecciones_previas": "2011, 2016, 2021 (segunda vuelta)"
@@ -13,7 +15,8 @@
     "id": 2,
     "nombre": "Rafael López Aliaga",
     "partido": "Renovación Popular",
-    "cargo_postula": "Presidente",
+    "foto": "/images/partido-candidato/keiko.jpg",
+    "icono_partido": "/images/partido-candidato/renovacion-popular/logo.png",
     "datos_publicos": {
       "rol_publico": "Alcalde de Lima",
       "elecciones_previas": "Candidato presidencial 2021"
@@ -23,7 +26,8 @@
     "id": 3,
     "nombre": "Antauro Humala",
     "partido": "Frente Patriótico",
-    "cargo_postula": "Presidente",
+    
+    "icono_partido": "/images/partido-candidato/frente-patriotico/logo.png",
     "datos_publicos": {
       "rol_publico": "Activista político y militar retirado",
       "elecciones_previas": "No ha postulado antes a la presidencia"
@@ -33,14 +37,12 @@
     "id": 4,
     "nombre": "Hernando de Soto",
     "partido": "Avanza País",
-    "cargo_postula": "Presidente",
-    "datos_publicos": {
+    
       "rol_publico": "Economista, fundador del Instituto Libertad y Democracia",
       "elecciones_previas": "Candidato presidencial 2021"
-    }
-  },
+    }, 
   {
-    "id": 5",
+    "id": 5,
     "nombre": "George Forsyth",
     "partido": "Somos Perú",
     "cargo_postula": "Presidente",
