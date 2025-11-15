@@ -1,0 +1,171 @@
+[
+  {
+    "dni": "87654321",
+    "nombreCompleto": "Gonzales Ríos, María Elena",
+    "localVotacion": "C.N. 88031 República Peruana",
+    "direccion": "C.N. 88031 Republica Peruana, Chimbote 02803",
+    "mesa": "045001",
+    "distrito": "Chimbote",
+    "departamento": "Áncash",
+    "lat": -9.06012326661338,
+    "lng": -78.58601780089927
+  },
+  {
+    "dni": "12345679",
+    "nombreCompleto": "Mamani Quispe, Luis Alberto",
+    "localVotacion": "I.E. Inmaculada de la Merced",
+    "direccion": "Jirón Carlos de los Heros 11, Chimbote 02803",
+    "mesa": "045002",
+    "distrito": "Chimbote",
+    "departamento": "Áncash",
+    "lat": -9.067559017609625,
+    "lng": -78.59422670903821
+  },
+  {
+    "dni": "98765432",
+    "nombreCompleto": "Flores Mendoza, Ana Lucía",
+    "localVotacion": "I.E. San Pedro",
+    "direccion": "Casma 28, Chimbote 02804",
+    "mesa": "045003",
+    "distrito": "Chimbote",
+    "departamento": "Áncash",
+    "lat": -9.082799876210316, 
+    "lng": -78.58256009250364
+  },
+  
+  {
+    "dni": "34567890",
+    "nombreCompleto": "Díaz Torres, Sofía Isabel",
+    "localVotacion": "I.E. Santa María de Cervelló",
+    "direccion": "Jirón Huacatambo 180, Chimbote 02711",
+    "mesa": "045005",
+    "distrito": "Chimbote",
+    "departamento": "Áncash",
+    "lat": -9.122739207829232,
+    "lng": -78.53159984719922
+  },
+  {
+    "dni": "45678901",
+    "nombreCompleto": "Rojas Silva, Carlos Manuel",
+    "localVotacion": "I.E. Mundo Mejor",
+    "direccion": "Jiron Almte. Jorge Martin Guisse 1531, Chimbote 02804",
+    "mesa": "045006",
+    "distrito": "Chimbote",
+    "departamento": "Áncash",
+    "lat": -9.091991336156047,
+    "lng": -78.57025464027011
+  },
+ 
+  {
+    "dni": "67890123",
+    "nombreCompleto": "Paredes Soto, Javier Alonso",
+    "localVotacion": "I.E. Politécnico Nacional del Santa",
+    "direccion": "Av. Enrique Meiggs 631, Chimbote 02804",
+    "mesa": "045008",
+    "distrito": "Chimbote",
+    "departamento": "Áncash",
+    "lat": -9.081097410349154,
+    "lng": -78.58224086879515
+  },
+  {
+    "dni": "78901234",
+    "nombreCompleto": "Mori Sánchez, Jimena",
+    "localVotacion": "I.E. 88037 'Augusto B. Leguía'",
+    "direccion": "WCWG+V6H, Prol. Buenos Aires, Chimbote 02802",
+    "mesa": "045009",
+    "distrito": "Chimbote",
+    "departamento": "Áncash",
+    "lat": -9.052623577448061,
+    "lng": -78.57437894720043
+  },
+  {
+    "dni": "10000001",
+    "nombreCompleto": "Aguilar Pérez, Rosa",
+    "localVotacion": "I.E. 88047 'Augusto Salazar Bondy'",
+    "direccion": "Av. Chimbote s/n, Nuevo Chimbote 02711",
+    "mesa": "046001",
+    "distrito": "Nuevo Chimbote",
+    "departamento": "Áncash",
+    "lat": -9.127413548859026,
+    "lng": -78.52908663185654
+  },
+  {
+    "dni": "10000002",
+    "nombreCompleto": "Torres Medina, Jorge Luis",
+    "localVotacion": "I.E. 88388 San Luis de la Paz",
+    "direccion": "VF6R+Q3F, Av. Los Héroes, Nuevo Chimbote 02712",
+    "mesa": "046002",
+    "distrito": "Nuevo Chimbote",
+    "departamento": "Áncash",
+    "lat": -9.138105368928496, 
+    "lng": -78.5097991471989
+  },
+  {
+    "dni": "10000003",
+    "nombreCompleto": "Ramírez Vargas, Luisa Fernanda",
+    "localVotacion": "I.E. César Vallejo",
+    "direccion": "Nuevo Chimbote 02711",
+    "mesa": "046003",
+    "distrito": "Nuevo Chimbote",
+    "departamento": "Áncash",
+    "lat": -9.115301130862434, 
+    "lng": -78.54442916624083
+  },
+  {
+    "dni": "10000004",
+    "nombreCompleto": "Mendoza Cruz, Miguel Ángel",
+    "localVotacion": "I.E. 88034 'San Juan'",
+    "direccion": "Av Húanuco 702, Chimbote 02804",
+    "mesa": "046004",
+    "distrito": "Nuevo Chimbote",
+    "departamento": "Áncash",
+    "lat": -9.0882508736709,
+    "lng": -78.56896904280674
+  },
+  {
+    "dni": "12345678",
+    "nombreCompleto": "García Pérez, Juan Carlos",
+    "localVotacion": "I.E. Experimental de la UNS",
+    "direccion": "Av. Universitaria s/n, Nuevo Chimbote",
+    "mesa": "046005",
+    "distrito": "Nuevo Chimbote",
+    "departamento": "Áncash",
+    "lat": -9.123378503175472, 
+    "lng": -78.5111469494179
+  },
+  
+  {
+    "dni": "10000007",
+    "nombreCompleto": "Ponce Solís, Roberto",
+    "localVotacion": "I.E. 88104 'Juan Valer Sandoval'",
+    "direccion": "VFMV+9QW, Nuevo Chimbote 02712",
+    "mesa": "046007",
+    "distrito": "Nuevo Chimbote",
+    "departamento": "Áncash",
+    "lat": -9.11652308424938, 
+    "lng": -78.50550398952811
+  },
+  {
+    "dni": "10000008",
+    "nombreCompleto": "Delgado Romero, Patricia",
+    "localVotacion": "I.E. 89007 'San José Obrero'",
+    "direccion": "WCR7+J9V, Chimbote 02803",
+    "mesa": "046008",
+    "distrito": "Nuevo Chimbote",
+    "departamento": "Áncash",
+    "lat": -9.0583875909942, 
+    "lng": -78.58656024720025
+  },
+  
+  {
+    "dni": "10000010",
+    "nombreCompleto": "Yáñez Figueroa, Brenda",
+    "localVotacion": "I.E. Gastón Vidal Porturas",
+    "direccion": "VFHM+Q64, Nuevo Chimbote 02711",
+    "mesa": "046010",
+    "distrito": "Nuevo Chimbote",
+    "departamento": "Áncash",
+    "lat": -9.120648970501172, 
+    "lng": -78.5169220048705
+  }
+]
