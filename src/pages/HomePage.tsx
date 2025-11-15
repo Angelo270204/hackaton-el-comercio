@@ -38,27 +38,37 @@ export const HomePage: React.FC = () => {
   return (
     <div className="home">
       <div className="home__container">
-        {/* Hero Section */}
+        {/* Hero Section with Banner */}
         <section className="home__hero">
-          <div className="home__hero-badge">
-            <Sparkles size={16} />
-            <span>Elecciones Generales Perú</span>
-          </div>
-          <h1 className="home__hero-title">
-            Prepárate para las <span className="home__hero-highlight">Elecciones 2026</span>
-          </h1>
-          <p className="home__hero-description">
-            Toda la información que necesitas para ejercer tu derecho al voto de manera informada.
-            Conoce a los candidatos, encuentra tu local de votación y mantente actualizado con el proceso electoral.
-          </p>
-          <div className="home__hero-actions">
-            <Link to="/candidatos" className="home__hero-btn home__hero-btn--primary">
-              Ver Candidatos
-              <ArrowRight size={20} />
-            </Link>
-            <Link to="/calendario" className="home__hero-btn home__hero-btn--secondary">
-              Ver Calendario
-            </Link>
+          <div className="home__hero-banner">
+            <img
+              src="/images/banner/banner-hackaton.png"
+              alt="Elecciones 2026 - Banner"
+              className="home__hero-banner-image"
+            />
+            <div className="home__hero-overlay"></div>
+            <div className="home__hero-content">
+              <div className="home__hero-badge">
+                <Sparkles size={16} />
+                <span>Elecciones Generales Perú</span>
+              </div>
+              <h1 className="home__hero-title">
+                Prepárate para las <span className="home__hero-highlight">Elecciones 2026</span>
+              </h1>
+              <p className="home__hero-description">
+                Toda la información que necesitas para ejercer tu derecho al voto de manera informada.
+                Conoce a los candidatos, encuentra tu local de votación y mantente actualizado con el proceso electoral.
+              </p>
+              <div className="home__hero-actions">
+                <Link to="/candidatos" className="home__hero-btn home__hero-btn--primary">
+                  Ver Candidatos
+                  <ArrowRight size={20} />
+                </Link>
+                <Link to="/calendario" className="home__hero-btn home__hero-btn--secondary">
+                  Ver Calendario
+                </Link>
+              </div>
+            </div>
           </div>
         </section>
 
