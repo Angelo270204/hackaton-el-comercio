@@ -1,6 +1,10 @@
 .guia-miembros {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  background: linear-gradient(
+    to bottom,
+    var(--color-bg) 0%,
+    var(--color-bg-card) 100%
+  );
   transition: background 0.3s ease;
 }
 
@@ -8,6 +12,44 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 1rem 1.5rem 2rem;
+}
+
+/* ============================================
+   TOP LAYOUT: HERO + TIMELINE
+   ============================================ */
+
+.guia-miembros__hero-timeline-container {
+  display: grid;
+  grid-template-columns: 1fr 370px;
+  gap: 2.5rem;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 900px) {
+  .guia-miembros__hero-timeline-container {
+    display: block;
+  }
+}
+
+/* ============================================
+   LAYOUT: VIDEO + TIMELINE JUNTOS
+   ============================================ */
+
+.guia-miembros__video-timeline-container {
+  display: grid;
+  grid-template-columns: 1fr 370px;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+@media (max-width: 900px) {
+  .guia-miembros__video-timeline-container {
+    display: block;
+  }
+  .guia-miembros__timeline-section {
+    margin-top: 1.5rem;
+  }
 }
 
 /* ============================================
@@ -304,7 +346,7 @@
 }
 
 .guia-miembros__timeline::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 15px;
   top: 0;
@@ -365,6 +407,46 @@
   font-size: 0.875rem;
   color: #64748b;
   line-height: 1.5;
+}
+
+/* Controles de paginación del timeline */
+.guia-miembros__timeline-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.guia-miembros__timeline-page-indicator {
+  font-size: 0.875rem;
+  color: #475569;
+  font-weight: 600;
+}
+
+.guia-miembros__timeline-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e2e8f0;
+  background-color: #ffffff;
+  color: #1e293b;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.guia-miembros__timeline-btn:hover:not(:disabled) {
+  background-color: #eff6ff;
+  border-color: #bfdbfe;
+  color: #1e40af;
+}
+
+.guia-miembros__timeline-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 /* ============================================
@@ -934,7 +1016,8 @@
   }
 
   @keyframes fadeIn {
-    from, to {
+    from,
+    to {
       opacity: 1;
       transform: none;
     }
