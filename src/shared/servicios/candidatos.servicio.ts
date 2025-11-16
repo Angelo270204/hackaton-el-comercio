@@ -12,6 +12,10 @@ export interface Candidato {
   partido: string
   cargo_postula: string
   edad?: number
+  // Ubicación geográfica
+  departamento?: string
+  provincia?: string
+  distrito?: string
   // Ideología política del candidato
   ideologia?: 'izquierda' | 'centro-izquierda' | 'centro' | 'centro-derecha' | 'derecha'
   // Estado ilustrativo de antecedentes, basado en cobertura mediática (no oficial)

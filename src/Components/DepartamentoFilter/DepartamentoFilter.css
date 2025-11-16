@@ -1,0 +1,418 @@
+/* Barra de filtros compacta */
+.filtros-bar {
+  width: 100%;
+  background: linear-gradient(135deg, #1e293b 0%, #1e3a5f 100%);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.filtros-bar__container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.filtros-bar__titulo {
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.filtros-bar__opciones {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.filtro-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  background: rgba(255, 255, 255, 0.95);
+  color: #2c3e50;
+  border: 2px solid transparent;
+  border-radius: 25px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.filtro-btn:hover {
+  background: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.filtro-btn--activo {
+  background: white;
+  border-color: #3498db;
+  color: #3498db;
+}
+
+.filtro-btn--expandido {
+  background: white;
+}
+
+.filtro-btn__icon {
+  width: 18px;
+  height: 18px;
+}
+
+.filtro-btn__chevron {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+  margin-left: 0.25rem;
+}
+
+.filtro-btn__chevron--arriba {
+  transform: rotate(180deg);
+}
+
+.filtro-btn__badge {
+  background: #3498db;
+  color: white;
+  padding: 0.15rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-left: 0.25rem;
+}
+
+.filtros-bar__limpiar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  background: rgba(231, 76, 60, 0.95);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: auto;
+}
+
+.filtros-bar__limpiar:hover {
+  background: #c0392b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+}
+
+.filtros-bar__limpiar svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Dropdown desplegable de departamentos */
+.departamento-dropdown {
+  width: 100%;
+  background: white;
+  border-bottom: 3px solid #e0e0e0;
+  animation: slideDown 0.3s ease;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.departamento-dropdown__contenido {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.departamento-dropdown__header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.departamento-dropdown__titulo {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0 0 0.5rem 0;
+}
+
+.departamento-dropdown__subtitulo {
+  font-size: 1rem;
+  color: #7f8c8d;
+  margin: 0;
+  font-weight: 500;
+}
+
+.departamento-dropdown__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Tarjetas de departamento */
+.departamento-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+}
+
+.departamento-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  border-color: #e0e0e0;
+}
+
+.departamento-card--seleccionado {
+  border-color: #3498db;
+  box-shadow: 0 4px 16px rgba(52, 152, 219, 0.25);
+}
+
+.departamento-card--sin-candidatos {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.departamento-card--sin-candidatos:hover {
+  transform: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.departamento-card--sin-candidatos .departamento-card__imagen-container {
+  background: linear-gradient(135deg, #e0e0e0 0%, #bdbdbd 100%);
+}
+
+.departamento-card--sin-candidatos .departamento-card__imagen {
+  filter: grayscale(100%);
+}
+
+.departamento-card--sin-candidatos .departamento-card__candidatos {
+  color: #bdbdbd;
+  font-style: italic;
+}
+
+.departamento-card__imagen-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #e8c1d5 0%, #d4a5c3 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.departamento-card__imagen {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.departamento-card:hover .departamento-card__imagen {
+  transform: scale(1.08);
+}
+
+.departamento-card__check {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #3498db;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(52, 152, 219, 0.4);
+  animation: checkPop 0.3s ease;
+}
+
+@keyframes checkPop {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.departamento-card__check svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 3;
+}
+
+.departamento-card__info {
+  padding: 1.5rem;
+  background: white;
+  display: block;
+  width: 100%;
+}
+
+.departamento-card__nombre {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.3;
+}
+
+.departamento-card__candidatos {
+  font-size: 1.05rem;
+  color: #7f8c8d;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Scrollbar personalizada para el dropdown */
+.departamento-dropdown::-webkit-scrollbar {
+  width: 10px;
+}
+
+.departamento-dropdown::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.departamento-dropdown::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+.departamento-dropdown::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .departamento-dropdown__grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .filtros-bar__container {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .filtros-bar__titulo {
+    font-size: 0.9rem;
+  }
+
+  .filtro-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .filtros-bar__limpiar {
+    font-size: 0.85rem;
+    padding: 0.45rem 0.85rem;
+  }
+
+  .departamento-dropdown__contenido {
+    padding: 1.5rem 1rem;
+  }
+
+  .departamento-dropdown__header {
+    margin-bottom: 1.5rem;
+  }
+
+  .departamento-dropdown__titulo {
+    font-size: 1.5rem;
+  }
+
+  .departamento-dropdown__grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .departamento-card__imagen-container {
+    height: 160px;
+  }
+
+  .departamento-card__nombre {
+    font-size: 1.1rem;
+  }
+
+  .departamento-card__candidatos {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .filtros-bar__container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .filtros-bar__opciones {
+    width: 100%;
+  }
+
+  .filtro-btn {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .filtros-bar__limpiar {
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .departamento-dropdown__grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .departamento-card__imagen-container {
+    height: 180px;
+  }
+
+  .departamento-card__info {
+    padding: 1.25rem;
+  }
+
+  .departamento-card__nombre {
+    font-size: 1.15rem;
+  }
+
+  .departamento-card__candidatos {
+    font-size: 1rem;
+  }
+}
