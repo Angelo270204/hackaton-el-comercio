@@ -6,41 +6,62 @@ import { QuickAccessCard } from './QuickAccessCard';
 import CarruselHeader from '../Components/CarruselHeader';
 import { TimelineHorizontal } from '../Components/TimelineHorizontal';
 import { useLanguage } from '../contexts/LanguageContext';
-import { AppAvatar } from '../shared/components';
 import '../styles/home.css';
 
 export const HomePage: React.FC = () => {
   const { t } = useLanguage();
 
-  const [email, setEmail] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
+  const [showSubscriptionCard, setShowSubscriptionCard] = useState(false);
 
   useEffect(() => {
     try {
       const stored = localStorage.getItem('elecciones_subscription');
       if (stored) {
-        const parsed = JSON.parse(stored);
-        if (parsed?.email) {
-          setEmail(parsed.email);
-          setIsSubscribed(true);
-        }
+        setIsSubscribed(true);
+        // Si ya está suscrito no mostramos más el popup
+        return;
       }
     } catch {
       // ignore read errors
     }
-  }, []);
 
-  const handleSubscribe = (event: React.FormEvent) => {
-    event.preventDefault();
-    if (!email || !email.includes('@')) {
+    // Si no hay suscripción, mostramos siempre el popup al cargar
+    setShowSubscriptionCard(true);
+  }, [isSubscribed]);
+
+  // Ocultar automáticamente el popup a los 10 segundos si el usuario no interactúa
+  useEffect(() => {
+    if (!showSubscriptionCard || isSubscribed) {
       return;
     }
+
+    const timeoutId = window.setTimeout(() => {
+      setShowSubscriptionCard(false);
+    }, 10000);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, [showSubscriptionCard, isSubscribed]);
+
+  const handleSubscribe = () => {
     try {
-      localStorage.setItem('elecciones_subscription', JSON.stringify({ email }));
+      localStorage.setItem('elecciones_subscription', JSON.stringify({ notifications: true }));
     } catch {
       // ignore write errors
     }
     setIsSubscribed(true);
+    setShowSubscriptionCard(false);
+  };
+
+  const handleSubscriptionLater = () => {
+    setShowSubscriptionCard(false);
+    try {
+      localStorage.setItem('elecciones_subscription_dismissed', 'true');
+    } catch {
+      // ignore write errors
+    }
   };
 
   const quickAccessItems = [
@@ -68,47 +89,56 @@ export const HomePage: React.FC = () => {
   return (
     <div className="home">
       <div className="home__container">
+
+        {showSubscriptionCard && !isSubscribed && (
+          <div className="home__subscription-floating">
+            <section className="home__subscription" aria-label="Activar novedades electorales en la aplicación">
+
+              <div className="home__subscription-avatar">
+                <img
+                  src="/images/banner/logo.jpg"
+                  alt="Logo Elecciones 2026"
+                  style={{ width: '100%', height: '100%', borderRadius: '999px', objectFit: 'cover' }}
+                />
+              </div>
+
+              <div className="home__subscription-content">
+                <div className="home__subscription-badge">
+                  <Sparkles size={16} />
+                  <span>Novedades de elecciones 2026</span>
+                </div>
+                <h2 className="home__subscription-title">
+                  Activa las novedades personalizadas
+                </h2>
+                <p className="home__subscription-text">
+                  Te mostraremos, de forma discreta, noticias, calendario e información de candidatos dentro de DecideYa.
+                </p>
+                <div className="home__subscription-form">
+                  <div className="home__subscription-actions">
+                    <button
+                      type="button"
+                      className="home__subscription-button home__subscription-button--secondary"
+                      onClick={handleSubscriptionLater}
+                    >
+                      Después
+                    </button>
+                    <button
+                      type="button"
+                      className="home__subscription-button"
+                      onClick={handleSubscribe}
+                    >
+                      Activar novedades
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+            </section>
+          </div>
+        )}
+
         {/* Carrusel Header reemplaza el hero estático */}
         <CarruselHeader />
-        <section className="home__subscription">
-          <div className="home__subscription-avatar">
-            <AppAvatar />
-          </div>
-          <div className="home__subscription-content">
-            <div className="home__subscription-badge">
-              <Sparkles size={18} />
-              <span>No te pierdas ninguna fecha clave</span>
-            </div>
-            <h2 className="home__subscription-title">
-              Mantente al día con el calendario electoral 2026
-            </h2>
-            <p className="home__subscription-text">
-              Deja tu correo y la aplicación te avisará de los hitos más importantes del proceso electoral.
-            </p>
-            <form className="home__subscription-form" onSubmit={handleSubscribe}>
-              <input
-                type="email"
-                className="home__subscription-input"
-                placeholder="tu-correo@ejemplo.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                aria-label="Correo electrónico para recibir recordatorios del calendario electoral"
-              />
-              <button
-                type="submit"
-                className="home__subscription-button"
-                disabled={!email || !email.includes('@')}
-              >
-                Quiero recibir recordatorios
-              </button>
-            </form>
-            {isSubscribed && (
-              <p className="home__subscription-confirmation">
-                ¡Listo! Te avisaremos de las fechas clave del calendario electoral.
-              </p>
-            )}
-          </div>
-        </section>
 
         {/* Quick Access Cards */}
         <section className="home__section">
@@ -143,7 +173,7 @@ export const HomePage: React.FC = () => {
             <p className="home__info-description">
               {t('home.infoBanner.description')}
             </p>
-            <Link to="/guia-miembros" className="home__info-link">
+            <Link to="/guia-elector" className="home__info-link">
               {t('home.infoBanner.link')}
               <ArrowRight size={18} />
             </Link>

@@ -1,6 +1,6 @@
 .home {
   min-height: 100vh;
-  background: linear-gradient(to bottom, var(--color-bg) 0%, var(--color-bg-card) 100%);
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
   transition: background 0.3s ease;
 }
 
@@ -103,7 +103,7 @@
 
 .home__hero-actions {
   display: flex;
-  gap: 1rem;
+  gap: 0.7rem;
   justify-content: center;
   flex-wrap: wrap;
 }
@@ -180,25 +180,39 @@
 }
 
 /* Subscription section */
-.home__subscription {
-  margin: 2.5rem 0 3.5rem;
-  padding: 1.75rem 1.5rem;
-  border-radius: 1rem;
-  background: linear-gradient(135deg, #1e293b 0%, #0f172a 40%, #1e40af 100%);
+.home__subscription-floating {
+  position: fixed;
+  top: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.75rem;
-  color: #ffffff;
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.4);
+  justify-content: center;
+  pointer-events: none;
+  padding: 0 1.25rem;
+}
+
+.home__subscription {
+  margin: 0 auto 1rem;
+  padding: 0.7rem 0.85rem;
+  border-radius: 0.85rem;
+  background: #ffffff;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  color: #0f172a;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.28);
+  max-width: 420px;
+  pointer-events: auto;
 }
 
 .home__subscription-avatar {
-  width: 120px;
-  height: 120px;
+  width: 46px;
+  height: 46px;
   border-radius: 999px;
   background: radial-gradient(circle at 30% 20%, #fbbf24 0%, #1d4ed8 60%, #0b1120 100%);
-  padding: 0.4rem;
+  padding: 0.22rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -208,44 +222,43 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: rgba(248, 250, 252, 0.1);
+  background-color: #eff6ff;
   border-radius: 999px;
-  padding: 0.35rem 0.9rem;
-  font-size: 0.85rem;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  color: #e5e7eb;
+  color: #1d4ed8;
 }
 
 .home__subscription-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-top: 0.75rem;
-  margin-bottom: 0.5rem;
-  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 0.3rem;
+  margin-bottom: 0.1rem;
+  text-align: left;
 }
 
 .home__subscription-text {
-  font-size: 0.98rem;
-  color: #e5e7eb;
-  text-align: center;
-  max-width: 520px;
-  margin: 0.25rem auto 1.25rem;
+  font-size: 0.78rem;
+  color: #4b5563;
+  text-align: left;
+  max-width: 320px;
+  margin: 0 0 0.45rem;
 }
 
 .home__subscription-form {
   display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  width: 100%;
-  max-width: 520px;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.35rem;
 }
 
 .home__subscription-input {
-  padding: 0.85rem 1rem;
+  padding: 0.55rem 0.9rem;
   border-radius: 999px;
   border: 1px solid rgba(148, 163, 184, 0.7);
-  background-color: rgba(15, 23, 42, 0.8);
-  color: #e5e7eb;
+  background-color: #f9fafb;
+  color: #111827;
   font-size: 0.95rem;
   outline: none;
 }
@@ -254,21 +267,33 @@
   color: #9ca3af;
 }
 
-.home__subscription-input:focus {
-  border-color: #fbbf24;
-  box-shadow: 0 0 0 1px rgba(251, 191, 36, 0.7);
-}
-
 .home__subscription-button {
-  padding: 0.85rem 1.5rem;
+  padding: 0.55rem 0.9rem;
   border-radius: 999px;
   border: none;
   font-weight: 600;
   font-size: 0.95rem;
-  background-color: #fbbf24;
-  color: #1f2937;
+  background-color: #2563eb;
+  color: #ffffff;
   cursor: pointer;
   transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.home__subscription-actions {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.25rem;
+}
+
+.home__subscription-button--secondary {
+  background-color: transparent;
+  color: #4b5563;
+  border: 1px solid rgba(148, 163, 184, 0.8);
+}
+
+.home__subscription-button--secondary:hover {
+  background-color: #f3f4f6;
+  box-shadow: none;
 }
 
 .home__subscription-button:hover:enabled {
@@ -290,13 +315,6 @@
 }
 
 @media (min-width: 768px) {
-  .home__subscription {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 2rem 2.5rem;
-  }
-
   .home__subscription-content {
     flex: 1;
     margin-left: 1.75rem;
@@ -318,6 +336,7 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.25rem;
+  justify-items: center;
 }
 
 .home__card-link {
@@ -440,7 +459,8 @@
 /* Large Desktop */
 @media (min-width: 1024px) {
   .home__quick-access-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, minmax(280px, 350px));
+    justify-content: center;
   }
 
   .home__info-banner {
