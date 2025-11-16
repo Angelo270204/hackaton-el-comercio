@@ -1146,287 +1146,505 @@
   padding-bottom: 15px;
 }
 
-.comparador-candidatos {
-  margin-top: 8px;
-  padding: 20px;
-  border-radius: 14px;
+/* ========================================
+   COMPARADOR ESTILO APPLE
+   ======================================== */
+
+.comparador-apple {
+  margin-top: 40px;
   background: #ffffff;
-  border: 1px solid var(--color-neutro);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-}
-
-.comparador-candidatos__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-
-.comparador-candidatos__titulo {
-  margin: 0;
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--color-primario);
-}
-
-.comparador-candidatos__subtitulo {
-  margin: 4px 0 0 0;
-  font-size: 13px;
-  color: var(--color-texto-secundario);
-}
-
-.comparador-candidatos__btn-cerrar {
-  padding: 8px 14px;
-  font-size: 13px;
-  border-radius: 999px;
-  border: 1px solid var(--color-acento);
-  background: rgba(40, 167, 69, 0.06);
-  color: var(--color-acento);
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.comparador-candidatos__btn-cerrar:hover {
-  background: var(--color-acento);
-  color: #ffffff;
-}
-
-.comparador-candidatos__grid {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.comparador-candidatos__fila {
-  display: grid;
-  grid-template-columns: 160px repeat(3, minmax(0, 1fr));
-  gap: 12px;
-  padding: 10px 0;
-  border-top: 1px solid var(--color-neutro);
-}
-
-.comparador-candidatos__fila--etiqueta {
-  border-top: none;
-  padding-top: 0;
-}
-
-.comparador-candidatos__fila--propuestas {
-  align-items: flex-start;
-}
-
-.comparador-candidatos__label {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--color-texto-secundario);
-}
-.comparador-candidatos__col {
-  font-size: 13px;
-}
-
-.comparador-candidatos__col--texto {
-  color: var(--color-texto);
-}
-
-.comparador-candidatos__chip-partido {
-  display: inline-flex;
-  align-items: center;
-  padding: 4px 10px;
-  font-size: 11px;
-  border-radius: 999px;
-  background: rgba(0, 86, 179, 0.06);
-  color: var(--color-primario);
-  margin-bottom: 4px;
-}
-
-.comparador-candidatos__nombre {
-  margin: 0;
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--color-texto);
-}
-
-.comparador-candidatos__cargo {
-  margin: 2px 0 0 0;
-  font-size: 12px;
-  color: var(--color-texto-secundario);
-}
-
-.comparador-candidatos__lista-propuestas {
-  margin: 0;
-  padding-left: 16px;
-}
-
-.comparador-candidatos__lista-propuestas li {
-  margin-bottom: 4px;
-}
-
-.comparador-candidatos__texto-muted {
-  color: var(--color-texto-secundario);
-  font-size: 12px;
-}
-
-/* Nuevo layout: tarjetas con barras de puntaje por sector */
-
-.comparador-candidatos__tarjetas {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 16px;
-}
-
-.comparador-candidatos__tarjeta {
-  border-radius: 12px;
-  border: 1px solid var(--color-neutro);
-  padding: 16px 14px;
-  background: var(--color-fondo);
-  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
-}
-
-.comparador-candidatos__tarjeta-header {
-  margin-bottom: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-}
-
-.comparador-candidatos__tarjeta:hover {
-  border-color: var(--color-primario);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-  transform: translateY(-2px);
-}
-
-.comparador-candidatos__scores {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.comparador-candidatos__score-row {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.comparador-candidatos__score-info {
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
-  color: var(--color-texto);
-}
-
-.comparador-candidatos__score-label {
-  font-weight: 600;
-}
-
-.comparador-candidatos__score-value {
-  font-weight: 600;
-  color: var(--color-primario);
-}
-
-.comparador-candidatos__score-bar {
-  width: 100%;
-  height: 8px;
-  border-radius: 999px;
-  background: #e0e0e0;
+  border-radius: 20px;
   overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-.comparador-candidatos__score-bar-fill {
-  height: 100%;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--color-primario), var(--color-acento));
-  transition: width 0.35s ease;
+/* Header sticky */
+.comparador-apple__header-sticky {
+  position: sticky;
+  top: var(--navbar-altura, 120px);
+  z-index: 100;
+  background: linear-gradient(180deg, #ffffff 0%, #f9fafb 100%);
+  border-bottom: 1px solid #e5e7eb;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
-.comparador-candidatos__score-bar-fill--bajo {
-  background: linear-gradient(90deg, #c62828, #ef5350);
+.comparador-apple__header-content {
+  padding: 24px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
 }
 
-.comparador-candidatos__score-bar-fill--medio {
-  background: linear-gradient(90deg, #ff8f00, #ffca28);
+.comparador-apple__header-text {
+  flex: 1;
 }
 
-.comparador-candidatos__score-bar-fill--alto {
-  background: linear-gradient(90deg, #2e7d32, #66bb6a);
+.comparador-apple__titulo {
+  margin: 0 0 6px 0;
+  font-size: 32px;
+  font-weight: 700;
+  color: #1d1d1f;
+  letter-spacing: -0.5px;
 }
 
-.comparador-candidatos__propuestas-lista {
-  margin: 4px 0 0 0;
-  padding-left: 14px;
-  font-size: 12px;
-  color: var(--color-texto-secundario);
-  list-style: disc;
-}
-
-.comparador-candidatos__propuesta-item {
-  margin-bottom: 4px;
-  line-height: 1.4;
-}
-
-.comparador-candidatos__nota {
-  margin-top: 10px;
-  padding-top: 8px;
-  border-top: 1px dashed var(--color-borde);
-}
-
-.comparador-candidatos__nota p {
+.comparador-apple__subtitulo {
   margin: 0;
-  font-size: 11px;
-  color: var(--color-texto-secundario);
+  font-size: 17px;
+  color: #6e6e73;
+  font-weight: 400;
 }
 
-/* Avatar en tarjetas del comparador: tamaño uniforme */
+.comparador-apple__btn-cerrar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 980px;
+  background: #f5f5f7;
+  color: #1d1d1f;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-.comparador-candidatos__avatar-wrapper {
-  width: 80px;
-  height: 80px;
+.comparador-apple__btn-cerrar:hover {
+  background: #e8e8ed;
+  transform: scale(1.02);
+}
+
+.comparador-apple__btn-cerrar-icono {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.comparador-apple__btn-cerrar-texto {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Candidatos header (tarjetas arriba) */
+.comparador-apple__candidatos-header {
+  display: grid;
+  grid-template-columns: 200px repeat(auto-fit, minmax(0, 1fr));
+  gap: 16px;
+  padding: 24px 32px 32px;
+  background: #ffffff;
+}
+
+.comparador-apple__categoria-spacer {
+  /* Espacio vacío para alinear */
+}
+
+.comparador-apple__candidato-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px 16px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #f9fafb 0%, #ffffff 100%);
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.comparador-apple__candidato-card:hover {
+  border-color: var(--color-primario);
+  box-shadow: 0 8px 24px rgba(0, 86, 179, 0.12);
+  transform: translateY(-4px);
+}
+
+.comparador-apple__candidato-avatar-wrapper {
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   overflow: hidden;
-  background: var(--color-neutro);
-  border: 2px solid var(--color-blanco);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  margin-bottom: 16px;
+  background: #f5f5f7;
+  border: 3px solid #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.comparador-candidatos__avatar {
+.comparador-apple__candidato-avatar {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
+  object-position: center;
 }
 
-@media (max-width: 900px) {
-  .comparador-candidatos {
-    padding: 16px;
+.comparador-apple__candidato-nombre {
+  margin: 0 0 8px 0;
+  font-size: 19px;
+  font-weight: 600;
+  color: #1d1d1f;
+  line-height: 1.3;
+}
+
+.comparador-apple__candidato-partido {
+  margin: 0;
+  font-size: 14px;
+  color: var(--color-primario);
+  font-weight: 500;
+  padding: 6px 12px;
+  background: rgba(0, 86, 179, 0.08);
+  border-radius: 8px;
+}
+
+/* Tabla de comparación */
+.comparador-apple__tabla {
+  padding: 0 32px 32px;
+}
+
+/* Sección */
+.comparador-apple__seccion {
+  margin-bottom: 48px;
+}
+
+.comparador-apple__seccion:last-child {
+  margin-bottom: 0;
+}
+
+.comparador-apple__seccion-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #f5f5f7;
+}
+
+.comparador-apple__seccion-icono {
+  font-size: 28px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.comparador-apple__seccion-titulo {
+  margin: 0 0 4px 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1d1d1f;
+  letter-spacing: -0.3px;
+}
+
+.comparador-apple__seccion-descripcion {
+  margin: 0;
+  font-size: 15px;
+  color: #6e6e73;
+  font-weight: 400;
+}
+
+/* Filas */
+.comparador-apple__fila {
+  display: grid;
+  grid-template-columns: 200px repeat(auto-fit, minmax(0, 1fr));
+  gap: 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid #f5f5f7;
+}
+
+.comparador-apple__fila:last-child {
+  border-bottom: none;
+}
+
+.comparador-apple__fila--propuestas {
+  align-items: flex-start;
+  padding: 24px 0;
+}
+
+.comparador-apple__categoria {
+  display: flex;
+  align-items: center;
+  padding-right: 16px;
+}
+
+.comparador-apple__categoria-texto {
+  font-size: 16px;
+  font-weight: 600;
+  color: #424245;
+  line-height: 1.4;
+}
+
+.comparador-apple__valor {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 16px;
+  background: #f9fafb;
+  border-radius: 12px;
+}
+
+.comparador-apple__valor-texto {
+  font-size: 16px;
+  color: #1d1d1f;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.comparador-apple__valor-badge {
+  display: inline-block;
+  font-size: 15px;
+  color: #1d1d1f;
+  padding: 6px 14px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.comparador-apple__sin-datos {
+  font-size: 15px;
+  color: #86868b;
+  font-style: italic;
+}
+
+/* Propuestas */
+.comparador-apple__propuestas-contenedor {
+  width: 100%;
+}
+
+.comparador-apple__propuestas-count {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  background: rgba(0, 86, 179, 0.06);
+  border-radius: 8px;
+  border-left: 3px solid var(--color-primario);
+}
+
+.comparador-apple__propuestas-numero {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-primario);
+  line-height: 1;
+}
+
+.comparador-apple__propuestas-label {
+  font-size: 14px;
+  color: var(--color-primario);
+  font-weight: 500;
+}
+
+.comparador-apple__propuestas-lista {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.comparador-apple__propuesta-item {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+  align-items: flex-start;
+}
+
+.comparador-apple__propuesta-item:last-child {
+  margin-bottom: 0;
+}
+
+.comparador-apple__propuesta-bullet {
+  font-size: 20px;
+  color: var(--color-primario);
+  line-height: 1.5;
+  flex-shrink: 0;
+}
+
+.comparador-apple__propuesta-texto {
+  font-size: 15px;
+  color: #1d1d1f;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.comparador-apple__propuesta-item--mas {
+  justify-content: flex-start;
+}
+
+.comparador-apple__propuesta-mas {
+  font-size: 14px;
+  color: var(--color-primario);
+  font-weight: 600;
+  padding: 6px 12px;
+  background: rgba(0, 86, 179, 0.08);
+  border-radius: 6px;
+}
+
+/* Puntuación con barras */
+.comparador-apple__puntuacion-contenedor {
+  width: 100%;
+}
+
+.comparador-apple__puntuacion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+
+.comparador-apple__puntuacion-numero {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.comparador-apple__puntuacion-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #6e6e73;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.comparador-apple__barra-contenedor {
+  width: 100%;
+  height: 12px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.comparador-apple__barra-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.comparador-apple__barra--sin-datos {
+  background: #e5e7eb;
+}
+
+.comparador-apple__barra--bajo {
+  background: linear-gradient(90deg, #dc2626, #ef4444);
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
+}
+
+.comparador-apple__barra--medio {
+  background: linear-gradient(90deg, #f59e0b, #fbbf24);
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+}
+
+.comparador-apple__barra--alto {
+  background: linear-gradient(90deg, #16a34a, #22c55e);
+  box-shadow: 0 2px 8px rgba(22, 163, 74, 0.3);
+}
+
+/* Listas simples */
+.comparador-apple__lista-simple {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+}
+
+.comparador-apple__lista-item {
+  font-size: 15px;
+  color: #1d1d1f;
+  line-height: 1.6;
+  padding: 8px 0;
+  border-bottom: 1px solid #f5f5f7;
+}
+
+.comparador-apple__lista-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* Footer */
+.comparador-apple__footer {
+  padding: 24px 32px;
+  background: #f9fafb;
+  border-top: 1px solid #e5e7eb;
+}
+
+.comparador-apple__footer-texto {
+  margin: 0;
+  font-size: 15px;
+  color: #6e6e73;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .comparador-apple__candidatos-header,
+  .comparador-apple__fila {
+    grid-template-columns: 160px repeat(auto-fit, minmax(0, 1fr));
   }
 
-  .comparador-candidatos__tarjetas {
-    grid-template-columns: 1fr 1fr;
+  .comparador-apple__titulo {
+    font-size: 28px;
+  }
+
+  .comparador-apple__candidato-avatar-wrapper {
+    width: 80px;
+    height: 80px;
+  }
+
+  .comparador-apple__candidato-nombre {
+    font-size: 17px;
   }
 }
 
-@media (max-width: 700px) {
-  .comparador-candidatos {
-    padding: 14px;
-  }
-
-  .comparador-candidatos__header {
+@media (max-width: 768px) {
+  .comparador-apple__header-content {
+    padding: 20px;
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .comparador-candidatos__tarjetas {
+  .comparador-apple__titulo {
+    font-size: 24px;
+  }
+
+  .comparador-apple__subtitulo {
+    font-size: 15px;
+  }
+
+  .comparador-apple__candidatos-header {
     grid-template-columns: 1fr;
+    padding: 20px;
   }
 
-  .comparador-candidatos__tarjeta {
-    padding: 14px 12px;
+  .comparador-apple__categoria-spacer {
+    display: none;
   }
 
-  .comparador-candidatos__propuestas-lista {
-    padding-left: 16px;
+  .comparador-apple__tabla {
+    padding: 0 20px 20px;
+  }
+
+  .comparador-apple__fila {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .comparador-apple__categoria {
+    padding: 12px;
+    background: #f9fafb;
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+
+  .comparador-apple__seccion-titulo {
+    font-size: 20px;
+  }
+
+  .comparador-apple__footer {
+    padding: 20px;
   }
 }
+
+
 
 /* Badge de ideología política */
 .tarjeta-candidato__ideologia {
