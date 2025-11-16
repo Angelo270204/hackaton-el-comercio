@@ -128,11 +128,6 @@ export const Navbar: React.FC = () => {
               </Link>
             </li>
             <li className="navbar__item">
-              <Link to="/calendario" className="navbar__link" onClick={closeMenu}>
-                Calendario
-              </Link>
-            </li>
-            <li className="navbar__item">
               <Link to="/donde-votar" className="navbar__link" onClick={closeMenu}>
                 Dónde Votar
               </Link>
