@@ -139,7 +139,7 @@ export const TimelineHorizontal: React.FC = () => {
                     <div
                       className="timeline-horizontal-circle-fill"
                       style={{
-                        background: `conic-gradient(from 0deg, #2563eb 0deg ${(porcentajeCompletado / 100) * 360}deg, #f5f5f5 ${(porcentajeCompletado / 100) * 360}deg 360deg)`
+                        background: `conic-gradient(from 0deg, var(--color-primary) 0deg ${(porcentajeCompletado / 100) * 360}deg, var(--color-gray-100) ${(porcentajeCompletado / 100) * 360}deg 360deg)`
                       }}
                     >
                       <div className="timeline-horizontal-circle-inner">

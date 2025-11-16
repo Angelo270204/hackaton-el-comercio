@@ -3,7 +3,7 @@
   max-width: 1400px;
   margin: 3rem auto;
   padding: 2rem;
-  background: #fff;
+  background: var(--color-bg-card);
   border-radius: 0;
   box-shadow: none;
 }
@@ -20,7 +20,7 @@
 .timeline-horizontal-title {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #2563eb;
+  color: var(--color-primary);
   margin: 0;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -33,7 +33,7 @@
 }
 
 .timeline-horizontal-nav-btn {
-  background: #2563eb;
+  background: var(--color-primary);
   color: white;
   border: none;
   border-radius: 50%;
@@ -48,7 +48,7 @@
 }
 
 .timeline-horizontal-nav-btn:hover:not(:disabled) {
-  background: #1d4ed8;
+  background: var(--color-primary-hover);
   transform: scale(1.1);
   box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
 }
@@ -63,7 +63,7 @@
 .timeline-horizontal-pagination-info {
   font-size: 0.95rem;
   font-weight: 600;
-  color: #2563eb;
+  color: var(--color-primary);
   min-width: 120px;
   text-align: center;
 }
@@ -81,7 +81,7 @@
   left: 5%;
   right: 5%;
   height: 4px;
-  background: #2563eb;
+  background: var(--color-primary);
   z-index: 0;
   transform: translateY(-50%);
 }
@@ -120,8 +120,8 @@
   height: 50px;
   background: repeating-linear-gradient(
     to bottom,
-    #2563eb 0px,
-    #2563eb 3px,
+    var(--color-primary) 0px,
+    var(--color-primary) 3px,
     transparent 3px,
     transparent 6px
   );
@@ -135,8 +135,10 @@
 }
 
 .timeline-horizontal-circle {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
+  aspect-ratio: 1 / 1;
+  box-sizing: border-box;
   position: relative;
   margin: 0;
 }
@@ -150,7 +152,7 @@
   justify-content: center;
   position: relative;
   transition: transform 0.3s ease;
-  padding: 5px;
+  padding: 6px; /* anillo un poco más delgado */
 }
 
 .timeline-horizontal-circle:hover .timeline-horizontal-circle-fill {
@@ -158,15 +160,17 @@
 }
 
 .timeline-horizontal-circle-inner {
-  width: 90px;
-  height: 90px;
-  background: #f5f5f5;
+  width: 68px;
+  height: 68px;
+  aspect-ratio: 1 / 1;
+  box-sizing: border-box;
+  background: var(--color-gray-100);
   border-radius: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #2563eb;
+  color: var(--color-primary);
   position: relative;
   z-index: 2;
   border: none;
@@ -175,7 +179,7 @@
 .timeline-horizontal-week-label {
   font-size: 0.6rem;
   font-weight: 700;
-  color: #2563eb;
+  color: var(--color-primary);
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 4px;
@@ -184,7 +188,7 @@
 .timeline-horizontal-week-number {
   font-size: 1.3rem;
   font-weight: 700;
-  color: #2563eb;
+  color: var(--color-primary);
   line-height: 1;
 }
 
@@ -205,7 +209,7 @@
 .timeline-horizontal-event-title {
   font-size: 0.8rem;
   font-weight: 700;
-  color: #1e293b;
+  color: var(--color-text);
   margin-bottom: 0.5rem;
   line-height: 1.4;
   text-transform: uppercase;
@@ -214,7 +218,7 @@
 
 .timeline-horizontal-event-date {
   font-size: 0.7rem;
-  color: #2563eb;
+  color: var(--color-primary);
   font-weight: 500;
   line-height: 1.5;
   text-transform: none;
@@ -227,32 +231,101 @@
   gap: 0.75rem;
   margin-top: 2rem;
   padding-top: 2rem;
-  border-top: 2px solid #f5f5f5;
+  border-top: 2px solid var(--color-gray-100);
 }
 
 .timeline-horizontal-dot {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: #f5f5f5;
-  border: 2px solid #2563eb;
+  background: var(--color-gray-100);
+  border: 2px solid var(--color-primary);
   cursor: pointer;
   transition: all 0.3s ease;
   padding: 0;
 }
 
 .timeline-horizontal-dot:hover {
-  background: #2563eb;
+  background: var(--color-primary);
   transform: scale(1.2);
 }
 
 .timeline-horizontal-dot.active {
-  background: #2563eb;
+  background: var(--color-primary);
   width: 16px;
   height: 16px;
   box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
 }
 
+/* ============================================
+   Escalado por accesibilidad (tamaño de fuente)
+   Usa el atributo data-font-size del <html>
+   ============================================ */
+html[data-font-size="18"] .timeline-horizontal-nav-btn {
+  width: 44px;
+  height: 44px;
+}
+html[data-font-size="20"] .timeline-horizontal-nav-btn {
+  width: 48px;
+  height: 48px;
+}
+
+html[data-font-size="18"] .timeline-horizontal-pagination-info {
+  font-size: 1rem;
+}
+html[data-font-size="20"] .timeline-horizontal-pagination-info {
+  font-size: 1.05rem;
+}
+
+html[data-font-size="18"] .timeline-horizontal-circle {
+  width: 88px;
+  height: 88px;
+  aspect-ratio: 1 / 1;
+}
+html[data-font-size="20"] .timeline-horizontal-circle {
+  width: 96px;
+  height: 96px;
+  aspect-ratio: 1 / 1;
+}
+
+html[data-font-size="18"] .timeline-horizontal-circle-inner {
+  width: 76px;
+  height: 76px;
+  aspect-ratio: 1 / 1;
+}
+html[data-font-size="20"] .timeline-horizontal-circle-inner {
+  width: 84px;
+  height: 84px;
+  aspect-ratio: 1 / 1;
+}
+
+html[data-font-size="18"] .timeline-horizontal-week-label {
+  font-size: 0.7rem;
+}
+html[data-font-size="20"] .timeline-horizontal-week-label {
+  font-size: 0.8rem;
+}
+
+html[data-font-size="18"] .timeline-horizontal-week-number {
+  font-size: 1.45rem;
+}
+html[data-font-size="20"] .timeline-horizontal-week-number {
+  font-size: 1.6rem;
+}
+
+html[data-font-size="18"] .timeline-horizontal-event-title {
+  font-size: 0.9rem;
+}
+html[data-font-size="20"] .timeline-horizontal-event-title {
+  font-size: 1rem;
+}
+
+html[data-font-size="18"] .timeline-horizontal-event-date {
+  font-size: 0.8rem;
+}
+html[data-font-size="20"] .timeline-horizontal-event-date {
+  font-size: 0.9rem;
+}
 /* Responsive */
 @media (max-width: 1200px) {
   .timeline-horizontal-container {
@@ -266,11 +339,13 @@
   .timeline-horizontal-circle {
     width: 70px;
     height: 70px;
+    aspect-ratio: 1 / 1;
   }
 
   .timeline-horizontal-circle-inner {
     width: 60px;
     height: 60px;
+    aspect-ratio: 1 / 1;
   }
 
   .timeline-horizontal-event-title {
@@ -317,11 +392,13 @@
     width: 60px;
     height: 60px;
     margin-bottom: 1rem;
+    aspect-ratio: 1 / 1;
   }
 
   .timeline-horizontal-circle-inner {
     width: 50px;
     height: 50px;
+    aspect-ratio: 1 / 1;
   }
 
   .timeline-horizontal-event-title {
@@ -372,11 +449,13 @@
   .timeline-horizontal-circle {
     width: 70px;
     height: 70px;
+    aspect-ratio: 1 / 1;
   }
 
   .timeline-horizontal-circle-inner {
     width: 60px;
     height: 60px;
+    aspect-ratio: 1 / 1;
   }
 
   .timeline-horizontal-event-title {
@@ -393,4 +472,3 @@
     min-width: 100px;
   }
 }
-

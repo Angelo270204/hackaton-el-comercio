@@ -153,6 +153,7 @@ type TabType = 'general' | 'responsabilidades' | 'derechos' | 'documentos' | 'im
 
 export const GuiaMiembrosPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabType>('general');
+  const [timelinePage, setTimelinePage] = useState<number>(0);
 
   const tabs = [
     { id: 'general' as TabType, label: 'Información General', icon: <BookOpen size={20} /> },
@@ -300,11 +301,17 @@ export const GuiaMiembrosPage: React.FC = () => {
       footer.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
+  
+  // Paginación del timeline (2 items por página)
+  const itemsPerPage = 2;
+  const totalPages = Math.ceil(timeline.length / itemsPerPage);
+  const startIdx = timelinePage * itemsPerPage;
+  const currentTimelineItems = timeline.slice(startIdx, startIdx + itemsPerPage);
 
   return (
     <div className="guia-miembros">
       <div className="guia-miembros__container">
-        {/* Hero Section */}
+        {/* Hero (sin timeline) */}
         <section className="guia-miembros__hero">
           <div className="guia-miembros__hero-content">
             <div className="guia-miembros__hero-badge">
@@ -343,7 +350,7 @@ export const GuiaMiembrosPage: React.FC = () => {
           {/* INFORMACIÓN GENERAL */}
           {activeTab === 'general' && (
             <div className="guia-miembros__tab-content">
-              {/* Video Section */}
+              {/* Video + Timeline (comparten el mismo espacio) */}
               <section className="guia-miembros__section">
                 <div className="guia-miembros__section-header">
                   <h2 className="guia-miembros__section-title">
@@ -354,14 +361,53 @@ export const GuiaMiembrosPage: React.FC = () => {
                     Aprende sobre tus funciones y responsabilidades
                   </p>
                 </div>
-                <div className="guia-miembros__video-container">
-                  <iframe
-                    className="guia-miembros__video"
-                    src="https://www.youtube.com/embed/DW5-XnnNSjo"
-                    title="Funciones y rol de un miembro de mesa - ONPE"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
+                <div className="guia-miembros__video-timeline-container">
+                  <div className="guia-miembros__video-container">
+                    <iframe
+                      className="guia-miembros__video"
+                      src="https://www.youtube.com/embed/DW5-XnnNSjo"
+                      title="Funciones y rol de un miembro de mesa - ONPE"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                  <aside className="guia-miembros__timeline-section">
+                    <div className="guia-miembros__timeline-header">
+                      <Clock size={18} />
+                      <h3 className="guia-miembros__timeline-header-title">Timeline del Día Electoral</h3>
+                    </div>
+                    <div className="guia-miembros__timeline">
+                      {currentTimelineItems.map((step, index) => (
+                        <div key={startIdx + index} className="guia-miembros__timeline-item">
+                          <div className="guia-miembros__timeline-marker"></div>
+                          <div className="guia-miembros__timeline-content">
+                            <span className="guia-miembros__timeline-time">{step.time}</span>
+                            <h4 className="guia-miembros__timeline-title">{step.title}</h4>
+                            <p className="guia-miembros__timeline-description">{step.description}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="guia-miembros__timeline-pagination">
+                      <button
+                        className="guia-miembros__timeline-btn"
+                        disabled={timelinePage === 0}
+                        onClick={() => setTimelinePage((p) => Math.max(0, p - 1))}
+                      >
+                        Anterior
+                      </button>
+                      <span className="guia-miembros__timeline-page-indicator">
+                        {timelinePage + 1} / {totalPages}
+                      </span>
+                      <button
+                        className="guia-miembros__timeline-btn"
+                        disabled={timelinePage >= totalPages - 1}
+                        onClick={() => setTimelinePage((p) => Math.min(totalPages - 1, p + 1))}
+                      >
+                        Siguiente
+                      </button>
+                    </div>
+                  </aside>
                 </div>
               </section>
 
@@ -409,30 +455,7 @@ export const GuiaMiembrosPage: React.FC = () => {
                 </div>
               </section>
 
-              {/* Timeline del día */}
-              <section className="guia-miembros__section guia-miembros__timeline-section">
-                <div className="guia-miembros__section-header">
-                  <h2 className="guia-miembros__section-title">
-                    <Clock size={32} className="inline-icon" />
-                    Timeline del Día Electoral
-                  </h2>
-                  <p className="guia-miembros__section-subtitle">
-                    Conoce el cronograma de actividades paso a paso
-                  </p>
-                </div>
-                <div className="guia-miembros__timeline">
-                  {timeline.map((step, index) => (
-                    <div key={index} className="guia-miembros__timeline-item">
-                      <div className="guia-miembros__timeline-marker"></div>
-                      <div className="guia-miembros__timeline-content">
-                        <span className="guia-miembros__timeline-time">{step.time}</span>
-                        <h3 className="guia-miembros__timeline-title">{step.title}</h3>
-                        <p className="guia-miembros__timeline-description">{step.description}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </section>
+              {/* Timeline se movió al header derecho */}
             </div>
           )}
 
