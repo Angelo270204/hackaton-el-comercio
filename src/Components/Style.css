@@ -34,7 +34,7 @@
 .candidatos-page {
   width: 100%;
   min-height: 100vh;
-  background: var(--color-fondo);
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
 }
 
 .candidatos-page__layout {
@@ -1657,6 +1657,8 @@
   background: rgba(108, 117, 125, 0.1);
   color: #495057;
   border: 1px solid rgba(108, 117, 125, 0.2);
+}
+
 /* ========================================
    MODO OSCURO - CANDIDATOS
    ======================================== */
@@ -1824,4 +1826,343 @@
 
 .dark-mode .comparador-candidatos__cargo {
   color: #94a3b8;
+}
+
+/* ========================================
+   MODO ALTO CONTRASTE - CANDIDATOS
+   ======================================== */
+
+.high-contrast .candidatos-page {
+  background: #000000;
+}
+
+.high-contrast .candidatos-page__layout {
+  background: #000000;
+}
+
+.high-contrast .lista-candidatos__titulo {
+  color: #ffff00;
+}
+
+.high-contrast .lista-candidatos__subtitulo {
+  color: #ffffff;
+}
+
+.high-contrast .lista-candidatos__contador {
+  color: #ffffff;
+}
+
+.high-contrast .lista-candidatos__buscador {
+  background: #1a1a1a;
+  border: 2px solid #ffffff;
+}
+
+.high-contrast .lista-candidatos__input-busqueda {
+  background: transparent;
+  color: #ffffff;
+}
+
+.high-contrast .lista-candidatos__input-busqueda::placeholder {
+  color: #ffff00;
+}
+
+.high-contrast .lista-candidatos__selector {
+  background: #1a1a1a;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+}
+
+.high-contrast .lista-candidatos__limpiar {
+  background: #1a1a1a;
+  border: 2px solid #ffffff;
+  color: #ffff00;
+}
+
+.high-contrast .lista-candidatos__limpiar:hover {
+  background: #333333;
+  border-color: #ffff00;
+}
+
+.high-contrast .lista-candidatos__chip {
+  background: #1a1a1a;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+}
+
+.high-contrast .lista-candidatos__chip--activo {
+  background: #333333;
+  border: 2px solid #ffff00;
+  color: #ffff00;
+}
+
+.high-contrast .tarjeta-candidato {
+  background: #1a1a1a;
+  border: 2px solid #ffffff;
+}
+
+.high-contrast .tarjeta-candidato:hover {
+  background: #333333;
+  border-color: #ffff00;
+}
+
+.high-contrast .tarjeta-candidato__nombre {
+  color: #ffffff;
+}
+
+.high-contrast .tarjeta-candidato__partido {
+  background: #333333;
+  border: 2px solid #ffffff;
+  color: #ffff00;
+}
+
+.high-contrast .tarjeta-candidato__info {
+  color: #ffffff;
+}
+
+.high-contrast .tarjeta-candidato__cta {
+  color: #ffff00;
+}
+
+.high-contrast .tarjeta-candidato--seleccionada {
+  border: 3px solid #ffff00;
+  background: #333333;
+}
+
+.high-contrast .tarjeta-candidato__btn-comparar {
+  background: #1a1a1a;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+}
+
+.high-contrast .tarjeta-candidato__btn-comparar:hover {
+  background: #333333;
+  border-color: #ffff00;
+  color: #ffff00;
+}
+
+.high-contrast .tarjeta-candidato__btn-comparar--activo {
+  background: #333333;
+  border: 2px solid #ffff00;
+  color: #ffff00;
+}
+
+.high-contrast .candidatos-page__detalle {
+  background: #000000;
+  border-left: 3px solid #ffffff;
+}
+
+.high-contrast .detalle-precandidatos__btn-cerrar {
+  background: #1a1a1a;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+}
+
+.high-contrast .detalle-precandidatos__btn-cerrar:hover {
+  background: #333333;
+  border-color: #ffff00;
+  color: #ffff00;
+}
+
+.high-contrast .detalle-precandidatos__nombre {
+  color: #ffff00;
+}
+
+.high-contrast .detalle-precandidatos__partido,
+.high-contrast .detalle-precandidatos__cargo {
+  color: #ffffff;
+}
+
+.high-contrast .detalle-precandidatos__seccion-titulo {
+  color: #ffff00;
+}
+
+.high-contrast .detalle-precandidatos__rol {
+  color: #ffffff;
+}
+
+.high-contrast .detalle-precandidatos__propuestas-titulo {
+  color: #ffff00;
+}
+
+.high-contrast .detalle-precandidatos__tab {
+  color: #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
+
+.high-contrast .detalle-precandidatos__tab--activo {
+  color: #ffff00;
+  border-bottom: 3px solid #ffff00;
+}
+
+.high-contrast .detalle-precandidatos__propuesta-item {
+  background: #1a1a1a;
+  border: 2px solid #ffffff;
+}
+
+.high-contrast .detalle-precandidatos__propuesta-titulo {
+  color: #ffff00;
+}
+
+.high-contrast .detalle-precandidatos__propuesta-texto {
+  color: #ffffff;
+}
+
+.high-contrast .detalle-precandidatos__hoja-vida-titulo,
+.high-contrast .detalle-precandidatos__actividades-titulo,
+.high-contrast .detalle-precandidatos__noticias-titulo {
+  color: #ffff00;
+}
+
+.high-contrast .detalle-precandidatos__hoja-vida-subtitulo {
+  color: #ffffff;
+}
+
+.high-contrast .detalle-precandidatos__hoja-vida-texto,
+.high-contrast .detalle-precandidatos__actividad-titulo,
+.high-contrast .detalle-precandidatos__actividad-descripcion {
+  color: #ffffff;
+}
+
+.high-contrast .detalle-precandidatos__noticia-card {
+  background: #1a1a1a;
+  border: 2px solid #ffffff;
+}
+
+.high-contrast .detalle-precandidatos__noticia-card:hover {
+  background: #333333;
+  border-color: #ffff00;
+}
+
+.high-contrast .detalle-precandidatos__noticia-titulo {
+  color: #ffff00;
+}
+
+.high-contrast .detalle-precandidatos__noticia-descripcion {
+  color: #ffffff;
+}
+
+.high-contrast .comparador-apple {
+  background: #000000;
+  border: 2px solid #ffffff;
+}
+
+.high-contrast .comparador-apple__header-sticky {
+  background: #000000;
+  border-bottom: 2px solid #ffffff;
+}
+
+.high-contrast .comparador-apple__titulo {
+  color: #ffff00;
+}
+
+.high-contrast .comparador-apple__subtitulo {
+  color: #ffffff;
+}
+
+.high-contrast .comparador-apple__btn-cerrar {
+  background: #1a1a1a;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+}
+
+.high-contrast .comparador-apple__btn-cerrar:hover {
+  background: #333333;
+  border-color: #ffff00;
+  color: #ffff00;
+}
+
+.high-contrast .comparador-apple__candidato-card {
+  background: #1a1a1a;
+  border: 2px solid #ffffff;
+}
+
+.high-contrast .comparador-apple__candidato-card:hover {
+  background: #333333;
+  border-color: #ffff00;
+}
+
+.high-contrast .comparador-apple__candidato-nombre {
+  color: #ffffff;
+}
+
+.high-contrast .comparador-apple__candidato-partido {
+  color: #ffff00;
+}
+
+.high-contrast .comparador-apple__seccion-header {
+  background: #1a1a1a;
+  border: 2px solid #ffffff;
+}
+
+.high-contrast .comparador-apple__seccion-titulo {
+  color: #ffff00;
+}
+
+.high-contrast .comparador-apple__seccion-descripcion {
+  color: #ffffff;
+}
+
+.high-contrast .comparador-apple__fila {
+  border-bottom: 1px solid #ffffff;
+}
+
+.high-contrast .comparador-apple__categoria-texto {
+  color: #ffffff;
+}
+
+.high-contrast .comparador-apple__valor-texto {
+  color: #ffffff;
+}
+
+.high-contrast .comparador-apple__valor-badge {
+  background: #333333;
+  border: 2px solid #ffffff;
+  color: #ffff00;
+}
+
+.high-contrast .comparador-apple__propuesta-texto {
+  color: #ffffff;
+}
+
+.high-contrast .comparador-apple__puntuacion-numero {
+  color: #ffff00;
+}
+
+.high-contrast .comparador-apple__puntuacion-label {
+  color: #ffffff;
+}
+
+.high-contrast .comparador-apple__barra-contenedor {
+  background: #1a1a1a;
+  border: 1px solid #ffffff;
+}
+
+.high-contrast .comparador-apple__barra-fill {
+  background: #ffff00;
+}
+
+.high-contrast .comparador-apple__footer {
+  background: #1a1a1a;
+  border-top: 2px solid #ffffff;
+}
+
+.high-contrast .comparador-apple__footer-texto {
+  color: #ffffff;
+}
+
+.high-contrast .lista-candidatos__sin-resultados {
+  color: #ffff00;
+}
+
+.high-contrast .detalle-precandidatos__sin-datos {
+  color: #ffffff;
+  background: #1a1a1a;
+  border: 2px solid #ffffff;
+}
+
+.high-contrast .candidatos-page__cargando,
+.high-contrast .candidatos-page__error {
+  color: #ffffff;
+  background: #1a1a1a;
+  border: 2px solid #ffffff;
 }
