@@ -1,0 +1,18 @@
+[
+  {
+    "titulo": "Prepárate para las Elecciones 2026",
+    "subtitulo": "Toda la información que necesitas para ejercer tu derecho al voto de manera informada. Conoce a los candidatos, encuentra tu local de votación y mantente actualizado con el proceso electoral.",
+    "badge": "Elecciones Generales Perú",
+    "botonCandidatos": "Ver Candidatos",
+    "botonCalendario": "Ver Calendario",
+    "imagenFondo": "/images/banner/banner-hackaton.jpeg"
+  },
+  {
+    "titulo": "Participa y decide el futuro",
+    "subtitulo": "Infórmate sobre el proceso electoral, los partidos y los candidatos. Tu voto es tu voz.",
+    "badge": "Elecciones Generales Perú",
+    "botonCandidatos": "Ver Candidatos",
+    "botonCalendario": "Ver Calendario",
+    "imagenFondo": "/images/banner/banner-hackaton.png"
+  }
+]
