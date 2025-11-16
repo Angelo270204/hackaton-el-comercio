@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router';
-import { MapPin, Users, Calendar, BookOpen, Sparkles, ArrowRight } from 'lucide-react';
+import { MapPin, Users, BookOpen, Sparkles, ArrowRight } from 'lucide-react';
 
 import { QuickAccessCard } from './QuickAccessCard';
 import CarruselHeader from '../Components/CarruselHeader';
+import { TimelineHorizontal } from '../Components/TimelineHorizontal';
 import { useLanguage } from '../contexts/LanguageContext';
 import { AppAvatar } from '../shared/components';
 import '../styles/home.css';
@@ -56,18 +57,13 @@ export const HomePage: React.FC = () => {
       link: '/candidatos'
     },
     {
-      icon: <Calendar size={28} />,
-      title: t('home.quickAccess.calendar.title'),
-      description: t('home.quickAccess.calendar.description'),
-      link: '/calendario'
-    },
-    {
       icon: <BookOpen size={28} />,
       title: t('home.quickAccess.guide.title'),
       description: t('home.quickAccess.guide.description'),
       link: '/guia-miembros'
     }
   ];
+
 
   return (
     <div className="home">
@@ -135,6 +131,10 @@ export const HomePage: React.FC = () => {
           </div>
         </section>
 
+        {/* Timeline horizontal electoral */}
+        <section className="home__section">
+          <TimelineHorizontal />
+        </section>
 
         {/* Info Banner */}
         <section className="home__info-banner">
