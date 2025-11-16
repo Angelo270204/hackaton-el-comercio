@@ -1,7 +1,7 @@
 .footer {
   background-color: var(--color-gray-900);
   color: var(--color-gray-200);
-  padding: 3rem 1rem 1.5rem;
+  padding: 1.5rem 1rem 0.5rem;
   margin-top: 4rem;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -28,7 +28,7 @@
   align-items: center;
   gap: 0.75rem;
   color: #ffffff;
-  margin-bottom: 1rem;
+  margin-bottom: 0.25rem;
 }
 
 .footer__logo-text {
@@ -143,7 +143,7 @@
 /* Desktop */
 @media (min-width: 768px) {
   .footer {
-    padding: 4rem 1rem 2rem;
+    padding: 2rem 1rem 1rem;
   }
 
   .footer__content {

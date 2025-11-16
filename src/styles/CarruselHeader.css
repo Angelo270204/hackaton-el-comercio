@@ -1,4 +1,6 @@
-/* CarruselHeader.css: Estilos para el carrusel del header */
+/* =============================
+   CARRUSEL HEADER - REDISEÑO INSTITUCIONAL
+   ============================= */
 .carrusel-header {
   position: relative;
   width: 100vw;
@@ -6,110 +8,375 @@
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  min-height: 480px;
+  min-height: 560px;
   max-height: 600px;
   overflow: hidden;
   display: flex;
-  align-items: stretch;
+  align-items: center;
   justify-content: center;
-  padding-top: 0;
-  padding-bottom: 2.5rem;
+  background: #0a193d;
+  padding: 0;
 }
 
+/* Overlay azul con blur SOLO para las imágenes, el texto queda nítido arriba */
+.carrusel-header::before {
+  display: none !important;
+}
+
+/* Efecto de partículas flotantes sutiles */
+.carrusel-header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+  animation: floatParticles 20s ease-in-out infinite;
+}
+
+@keyframes floatParticles {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.5;
+  }
+  33% {
+    transform: translateY(-20px) translateX(10px);
+    opacity: 0.7;
+  }
+  66% {
+    transform: translateY(10px) translateX(-10px);
+    opacity: 0.6;
+  }
+}
+
+/* ============================================
+   ITEM CARRUSEL - Slide individual
+   ============================================ */
+/* 
+ * Cada slide individual del carrusel.
+ * 
+ * IMPORTANTE: Las imágenes de fondo están nítidas y limpias,
+ * sin blur ni overlay que las oscurezca. El blur solo se aplica
+ * al contenedor tarjeta del texto, no a la imagen completa.
+ */
 .item-carrusel {
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.7s cubic-bezier(.4,0,.2,1);
+  /* Transición elegante con fade y zoom suave */
+  transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
   z-index: 1;
+  /* Asegurar que la imagen ocupe el 100% del ancho sin deformarse */
   background-size: cover;
-  background-position: center;
+  background-position: center center;
+  background-repeat: no-repeat;
+  /* Mantener la proporción de la imagen - imagen nítida y coherente */
+  object-fit: cover;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
+/* Estado visible del slide con animación suave */
 .item-carrusel.visible {
   opacity: 1;
   pointer-events: auto;
   z-index: 2;
+  transform: scale(1);
 }
 
+/* ============================================
+   OVERLAY REMOVIDO - Imágenes nítidas
+   ============================================ */
+/* 
+ * IMPORTANTE: No se aplica blur ni overlay sobre toda la imagen.
+ * 
+ * El fondo degradado está SOLO en el contenedor tarjeta del texto
+ * (.item-carrusel-contenido), permitiendo que:
+ * - La imagen de fondo se vea nítida, limpia y coherente
+ * - El texto sea legible SIEMPRE gracias al contenedor tarjeta
+ * - No se pierda la estética de la imagen original
+ */
+.item-carrusel::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 1;
+  background: rgba(30, 41, 59, 0.28); /* Azul institucional, opacidad media */
+  backdrop-filter: blur(10px); /* Blur fuerte solo sobre la imagen */
+  -webkit-backdrop-filter: blur(10px);
+  pointer-events: none;
+}
+
+/* ============================================
+   CONTENIDO DEL SLIDE
+   ============================================ */
+
+/* ============================================
+   CONTENEDOR TARJETA DEL CONTENIDO
+   ============================================ */
+/* 
+ * Este contenedor crea una tarjeta moderna y profesional detrás del texto
+ * para asegurar legibilidad SIEMPRE sobre cualquier imagen de fondo.
+ * 
+ * Características:
+ * - Fondo semitransparente oscuro (35% opacidad) para contraste perfecto
+ * - Blur sutil (6px) para efecto glassmorphism elegante
+ * - Padding generoso para respiración del contenido
+ * - Border-radius moderno (16px) para estética profesional
+ * - Max-width controlado (760px) para mantener proporciones
+ * - Centrado automático (margin: auto) para perfecta alineación
+ * 
+ * IMPORTANTE: Este contenedor NO cubre toda la imagen, solo el bloque de texto,
+ * permitiendo que la imagen de fondo se vea nítida y limpia alrededor del contenido.
+ */
 .item-carrusel-contenido {
+  position: relative;
+  z-index: 2;
   width: 100%;
-  max-width: 700px;
-  margin: 0 auto;
+  max-width: 650px; /* Ancho máximo controlado según especificación */
+  margin: auto; /* Centrado automático horizontal y vertical */
   text-align: center;
-  color: #fff;
-  padding: 2.5rem 1.5rem 2.5rem 1.5rem;
+  color: var(--color-white);
+  /* Padding según especificación: 28px vertical, 36px horizontal */
+  padding: 24px 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 20px; /* Separación vertical entre elementos */
+  min-height: 100%;
+  /* Fondo semitransparente oscuro para contraste perfecto del texto */
+  background: rgba(0, 0, 0, 0.22);
+  /* Blur sutil para efecto glassmorphism elegante */
+  backdrop-filter: blur(3.5px);
+  -webkit-backdrop-filter: blur(3.5px);
+  /* Border-radius moderno y profesional */
+  border-radius: 18px;
+  /* Animación de entrada suave */
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
 }
 
+.item-carrusel-contenido::before {
+  display: none !important;
+}
+
+.item-carrusel-contenido > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Animación adicional para elementos individuales */
+.item-carrusel.visible .item-carrusel-badge {
+  animation: slideDownFade 0.6s ease-out 0.3s both, pulse 2s ease-in-out 1s infinite;
+}
+
+.item-carrusel.visible .item-carrusel-titulo {
+  animation: slideDownFade 0.6s ease-out 0.4s both;
+}
+
+.item-carrusel.visible .item-carrusel-subtitulo {
+  animation: slideDownFade 0.6s ease-out 0.5s both;
+}
+
+.item-carrusel.visible .item-carrusel-botones {
+  animation: slideDownFade 0.6s ease-out 0.6s both;
+}
+
+@keyframes slideDownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   BADGE - Etiqueta superior
+   ============================================ */
+/* 
+ * Badge visible pero no dominante.
+ * Se destaca sobre el contenedor tarjeta con fondo blanco
+ * y buen contraste para legibilidad perfecta.
+ */
 .item-carrusel-badge {
   display: inline-block;
   background: #fff;
   color: #1e293b;
   font-weight: 600;
-  border-radius: 2rem;
-  padding: 0.4rem 1.2rem;
-  font-size: 1rem;
-  margin-bottom: 1.2rem;
+  border-radius: 1.2rem;
+  padding: 0.25rem 1.1rem;
+  font-size: 0.92rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 0;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
+/* ============================================
+   TÍTULO - Texto principal
+   Optimizado para accesibilidad (jóvenes, adultos, adultos mayores)
+   ============================================ */
+
+/* ============================================
+   TÍTULO PRINCIPAL
+   ============================================ */
+/* 
+ * Título reducido 10-15% para evitar que se coma el espacio
+ * y mantener mejor proporción con el contenedor tarjeta.
+ * 
+ * El contenedor con fondo semitransparente ya asegura legibilidad,
+ * por lo que el text-shadow puede ser más sutil.
+ */
 .item-carrusel-titulo {
-  font-size: 2.6rem;
-  font-weight: 800;
-  margin-bottom: 0.7rem;
+  font-size: 2.6rem; /* Reducido ~15% desde 3.15rem (originalmente 3.5rem) */
+  font-weight: 900;
+  margin: 0;
+  margin-bottom: 0.7rem; /* Separación vertical del subtítulo */
   color: #fff;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  line-height: 1.18;
+  text-shadow: 0 4px 16px rgba(0,0,0,0.45), 0 2px 8px rgba(0,0,0,0.25);
 }
 
+.item-carrusel.visible .item-carrusel-titulo {
+  animation: slideDownFade 0.6s ease-out 0.4s both,
+             titleGlow 2.5s ease-in-out 1s infinite;
+}
+
+@keyframes titleGlow {
+  0%, 100% {
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4),
+                 0 2px 4px rgba(0, 0, 0, 0.3),
+                 0 0 40px rgba(255, 255, 255, 0.15);
+  }
+  50% {
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4),
+                 0 2px 4px rgba(0, 0, 0, 0.3),
+                 0 0 60px rgba(255, 255, 255, 0.3),
+                 0 0 80px rgba(251, 191, 36, 0.2);
+  }
+}
+
+/* ============================================
+   SUBTÍTULO - Texto descriptivo
+   ============================================ */
+
+/* ============================================
+   SUBTÍTULO DESCRIPTIVO
+   ============================================ */
+/* 
+ * Subtítulo reducido 10-15% y con interlineado aumentado
+ * para mejorar la legibilidad y separación entre líneas.
+ * 
+ * El contenedor tarjeta asegura que el texto sea totalmente legible
+ * sobre cualquier imagen de fondo.
+ */
 .item-carrusel-subtitulo {
-  font-size: 1.2rem;
-  font-weight: 400;
-  margin-bottom: 2.2rem;
-  color: #fff;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  font-size: 1.25rem; /* Reducido ~15% desde 1.1rem (originalmente 1.25rem) */
+  font-weight: 500;
+  margin: 0;
+  margin-bottom: 1.2rem; /* Separación vertical aumentada antes de los botones */
+  color: #f3f4f6;
+  line-height: 1.9; /* Interlineado aumentado desde 1.75 para mejor lectura */
+  text-shadow: 0 2px 8px rgba(0,0,0,0.35);
 }
 
+/* ============================================
+   BOTONES - Acciones principales
+   ============================================ */
+
+/* ============================================
+   CONTENEDOR DE BOTONES
+   ============================================ */
+/* 
+ * Contenedor de botones con separación aumentada:
+ * - Separación del subtítulo (margin-top)
+ * - Separación de los dots del carrusel (margin-bottom)
+ * 
+ * Esto asegura que los botones no se peguen a otros elementos
+ * y mantengan una jerarquía visual clara.
+ */
 .item-carrusel-botones {
   display: flex;
   gap: 1.2rem;
   justify-content: center;
+  margin-top: 0.2rem;
+  margin-bottom: 2.2rem;
 }
 
+/* ============================================
+   BOTONES DEL CARRUSEL
+   ============================================ */
+/* 
+ * Botones estilizados con tamaño y padding reducidos
+ * para un look más elegante y profesional.
+ * 
+ * Mantienen buen contraste gracias al contenedor tarjeta
+ * y son totalmente accesibles con tamaño táctil adecuado.
+ */
 .item-carrusel-btn {
-  font-size: 1.1rem;
+  font-size: 1.08rem;
   font-weight: 700;
-  border-radius: 0.7rem;
-  padding: 0.9rem 2.2rem;
+  border-radius: 1.1rem;
+  padding: 0.85rem 2.7rem;
   text-decoration: none;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
   transition: background 0.2s, color 0.2s;
   border: none;
   cursor: pointer;
+  min-width: 180px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+/* Botón principal (amarillo/dorado) - Color según paleta (#F9C32C o similar) */
 .item-carrusel-btn.amarillo {
   background: #ffd600;
   color: #1e293b;
 }
+
+/* Botón secundario (blanco/azul) - Estilo institucional */
 .item-carrusel-btn.blanco {
   background: #fff;
   color: #1e293b;
   border: 2px solid #e0e7ef;
 }
+
 .item-carrusel-btn.amarillo:hover {
   background: #ffe066;
 }
+
 .item-carrusel-btn.blanco:hover {
   background: #f1f5fa;
 }
 
-/* Flechas laterales solo en desktop */
+/* ============================================
+   FLECHAS DE NAVEGACIÓN - Solo desktop
+   ============================================ */
+
 .carrusel-flecha {
   position: absolute;
   top: 50%;
@@ -128,76 +395,258 @@
   cursor: pointer;
   transition: background 0.2s;
 }
+
 .carrusel-flecha-izq { left: 2vw; }
 .carrusel-flecha-der { right: 2vw; }
+
 .carrusel-flecha:hover { background: rgba(30,41,59,0.9); }
 
+/* Mostrar flechas solo en desktop */
 @media (min-width: 1024px) {
   .carrusel-flecha { display: flex; }
 }
 
-/* Dots inferiores */
+/* ============================================
+   DOTS - Indicadores inferiores
+   =================================
+/* Mostrar flechas solo en desktop */
+@media (min-width: 1024px) {
+  .carrusel-flecha { display: flex; }
+}
+
+/* ============================================
+   DOTS - Indicadores inferiores
+   ============================================ */
+
+/* ============================================
+   INDICADORES DEL CARRUSEL (DOTS)
+   ============================================ */
+/* 
+ * Indicadores minimalistas con tamaño reducido
+ * y separación aumentada de los botones.
+ * 
+ * Look discreto pero funcional que no compite
+ * con el contenido principal del carrusel.
+ */
 .carrusel-dots {
-  position: absolute;
-  left: 0; right: 0; bottom: 1.2rem;
   display: flex;
   justify-content: center;
-  gap: 0.7rem;
-  z-index: 20;
+  gap: 1.2rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.2rem;
 }
+
 .carrusel-dot {
-  width: 13px;
-  height: 13px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   background: #fff;
-  opacity: 0.5;
+  opacity: 0.45;
   cursor: pointer;
   transition: opacity 0.2s, background 0.2s;
   border: 2px solid #ffd600;
 }
+
 .carrusel-dot.activo {
   opacity: 1;
   background: #ffd600;
 }
 
-/* Más espacio arriba y abajo del carrusel (aún más) */
-.carrusel-header {
-  min-height: 540px;
-  max-height: 700px;
-  padding-top: 0;
-  padding-bottom: 4rem;
-  margin-top: 0;
-}
+/* ============================================
+   RESPONSIVIDAD - Tablet
+   ============================================ */
 
-@media (max-width: 600px) {
+@media (max-width: 1023px) and (min-width: 768px) {
   .carrusel-header {
-    min-height: 380px;
-    max-height: 520px;
-    padding-top: 0;
-    padding-bottom: 2.2rem;
-    margin-top: 0;
+    min-height: 450px;
+    max-height: 600px;
+    padding-bottom: 2.5rem;
+  }
+
+  /* Contenedor tarjeta en tablet - Mantiene fondo semitransparente para legibilidad */
+  .item-carrusel-contenido {
+    max-width: 680px; /* Max-width ajustado para tablet */
+    padding: 24px 32px; /* Padding reducido proporcionalmente */
+    gap: 1.25rem;
+    background: rgba(0, 0, 0, 0.35); /* Fondo semitransparente mantenido */
+    backdrop-filter: blur(6px);
+    border-radius: 14px; /* Border-radius ligeramente menor */
+  }
+
+  .item-carrusel-titulo {
+    font-size: 2.2rem; /* Reducido proporcionalmente */
+    margin-bottom: 0.4rem;
+  }
+
+  .item-carrusel-subtitulo {
+    font-size: 0.95rem; /* Reducido proporcionalmente */
+    line-height: 1.75; /* Interlineado aumentado mantenido */
+    margin-bottom: 0.6rem;
+  }
+
+  .item-carrusel-btn {
+    font-size: 1rem;
+    padding: 0.875rem 2rem;
+    min-height: 48px;
+  }
+
+  .carrusel-dots {
+    bottom: 1.25rem;
   }
 }
 
-/* Si el contenedor del carrusel tiene margen superior, lo eliminamos */
-.home__hero, .home__hero-banner {
+/* ============================================
+   RESPONSIVIDAD - Móvil
+   ============================================ */
+
+@media (max-width: 767px) {
+  .carrusel-header {
+    min-height: 400px;
+    max-height: 550px;
+    padding-bottom: 2rem;
+  }
+
+  /* Asegurar que las imágenes ocupen el 100% del ancho en móvil */
+  .item-carrusel {
+    background-size: cover;
+    background-position: center center;
+  }
+
+  /* Contenedor tarjeta en móvil - Mantiene fondo semitransparente para legibilidad perfecta */
+  .item-carrusel-contenido {
+    max-width: 90%; /* Max-width ajustado para móvil */
+    padding: 20px 24px; /* Padding reducido para móvil pero mantiene legibilidad */
+    gap: 1rem;
+    background: rgba(0, 0, 0, 0.35); /* Fondo semitransparente mantenido
+    border-radius: 12px; /* Border-radius menor en móvil */
+    margin: 0 auto; /* Centrado automático */
+  }
+
+  .item-carrusel-badge {
+    font-size: 0.75rem;
+    padding: 0.4rem 1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .item-carrusel-titulo {
+    font-size: 1.5rem; /* Reducido proporcionalmente */
+    line-height: 1.3;
+    margin-bottom: 0.4rem;
+    /* Text-shadow sutil ya que el contenedor asegura contraste */
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3),
+                 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+
+  .item-carrusel-subtitulo {
+    font-size: 0.9rem; /* Reducido proporcionalmente */
+    line-height: 1.7; /* Interlineado aumentado mantenido */
+    margin-bottom: 0.6rem;
+    /* Text-shadow sutil ya que el contenedor asegura contraste */
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3),
+                 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  .item-carrusel-botones {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+    margin-top: 0.75rem; /* Separación del subtítulo */
+    margin-bottom: 2.5rem; /* Separación de los dots */
+  }
+
+  .item-carrusel-btn {
+    font-size: 0.9rem;
+    padding: 0.7rem 1.4rem;
+    min-height: 42px;
+    width: 100%;
+    max-width: 280px;
+  }
+
+  /* Dots en móvil - Separados y bien visibles */
+  .carrusel-dots {
+    bottom: 0.75rem;
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  /* Dots en móvil - Tamaño reducido para look minimalista */
+  .carrusel-dot {
+    width: 6px; /* Tamaño reducido para look más discreto */
+    height: 6px;
+    min-width: 6px;
+    min-height: 6px;
+  }
+
+  .carrusel-dot.activo {
+    width: 18px; /* Tamaño reducido proporcionalmente */
+  }
+}
+
+/* ============================================
+   MODO OSCURO
+   ============================================ */
+
+.dark-mode .item-carrusel::before {
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.9) 0%,
+    rgba(30, 41, 59, 0.85) 50%,
+    rgba(51, 65, 85, 0.9) 100%
+  );
+}
+
+/* ============================================
+   ALTO CONTRASTE
+   ============================================ */
+
+.high-contrast .item-carrusel-titulo,
+.high-contrast .item-carrusel-subtitulo {
+  text-shadow: 0 0 0 transparent, 0 0 0 transparent;
+  color: var(--color-white);
+  font-weight: var(--font-bold);
+}
+
+.high-contrast .item-carrusel-btn {
+  border-width: 3px;
+}
+
+/* ============================================
+   ELIMINAR MÁRGENES DEL CONTENEDOR PADRE
+   ============================================ */
+
+.home__hero,
+.home__hero-banner {
   margin-top: 0 !important;
   padding-top: 0 !important;
 }
 
-/* Responsivo */
-@media (max-width: 600px) {
-  .carrusel-header {
-    min-height: 260px;
-    max-height: 340px;
-  }
-  .item-carrusel-titulo {
-    font-size: 1.5rem;
-  }
-  .item-carrusel-subtitulo {
-    font-size: 1rem;
-  }
-  .item-carrusel-contenido {
-    padding: 1.2rem 0.5rem 1.2rem 0.5rem;
-  }
+/* Asegurar que el carrusel esté pegado al navbar */
+.home__container > .carrusel-header {
+  margin-top: 0;
+}
+
+/* Si el carrusel está dentro de un contenedor con padding, compensarlo */
+.home__container:has(.carrusel-header) {
+  padding-top: 0;
+}
+
+/* Alternativa para navegadores que no soportan :has() */
+.home__container > .carrusel-header:first-child {
+  margin-top: 0;
+}
+
+/* Eliminar la tarjeta difuminada detrás del texto */
+.item-carrusel-contenido {
+  background: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
+}
+.item-carrusel-contenido::before {
+  display: none !important;
+}
+
+.item-carrusel > * {
+  position: relative;
+  z-index: 2;
 }
