@@ -783,12 +783,23 @@
   cursor: pointer;
   transition: all 0.3s ease;
   white-space: nowrap;
+  text-decoration: none;
+  font-size: 0.95rem;
 }
 
 .guia-miembros__download-btn:hover {
   background-color: #1d4ed8;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+}
+
+.guia-miembros__download-btn:active {
+  transform: translateY(0);
+}
+
+.guia-miembros__download-btn:focus {
+  outline: 2px solid #60a5fa;
+  outline-offset: 2px;
 }
 
 /* ============================================

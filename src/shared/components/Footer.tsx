@@ -18,6 +18,9 @@ export const Footer: React.FC = () => {
             <div className="footer__logo">
               <Vote size={32} />
               <span className="footer__logo-text">{t('footer.brand.title')}</span>
+            <div className="footer__logo" style={{ margin: 0, padding: 0, lineHeight: 0 }}>
+              {/* Logo institucional DecideYa */}
+              <img src="/images/banner/logo.jpg" alt="Logo DecideYa Elecciones 2026" style={{ height: 180, margin: 0, padding: 0, display: 'block' }} />
             </div>
             <p className="footer__description">
               {t('footer.brand.description')}
