@@ -1,0 +1,583 @@
+/* ========================================
+   BOTÓN FLOTANTE DE ACCESIBILIDAD
+   ======================================== */
+.accessibility__button {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  outline: none;
+}
+
+.accessibility__button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 25px rgba(16, 185, 129, 0.5);
+}
+
+.accessibility__button:focus {
+  outline: 3px solid rgba(16, 185, 129, 0.5);
+  outline-offset: 2px;
+}
+
+.accessibility__button--hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.8);
+}
+
+/* ========================================
+   OVERLAY
+   ======================================== */
+.accessibility__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1001;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ========================================
+   PANEL LATERAL (DRAWER)
+   ======================================== */
+.accessibility__panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 420px;
+  max-width: 90vw;
+  background-color: var(--bg-primary, #ffffff);
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+  z-index: 1002;
+  display: flex;
+  flex-direction: column;
+  animation: slideInRight 0.3s ease;
+  overflow-y: auto;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* ========================================
+   HEADER DEL PANEL
+   ======================================== */
+.accessibility__header {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.accessibility__header-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.accessibility__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+  color: #ffffff;
+}
+
+.accessibility__close {
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+
+.accessibility__close:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.accessibility__close:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* ========================================
+   CONTENIDO DEL PANEL
+   ======================================== */
+.accessibility__content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* ========================================
+   TARJETAS DE OPCIONES (ESTILO USERWAY)
+   ======================================== */
+.accessibility__option-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem;
+  background-color: var(--bg-secondary, #f8fafc);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: 0.75rem;
+  transition: all 0.2s ease;
+  gap: 1rem;
+}
+
+.accessibility__option-card:hover {
+  background-color: var(--bg-hover, #f1f5f9);
+  border-color: var(--border-hover, #cbd5e1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.accessibility__option-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.accessibility__option-icon {
+  width: 44px;
+  height: 44px;
+  background-color: var(--icon-bg, #e0f2fe);
+  color: var(--icon-color, #0369a1);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.accessibility__option-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+  color: var(--text-primary, #0f172a);
+  line-height: 1.3;
+}
+
+.accessibility__option-description {
+  font-size: 0.8125rem;
+  color: var(--text-secondary, #64748b);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* ========================================
+   TOGGLE SWITCH
+   ======================================== */
+.accessibility__toggle {
+  position: relative;
+  width: 52px;
+  height: 30px;
+  background-color: #cbd5e1;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  flex-shrink: 0;
+  outline: none;
+}
+
+.accessibility__toggle:focus {
+  outline: 2px solid rgba(16, 185, 129, 0.5);
+  outline-offset: 2px;
+}
+
+.accessibility__toggle--active {
+  background-color: #10b981;
+}
+
+.accessibility__toggle-slider {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 24px;
+  height: 24px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.accessibility__toggle--active .accessibility__toggle-slider {
+  transform: translateX(22px);
+}
+
+/* ========================================
+   CONTROLES DE TAMAÑO DE FUENTE
+   ======================================== */
+.accessibility__controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.accessibility__control-btn {
+  width: 38px;
+  height: 38px;
+  background-color: var(--control-bg, #ffffff);
+  border: 1px solid var(--control-border, #e2e8f0);
+  border-radius: 0.375rem;
+  color: var(--text-primary, #0f172a);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.accessibility__control-btn:hover:not(:disabled) {
+  background-color: #10b981;
+  border-color: #10b981;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.accessibility__control-btn:focus:not(:disabled) {
+  outline: 2px solid rgba(16, 185, 129, 0.5);
+  outline-offset: 2px;
+}
+
+.accessibility__control-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.accessibility__font-size-display {
+  min-width: 45px;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary, #0f172a);
+}
+
+/* ========================================
+   SELECTOR DE IDIOMA
+   ======================================== */
+.accessibility__language-selector {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.accessibility__lang-btn {
+  padding: 0.5rem 1rem;
+  background-color: var(--control-bg, #ffffff);
+  border: 1px solid var(--control-border, #e2e8f0);
+  border-radius: 0.375rem;
+  color: var(--text-primary, #0f172a);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.accessibility__lang-btn:hover {
+  background-color: var(--bg-hover, #f1f5f9);
+  border-color: var(--border-hover, #cbd5e1);
+}
+
+.accessibility__lang-btn:focus {
+  outline: 2px solid rgba(16, 185, 129, 0.5);
+  outline-offset: 2px;
+}
+
+.accessibility__lang-btn--active {
+  background-color: #10b981;
+  border-color: #10b981;
+  color: #ffffff;
+}
+
+.accessibility__lang-btn--active:hover {
+  background-color: #059669;
+  border-color: #059669;
+}
+
+/* ========================================
+   BOTÓN TEXT-TO-SPEECH
+   ======================================== */
+.accessibility__speech-btn {
+  width: 44px;
+  height: 44px;
+  background-color: var(--control-bg, #ffffff);
+  border: 1px solid var(--control-border, #e2e8f0);
+  border-radius: 0.5rem;
+  color: var(--text-primary, #0f172a);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  outline: none;
+}
+
+.accessibility__speech-btn:hover {
+  background-color: #10b981;
+  border-color: #10b981;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.accessibility__speech-btn:focus {
+  outline: 2px solid rgba(16, 185, 129, 0.5);
+  outline-offset: 2px;
+}
+
+.accessibility__speech-btn--active {
+  background-color: #ef4444;
+  border-color: #ef4444;
+  color: #ffffff;
+  animation: pulse 2s infinite;
+}
+
+.accessibility__speech-btn--active:hover {
+  background-color: #dc2626;
+  border-color: #dc2626;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* ========================================
+   BOTÓN DE RESTABLECER
+   ======================================== */
+.accessibility__reset {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--reset-bg, #fef2f2);
+  color: var(--reset-color, #dc2626);
+  border: 1px solid var(--reset-border, #fecaca);
+  border-radius: 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+  margin-top: 0.5rem;
+  outline: none;
+}
+
+.accessibility__reset:hover {
+  background-color: #fee2e2;
+  border-color: #fca5a5;
+  transform: translateY(-1px);
+}
+
+.accessibility__reset:focus {
+  outline: 2px solid rgba(220, 38, 38, 0.5);
+  outline-offset: 2px;
+}
+
+/* ========================================
+   MODO OSCURO
+   ======================================== */
+.dark-mode {
+  --bg-primary: #1e293b;
+  --bg-secondary: #334155;
+  --bg-hover: #475569;
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --icon-bg: #334155;
+  --icon-color: #60a5fa;
+  --control-bg: #334155;
+  --control-border: #475569;
+  --border-color: #475569;
+  --border-hover: #64748b;
+  --reset-bg: #450a0a;
+  --reset-color: #fca5a5;
+  --reset-border: #991b1b;
+}
+
+.dark-mode .accessibility__panel {
+  background-color: var(--bg-primary);
+}
+
+/* ========================================
+   ALTO CONTRASTE
+   ======================================== */
+.high-contrast {
+  --bg-primary: #000000;
+  --bg-secondary: #1a1a1a;
+  --bg-hover: #333333;
+  --text-primary: #ffffff;
+  --text-secondary: #ffff00;
+  --icon-bg: #1a1a1a;
+  --icon-color: #ffff00;
+  --control-bg: #1a1a1a;
+  --control-border: #ffffff;
+  --border-color: #ffffff;
+  --border-hover: #ffff00;
+  --reset-bg: #1a1a1a;
+  --reset-color: #ffff00;
+  --reset-border: #ffffff;
+}
+
+.high-contrast .accessibility__panel {
+  background-color: var(--bg-primary);
+  border-left: 3px solid #ffffff;
+}
+
+.high-contrast .accessibility__option-card {
+  border: 2px solid var(--border-color);
+}
+
+.high-contrast .accessibility__toggle {
+  border: 2px solid #ffffff;
+}
+
+.high-contrast .accessibility__control-btn,
+.high-contrast .accessibility__lang-btn,
+.high-contrast .accessibility__speech-btn {
+  border: 2px solid var(--border-color);
+}
+
+/* ========================================
+   ESCALA DE GRISES
+   ======================================== */
+.grayscale-mode {
+  filter: grayscale(100%);
+}
+
+/* ========================================
+   CURSOR GRANDE
+   ======================================== */
+.large-cursor {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23000' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E") 16 16, auto !important;
+}
+
+.large-cursor * {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23000' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E") 16 16, auto !important;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 768px) {
+  .accessibility__button {
+    top: 1rem;
+    right: 1rem;
+    width: 50px;
+    height: 50px;
+  }
+
+  .accessibility__button svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .accessibility__panel {
+    width: 100vw;
+    max-width: 100vw;
+  }
+
+  .accessibility__option-card {
+    padding: 1rem;
+  }
+
+  .accessibility__option-icon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .accessibility__content {
+    padding: 1rem;
+  }
+
+  .accessibility__header {
+    padding: 1.25rem;
+  }
+
+  .accessibility__title {
+    font-size: 1.125rem;
+  }
+}
+
+/* ========================================
+   SCROLLBAR PERSONALIZADO
+   ======================================== */
+.accessibility__panel::-webkit-scrollbar {
+  width: 8px;
+}
+
+.accessibility__panel::-webkit-scrollbar-track {
+  background: var(--bg-secondary, #f8fafc);
+}
+
+.accessibility__panel::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.accessibility__panel::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.dark-mode .accessibility__panel::-webkit-scrollbar-track {
+  background: #334155;
+}
+
+.dark-mode .accessibility__panel::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
+.dark-mode .accessibility__panel::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
