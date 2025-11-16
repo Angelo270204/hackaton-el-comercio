@@ -6,6 +6,13 @@
     "cargo_postula": "Presidenta",
     "foto": "/images/partido-candidato/keiko.jpg",
     "icono_partido": "/images/partido-candidato/Fujimori.jpg",
+    "ideologia": "derecha",
+    "antecedentes": {
+      "tiene_investigaciones": true,
+      "tiene_condenas": false,
+      "tiene_denuncias": true,
+      "descripcion": "Investigaciones por lavado de activos y organización criminal"
+    },
     "datos_publicos": {
       "rol_publico": "Excongresista y lideresa de Fuerza Popular",
       "elecciones_previas": "2011, 2016, 2021 (segunda vuelta)"
@@ -85,6 +92,13 @@
     "cargo_postula": "Presidente",
     "foto": "/images/partido-candidato/rafael.jpg",
     "icono_partido": "/images/partido-candidato/renovacion-popular.jpg",
+    "ideologia": "derecha",
+    "antecedentes": {
+      "tiene_investigaciones": true,
+      "tiene_condenas": false,
+      "tiene_denuncias": true,
+      "descripcion": "Investigaciones relacionadas a su gestión municipal"
+    },
     "datos_publicos": {
       "rol_publico": "Alcalde de Lima y líder de Renovación Popular",
       "elecciones_previas": "Candidato presidencial 2021"
@@ -155,6 +169,13 @@
     "cargo_postula": "Presidente",
     "foto": "/images/partido-candidato/antauro.jpg",
     "icono_partido": "/images/partido-candidato/partido-patrio.jpg",
+    "ideologia": "izquierda",
+    "antecedentes": {
+      "tiene_investigaciones": false,
+      "tiene_condenas": true,
+      "tiene_denuncias": false,
+      "descripcion": "Condena por homicidio y rebelión (Andahuaylazo 2005)"
+    },
     "datos_publicos": {
       "rol_publico": "Activista político y militar en retiro",
       "elecciones_previas": "Ha impulsado movimientos políticos con presencia nacional"
@@ -271,7 +292,14 @@
         "descripcion": "La agrupación remarcó la importancia de la formalización y seguridad jurídica.",
         "fuente": "Cobertura de medios"
       }
-    ]
+    ],
+    "ideologia": "centro-derecha",
+    "antecedentes": {
+      "tiene_investigaciones": false,
+      "tiene_condenas": false,
+      "tiene_denuncias": false,
+      "descripcion": "Sin antecedentes negativos relevantes"
+    }
   },
   {
     "id": 5,
@@ -338,7 +366,14 @@
         "descripcion": "La agrupación informó que viene trabajando en un plan de gobierno con énfasis en gestión local.",
         "fuente": "Cobertura de medios"
       }
-    ]
+    ],
+    "ideologia": "centro",
+    "antecedentes": {
+      "tiene_investigaciones": true,
+      "tiene_condenas": false,
+      "tiene_denuncias": true,
+      "descripcion": "Investigaciones por presuntas irregularidades en su gestión"
+    }
   },
   {
     "id": 6,
@@ -401,7 +436,14 @@
         "descripcion": "Se presentaron lineamientos orientados a cerrar brechas en educación y salud.",
         "fuente": "Cobertura de medios"
       }
-    ]
+    ],
+    "ideologia": "centro-derecha",
+    "antecedentes": {
+      "tiene_investigaciones": true,
+      "tiene_condenas": false,
+      "tiene_denuncias": true,
+      "descripcion": "Investigaciones por presunto plagio de tesis y corrupción"
+    }
   },
   {
     "id": 7,
@@ -460,7 +502,14 @@
         "descripcion": "Se presentaron propuestas para fortalecer la separación de poderes y el control ciudadano.",
         "fuente": "Cobertura de medios"
       }
-    ]
+    ],
+    "ideologia": "centro",
+    "antecedentes": {
+      "tiene_investigaciones": false,
+      "tiene_condenas": false,
+      "tiene_denuncias": false,
+      "descripcion": "Sin antecedentes negativos relevantes"
+    }
   },
   {
     "id": 8,
@@ -516,7 +565,14 @@
         "descripcion": "La agrupación mencionó propuestas en salud, educación y desarrollo regional.",
         "fuente": "Cobertura de medios"
       }
-    ]
+    ],
+    "ideologia": "izquierda",
+    "antecedentes": {
+      "tiene_investigaciones": true,
+      "tiene_condenas": false,
+      "tiene_denuncias": true,
+      "descripcion": "Investigaciones por organización criminal y lavado de activos"
+    }
   },
   {
     "id": 9,
@@ -575,66 +631,14 @@
         "descripcion": "La agrupación destacó ejes en salud, educación y derechos laborales.",
         "fuente": "Cobertura de medios"
       }
-    ]
-  },
-  {
-    "id": 10,
-    "nombre": "Sigrid Bazán",
-    "partido": "Juntos por el Perú",
-    "cargo_postula": "Presidenta",
-    "foto": "/images/partido-candidato/sigrid.jpg",
-    "icono_partido": "/images/partido-candidato/juntos-peru.jpg",
-    "datos_publicos": {
-      "rol_publico": "Congresista",
-      "elecciones_previas": "Aún no postuló a presidencia"
-    },
-    "departamento": "Lima",
-    "provincia": "Lima",
-    "distrito": "Jesús María",
-    "formacion_academica": [
-      "Estudios en Comunicación y Ciencias Sociales"
     ],
-    "experiencia_previa": [
-      "Congresista de la República",
-      "Participación en medios de comunicación"
-    ],
-    "propuestas": {
-      "economia": [
-        "Impulsar políticas de apoyo a jóvenes emprendedores.",
-        "Promover empleo digno con enfoque en derechos laborales."
-      ],
-      "salud": [
-        "Fortalecer la salud mental y programas de prevención.",
-        "Mejorar la atención en salud para jóvenes y mujeres."
-      ],
-      "seguridad": [
-        "Enfocar la seguridad en prevención y oportunidades para jóvenes.",
-        "Fortalecer mecanismos de denuncia y protección a víctimas."
-      ],
-      "educacion": [
-        "Actualizar contenidos educativos con enfoque en ciudadanía y derechos.",
-        "Mejorar el acceso a educación superior para jóvenes de bajos recursos."
-      ],
-      "otros": [
-        "Impulsar políticas de igualdad de género y protección contra la violencia.",
-        "Promover mayor transparencia en el Congreso y el Estado."
-      ]
-    },
-    "actividades": [
-      {
-        "fecha": "2024-08-30",
-        "titulo": "Foro juvenil sobre participación política",
-        "descripcion": "Espacio de diálogo con jóvenes sobre representación y agenda legislativa."
-      }
-    ],
-    "noticias": [
-      {
-        "fecha": "2024-09-28",
-        "titulo": "Referentes juveniles participan en debate sobre elecciones 2026",
-        "descripcion": "Se abordaron temas de educación, empleo y derechos de la juventud.",
-        "fuente": "Cobertura de medios"
-      }
-    ]
+    "ideologia": "izquierda",
+    "antecedentes": {
+      "tiene_investigaciones": false,
+      "tiene_condenas": false,
+      "tiene_denuncias": false,
+      "descripcion": "Sin antecedentes negativos relevantes"
+    }
   },
   {
     "id": 11,
@@ -693,7 +697,14 @@
         "descripcion": "Se discutieron iniciativas para fortalecer ciudadanía y cultura democrática.",
         "fuente": "Cobertura de medios"
       }
-    ]
+    ],
+    "ideologia": "centro",
+    "antecedentes": {
+      "tiene_investigaciones": false,
+      "tiene_condenas": false,
+      "tiene_denuncias": false,
+      "descripcion": "Sin antecedentes negativos relevantes"
+    }
   },
   {
     "id": 12,
@@ -752,7 +763,14 @@
         "descripcion": "Analistas comentan escenarios para las elecciones 2026.",
         "fuente": "Cobertura de medios"
       }
-    ]
+    ],
+    "ideologia": "centro-derecha",
+    "antecedentes": {
+      "tiene_investigaciones": false,
+      "tiene_condenas": false,
+      "tiene_denuncias": false,
+      "descripcion": "Sin antecedentes negativos relevantes"
+    }
   },
   {
     "id": 13,
@@ -807,7 +825,14 @@
         "descripcion": "Se abordaron tarifas y calidad de servicios básicos en regiones.",
         "fuente": "Cobertura de medios"
       }
-    ]
+    ],
+    "ideologia": "centro",
+    "antecedentes": {
+      "tiene_investigaciones": false,
+      "tiene_condenas": false,
+      "tiene_denuncias": false,
+      "descripcion": "Sin antecedentes negativos relevantes"
+    }
   },
   {
     "id": 14,
@@ -864,7 +889,14 @@
         "descripcion": "Se expusieron ideas para reducir la impunidad y fortalecer instituciones.",
         "fuente": "Cobertura de medios"
       }
-    ]
+    ],
+    "ideologia": "centro-derecha",
+    "antecedentes": {
+      "tiene_investigaciones": false,
+      "tiene_condenas": false,
+      "tiene_denuncias": false,
+      "descripcion": "Sin antecedentes negativos relevantes"
+    }
   },
   {
     "id": 15,
@@ -920,7 +952,14 @@
         "descripcion": "Se discutieron medidas para fortalecer la democracia y el Estado de derecho.",
         "fuente": "Cobertura de medios"
       }
-    ]
+    ],
+    "ideologia": "centro-izquierda",
+    "antecedentes": {
+      "tiene_investigaciones": false,
+      "tiene_condenas": false,
+      "tiene_denuncias": false,
+      "descripcion": "Sin antecedentes negativos relevantes"
+    }
   },
   {
     "id": 16,
@@ -974,7 +1013,14 @@
         "descripcion": "Se discuten medidas para hacer más eficiente la gestión pública.",
         "fuente": "Cobertura de medios"
       }
-    ]
+    ],
+    "ideologia": "centro",
+    "antecedentes": {
+      "tiene_investigaciones": false,
+      "tiene_condenas": false,
+      "tiene_denuncias": false,
+      "descripcion": "Sin antecedentes negativos relevantes"
+    }
   },
   {
     "id": 17,
@@ -1027,7 +1073,14 @@
         "descripcion": "Especialistas comentan medidas presentadas para fortalecer la seguridad.",
         "fuente": "Cobertura de medios"
       }
-    ]
+    ],
+    "ideologia": "centro-derecha",
+    "antecedentes": {
+      "tiene_investigaciones": false,
+      "tiene_condenas": false,
+      "tiene_denuncias": false,
+      "descripcion": "Sin antecedentes negativos relevantes"
+    }
   },
   {
     "id": 18,
@@ -1083,7 +1136,14 @@
         "descripcion": "Se presentaron iniciativas en seguridad, salud y servicios básicos.",
         "fuente": "Cobertura de medios"
       }
-    ]
+    ],
+    "ideologia": "centro",
+    "antecedentes": {
+      "tiene_investigaciones": false,
+      "tiene_condenas": false,
+      "tiene_denuncias": false,
+      "descripcion": "Sin antecedentes negativos relevantes"
+    }
   },
   {
     "id": 19,
@@ -1139,58 +1199,13 @@
         "descripcion": "Se discutieron medidas para proteger a trabajadores y pensionistas.",
         "fuente": "Cobertura de medios"
       }
-    ]
-  },
-  {
-    "id": 20,
-    "nombre": "Flor Polo",
-    "partido": "Somos Perú",
-    "cargo_postula": "Presidenta",
-    "foto": "/images/partido-candidato/flor.jpg",
-    "icono_partido": "/images/partido-candidato/somos-peru.jpg",
-    "datos_publicos": {
-      "rol_publico": "Figura pública y política emergente",
-      "elecciones_previas": "No ha postulado a presidencia"
-    },
-    "departamento": "Lima",
-    "provincia": "Lima",
-    "distrito": "San Juan de Miraflores",
-    "propuestas": {
-      "economia": [
-        "Apoyar a emprendedoras y emprendedores de barrios populares.",
-        "Impulsar ferias y espacios de comercialización para pequeños negocios."
-      ],
-      "salud": [
-        "Mejorar la atención en centros de salud de distritos con alta población.",
-        "Promover campañas de prevención y salud comunitaria."
-      ],
-      "seguridad": [
-        "Reforzar la seguridad en zonas con alta incidencia delictiva.",
-        "Coordinar acciones entre serenazgo, Policía y vecinos."
-      ],
-      "educacion": [
-        "Impulsar programas de tutoría y apoyo escolar para niñas y niños.",
-        "Mejorar infraestructura educativa en zonas periféricas."
-      ],
-      "otros": [
-        "Promover liderazgo femenino y participación de mujeres en política.",
-        "Impulsar campañas contra la violencia de género."
-      ]
-    },
-    "actividades": [
-      {
-        "fecha": "2024-07-22",
-        "titulo": "Encuentro comunitario con vecinas y vecinos",
-        "descripcion": "Reunión para escuchar necesidades de barrios y plantear propuestas de mejora."
-      }
     ],
-    "noticias": [
-      {
-        "fecha": "2024-08-27",
-        "titulo": "Liderazgos emergentes presentan agenda social para 2026",
-        "descripcion": "Se abordaron temas de igualdad, oportunidades y servicios básicos.",
-        "fuente": "Cobertura de medios"
-      }
-    ]
+    "ideologia": "centro-izquierda",
+    "antecedentes": {
+      "tiene_investigaciones": false,
+      "tiene_condenas": false,
+      "tiene_denuncias": false,
+      "descripcion": "Sin antecedentes negativos relevantes"
+    }
   }
 ]
