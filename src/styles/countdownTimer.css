@@ -76,3 +76,41 @@
     font-size: 0.7rem;
   }
 }
+
+/* ========================================
+   MODO OSCURO - COUNTDOWN TIMER
+   ======================================== */
+.dark-mode .countdown {
+  background-color: #1e293b;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .countdown__title {
+  color: #f1f5f9;
+}
+
+.dark-mode .countdown__card {
+  background-color: #0f172a;
+  border-color: #334155;
+}
+
+.dark-mode .countdown__card--highlight {
+  background-color: #422006;
+  border-color: #92400e;
+}
+
+.dark-mode .countdown__number {
+  color: #f1f5f9;
+}
+
+.dark-mode .countdown__card--highlight .countdown__number {
+  color: #fbbf24;
+}
+
+.dark-mode .countdown__label {
+  color: #94a3b8;
+}
+
+.dark-mode .countdown__card--highlight .countdown__label {
+  color: #fbbf24;
+}

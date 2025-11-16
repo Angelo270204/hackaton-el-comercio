@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router';
-import { Menu, X, Vote } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import { useLanguage } from '../../contexts/LanguageContext';
 import '../../styles/Navbar.css';
 
 interface TimeLeft {
@@ -30,6 +31,7 @@ function calculateTimeLeft(targetDate: string): TimeLeft {
 
 export const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t } = useLanguage();
   const ELECTION_DATE = "2026-04-12T08:00:00";
   const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft(ELECTION_DATE));
 
@@ -76,28 +78,27 @@ export const Navbar: React.FC = () => {
       <div className="navbar__top">
         <div className="navbar__top-container">
           <Link to="/" className="navbar__logo" onClick={closeMenu}>
-            <Vote size={32} />
-            <span className="navbar__logo-text">Elecciones 2026</span>
+            <img src="/images/banner/logo.jpg" alt="Logo Elecciones 2026" style={{ height: '300px', width: 'auto' }} />
           </Link>
 
           <div className="navbar__countdown">
-            <span className="navbar__countdown-label">Faltan:</span>
+            <span className="navbar__countdown-label">{t('countdown.short.label')}</span>
             <div className="navbar__countdown-grid">
               <div className="navbar__countdown-item">
                 <span className="navbar__countdown-number">{timeLeft.days}</span>
-                <span className="navbar__countdown-text">días</span>
+                <span className="navbar__countdown-text">{t('countdown.short.days')}</span>
               </div>
               <div className="navbar__countdown-item">
                 <span className="navbar__countdown-number">{String(timeLeft.hours).padStart(2, '0')}</span>
-                <span className="navbar__countdown-text">hrs</span>
+                <span className="navbar__countdown-text">{t('countdown.short.hours')}</span>
               </div>
               <div className="navbar__countdown-item">
                 <span className="navbar__countdown-number">{String(timeLeft.minutes).padStart(2, '0')}</span>
-                <span className="navbar__countdown-text">min</span>
+                <span className="navbar__countdown-text">{t('countdown.short.minutes')}</span>
               </div>
               <div className="navbar__countdown-item">
                 <span className="navbar__countdown-number">{String(timeLeft.seconds).padStart(2, '0')}</span>
-                <span className="navbar__countdown-text">seg</span>
+                <span className="navbar__countdown-text">{t('countdown.short.seconds')}</span>
               </div>
             </div>
           </div>
