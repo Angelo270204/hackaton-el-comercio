@@ -1,37 +1,18 @@
 ﻿import React, { useState, useEffect, useRef } from 'react';
 import { Search, MapPin, AlertCircle, CheckCircle, Clock, Shield, FileText, Navigation, Bus, User, HelpCircle } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 import '../styles/dondeVotar.css';
 
 // Componente QuizElector
-const quizPreguntasElector = [
-  {
-    pregunta: '¿Qué documento necesitas para votar?',
-    opciones: ['Carné universitario', 'Pasaporte', 'Identidad digital', 'DNI (vigente o caducado)'],
-    respuesta: 3,
-  },
-  {
-    pregunta: '¿Cuál es el horario oficial de votación?',
-    opciones: ['6:00 a.m. – 3:00 p.m.', '7:00 a.m. – 5:00 p.m.', '8:00 a.m. – 6:00 p.m.', '9:00 a.m. – 4:00 p.m.'],
-    respuesta: 1,
-  },
-  {
-    pregunta: '¿Cuál es la consecuencia de no votar si vives en un distrito "no pobre"?',
-    opciones: ['Sin sanción', 'Multa de S/ 46', 'Multa de S/ 92', 'Multa de S/ 120'],
-    respuesta: 2,
-  },
-  {
-    pregunta: '¿Cuántos votos preferenciales puedes marcar para Congreso?',
-    opciones: ['Ninguno', 'Uno', 'Dos', 'Tres'],
-    respuesta: 1,
-  },
-  {
-    pregunta: '¿Qué debes hacer si te equivocas al marcar la cédula?',
-    opciones: ['Dejarla así y entregarla', 'Pedir una nueva cédula al presidente de mesa', 'Salir del local', 'Llamar a un fiscalizador'],
-    respuesta: 1,
-  },
-];
-
 const QuizElector: React.FC = () => {
+  const { t } = useLanguage();
+  const quizPreguntasElector = t('dondeVotar.quiz.questions') as Array<{
+    question: string;
+    options: string[];
+    answer: number;
+    respuesta: number;
+  }>;
+  
   const [respuestas, setRespuestas] = useState<(number|null)[]>(Array(quizPreguntasElector.length).fill(null));
   const [mostrarResultados, setMostrarResultados] = useState(false);
   const [preguntaActual, setPreguntaActual] = useState(0);
@@ -47,11 +28,11 @@ const QuizElector: React.FC = () => {
 
   return (
     <div style={{ width: '100%', maxWidth: 1200, position: 'relative', background: '#fff', borderRadius: 14, boxShadow: '0 2px 12px #eaf6fb', padding: '1.2rem', fontSize: '0.98rem', margin: '2rem auto 4rem auto' }}>
-      <h2 style={{ fontWeight: 700, fontSize: '1.25rem', marginBottom: '1rem', color: '#023E8A', textAlign: 'center' }}>Quiz para Electores</h2>
+      <h2 style={{ fontWeight: 700, fontSize: '1.25rem', marginBottom: '1rem', color: '#023E8A', textAlign: 'center' }}>{t('dondeVotar.quiz.title')}</h2>
       <div style={{ marginBottom: '1.2rem' }}>
-        <div style={{ fontWeight: 700, fontSize: '1.15rem', marginBottom: '0.7rem', textAlign: 'center' }}>{preguntaActual + 1}. {quizPreguntasElector[preguntaActual].pregunta}</div>
+        <div style={{ fontWeight: 700, fontSize: '1.15rem', marginBottom: '0.7rem', textAlign: 'center' }}>{preguntaActual + 1}. {quizPreguntasElector[preguntaActual].question}</div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.7rem', marginBottom: '0.7rem' }}>
-          {quizPreguntasElector[preguntaActual].opciones.map((op, opIdx) => (
+          {quizPreguntasElector[preguntaActual].options.map((op, opIdx) => (
             <button
               key={opIdx}
               onClick={() => handleSeleccion(preguntaActual, opIdx)}
@@ -86,25 +67,25 @@ const QuizElector: React.FC = () => {
             onClick={() => setPreguntaActual((prev) => Math.max(prev - 1, 0))}
             disabled={preguntaActual === 0}
             style={{ background: '#eaf6fb', color: '#023E8A', fontWeight: 700, padding: '0.5rem 1.2rem', borderRadius: 8, border: 'none', fontSize: '1rem', cursor: preguntaActual === 0 ? 'not-allowed' : 'pointer' }}
-          >Anterior</button>
-          <span style={{ fontWeight: 500, fontSize: '1rem', color: '#666' }}>Pregunta {preguntaActual + 1} de {totalPreguntas}</span>
+          >{t('dondeVotar.quiz.previous')}</button>
+          <span style={{ fontWeight: 500, fontSize: '1rem', color: '#666' }}>{t('dondeVotar.quiz.questionOf')} {preguntaActual + 1} {t('dondeVotar.quiz.of')} {totalPreguntas}</span>
           <button
             onClick={() => setPreguntaActual((prev) => Math.min(prev + 1, totalPreguntas - 1))}
             disabled={preguntaActual === totalPreguntas - 1}
             style={{ background: '#0096c7', color: '#fff', fontWeight: 700, padding: '0.5rem 1.2rem', borderRadius: 8, border: 'none', fontSize: '1rem', cursor: preguntaActual === totalPreguntas - 1 ? 'not-allowed' : 'pointer' }}
-          >Siguiente</button>
+          >{t('dondeVotar.quiz.next')}</button>
         </div>
       </div>
       {!mostrarResultados ? (
         <button
           onClick={() => setMostrarResultados(true)}
           style={{ background: '#0096c7', color: '#fff', fontWeight: 700, padding: '0.6rem 1.2rem', borderRadius: 8, border: 'none', fontSize: '1rem', marginTop: '0.5rem', cursor: 'pointer', width: '100%' }}
-        >Ver resultados</button>
+        >{t('dondeVotar.quiz.viewResults')}</button>
       ) : (
         <div style={{ fontWeight: 700, fontSize: '1.1rem', color: aciertos === quizPreguntasElector.length ? '#38b000' : '#d90429', marginTop: '1rem', textAlign: 'center' }}>
           {aciertos === quizPreguntasElector.length
-            ? '¡Excelente! Todas tus respuestas son correctas.'
-            : `Respuestas correctas: ${aciertos} de ${quizPreguntasElector.length}`}
+            ? t('dondeVotar.quiz.excellent')
+            : `${t('dondeVotar.quiz.correctAnswers')} ${aciertos} ${t('dondeVotar.quiz.of')} ${quizPreguntasElector.length}`}
         </div>
       )}
     </div>
@@ -113,6 +94,7 @@ const QuizElector: React.FC = () => {
 
 // Modal y botón para el quiz
 const QuizElectorStaticBtn: React.FC = () => {
+  const { t } = useLanguage();
   const [showQuiz, setShowQuiz] = useState(false);
   return (
     <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -126,7 +108,7 @@ const QuizElectorStaticBtn: React.FC = () => {
         }}
       >
         <HelpCircle size={24} />
-        Quiz para Electores
+        {t('dondeVotar.quiz.button')}
       </button>
       {showQuiz && <QuizElector />}
     </div>
@@ -162,6 +144,7 @@ interface LocalVotacion {
 }
 
 export const DondeVotar: React.FC = () => {
+  const { t } = useLanguage();
   const [dni, setDni] = useState('');
   const [resultado, setResultado] = useState<LocalVotacion | null>(null);
   const [error, setError] = useState('');
@@ -176,13 +159,13 @@ export const DondeVotar: React.FC = () => {
   const buscarLocal = async () => {
     // Validación
     if (dni.length !== 8) {
-      setError('Por favor, ingrese un DNI válido de 8 dígitos');
+      setError(t('dondeVotar.errors.invalidLength'));
       setResultado(null);
       return;
     }
 
     if (!/^\d+$/.test(dni)) {
-      setError('El DNI solo debe contener números');
+      setError(t('dondeVotar.errors.onlyNumbers'));
       setResultado(null);
       return;
     }
@@ -204,12 +187,12 @@ export const DondeVotar: React.FC = () => {
           setError('');
         } else {
           setResultado(null);
-          setError('No se encontró información para el DNI ingresado. Verifique el número e intente nuevamente.');
+          setError(t('dondeVotar.errors.notFound'));
         }
         setIsSearching(false);
       }, 800);
     } catch (err) {
-      setError('Error al buscar la información. Por favor, intente nuevamente.');
+      setError(t('dondeVotar.errors.searchError'));
       setIsSearching(false);
     }
   };
@@ -446,9 +429,9 @@ export const DondeVotar: React.FC = () => {
       <div className="donde-votar__container">
         {/* Title and Subtitle */}
         <div className="donde-votar__title-section">
-          <h1 className="donde-votar__title">¿Dónde Voto?</h1>
+          <h1 className="donde-votar__title">{t('dondeVotar.title')}</h1>
           <p className="donde-votar__subtitle">
-            Encuentra tu centro de votación con tu DNI
+            {t('dondeVotar.subtitle')}
           </p>
         </div>
 
@@ -457,7 +440,7 @@ export const DondeVotar: React.FC = () => {
           <form onSubmit={handleSubmit} className="donde-votar__form">
             <div className="donde-votar__input-group">
               <label htmlFor="dni" className="donde-votar__label">
-                Número de DNI
+                {t('dondeVotar.search.label')}
               </label>
               <div className="donde-votar__input-wrapper">
                 <input
@@ -465,7 +448,7 @@ export const DondeVotar: React.FC = () => {
                   id="dni"
                   value={dni}
                   onChange={handleDniChange}
-                  placeholder="Ingrese 8 dígitos"
+                  placeholder={t('dondeVotar.search.placeholder')}
                   className={`donde-votar__input ${error ? 'donde-votar__input--error' : ''}`}
                   maxLength={8}
                 />
@@ -477,12 +460,12 @@ export const DondeVotar: React.FC = () => {
                   {isSearching ? (
                     <>
                       <span className="donde-votar__spinner"></span>
-                      Buscando...
+                      {t('dondeVotar.search.searching')}
                     </>
                   ) : (
                     <>
                       <Search size={20} />
-                      Buscar
+                      {t('dondeVotar.search.button')}
                     </>
                   )}
                 </button>
@@ -501,7 +484,7 @@ export const DondeVotar: React.FC = () => {
         {resultado && (
           <div className="donde-votar__success-banner">
             <CheckCircle size={24} />
-            <span>Centro de votación encontrado</span>
+            <span>{t('dondeVotar.success')}</span>
           </div>
         )}
 
@@ -517,7 +500,7 @@ export const DondeVotar: React.FC = () => {
                     <MapPin size={24} />
                   </div>
                   <div className="donde-votar__location-content">
-                    <span className="donde-votar__location-label">LOCAL DE VOTACIÓN</span>
+                    <span className="donde-votar__location-label">{t('dondeVotar.result.votingCenter').toUpperCase()}</span>
                     <h2 className="donde-votar__location-name">{resultado.localVotacion}</h2>
                     <p className="donde-votar__location-address">{resultado.direccion}</p>
                   </div>
@@ -527,23 +510,23 @@ export const DondeVotar: React.FC = () => {
                 <div className="donde-votar__schedule-card">
                   <Clock size={20} className="donde-votar__schedule-icon" />
                   <div className="donde-votar__schedule-content">
-                    <span className="donde-votar__schedule-label">Horario de Votación</span>
-                    <span className="donde-votar__schedule-time">7:00 AM - 4:00 PM</span>
+                    <span className="donde-votar__schedule-label">{t('dondeVotar.result.schedule.label')}</span>
+                    <span className="donde-votar__schedule-time">{t('dondeVotar.result.schedule.time')}</span>
                   </div>
                 </div>
 
                 {/* Mesa, Distrito, Departamento - 3 Columns */}
                 <div className="donde-votar__location-details">
                   <div className="donde-votar__location-detail">
-                    <span className="donde-votar__location-detail-label">Mesa N°</span>
+                    <span className="donde-votar__location-detail-label">{t('dondeVotar.result.table')} N°</span>
                     <span className="donde-votar__location-detail-value">{resultado.mesa}</span>
                   </div>
                   <div className="donde-votar__location-detail">
-                    <span className="donde-votar__location-detail-label">Distrito</span>
+                    <span className="donde-votar__location-detail-label">{t('dondeVotar.result.district')}</span>
                     <span className="donde-votar__location-detail-value">{resultado.distrito}</span>
                   </div>
                   <div className="donde-votar__location-detail">
-                    <span className="donde-votar__location-detail-label">Departamento</span>
+                    <span className="donde-votar__location-detail-label">{t('dondeVotar.result.department')}</span>
                     <span className="donde-votar__location-detail-value">{resultado.departamento}</span>
                   </div>
                 </div>
@@ -554,7 +537,7 @@ export const DondeVotar: React.FC = () => {
                     <User size={24} />
                   </div>
                   <div className="donde-votar__user-content">
-                    <span className="donde-votar__user-label">NOMBRE COMPLETO</span>
+                    <span className="donde-votar__user-label">{t('dondeVotar.result.fullName').toUpperCase()}</span>
                     <span className="donde-votar__user-value">{resultado.nombreCompleto}</span>
                   </div>
                 </div>
@@ -576,7 +559,7 @@ export const DondeVotar: React.FC = () => {
                     onClick={handleOpenGoogleMaps}
                   >
                     <MapPin size={18} />
-                    Abrir en Google Maps
+                    {t('dondeVotar.result.viewMap')}
                   </button>
                   {resultado?.lat && resultado?.lng && (
                     <button 
@@ -584,7 +567,7 @@ export const DondeVotar: React.FC = () => {
                       onClick={handleOpenDirections}
                     >
                       <Navigation size={18} />
-                      Como LLego?
+                      {t('dondeVotar.result.getDirections')}
                     </button>
                   )}
                 </div>
@@ -599,13 +582,12 @@ export const DondeVotar: React.FC = () => {
                   <div className="donde-votar__info-card-icon">
                     <FileText size={20} />
                   </div>
-                  <h4 className="donde-votar__info-card-title">Instrucciones para Votar</h4>
+                  <h4 className="donde-votar__info-card-title">{t('dondeVotar.infoCards.instructions.title')}</h4>
                 </div>
                 <ul className="donde-votar__info-card-list">
-                  <li><CheckCircle size={14} /> Lleva tu DNI original y en buen estado</li>
-                  <li><CheckCircle size={14} /> No uses ropa con logos políticos</li>
-                  <li><CheckCircle size={14} /> Llega temprano para evitar aglomeraciones</li>
-                  <li><CheckCircle size={14} /> Respeta las indicaciones de los miembros de mesa</li>
+                  {t('dondeVotar.infoCards.instructions.items').map((item: string, index: number) => (
+                    <li key={index}><CheckCircle size={14} /> {item}</li>
+                  ))}
                 </ul>
               </div>
 
@@ -615,13 +597,12 @@ export const DondeVotar: React.FC = () => {
                   <div className="donde-votar__info-card-icon donde-votar__info-card-icon--shield">
                     <Shield size={20} />
                   </div>
-                  <h4 className="donde-votar__info-card-title">Seguridad</h4>
+                  <h4 className="donde-votar__info-card-title">{t('dondeVotar.infoCards.security.title')}</h4>
                 </div>
                 <ul className="donde-votar__info-card-list">
-                  <li><CheckCircle size={14} /> No compartas tu DNI con desconocidos</li>
-                  <li><CheckCircle size={14} /> Verifica que estés en el centro correcto</li>
-                  <li><CheckCircle size={14} /> Reporta cualquier irregularidad a las autoridades</li>
-                  <li><CheckCircle size={14} /> No lleves objetos prohibidos al centro de votación</li>
+                  {t('dondeVotar.infoCards.security.items').map((item: string, index: number) => (
+                    <li key={index}><CheckCircle size={14} /> {item}</li>
+                  ))}
                 </ul>
               </div>
 
@@ -631,14 +612,14 @@ export const DondeVotar: React.FC = () => {
                   <div className="donde-votar__info-card-icon donde-votar__info-card-icon--bus">
                     <Bus size={20} />
                   </div>
-                  <h4 className="donde-votar__info-card-title">Transporte</h4>
+                  <h4 className="donde-votar__info-card-title">{t('dondeVotar.infoCards.transport.title')}</h4>
                 </div>
                 {resultado.transporte ? (
                   <>
                    
                     {resultado.transporte.rutas && resultado.transporte.rutas.length > 0 && (
                       <>
-                        <p className="donde-votar__transport-label">Rutas disponibles:</p>
+                        <p className="donde-votar__transport-label">{t('dondeVotar.result.transport.routes')}:</p>
                         <ul className="donde-votar__info-card-list">
                           {resultado.transporte.rutas.map((ruta, index) => (
                             <li key={index}>
@@ -651,14 +632,14 @@ export const DondeVotar: React.FC = () => {
                     )}
                     {resultado.transporte.tiempoAprox && (
                       <p className="donde-votar__transport-time">
-                        <strong>Tiempo aprox.:</strong> {resultado.transporte.tiempoAprox}
+                        <strong>{t('dondeVotar.result.transport.approxTime')}:</strong> {resultado.transporte.tiempoAprox}
                       </p>
                     )}
                   </>
                 ) : (
                   <ul className="donde-votar__info-card-list">
-                    <li><span className="donde-votar__route-arrow">→</span> Transporte público disponible</li>
-                    <li><span className="donde-votar__route-arrow">→</span> Servicio de taxi disponible en la zona</li>
+                    <li><span className="donde-votar__route-arrow">→</span> {t('dondeVotar.infoCards.transport.publicAvailable')}</li>
+                    <li><span className="donde-votar__route-arrow">→</span> {t('dondeVotar.infoCards.transport.taxiAvailable')}</li>
                   </ul>
                 )}
               </div>
@@ -670,23 +651,23 @@ export const DondeVotar: React.FC = () => {
         {!resultado && !error && (
           <>
             <section className="donde-votar__tips">
-              <h3 className="donde-votar__tips-title">¿Cómo funciona?</h3>
+              <h3 className="donde-votar__tips-title">{t('dondeVotar.tips.title')}</h3>
               <div className="donde-votar__tips-grid">
                 <div className="donde-votar__tip-card">
                   <div className="donde-votar__tip-number">1</div>
-                  <h4 className="donde-votar__tip-title">Ingresa tu número de DNI (8 dígitos) en el campo de búsqueda</h4>
+                  <h4 className="donde-votar__tip-title">{t('dondeVotar.tips.step1')}</h4>
                 </div>
                 <div className="donde-votar__tip-card">
                   <div className="donde-votar__tip-number">2</div>
-                  <h4 className="donde-votar__tip-title">Haz clic en "Buscar" para encontrar tu centro de votación</h4>
+                  <h4 className="donde-votar__tip-title">{t('dondeVotar.tips.step2')}</h4>
                 </div>
                 <div className="donde-votar__tip-card">
                   <div className="donde-votar__tip-number">3</div>
-                  <h4 className="donde-votar__tip-title">Revisa la información de tu mesa y ubicación</h4>
+                  <h4 className="donde-votar__tip-title">{t('dondeVotar.tips.step3')}</h4>
                 </div>
                 <div className="donde-votar__tip-card">
                   <div className="donde-votar__tip-number">4</div>
-                  <h4 className="donde-votar__tip-title">Usa "Ver Ruta" para obtener indicaciones de cómo llegar</h4>
+                  <h4 className="donde-votar__tip-title">{t('dondeVotar.tips.step4')}</h4>
                 </div>
               </div>
             </section>
