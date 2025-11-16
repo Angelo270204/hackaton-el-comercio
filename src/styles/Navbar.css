@@ -11,55 +11,59 @@
 .navbar__top {
   background: linear-gradient(135deg, #1e293b 0%, #1e3a5f 100%);
   border-bottom: 2px solid var(--color-accent);
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 1000;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   width: 100%;
+  min-height: 72px;
+  padding: 0;
 }
 
+/* Contenedor superior del navbar - Altura reducida sin tocar el logo */
+/* Padding vertical reducido para navbar más compacto, pero logo mantiene su tamaño */
 .navbar__top-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0.1rem 1rem 0.1rem 1rem;
+  padding: 0.2rem 1rem 0.2rem 1rem;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  min-height: 72px;
+  height: 72px;
 }
 
 .navbar__logo {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.75rem;
   text-decoration: none;
   color: var(--color-white);
   font-weight: var(--font-bold);
   font-size: var(--font-size-xl);
   transition: opacity 0.3s ease;
-  height: 120px;
+  height: 56px;
 }
 
-.navbar__logo:hover {
-  opacity: 0.9;
+.navbar__logo img {
+  height: 48px;
+  width: auto;
+  display: block;
 }
 
-.navbar__logo-text {
-  display: none;
-}
-
-/* Timer/Countdown en el Navbar */
 .navbar__countdown {
   display: flex;
   flex-direction: column;
   gap: 0.375rem;
-  align-items: center;
+  align-items: flex-end;
+  justify-content: center;
+  min-height: 56px;
 }
 
 .navbar__countdown-label {
-  font-size: 0.75rem;
+  font-size: 0.6rem; /* Reducido de 0.65rem */
   font-weight: var(--font-semibold);
   color: var(--color-white);
   text-align: center;
@@ -69,36 +73,43 @@
 
 .navbar__countdown-grid {
   display: flex;
-  gap: 0.375rem;
+  gap: 0.25rem; /* Gap reducido de 0.3rem */
   align-items: center;
 }
 
+/* Tarjeta del contador - Tamaño y padding reducidos para look más discreto */
 .navbar__countdown-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: rgba(255, 255, 255, 0.95);
-  padding: 0.375rem 0.5rem;
-  border-radius: 0.375rem;
-  min-width: 42px;
+  padding: 0.2rem 0.35rem; /* Padding reducido de 0.25rem 0.4rem */
+  border-radius: 0.25rem; /* Border-radius reducido */
+  min-width: 32px; /* Reducido de 36px */
   border: 2px solid var(--color-primary-hover);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.navbar__countdown-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .navbar__countdown-number {
-  font-size: 1rem;
+  font-size: 0.8rem; /* Reducido de 0.875rem */
   font-weight: var(--font-bold);
   color: var(--color-gray-900);
   line-height: 1;
 }
 
 .navbar__countdown-text {
-  font-size: 0.6rem;
+  font-size: 0.5rem; /* Reducido de 0.55rem */
   font-weight: var(--font-semibold);
   color: var(--color-gray-600);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-top: 0.125rem;
+  margin-top: 0.08rem; /* Margin reducido */
 }
 
 /* ============================================
@@ -114,14 +125,15 @@
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
+/* Contenedor inferior del navbar - Altura reducida para navbar más compacto */
 .navbar__bottom-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0.5rem 1rem;
+  padding: 0.35rem 1rem; /* Padding vertical reducido de 0.5rem para navbar más compacto */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 50px;
+  min-height: 42px; /* Altura mínima reducida de 50px para navbar más compacto */
 }
 
 .navbar__toggle {
@@ -175,14 +187,16 @@
   border-bottom: none;
 }
 
+/* Link de navegación - Padding interno reducido para navbar más compacto */
 .navbar__link {
   display: block;
-  padding: 1rem 1.5rem;
+  padding: 0.5rem 1.125rem; /* Padding reducido de 0.75rem para navbar más compacto */
   color: var(--color-gray-700);
   text-decoration: none;
   font-weight: var(--font-medium);
   font-size: var(--font-size-base);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 .navbar__link:hover {
@@ -190,14 +204,20 @@
   color: var(--color-primary);
 }
 
-.navbar__link--cta {
+/* Estado activo del link - Borde inferior azul suave y fondo leve transparente */
+.navbar__link--active {
   color: var(--color-primary);
   font-weight: var(--font-semibold);
+  background-color: rgba(30, 64, 175, 0.08); /* Fondo leve transparente azul */
+  border-bottom: 3px solid var(--color-primary); /* Borde inferior azul */
 }
 
-.navbar__link--cta:hover {
-  background-color: var(--color-primary-light);
+.navbar__link--active:hover {
+  background-color: rgba(30, 64, 175, 0.12);
+  color: var(--color-primary-hover);
 }
+
+/* Clase CTA removida - Guía Miembros ahora se ve igual que los demás items */
 
 /* ============================================
    RESPONSIVE: Tablet
@@ -208,25 +228,26 @@
     display: inline;
   }
 
+  /* Contador en tablet - Mantiene tamaño reducido */
   .navbar__countdown-label {
-    font-size: 0.8rem;
+    font-size: 0.65rem; /* Mantiene tamaño reducido */
   }
 
   .navbar__countdown-grid {
-    gap: 0.5rem;
+    gap: 0.3rem; /* Gap reducido */
   }
 
   .navbar__countdown-item {
-    min-width: 48px;
-    padding: 0.5rem;
+    min-width: 34px; /* Reducido de 48px */
+    padding: 0.25rem 0.4rem; /* Padding reducido */
   }
 
   .navbar__countdown-number {
-    font-size: 1.125rem;
+    font-size: 0.85rem; /* Reducido de 1.125rem */
   }
 
   .navbar__countdown-text {
-    font-size: 0.65rem;
+    font-size: 0.52rem; /* Reducido de 0.65rem */
   }
 }
 
@@ -236,32 +257,33 @@
 
 @media (min-width: 768px) {
   .navbar__top-container {
-    padding: 0.625rem 1.5rem;
+    padding: 0.05rem 1.5rem; /* Padding vertical reducido para navbar compacto */
   }
 
   .navbar__logo {
     font-size: 1.5rem;
   }
 
+  /* Contador en desktop - Mantiene tamaño reducido y discreto */
   .navbar__countdown-label {
-    font-size: 0.875rem;
+    font-size: 0.7rem; /* Reducido de 0.875rem */
   }
 
   .navbar__countdown-grid {
-    gap: 0.625rem;
+    gap: 0.4rem; /* Gap reducido de 0.625rem */
   }
 
   .navbar__countdown-item {
-    min-width: 55px;
-    padding: 0.5rem 0.625rem;
+    min-width: 38px; /* Reducido de 55px */
+    padding: 0.3rem 0.45rem; /* Padding reducido */
   }
 
   .navbar__countdown-number {
-    font-size: 1.25rem;
+    font-size: 0.9rem; /* Reducido de 1.25rem */
   }
 
   .navbar__countdown-text {
-    font-size: 0.7rem;
+    font-size: 0.55rem; /* Reducido de 0.7rem */
   }
 
   .navbar__bottom-container {
@@ -291,20 +313,25 @@
   }
 
   .navbar__link {
-    padding: 0.5rem 1rem;
+    padding: 0.625rem 1.125rem; /* Padding mejorado para desktop */
     border-radius: 0.5rem;
   }
 
-  .navbar__link--cta {
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    padding: 0.5rem 1rem;
+  /* Estado activo en desktop - Mantiene el estilo con borde inferior */
+  .navbar__link--active {
+    background-color: rgba(30, 64, 175, 0.1);
+    border-bottom: 3px solid var(--color-primary);
+    border-radius: 0.5rem 0.5rem 0 0; /* Bordes redondeados solo arriba */
   }
 
-  .navbar__link--cta:hover {
-    background-color: var(--color-primary-hover);
-    color: var(--color-white);
+  .navbar__link--active:hover {
+    background-color: rgba(30, 64, 175, 0.15);
   }
+}
+
+/* Asegurar que no haya estilos especiales para CTA - Todos los links se ven igual */
+.navbar__link--cta {
+  /* Sin estilos especiales - se comporta igual que los demás links */
 }
 
 /* ========================================
@@ -363,29 +390,26 @@
    ============================================ */
 
 @media (min-width: 1024px) {
+  /* Contador en large desktop - Mantiene tamaño reducido */
   .navbar__countdown-item {
-    min-width: 60px;
-    padding: 0.625rem 0.75rem;
+    min-width: 40px; /* Reducido de 60px */
+    padding: 0.35rem 0.5rem; /* Padding reducido */
   }
 
   .navbar__countdown-number {
-    font-size: 1.375rem;
+    font-size: 0.95rem; /* Reducido de 1.375rem */
   }
 
   .navbar__countdown-text {
-    font-size: 0.75rem;
+    font-size: 0.58rem; /* Reducido de 0.75rem */
   }
 
   .navbar__link {
-    padding: 0.625rem 1.25rem;
-  }
-
-  .navbar__link--cta {
-    padding: 0.625rem 1.25rem;
+    padding: 0.5rem 1.125rem; /* Padding reducido para navbar más compacto en desktop */
   }
 }
 
-/* Logo más grande y navbar más reducido */
+/* Logo grande mantenido */
 .navbar__logo img {
   display: block;
   max-height: 180px;
@@ -395,6 +419,11 @@
   padding: 0;
   position: relative;
   top: -25px;
+  transition: transform 0.3s ease;
+}
+
+.navbar__logo:hover img {
+  transform: scale(1.05);
 }
 
 .navbar__top-container {
@@ -412,5 +441,22 @@
   }
   .navbar__top-container {
     min-height: 80px;
+  }
+}
+
+@media (max-width: 900px) {
+  .navbar__top-container {
+    padding: 0.1rem 0.5rem 0.1rem 0.5rem;
+    min-height: 60px;
+    height: 60px;
+  }
+  .navbar__logo {
+    height: 40px;
+  }
+  .navbar__logo img {
+    height: 32px;
+  }
+  .navbar__countdown {
+    min-height: 40px;
   }
 }

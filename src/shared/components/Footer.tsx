@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { Vote, Mail, Github, Twitter, Facebook } from 'lucide-react';
+import { Mail, Github, Twitter, Facebook } from 'lucide-react';
 import '../../styles/Footer.css';
 
 export const Footer: React.FC = () => {
@@ -14,8 +14,11 @@ export const Footer: React.FC = () => {
           {/* Brand Section */}
           <div className="footer__section footer__section--brand">
             <div className="footer__logo">
-              <Vote size={32} />
-              <span className="footer__logo-text">Elecciones 2026</span>
+                  <img
+                    src="/images/banner/logo.jpg"
+                    alt="Logo Elecciones 2026"
+                    style={{ height: '200px', marginLeft: '0.5rem', objectFit: 'contain' }}
+                  />
             </div>
             <p className="footer__description">
               Plataforma informativa para las Elecciones Generales del Perú 2026.

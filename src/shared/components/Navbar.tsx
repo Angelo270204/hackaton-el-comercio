@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router';
+import { Link, useLocation } from 'react-router';
 import { Menu, X } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import '../../styles/Navbar.css';
@@ -32,8 +32,17 @@ function calculateTimeLeft(targetDate: string): TimeLeft {
 export const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { t } = useLanguage();
+  const location = useLocation(); // Para detectar la ruta actual y marcar el item activo
   const ELECTION_DATE = "2026-04-12T08:00:00";
   const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft(ELECTION_DATE));
+
+  // Función para determinar si un link está activo según la ruta actual
+  const isActive = (path: string) => {
+    if (path === '/') {
+      return location.pathname === '/';
+    }
+    return location.pathname.startsWith(path);
+  };
 
   const updateNavbarOffsetVar = () => {
     try {
@@ -78,7 +87,11 @@ export const Navbar: React.FC = () => {
       <div className="navbar__top">
         <div className="navbar__top-container">
           <Link to="/" className="navbar__logo" onClick={closeMenu}>
-            <img src="/images/banner/logo.jpg" alt="Logo Elecciones 2026" style={{ height: '300px', width: 'auto' }} />
+            <img
+              src="/images/banner/logo.jpg"
+              alt="Logo Elecciones 2026"
+              style={{ height: '180px', width: 'auto', display: 'block', marginTop: '90px' }}
+            />
           </Link>
 
           <div className="navbar__countdown">
@@ -118,27 +131,48 @@ export const Navbar: React.FC = () => {
 
           <ul className={`navbar__menu ${isMenuOpen ? 'navbar__menu--open' : ''}`}>
             <li className="navbar__item">
-              <Link to="/" className="navbar__link" onClick={closeMenu}>
+              <Link 
+                to="/" 
+                className={`navbar__link ${isActive('/') ? 'navbar__link--active' : ''}`}
+                onClick={closeMenu}
+              >
                 Inicio
               </Link>
             </li>
             <li className="navbar__item">
-              <Link to="/candidatos" className="navbar__link" onClick={closeMenu}>
+              <Link 
+                to="/candidatos" 
+                className={`navbar__link ${isActive('/candidatos') ? 'navbar__link--active' : ''}`}
+                onClick={closeMenu}
+              >
                 Candidatos
               </Link>
             </li>
             <li className="navbar__item">
-              <Link to="/calendario" className="navbar__link" onClick={closeMenu}>
+              <Link 
+                to="/calendario" 
+                className={`navbar__link ${isActive('/calendario') ? 'navbar__link--active' : ''}`}
+                onClick={closeMenu}
+              >
                 Calendario
               </Link>
             </li>
             <li className="navbar__item">
-              <Link to="/donde-votar" className="navbar__link" onClick={closeMenu}>
+              <Link 
+                to="/donde-votar" 
+                className={`navbar__link ${isActive('/donde-votar') ? 'navbar__link--active' : ''}`}
+                onClick={closeMenu}
+              >
                 Dónde Votar
               </Link>
             </li>
             <li className="navbar__item">
-              <Link to="/guia-miembros" className="navbar__link navbar__link--cta" onClick={closeMenu}>
+              {/* Guía Miembros sin fondo azul, igual que los demás items */}
+              <Link 
+                to="/guia-miembros" 
+                className={`navbar__link ${isActive('/guia-miembros') ? 'navbar__link--active' : ''}`}
+                onClick={closeMenu}
+              >
                 Guía Miembros
               </Link>
             </li>
