@@ -101,38 +101,38 @@ export function CandidatosPage() {
 
     // Mapeo de nombres de departamentos a imágenes disponibles (24 departamentos del Perú)
     const imagenesMap: Record<string, string> = {
-      'Amazonas': '/images/fotos-departamentos/mapa-amazonas.jpg',
-      'Áncash': '/images/fotos-departamentos/mapa-ancash.avif',
-      'Apurímac': '/images/fotos-departamentos/mapa-apurimac.avif',
-      'Arequipa': '/images/fotos-departamentos/mapa-arequipa.jpg',
-      'Ayacucho': '/images/fotos-departamentos/mapa-ayacucho.jpg',
-      'Cajamarca': '/images/fotos-departamentos/mapa-cajamarca.jpg',
-      'Callao': '/images/fotos-departamentos/mapa-lima.avif', // Callao usa imagen de Lima
-      'Cusco': '/images/fotos-departamentos/mapa-cusco.jpg',
-      'Huancavelica': '/images/fotos-departamentos/mapa-huancavelica.jpg',
-      'Huánuco': '/images/fotos-departamentos/mapa-huanuco.avif',
-      'Ica': '/images/fotos-departamentos/mapa-ica.jpg',
-      'Junín': '/images/fotos-departamentos/mapa-junin.jpg',
-      'La Libertad': '/images/fotos-departamentos/mapa-la-libertad.jpg',
-      'Lambayeque': '/images/fotos-departamentos/mapa-lambayeque.avif',
-      'Lima': '/images/fotos-departamentos/mapa-lima.avif',
-      'Loreto': '/images/fotos-departamentos/mapa-loreto.jpg',
-      'Madre de Dios': '/images/fotos-departamentos/mapa-madre-dios.avif',
-      'Moquegua': '/images/fotos-departamentos/mapa-moquegua.jpg',
-      'Pasco': '/images/fotos-departamentos/mapa-pasco.jpg',
-      'Piura': '/images/fotos-departamentos/mapa-piura.avif',
-      'Puno': '/images/fotos-departamentos/mapa-puno.avif',
-      'San Martín': '/images/fotos-departamentos/mapa-san-martin.jpg',
-      'Tacna': '/images/fotos-departamentos/mapa-tacna.avif',
-      'Tumbes': '/images/fotos-departamentos/mapa-tumbes.jpg',
-      'Ucayali': '/images/fotos-departamentos/mapa-ucayali.jpg',
+      'Amazonas': '/images/fotos-departamentos/mapa-amazonas.png',
+      'Áncash': '/images/fotos-departamentos/mapa-ancash.png',
+      'Apurímac': '/images/fotos-departamentos/mapa-apurimac.png',
+      'Arequipa': '/images/fotos-departamentos/mapa-arequipa.png',
+      'Ayacucho': '/images/fotos-departamentos/mapa-ayacucho.png',
+      'Cajamarca': '/images/fotos-departamentos/mapa-cajamarca.png',
+      'Callao': '/images/fotos-departamentos/mapa-lima.png', // Callao usa imagen de Lima
+      'Cusco': '/images/fotos-departamentos/mapa-cusco.png',
+      'Huancavelica': '/images/fotos-departamentos/mapa-huancavelica.png',
+      'Huánuco': '/images/fotos-departamentos/mapa-huanuco.png',
+      'Ica': '/images/fotos-departamentos/mapa-ica.png',
+      'Junín': '/images/fotos-departamentos/mapa-junin.png',
+      'La Libertad': '/images/fotos-departamentos/mapa-la-libertad.png',
+      'Lambayeque': '/images/fotos-departamentos/mapa-lambayeque.png',
+      'Lima': '/images/fotos-departamentos/mapa-lima.png',
+      'Loreto': '/images/fotos-departamentos/mapa-loreto.png',
+      'Madre de Dios': '/images/fotos-departamentos/mapa-madre-dios.png',
+      'Moquegua': '/images/fotos-departamentos/mapa-moquegua.png',
+      'Pasco': '/images/fotos-departamentos/mapa-pasco.png',
+      'Piura': '/images/fotos-departamentos/mapa-piura.png',
+      'Puno': '/images/fotos-departamentos/mapa-puno.png',
+      'San Martín': '/images/fotos-departamentos/mapa-san-martin.png',
+      'Tacna': '/images/fotos-departamentos/mapa-tacna.png',
+      'Tumbes': '/images/fotos-departamentos/mapa-tumbes.png',
+      'Ucayali': '/images/fotos-departamentos/mapa-ucayali.png',
     }
 
     // Crear array con todos los departamentos, incluso los que tienen 0 candidatos
     return todosDepartamentos
       .map((nombre) => ({
         nombre,
-        imagen: imagenesMap[nombre] || '/images/fotos-departamentos/mapa-amazonas.jpg',
+        imagen: imagenesMap[nombre] || '/images/fotos-departamentos/mapa-amazonas.png',
         candidatos: departamentosMap.get(nombre) || 0,
       }))
       .sort((a, b) => a.nombre.localeCompare(b.nombre))

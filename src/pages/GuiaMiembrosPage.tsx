@@ -287,14 +287,14 @@ export const GuiaMiembrosPage: React.FC = () => {
     {
       title: 'Manual del Miembro de Mesa',
       description: 'Guía oficial completa con todas las funciones y procedimientos de la ONPE',
-      size: 'PDF - 3.2 MB',
-      url: '#'
+      size: 'PDF',
+      url: '/docs/guia-miembros-mesa.pdf'
     },
     {
       title: 'Acto Electoral - Normativa',
       description: 'Documento oficial con la normativa y reglamento del proceso electoral',
-      size: 'PDF - 1.8 MB',
-      url: '#'
+      size: 'PDF',
+      url: '/docs/acto-electoral.pdf'
     }
   ];
 
@@ -544,10 +544,16 @@ export const GuiaMiembrosPage: React.FC = () => {
                         <p className="guia-miembros__download-description">{item.description}</p>
                         <span className="guia-miembros__download-size">{item.size}</span>
                       </div>
-                      <button className="guia-miembros__download-btn">
+                      <a 
+                        href={item.url} 
+                        download 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="guia-miembros__download-btn"
+                      >
                         <Download size={20} />
                         Descargar
-                      </button>
+                      </a>
                     </div>
                   ))}
                 </div>

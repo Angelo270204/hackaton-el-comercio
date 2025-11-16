@@ -8,9 +8,11 @@ interface Slide {
   titulo: string;
   subtitulo: string;
   badge: string;
-  botonCandidatos: string;
-  botonCalendario: string;
   imagenFondo: string;
+  // Opcionales: solo presentes en ciertos slides
+    botonCandidatos?: string;
+    botonCalendario?: string;
+    botonDondeVotar?: string;
 }
 
 const CarruselHeader: React.FC = () => {
