@@ -1082,3 +1082,64 @@
     font-size: 1rem;
   }
 }
+
+/* ========================================
+   Dark Mode Support
+   ======================================== */
+.dark-mode .donde-votar {
+  background: var(--color-bg, #1a202c);
+}
+
+.dark-mode .donde-votar__form-card,
+.dark-mode .donde-votar__location-card,
+.dark-mode .donde-votar__map-card,
+.dark-mode .donde-votar__info-card,
+.dark-mode .donde-votar__transport-section {
+  background: var(--color-bg-card, #2d3748);
+  border-color: var(--color-border, #4a5568);
+}
+
+.dark-mode .donde-votar__title,
+.dark-mode .donde-votar__location-name,
+.dark-mode .donde-votar__location-detail-value,
+.dark-mode .donde-votar__user-value,
+.dark-mode .donde-votar__info-card-title {
+  color: var(--color-text, #f7fafc);
+}
+
+.dark-mode .donde-votar__subtitle,
+.dark-mode .donde-votar__location-address,
+.dark-mode .donde-votar__location-detail-label,
+.dark-mode .donde-votar__user-label,
+.dark-mode .donde-votar__transport-text {
+  color: var(--color-text-muted, #a0aec0);
+}
+
+.dark-mode .donde-votar__input {
+  background: var(--color-bg-card, #2d3748);
+  border-color: var(--color-border, #4a5568);
+  color: var(--color-text, #f7fafc);
+}
+
+.dark-mode .donde-votar__input::placeholder {
+  color: var(--color-text-muted, #718096);
+}
+
+.dark-mode .donde-votar__user-info {
+  background: var(--color-bg, #1a202c);
+  border-color: var(--color-border, #4a5568);
+}
+
+.dark-mode .donde-votar__tips {
+  background: transparent;
+}
+
+.dark-mode .donde-votar__tip-card {
+  background: var(--color-bg-card, #2d3748);
+  border-color: var(--color-border, #4a5568);
+}
+
+.dark-mode .donde-votar__tip-title {
+  color: var(--color-text, #f7fafc);
+}
+

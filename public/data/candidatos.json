@@ -6,10 +6,84 @@
     "cargo_postula": "Presidenta",
     "foto": "/images/partido-candidato/keiko.jpg",
     "icono_partido": "/images/partido-candidato/Fujimori.jpg",
+    "ideologia": "derecha",
+    "antecedentes": {
+      "tiene_investigaciones": true,
+      "tiene_condenas": false,
+      "tiene_denuncias": true,
+      "descripcion": "Investigaciones por lavado de activos y organización criminal"
+    },
     "datos_publicos": {
-      "rol_publico": "Excongresista, lideresa de Fuerza Popular",
+      "rol_publico": "Excongresista y lideresa de Fuerza Popular",
       "elecciones_previas": "2011, 2016, 2021 (segunda vuelta)"
-    }
+    },
+    "departamento": "Lima",
+    "provincia": "Lima",
+    "distrito": "Surco",
+    "edad": 49,
+    "formacion_academica": [
+      "Estudios en Administración de Empresas",
+      "Programas de gestión política y pública"
+    ],
+    "experiencia_previa": [
+      "Congresista de la República (2006-2011)",
+      "Lideresa de oposición en el Congreso"
+    ],
+    "cargos_ocupados": [
+      "Congresista de la República",
+      "Presidenta del partido Fuerza Popular"
+    ],
+    "logros": [
+      "Impulso de agendas de seguridad ciudadana y programas sociales",
+      "Consolidación de Fuerza Popular como bancada importante en el Congreso"
+    ],
+    "trayectoria": "Figura central de la política peruana de las últimas décadas, con participación en tres procesos presidenciales y rol protagónico en el Congreso.",
+    "propuestas": {
+      "economia": [
+        "Impulsar la inversión privada con estabilidad tributaria y seguridad jurídica.",
+        "Ampliar programas de apoyo a pequeñas y medianas empresas para formalización y acceso a crédito.",
+        "Fortalecer programas sociales focalizados para reducir pobreza extrema."
+      ],
+      "salud": [
+        "Fortalecer el primer nivel de atención, priorizando zonas rurales y periferias urbanas.",
+        "Mejorar el abastecimiento de medicinas esenciales en hospitales públicos.",
+        "Impulsar infraestructura hospitalaria mediante obras por impuestos y asociaciones público-privadas."
+      ],
+      "seguridad": [
+        "Refuerzo del patrullaje integrado Policía–municipios con mejor equipamiento.",
+        "Endurecer penas para delitos de corrupción y crimen organizado.",
+        "Expandir programas de prevención para jóvenes en riesgo en coordinación con gobiernos locales."
+      ],
+      "educacion": [
+        "Reducir brecha de infraestructura escolar en zonas rurales.",
+        "Mejorar la capacitación docente con énfasis en resultados de aprendizaje.",
+        "Promover becas y créditos educativos para jóvenes de bajos recursos."
+      ],
+      "otros": [
+        "Impulsar programas de apoyo a madres de familia y cuidado infantil.",
+        "Reforzar mecanismos de lucha contra la violencia de género."
+      ]
+    },
+    "actividades": [
+      {
+        "fecha": "2024-09-15",
+        "titulo": "Encuentro con bases partidarias en el norte del país",
+        "descripcion": "Reunión con militantes y simpatizantes para presentar ejes de su propuesta económica y social."
+      },
+      {
+        "fecha": "2024-10-02",
+        "titulo": "Foro sobre gobernabilidad y reformas institucionales",
+        "descripcion": "Participación en panel sobre fortalecimiento de instituciones democráticas."
+      }
+    ],
+    "noticias": [
+      {
+        "fecha": "2024-10-05",
+        "titulo": "Fuerza Popular presenta lineamientos para elecciones 2026",
+        "descripcion": "La agrupación adelantó ejes programáticos vinculados a seguridad, crecimiento económico y programas sociales.",
+        "fuente": "El Comercio"
+      }
+    ]
   },
   {
     "id": 2,
@@ -18,10 +92,75 @@
     "cargo_postula": "Presidente",
     "foto": "/images/partido-candidato/rafael.jpg",
     "icono_partido": "/images/partido-candidato/renovacion-popular.jpg",
+    "ideologia": "derecha",
+    "antecedentes": {
+      "tiene_investigaciones": true,
+      "tiene_condenas": false,
+      "tiene_denuncias": true,
+      "descripcion": "Investigaciones relacionadas a su gestión municipal"
+    },
     "datos_publicos": {
-      "rol_publico": "Alcalde de Lima",
+      "rol_publico": "Alcalde de Lima y líder de Renovación Popular",
       "elecciones_previas": "Candidato presidencial 2021"
-    }
+    },
+    "departamento": "Lima",
+    "provincia": "Lima",
+    "distrito": "Miraflores",
+    "formacion_academica": [
+      "Estudios en Ingeniería y gestión empresarial"
+    ],
+    "experiencia_previa": [
+      "Empresario del sector transporte y hotelero",
+      "Alcalde de Lima Metropolitana"
+    ],
+    "cargos_ocupados": [
+      "Alcalde de Lima",
+      "Regidor y dirigente partidario"
+    ],
+    "logros": [
+      "Impulso de proyectos de infraestructura urbana desde la gestión municipal",
+      "Posicionamiento de Renovación Popular como fuerza política en gobiernos locales"
+    ],
+    "trayectoria": "Empresario y político con énfasis en propuestas de orden, disciplina fiscal y reformas en seguridad ciudadana.",
+    "propuestas": {
+      "economia": [
+        "Reducir gasto corriente del Estado para priorizar inversión en obras de infraestructura.",
+        "Promover alianzas público-privadas para proyectos de transporte y servicios básicos.",
+        "Simplificación de trámites para empresas y emprendimientos."
+      ],
+      "salud": [
+        "Mejorar la gestión hospitalaria con indicadores de desempeño.",
+        "Fortalecer atención primaria en coordinación con gobiernos locales."
+      ],
+      "seguridad": [
+        "Ampliar el uso de tecnología (cámaras, centros de control) para combatir el delito.",
+        "Mayor coordinación entre serenazgo y Policía Nacional.",
+        "Fortalecer programas de recuperación de espacios públicos seguros."
+      ],
+      "educacion": [
+        "Promover colegios con buena gestión pedagógica y estándares de calidad.",
+        "Apoyar convenios público-privados para mantenimiento de infraestructura educativa."
+      ],
+      "otros": [
+        "Énfasis en valores y formación cívica desde la escuela.",
+        "Programas de voluntariado juvenil para servicio comunitario."
+      ]
+    },
+    "actividades": [
+      {
+        "fecha": "2024-08-20",
+        "titulo": "Presentación de plan de seguridad para Lima",
+        "descripcion": "Exposición de medidas de seguridad ciudadana replicables a nivel nacional."
+      }
+    ],
+    "noticias": [
+      {
+        "fecha": "2024-09-10",
+        "titulo": "Renovación Popular anuncia precandidatura para 2026",
+        "descripcion": "El partido dio a conocer sus intenciones de participar en las elecciones generales.",
+        "fuente": "El Comercio"
+      }
+    ]
   },
   {
     "id": 3,
@@ -30,10 +169,63 @@
     "cargo_postula": "Presidente",
     "foto": "/images/partido-candidato/antauro.jpg",
     "icono_partido": "/images/partido-candidato/partido-patrio.jpg",
+    "ideologia": "izquierda",
+    "antecedentes": {
+      "tiene_investigaciones": false,
+      "tiene_condenas": true,
+      "tiene_denuncias": false,
+      "descripcion": "Condena por homicidio y rebelión (Andahuaylazo 2005)"
+    },
     "datos_publicos": {
-      "rol_publico": "Activista político y militar retirado",
-      "elecciones_previas": "No ha postulado antes a la presidencia"
-    }
+      "rol_publico": "Activista político y militar en retiro",
+      "elecciones_previas": "Ha impulsado movimientos políticos con presencia nacional"
+    },
+    "departamento": "Ayacucho",
+    "provincia": "Huamanga",
+    "distrito": "Ayacucho",
+    "experiencia_previa": [
+      "Participación en movimientos nacionalistas",
+      "Promoción de agenda política con enfoque en soberanía y recursos naturales"
+    ],
+    "logros": [
+      "Articulación de bases políticas en diversas regiones del país"
+    ],
+    "trayectoria": "Figura política asociada a propuestas de cambio estructural y énfasis en recursos naturales y soberanía.",
+    "propuestas": {
+      "economia": [
+        "Revisar condiciones de explotación de recursos naturales.",
+        "Impulsar mayor presencia del Estado en sectores estratégicos."
+      ],
+      "salud": [
+        "Fortalecer la atención en zonas rurales y comunidades alejadas."
+      ],
+      "seguridad": [
+        "Mayor control estatal en zonas de frontera y corredores económicos.",
+        "Reforzar presencia policial y de servicios del Estado en zonas vulnerables."
+      ],
+      "educacion": [
+        "Incorporar contenidos de identidad y realidad nacional en la currícula.",
+        "Fortalecer escuelas rurales con presencia de docentes bilingües donde corresponda."
+      ],
+      "otros": [
+        "Promover participación de organizaciones sociales en el diseño de políticas públicas."
+      ]
+    },
+    "actividades": [
+      {
+        "fecha": "2024-07-30",
+        "titulo": "Reunión con simpatizantes en región centro",
+        "descripcion": "Diálogo sobre propuestas vinculadas a recursos naturales y comunidades."
+      }
+    ],
+    "noticias": [
+      {
+        "fecha": "2024-08-15",
+        "titulo": "Frente Patriótico anuncia intención de participar en elecciones 2026",
+        "descripcion": "La agrupación indicó que trabaja en la construcción de un plan de gobierno.",
+        "fuente": "Cobertura de medios nacionales"
+      }
+    ]
   },
   {
     "id": 4,
@@ -43,10 +235,72 @@
     "foto": "/images/partido-candidato/hernando.jpg",
     "icono_partido": "/images/partido-candidato/avanza-pais.jpg",
     "datos_publicos": {
-      "rol_publico": "Economista, fundador del Instituto Libertad y Democracia",
+      "rol_publico": "Economista y fundador del Instituto Libertad y Democracia",
       "elecciones_previas": "Candidato presidencial 2021"
-     }
-    }, 
+    },
+    "departamento": "Lima",
+    "provincia": "Lima",
+    "distrito": "San Isidro",
+    "formacion_academica": [
+      "Economista especializado en propiedad y formalización",
+      "Experiencia internacional en diseño de políticas públicas"
+    ],
+    "experiencia_previa": [
+      "Asesoría a gobiernos en temas de formalización",
+      "Participación en organismos internacionales"
+    ],
+    "cargos_ocupados": [
+      "Presidente del Instituto Libertad y Democracia"
+    ],
+    "logros": [
+      "Difusión de propuestas de formalización de la propiedad y pequeñas empresas",
+      "Participación en debates sobre economía de mercado y desarrollo"
+    ],
+    "trayectoria": "Economista reconocido por su enfoque en formalización, propiedad y acceso de sectores populares a la economía formal.",
+    "propuestas": {
+      "economia": [
+        "Formalizar la propiedad de pequeños negocios y viviendas para facilitar acceso a crédito.",
+        "Simplificar trámites y eliminar barreras burocráticas para emprendedores.",
+        "Fortalecer instituciones que garantizan derechos de propiedad."
+      ],
+      "salud": [
+        "Mejorar la gestión de recursos en el sistema de salud.",
+        "Priorizar inversión en infraestructura en zonas con mayor brecha."
+      ],
+      "seguridad": [
+        "Vincular políticas de seguridad con reducción de informalidad económica."
+      ],
+      "educacion": [
+        "Impulsar educación financiera y emprendimiento desde la escuela.",
+        "Promover formación técnica ligada a demanda productiva."
+      ],
+      "otros": [
+        "Impulsar diálogo con diversos actores económicos y sociales para reformas graduales."
+      ]
+    },
+    "actividades": [
+      {
+        "fecha": "2024-09-01",
+        "titulo": "Conferencia sobre formalización y desarrollo",
+        "descripcion": "Exposición de propuestas orientadas a la inclusión de pequeños negocios en la economía formal."
+      }
+    ],
+    "noticias": [
+      {
+        "fecha": "2024-09-18",
+        "titulo": "Avanza País presenta ejes económicos para 2026",
+        "descripcion": "La agrupación remarcó la importancia de la formalización y seguridad jurídica.",
+        "fuente": "Cobertura de medios"
+      }
+    ],
+    "ideologia": "centro-derecha",
+    "antecedentes": {
+      "tiene_investigaciones": false,
+      "tiene_condenas": false,
+      "tiene_denuncias": false,
+      "descripcion": "Sin antecedentes negativos relevantes"
+    }
+  },
   {
     "id": 5,
     "nombre": "George Forsyth",
@@ -57,6 +311,68 @@
     "datos_publicos": {
       "rol_publico": "Exalcalde de La Victoria",
       "elecciones_previas": "Candidato presidencial 2021"
+    },
+    "departamento": "Lima",
+    "provincia": "Lima",
+    "distrito": "La Victoria",
+    "formacion_academica": [
+      "Estudios en gestión pública y administración"
+    ],
+    "experiencia_previa": [
+      "Alcalde del distrito de La Victoria",
+      "Experiencia en gestión de proyectos urbanos"
+    ],
+    "cargos_ocupados": [
+      "Alcalde de La Victoria"
+    ],
+    "logros": [
+      "Impulso de acciones de recuperación de espacios públicos en La Victoria",
+      "Experiencias en reordenamiento del comercio informal"
+    ],
+    "trayectoria": "Figura política que saltó a la escena nacional desde la gestión municipal, con énfasis en orden urbano y servicios básicos.",
+    "propuestas": {
+      "economia": [
+        "Apoyar a emprendedores y pequeños negocios con asistencia técnica y acceso a crédito.",
+        "Promover la formalización progresiva del comercio ambulatorio."
+      ],
+      "salud": [
+        "Mejorar centros de salud en distritos populosos.",
+        "Refuerzo de campañas de prevención y vacunación en coordinación con municipios."
+      ],
+      "seguridad": [
+        "Profundizar experiencias de trabajo conjunto entre serenazgo y Policía.",
+        "Fortalecer patrullaje y recuperación de zonas críticas en ciudades."
+      ],
+      "educacion": [
+        "Apoyar programas de deporte y cultura para jóvenes como prevención del delito.",
+        "Promover mejoras en infraestructura educativa básica en distritos urbanos."
+      ],
+      "otros": [
+        "Impulsar proyectos de mejoramiento de barrios y pistas.",
+        "Promover participación vecinal en el diseño de proyectos urbanos."
+      ]
+    },
+    "actividades": [
+      {
+        "fecha": "2024-06-25",
+        "titulo": "Reunión con vecinos sobre seguridad y orden urbano",
+        "descripcion": "Encuentro para recoger preocupaciones vecinales y presentar propuestas de mejora urbana."
+      }
+    ],
+    "noticias": [
+      {
+        "fecha": "2024-07-10",
+        "titulo": "Somos Perú evalúa candidatura para elecciones generales 2026",
+        "descripcion": "La agrupación informó que viene trabajando en un plan de gobierno con énfasis en gestión local.",
+        "fuente": "Cobertura de medios"
+      }
+    ],
+    "ideologia": "centro",
+    "antecedentes": {
+      "tiene_investigaciones": true,
+      "tiene_condenas": false,
+      "tiene_denuncias": true,
+      "descripcion": "Investigaciones por presuntas irregularidades en su gestión"
     }
   },
   {
@@ -64,11 +380,69 @@
     "nombre": "César Acuña",
     "partido": "Alianza Para el Progreso",
     "cargo_postula": "Presidente",
-    "foto": "/images/partido-candidato/cesar.jpg", 
-    "icono_partido": "/images/partido-candidato/alianza.jpg",
+    "foto": "/images/partido-candidato/cesar.jpg",
+    "icono_partido": "/images/partido-candidato/alianza-progreso.jpg",
     "datos_publicos": {
       "rol_publico": "Empresario, gobernador regional de La Libertad",
       "elecciones_previas": "Candidato presidencial 2016"
+    },
+    "departamento": "La Libertad",
+    "provincia": "Trujillo",
+    "distrito": "Trujillo",
+    "formacion_academica": [
+      "Formación en administración y gestión educativa"
+    ],
+    "experiencia_previa": [
+      "Fundador de instituciones educativas privadas",
+      "Gobernador regional de La Libertad"
+    ],
+    "cargos_ocupados": [
+      "Gobernador regional",
+      "Congresista (periodo anterior)"
+    ],
+    "propuestas": {
+      "economia": [
+        "Impulsar proyectos productivos regionales para generar empleo.",
+        "Ampliar la inversión en infraestructura básica en regiones."
+      ],
+      "salud": [
+        "Mejorar hospitales regionales con equipamiento y personal.",
+        "Fortalecer programas de salud preventiva en coordinación con regiones."
+      ],
+      "seguridad": [
+        "Reforzar la coordinación entre gobiernos regionales y Policía Nacional.",
+        "Promover programas de prevención del delito para jóvenes."
+      ],
+      "educacion": [
+        "Incrementar la inversión en infraestructura educativa regional.",
+        "Mejorar la formación docente en zonas rurales."
+      ],
+      "otros": [
+        "Promover la descentralización efectiva de recursos.",
+        "Impulsar políticas de inclusión para poblaciones vulnerables."
+      ]
+    },
+    "actividades": [
+      {
+        "fecha": "2024-08-05",
+        "titulo": "Reunión con autoridades regionales de La Libertad",
+        "descripcion": "Diálogo sobre proyectos de infraestructura y desarrollo regional."
+      }
+    ],
+    "noticias": [
+      {
+        "fecha": "2024-09-12",
+        "titulo": "Alianza Para el Progreso perfila agenda regional para 2026",
+        "descripcion": "Se presentaron lineamientos orientados a cerrar brechas en educación y salud.",
+        "fuente": "Cobertura de medios"
+      }
+    ],
+    "ideologia": "centro-derecha",
+    "antecedentes": {
+      "tiene_investigaciones": true,
+      "tiene_condenas": false,
+      "tiene_denuncias": true,
+      "descripcion": "Investigaciones por presunto plagio de tesis y corrupción"
     }
   },
   {
@@ -81,6 +455,60 @@
     "datos_publicos": {
       "rol_publico": "Ex primer ministro",
       "elecciones_previas": "No ha postulado a presidencia"
+    },
+    "departamento": "Lima",
+    "provincia": "Lima",
+    "distrito": "San Borja",
+    "formacion_academica": [
+      "Formación en Derecho y Ciencias Políticas"
+    ],
+    "experiencia_previa": [
+      "Ministro de Estado",
+      "Presidente del Consejo de Ministros"
+    ],
+    "propuestas": {
+      "economia": [
+        "Fortalecer la institucionalidad económica y la confianza de inversionistas.",
+        "Promover estabilidad de reglas para el sector privado."
+      ],
+      "salud": [
+        "Reforzar la rectoría del Ministerio de Salud.",
+        "Mejorar la coordinación entre niveles de gobierno en servicios de salud."
+      ],
+      "seguridad": [
+        "Modernizar la Policía Nacional con capacitación y tecnología.",
+        "Reforzar el sistema de justicia para la lucha contra el crimen organizado."
+      ],
+      "educacion": [
+        "Priorizar la calidad educativa y la formación docente.",
+        "Impulsar la educación cívica y democrática en las escuelas."
+      ],
+      "otros": [
+        "Impulsar reformas institucionales para mejorar la gobernabilidad.",
+        "Promover la transparencia y el acceso a la información pública."
+      ]
+    },
+    "actividades": [
+      {
+        "fecha": "2024-09-03",
+        "titulo": "Foro sobre institucionalidad democrática",
+        "descripcion": "Participación en panel enfocado en reformas políticas y equilibrio de poderes."
+      }
+    ],
+    "noticias": [
+      {
+        "fecha": "2024-09-20",
+        "titulo": "Libertad Popular expone lineamientos de reforma política",
+        "descripcion": "Se presentaron propuestas para fortalecer la separación de poderes y el control ciudadano.",
+        "fuente": "Cobertura de medios"
+      }
+    ],
+    "ideologia": "centro",
+    "antecedentes": {
+      "tiene_investigaciones": false,
+      "tiene_condenas": false,
+      "tiene_denuncias": false,
+      "descripcion": "Sin antecedentes negativos relevantes"
     }
   },
   {
@@ -93,6 +521,57 @@
     "datos_publicos": {
       "rol_publico": "Fundador y líder de Perú Libre",
       "elecciones_previas": "No ha postulado a presidencia"
+    },
+    "departamento": "Junín",
+    "provincia": "Huancayo",
+    "distrito": "Huancayo",
+    "experiencia_previa": [
+      "Gobernador regional",
+      "Dirigente de organización política"
+    ],
+    "propuestas": {
+      "economia": [
+        "Reforzar el rol del Estado en sectores estratégicos.",
+        "Impulsar políticas de desarrollo regional y agrario."
+      ],
+      "salud": [
+        "Incrementar recursos para hospitales en regiones.",
+        "Ampliar cobertura de salud en zonas rurales."
+      ],
+      "seguridad": [
+        "Fortalecer presencia del Estado en zonas de frontera y corredores logísticos.",
+        "Impulsar programas de inclusión para reducir factores de riesgo delictivo."
+      ],
+      "educacion": [
+        "Mejorar condiciones laborales y formativas de docentes.",
+        "Reforzar la educación en zonas rurales con materiales adecuados."
+      ],
+      "otros": [
+        "Promover participación de organizaciones sociales en decisiones públicas.",
+        "Impulsar mecanismos de consulta ciudadana para proyectos relevantes."
+      ]
+    },
+    "actividades": [
+      {
+        "fecha": "2024-08-10",
+        "titulo": "Reunión con bases partidarias en la sierra central",
+        "descripcion": "Encuentro con militantes para discutir prioridades programáticas."
+      }
+    ],
+    "noticias": [
+      {
+        "fecha": "2024-09-08",
+        "titulo": "Perú Libre adelanta ejes de su plataforma para 2026",
+        "descripcion": "La agrupación mencionó propuestas en salud, educación y desarrollo regional.",
+        "fuente": "Cobertura de medios"
+      }
+    ],
+    "ideologia": "izquierda",
+    "antecedentes": {
+      "tiene_investigaciones": true,
+      "tiene_condenas": false,
+      "tiene_denuncias": true,
+      "descripcion": "Investigaciones por organización criminal y lavado de activos"
     }
   },
   {
@@ -105,18 +584,60 @@
     "datos_publicos": {
       "rol_publico": "Excongresista",
       "elecciones_previas": "Candidata presidencial 2016 y 2021"
-    }
-  },
-  {
-    "id": 10,
-    "nombre": "Sigrid Bazán",
-    "partido": "Juntos por el Perú",
-    "cargo_postula": "Presidenta",
-    "foto": "/images/partido-candidato/sigrid.jpg",
-    "icono_partido": "/images/partido-candidato/juntos-peru.jpg",
-    "datos_publicos": {
-      "rol_publico": "Congresista",
-      "elecciones_previas": "Aún no postuló a presidencia"
+    },
+    "departamento": "Cusco",
+    "provincia": "Cusco",
+    "distrito": "Cusco",
+    "formacion_academica": [
+      "Estudios en Psicología y Ciencias Sociales"
+    ],
+    "experiencia_previa": [
+      "Congresista de la República",
+      "Liderazgo en organizaciones políticas de izquierda"
+    ],
+    "propuestas": {
+      "economia": [
+        "Impulsar una reforma tributaria progresiva.",
+        "Fortalecer la economía popular y el apoyo a pequeños productores."
+      ],
+      "salud": [
+        "Reforzar la salud pública universal y gratuita.",
+        "Incrementar la inversión en atención primaria y salud mental."
+      ],
+      "seguridad": [
+        "Vincular políticas de seguridad con inclusión social.",
+        "Fortalecer programas de prevención para jóvenes."
+      ],
+      "educacion": [
+        "Garantizar acceso a educación pública gratuita y de calidad.",
+        "Reforzar educación intercultural bilingüe en regiones."
+      ],
+      "otros": [
+        "Ampliar derechos sociales y participación ciudadana.",
+        "Impulsar políticas de igualdad de género."
+      ]
+    },
+    "actividades": [
+      {
+        "fecha": "2024-08-22",
+        "titulo": "Encuentro programático con organizaciones sociales",
+        "descripcion": "Reunión para discutir propuestas en derechos sociales y economía popular."
+      }
+    ],
+    "noticias": [
+      {
+        "fecha": "2024-09-25",
+        "titulo": "Juntos por el Perú presenta agenda social para las elecciones",
+        "descripcion": "La agrupación destacó ejes en salud, educación y derechos laborales.",
+        "fuente": "Cobertura de medios"
+      }
+    ],
+    "ideologia": "izquierda",
+    "antecedentes": {
+      "tiene_investigaciones": false,
+      "tiene_condenas": false,
+      "tiene_denuncias": false,
+      "descripcion": "Sin antecedentes negativos relevantes"
     }
   },
   {
@@ -129,6 +650,60 @@
     "datos_publicos": {
       "rol_publico": "Expremier, actor y exministro",
       "elecciones_previas": "No ha postulado a presidencia"
+    },
+    "departamento": "Lima",
+    "provincia": "Lima",
+    "distrito": "Barranco",
+    "formacion_academica": [
+      "Estudios en Derecho y Gestión Pública"
+    ],
+    "experiencia_previa": [
+      "Ministro de Cultura",
+      "Presidente del Consejo de Ministros"
+    ],
+    "propuestas": {
+      "economia": [
+        "Promover crecimiento económico con inclusión social.",
+        "Impulsar industrias culturales y creativas como motor de desarrollo."
+      ],
+      "salud": [
+        "Fortalecer el sistema de salud pública con enfoque en prevención.",
+        "Garantizar acceso oportuno a servicios médicos básicos."
+      ],
+      "seguridad": [
+        "Mejorar la articulación entre justicia, policía y municipios.",
+        "Impulsar políticas de reinserción social."
+      ],
+      "educacion": [
+        "Integrar artes y cultura en la experiencia educativa.",
+        "Reforzar la formación en valores democráticos."
+      ],
+      "otros": [
+        "Fortalecer instituciones y lucha contra la corrupción.",
+        "Impulsar mecanismos de diálogo con la ciudadanía."
+      ]
+    },
+    "actividades": [
+      {
+        "fecha": "2024-08-18",
+        "titulo": "Conversatorio sobre cultura y democracia",
+        "descripcion": "Participación en evento sobre el rol de la cultura en la cohesión social."
+      }
+    ],
+    "noticias": [
+      {
+        "fecha": "2024-09-22",
+        "titulo": "Se presentan propuestas en cultura y educación cívica",
+        "descripcion": "Se discutieron iniciativas para fortalecer ciudadanía y cultura democrática.",
+        "fuente": "Cobertura de medios"
+      }
+    ],
+    "ideologia": "centro",
+    "antecedentes": {
+      "tiene_investigaciones": false,
+      "tiene_condenas": false,
+      "tiene_denuncias": false,
+      "descripcion": "Sin antecedentes negativos relevantes"
     }
   },
   {
@@ -141,6 +716,60 @@
     "datos_publicos": {
       "rol_publico": "Periodista, escritor",
       "elecciones_previas": "Candidato presidencial 2016"
+    },
+    "departamento": "Lima",
+    "provincia": "Lima",
+    "distrito": "San Isidro",
+    "formacion_academica": [
+      "Estudios en Humanidades y Ciencias Políticas"
+    ],
+    "experiencia_previa": [
+      "Analista político y columnista",
+      "Candidato en elecciones nacionales"
+    ],
+    "propuestas": {
+      "economia": [
+        "Fortalecer la economía social de mercado.",
+        "Promover instituciones económicas sólidas y previsibles."
+      ],
+      "salud": [
+        "Priorizar inversión en hospitales regionales.",
+        "Mejorar gestión de recursos en el sistema público de salud."
+      ],
+      "seguridad": [
+        "Reforzar el sistema de justicia y la independencia judicial.",
+        "Combatir la corrupción vinculada al crimen organizado."
+      ],
+      "educacion": [
+        "Impulsar reformas educativas para elevar la calidad.",
+        "Fortalecer la formación docente y evaluación de aprendizajes."
+      ],
+      "otros": [
+        "Promover reformas políticas orientadas a fortalecer partidos.",
+        "Impulsar debates públicos sobre el modelo de desarrollo."
+      ]
+    },
+    "actividades": [
+      {
+        "fecha": "2024-08-12",
+        "titulo": "Presentación de libro y reflexión política",
+        "descripcion": "Evento donde se abordaron desafíos institucionales y económicos para el país."
+      }
+    ],
+    "noticias": [
+      {
+        "fecha": "2024-09-05",
+        "titulo": "Se discuten propuestas sobre reformas económicas y políticas",
+        "descripcion": "Analistas comentan escenarios para las elecciones 2026.",
+        "fuente": "Cobertura de medios"
+      }
+    ],
+    "ideologia": "centro-derecha",
+    "antecedentes": {
+      "tiene_investigaciones": false,
+      "tiene_condenas": false,
+      "tiene_denuncias": false,
+      "descripcion": "Sin antecedentes negativos relevantes"
     }
   },
   {
@@ -153,6 +782,56 @@
     "datos_publicos": {
       "rol_publico": "Excongresista",
       "elecciones_previas": "Candidato presidencial 2021"
+    },
+    "departamento": "Puno",
+    "provincia": "Puno",
+    "distrito": "Puno",
+    "experiencia_previa": [
+      "Congresista de la República",
+      "Defensa de temas de consumidores y servicios públicos"
+    ],
+    "propuestas": {
+      "economia": [
+        "Reforzar la defensa del usuario de servicios básicos.",
+        "Impulsar apoyo a pequeños emprendedores."
+      ],
+      "salud": [
+        "Mejorar la atención en centros de salud en regiones.",
+        "Fortalecer la presencia de médicos en zonas alejadas."
+      ],
+      "seguridad": [
+        "Incrementar presencia policial en zonas de frontera.",
+        "Reforzar la lucha contra la delincuencia común."
+      ],
+      "educacion": [
+        "Apoyar educación básica en regiones de la sierra y selva.",
+        "Reducir brechas de infraestructura escolar."
+      ],
+      "otros": [
+        "Fortalecer mecanismos de control ciudadano sobre servicios públicos."
+      ]
+    },
+    "actividades": [
+      {
+        "fecha": "2024-07-18",
+        "titulo": "Encuentro con organizaciones de consumidores",
+        "descripcion": "Reunión para recoger preocupaciones sobre servicios básicos."
+      }
+    ],
+    "noticias": [
+      {
+        "fecha": "2024-08-25",
+        "titulo": "Se discuten propuestas sobre defensa del consumidor",
+        "descripcion": "Se abordaron tarifas y calidad de servicios básicos en regiones.",
+        "fuente": "Cobertura de medios"
+      }
+    ],
+    "ideologia": "centro",
+    "antecedentes": {
+      "tiene_investigaciones": false,
+      "tiene_condenas": false,
+      "tiene_denuncias": false,
+      "descripcion": "Sin antecedentes negativos relevantes"
     }
   },
   {
@@ -165,6 +844,58 @@
     "datos_publicos": {
       "rol_publico": "Exministra de Justicia",
       "elecciones_previas": "No ha postulado a presidencia"
+    },
+    "departamento": "Lima",
+    "provincia": "Lima",
+    "distrito": "Magdalena del Mar",
+    "formacion_academica": [
+      "Estudios en Derecho y especialización en políticas públicas"
+    ],
+    "experiencia_previa": [
+      "Ministra de Justicia",
+      "Congresista de la República"
+    ],
+    "propuestas": {
+      "economia": [
+        "Vincular la política económica con la protección de derechos sociales."
+      ],
+      "salud": [
+        "Garantizar acceso a servicios de salud para mujeres y poblaciones vulnerables."
+      ],
+      "seguridad": [
+        "Reforzar la lucha contra la violencia de género y la impunidad.",
+        "Fortalecer el sistema de justicia para víctimas."
+      ],
+      "educacion": [
+        "Incorporar enfoque de derechos humanos en la educación.",
+        "Promover programas de prevención de violencia desde la escuela."
+      ],
+      "otros": [
+        "Impulsar reformas de justicia orientadas a la protección de derechos.",
+        "Reforzar la defensa pública y el acceso a la justicia."
+      ]
+    },
+    "actividades": [
+      {
+        "fecha": "2024-09-07",
+        "titulo": "Mesa de diálogo sobre justicia y derechos humanos",
+        "descripcion": "Participación en evento sobre acceso a la justicia y reformas judiciales."
+      }
+    ],
+    "noticias": [
+      {
+        "fecha": "2024-09-30",
+        "titulo": "Se presentan propuestas en justicia y derechos humanos para 2026",
+        "descripcion": "Se expusieron ideas para reducir la impunidad y fortalecer instituciones.",
+        "fuente": "Cobertura de medios"
+      }
+    ],
+    "ideologia": "centro-derecha",
+    "antecedentes": {
+      "tiene_investigaciones": false,
+      "tiene_condenas": false,
+      "tiene_denuncias": false,
+      "descripcion": "Sin antecedentes negativos relevantes"
     }
   },
   {
@@ -177,6 +908,57 @@
     "datos_publicos": {
       "rol_publico": "Analista político",
       "elecciones_previas": "No ha postulado a presidencia"
+    },
+    "departamento": "Lima",
+    "provincia": "Lima",
+    "distrito": "Miraflores",
+    "experiencia_previa": [
+      "Analista y comentarista político",
+      "Participación en organizaciones de la sociedad civil"
+    ],
+    "propuestas": {
+      "economia": [
+        "Promover un marco económico estable y competitivo.",
+        "Reforzar instituciones regulatorias independientes."
+      ],
+      "salud": [
+        "Mejorar la asignación de recursos en salud pública.",
+        "Impulsar uso eficiente de presupuesto en hospitales."
+      ],
+      "seguridad": [
+        "Fortalecer la coordinación entre justicia y policía.",
+        "Mejorar la gestión de información criminal."
+      ],
+      "educacion": [
+        "Elevar la calidad educativa mediante evaluación constante.",
+        "Impulsar formación ciudadana y ética."
+      ],
+      "otros": [
+        "Promover debates públicos informados sobre políticas de Estado.",
+        "Reforzar mecanismos de rendición de cuentas."
+      ]
+    },
+    "actividades": [
+      {
+        "fecha": "2024-08-02",
+        "titulo": "Panel sobre retos de la democracia peruana",
+        "descripcion": "Participación en conversatorio sobre instituciones y participación ciudadana."
+      }
+    ],
+    "noticias": [
+      {
+        "fecha": "2024-09-03",
+        "titulo": "Analistas presentan propuestas de reforma institucional",
+        "descripcion": "Se discutieron medidas para fortalecer la democracia y el Estado de derecho.",
+        "fuente": "Cobertura de medios"
+      }
+    ],
+    "ideologia": "centro-izquierda",
+    "antecedentes": {
+      "tiene_investigaciones": false,
+      "tiene_condenas": false,
+      "tiene_denuncias": false,
+      "descripcion": "Sin antecedentes negativos relevantes"
     }
   },
   {
@@ -189,6 +971,55 @@
     "datos_publicos": {
       "rol_publico": "Ex secretario general de Palacio",
       "elecciones_previas": "No ha postulado a presidencia"
+    },
+    "departamento": "Lima",
+    "provincia": "Lima",
+    "distrito": "San Miguel",
+    "experiencia_previa": [
+      "Secretario general de la Presidencia",
+      "Asesor en temas de gestión pública"
+    ],
+    "propuestas": {
+      "economia": [
+        "Simplificar procesos administrativos del Estado.",
+        "Impulsar gobierno digital para reducir trámites."
+      ],
+      "salud": [
+        "Mejorar gestión administrativa en hospitales y centros de salud."
+      ],
+      "seguridad": [
+        "Fortalecer coordinación interinstitucional para seguridad ciudadana."
+      ],
+      "educacion": [
+        "Promover modernización de la gestión educativa.",
+        "Uso de herramientas digitales en escuelas."
+      ],
+      "otros": [
+        "Impulsar políticas de transparencia y datos abiertos.",
+        "Reforzar sistemas de control interno en entidades públicas."
+      ]
+    },
+    "actividades": [
+      {
+        "fecha": "2024-07-27",
+        "titulo": "Seminario sobre modernización del Estado",
+        "descripcion": "Ponencia sobre gobierno digital y eficiencia administrativa."
+      }
+    ],
+    "noticias": [
+      {
+        "fecha": "2024-08-30",
+        "titulo": "Se presentan propuestas para simplificación administrativa",
+        "descripcion": "Se discuten medidas para hacer más eficiente la gestión pública.",
+        "fuente": "Cobertura de medios"
+      }
+    ],
+    "ideologia": "centro",
+    "antecedentes": {
+      "tiene_investigaciones": false,
+      "tiene_condenas": false,
+      "tiene_denuncias": false,
+      "descripcion": "Sin antecedentes negativos relevantes"
     }
   },
   {
@@ -201,6 +1032,54 @@
     "datos_publicos": {
       "rol_publico": "Congresista y exministro de Defensa",
       "elecciones_previas": "No ha postulado a presidencia"
+    },
+    "departamento": "Lima",
+    "provincia": "Lima",
+    "distrito": "La Molina",
+    "experiencia_previa": [
+      "Ministro de Defensa",
+      "Congresista de la República"
+    ],
+    "propuestas": {
+      "economia": [
+        "Reforzar proyectos de inversión en infraestructura estratégica."
+      ],
+      "salud": [
+        "Mejorar capacidad de respuesta del Estado en emergencias."
+      ],
+      "seguridad": [
+        "Fortalecer capacidades de las Fuerzas Armadas y Policía.",
+        "Mejorar control territorial en zonas de frontera."
+      ],
+      "educacion": [
+        "Impulsar programas de educación cívica y defensa nacional.",
+        "Promover disciplina y valores ciudadanos en la escuela."
+      ],
+      "otros": [
+        "Reforzar la coordinación entre instituciones de seguridad y defensa."
+      ]
+    },
+    "actividades": [
+      {
+        "fecha": "2024-08-08",
+        "titulo": "Foro sobre seguridad y defensa nacional",
+        "descripcion": "Participación en evento sobre desafíos de seguridad interna y externa."
+      }
+    ],
+    "noticias": [
+      {
+        "fecha": "2024-09-14",
+        "titulo": "Se discuten propuestas en materia de defensa y seguridad ciudadana",
+        "descripcion": "Especialistas comentan medidas presentadas para fortalecer la seguridad.",
+        "fuente": "Cobertura de medios"
+      }
+    ],
+    "ideologia": "centro-derecha",
+    "antecedentes": {
+      "tiene_investigaciones": false,
+      "tiene_condenas": false,
+      "tiene_denuncias": false,
+      "descripcion": "Sin antecedentes negativos relevantes"
     }
   },
   {
@@ -213,6 +1092,57 @@
     "datos_publicos": {
       "rol_publico": "Alcalde de La Molina (ex)",
       "elecciones_previas": "No ha postulado a presidencia"
+    },
+    "departamento": "Lima",
+    "provincia": "Lima",
+    "distrito": "La Molina",
+    "experiencia_previa": [
+      "Alcalde distrital",
+      "Experiencia en gestión local"
+    ],
+    "propuestas": {
+      "economia": [
+        "Apoyar a emprendedores locales y pequeñas empresas.",
+        "Impulsar proyectos de inversión en infraestructura distrital y regional."
+      ],
+      "salud": [
+        "Mejorar centros de salud distritales.",
+        "Reforzar campañas de prevención en coordinación con municipios."
+      ],
+      "seguridad": [
+        "Fortalecer serenazgo y coordinación con la Policía Nacional.",
+        "Instalar tecnología de videovigilancia en puntos críticos."
+      ],
+      "educacion": [
+        "Impulsar programas de apoyo escolar en municipios.",
+        "Mejorar infraestructura educativa local."
+      ],
+      "otros": [
+        "Promover participación vecinal en decisiones locales.",
+        "Impulsar programas de espacios públicos seguros."
+      ]
+    },
+    "actividades": [
+      {
+        "fecha": "2024-07-05",
+        "titulo": "Asamblea vecinal sobre seguridad y servicios",
+        "descripcion": "Encuentro con vecinos para escuchar propuestas y necesidades."
+      }
+    ],
+    "noticias": [
+      {
+        "fecha": "2024-08-20",
+        "titulo": "Autoridades locales discuten propuestas para mejorar gestión distrital",
+        "descripcion": "Se presentaron iniciativas en seguridad, salud y servicios básicos.",
+        "fuente": "Cobertura de medios"
+      }
+    ],
+    "ideologia": "centro",
+    "antecedentes": {
+      "tiene_investigaciones": false,
+      "tiene_condenas": false,
+      "tiene_denuncias": false,
+      "descripcion": "Sin antecedentes negativos relevantes"
     }
   },
   {
@@ -225,18 +1155,57 @@
     "datos_publicos": {
       "rol_publico": "Excongresista",
       "elecciones_previas": "No ha postulado a presidencia"
-    }
-  },
-  {
-    "id": 20,
-    "nombre": "Flor Polo",
-    "partido": "Somos Perú",
-    "cargo_postula": "Presidenta",
-    "foto": "/images/partido-candidato/flor.jpg",
-    "icono_partido": "/images/partido-candidato/somos-peru.jpg",
-    "datos_publicos": {
-      "rol_publico": "Figura pública y política emergente",
-      "elecciones_previas": "No ha postulado a presidencia"
+    },
+    "departamento": "Lima",
+    "provincia": "Lima",
+    "distrito": "Breña",
+    "experiencia_previa": [
+      "Congresista de la República",
+      "Dirigente de partido político tradicional"
+    ],
+    "propuestas": {
+      "economia": [
+        "Reactivar la inversión y el empleo desde un enfoque social.",
+        "Promover programas de apoyo a trabajadores y jubilados."
+      ],
+      "salud": [
+        "Fortalecer el sistema de salud público.",
+        "Mejorar cobertura para adultos mayores."
+      ],
+      "seguridad": [
+        "Reforzar la seguridad ciudadana en barrios populares.",
+        "Coordinar acciones interinstitucionales contra el crimen organizado."
+      ],
+      "educacion": [
+        "Apoyar educación pública gratuita.",
+        "Reducir brechas de infraestructura en colegios públicos."
+      ],
+      "otros": [
+        "Revalorar el rol de partidos políticos en la democracia.",
+        "Impulsar diálogo social con sindicatos y organizaciones."
+      ]
+    },
+    "actividades": [
+      {
+        "fecha": "2024-08-14",
+        "titulo": "Encuentro con bases partidarias en Lima",
+        "descripcion": "Reunión para revisar propuestas de cara a las elecciones 2026."
+      }
+    ],
+    "noticias": [
+      {
+        "fecha": "2024-09-06",
+        "titulo": "Se presentan propuestas vinculadas a empleo y seguridad social",
+        "descripcion": "Se discutieron medidas para proteger a trabajadores y pensionistas.",
+        "fuente": "Cobertura de medios"
+      }
+    ],
+    "ideologia": "centro-izquierda",
+    "antecedentes": {
+      "tiene_investigaciones": false,
+      "tiene_condenas": false,
+      "tiene_denuncias": false,
+      "descripcion": "Sin antecedentes negativos relevantes"
     }
   }
 ]
