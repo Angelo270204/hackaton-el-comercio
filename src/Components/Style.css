@@ -24,7 +24,7 @@
   /* Ancho del panel detalle (ajustable) */
   --detalle-width: 420px;
   /* Desplazamiento vertical del top del panel (valores negativos extienden hacia arriba) */
-  --detalle-top-shift: -160px; /* aumentado un poco para subir el panel */
+  --detalle-top-shift: -240px; /* Panel más alto para mejor visibilidad de la foto del candidato */
 }
 
 /* ========================================
@@ -45,10 +45,13 @@
   position: relative;
   background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0));
   border-radius: 14px;
+  min-height: calc(100vh - var(--navbar-altura) - 40px);
 }
 
 .candidatos-page__layout .candidatos-page__lista {
   transition: margin-right 0.25s ease;
+  overflow-y: auto;
+  max-height: calc(100vh - var(--navbar-altura) - 40px);
 }
 
 .candidatos-page__layout--con-detalle .candidatos-page__lista {
@@ -60,6 +63,32 @@
 
 .candidatos-page__lista {
   min-width: 0;
+  position: relative;
+  /* Asegurar que el scroll funcione incluso cuando el detalle está abierto */
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* Estilos de scrollbar personalizados */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 86, 179, 0.3) rgba(0, 0, 0, 0.05);
+}
+
+/* Scrollbar webkit para la columna de lista */
+.candidatos-page__lista::-webkit-scrollbar {
+  width: 8px;
+}
+
+.candidatos-page__lista::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+.candidatos-page__lista::-webkit-scrollbar-thumb {
+  background: rgba(0, 86, 179, 0.3);
+  border-radius: 4px;
+}
+
+.candidatos-page__lista::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 86, 179, 0.5);
 }
 
 .candidatos-page__detalle {
@@ -74,19 +103,41 @@
   overflow-x: hidden;
   overscroll-behavior: contain;
   scrollbar-width: thin;
-  scrollbar-color: rgba(0, 86, 179, 0.3) rgba(0, 0, 0, 0.03);
-  z-index: 999; /* por debajo del navbar (1000) */
+  scrollbar-color: rgba(0, 86, 179, 0.4) rgba(0, 0, 0, 0.05);
+  /* z-index aumentado para que tape la cuenta regresiva si es necesario */
+  z-index: 1050;
   opacity: 0;
   visibility: hidden;
   /* Aparecer prácticamente pegado al borde derecho */
   transform: translateX(0);
   transition: transform 180ms cubic-bezier(.22,.9,.33,1), opacity 160ms ease, visibility 140ms ease;
-  box-shadow: -8px 0 40px rgba(0, 0, 0, 0.09);
-  background: rgba(255,255,255,0.96);
-  border-left: 1px solid rgba(0,0,0,0.04);
+  box-shadow: -8px 0 40px rgba(0, 0, 0, 0.12);
+  background: rgba(255,255,255,0.98);
+  border-left: 1px solid rgba(0,0,0,0.06);
   border-top-left-radius: 18px;
   border-bottom-left-radius: 18px;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(8px);
+  /* Asegurar que el scroll sea independiente de la lista */
+  pointer-events: auto;
+}
+
+/* Scrollbar webkit para el panel de detalle */
+.candidatos-page__detalle::-webkit-scrollbar {
+  width: 8px;
+}
+
+.candidatos-page__detalle::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+.candidatos-page__detalle::-webkit-scrollbar-thumb {
+  background: rgba(0, 86, 179, 0.4);
+  border-radius: 4px;
+}
+
+.candidatos-page__detalle::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 86, 179, 0.6);
 }
 
 .candidatos-page__detalle--visible {
@@ -157,9 +208,35 @@
 
 .lista-candidatos__controles {
   display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.lista-candidatos__filtros-principales {
+  display: flex;
   gap: 10px;
   align-items: center;
   flex-wrap: wrap;
+}
+
+.lista-candidatos__filtros-avanzados {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 12px;
+  background: rgba(0, 86, 179, 0.03);
+  border-radius: 10px;
+  border: 1px solid rgba(0, 86, 179, 0.1);
+}
+
+.lista-candidatos__filtros-titulo {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-texto-secundario);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-right: 8px;
 }
 
 .lista-candidatos__resumen {
@@ -267,6 +344,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  flex: 1;
 }
 
 /* Filtros por partido */
@@ -319,7 +397,7 @@
   background: var(--glass-bg);
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
-  border: 1px solid rgba(255,255,255,0.55);
+  border: 3px solid rgba(255,255,255,0.55);
   border-radius: 16px;
   cursor: pointer;
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
@@ -331,6 +409,24 @@
   position: relative;
   overflow: hidden;
   box-shadow: var(--sombra-suave);
+}
+
+/* VERDE: Sin antecedentes negativos - CARD */
+.tarjeta-candidato--limpio {
+  border-color: #2ecc71;
+  box-shadow: 0 0 0 2px rgba(46, 204, 113, 0.3), 0 0 20px rgba(46, 204, 113, 0.4), var(--sombra-suave);
+}
+
+/* NARANJA: Investigaciones o denuncias en curso - CARD */
+.tarjeta-candidato--observado {
+  border-color: #ff9800;
+  box-shadow: 0 0 0 2px rgba(255, 152, 0, 0.3), 0 0 20px rgba(255, 152, 0, 0.4), var(--sombra-suave);
+}
+
+/* ROJO: Condenas o casos graves - CARD */
+.tarjeta-candidato--cuestionado {
+  border-color: #ff4b5c;
+  box-shadow: 0 0 0 2px rgba(255, 75, 92, 0.3), 0 0 20px rgba(255, 75, 92, 0.4), var(--sombra-suave);
 }
 
 .tarjeta-candidato:hover {
@@ -369,20 +465,7 @@
   border-radius: 50%;
 }
 
-.tarjeta-candidato__imagen-contenedor--limpio {
-  border-color: #2ecc71;
-  box-shadow: 0 0 0 3px rgba(255,255,255,0.95), 0 0 22px rgba(46, 204, 113, 0.8);
-}
-
-.tarjeta-candidato__imagen-contenedor--cuestionado {
-  border-color: #ff4b5c;
-  box-shadow: 0 0 0 3px rgba(255,255,255,0.95), 0 0 22px rgba(255, 75, 92, 0.8);
-}
-
-.tarjeta-candidato__imagen-contenedor--desconocido {
-  border-color: #bdbdbd;
-  box-shadow: 0 0 0 2px rgba(255,255,255,0.85), 0 3px 10px rgba(0,0,0,0.16);
-}
+/* Clases de imagen ya no necesitan estilos de antecedentes - se mueven a la card */
 
 .tarjeta-candidato__info {
   width: 100%;
@@ -517,7 +600,9 @@
 .detalle-precandidatos__contenido {
   display: flex;
   flex-direction: column;
-  gap: 10px; /* contenido más compacto */
+  gap: 24px;
+  padding: 20px;
+  padding-bottom: 40px;
 }
 
 /* Botón cerrar del panel de detalle */
@@ -552,15 +637,17 @@
 /* Perfil del candidato */
 .detalle-precandidatos__perfil {
   display: flex;
-  gap: 12px;
   align-items: center;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--color-neutro);
+  gap: 24px;
+  padding-top: 8px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--color-neutro);
+  margin-bottom: 4px;
 }
 
 .detalle-precandidatos__avatar {
-  width: 64px;
-  height: 64px;
+  width: 96px;
+  height: 96px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid var(--color-blanco);
@@ -617,6 +704,10 @@
   background-color: #28a745;
 }
 
+.detalle-precandidatos__antecedentes-indicador--naranja {
+  background-color: #ff9800;
+}
+
 .detalle-precandidatos__antecedentes-indicador--rojo {
   background-color: #dc3545;
 }
@@ -670,6 +761,7 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  margin-top: 8px;
 }
 
 .detalle-precandidatos__propuestas-titulo {
@@ -1289,4 +1381,17 @@
   .comparador-candidatos__propuestas-lista {
     padding-left: 16px;
   }
+}
+
+/* Badge de ideología política */
+.tarjeta-candidato__ideologia {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 12px;
+  margin-top: 4px;
+  background: rgba(108, 117, 125, 0.1);
+  color: #495057;
+  border: 1px solid rgba(108, 117, 125, 0.2);
 }

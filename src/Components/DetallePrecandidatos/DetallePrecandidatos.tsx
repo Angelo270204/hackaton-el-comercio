@@ -32,21 +32,57 @@ type Pestaña = 'economia' | 'salud' | 'seguridad' | 'educacion' | 'otros'
 export function DetallePrecandidatos({ candidato, onCerrar }: PropiedadesDetallePrecandidatos) {
   const [pestana, setPestana] = useState<Pestaña>('economia')
 
-  const obtenerEstadoAntecedentes = (nombre: string): 'limpio' | 'cuestionado' | 'desconocido' => {
-    const n = nombre.toLowerCase()
+  /**
+   * Sistema mejorado de evaluación de antecedentes con 3 niveles:
+   * - 'limpio' (verde): Sin investigaciones, condenas ni denuncias relevantes
+   * - 'observado' (amarillo/naranja): Tiene investigaciones en curso o denuncias sin condena
+   * - 'cuestionado' (rojo): Tiene condenas, múltiples investigaciones o casos graves
+   */
+  const obtenerEstadoAntecedentes = (c: Candidato): 'limpio' | 'observado' | 'cuestionado' => {
+    // Si el candidato tiene información de antecedentes estructurada
+    if (c.antecedentes) {
+      const { tiene_condenas, tiene_investigaciones, tiene_denuncias } = c.antecedentes
+      
+      // ROJO: Tiene condenas confirmadas
+      if (tiene_condenas) {
+        return 'cuestionado'
+      }
+      
+      // NARANJA: Tiene investigaciones en curso o denuncias
+      if (tiene_investigaciones || tiene_denuncias) {
+        return 'observado'
+      }
+      
+      // VERDE: Sin antecedentes relevantes
+      return 'limpio'
+    }
+    
+    // Fallback: evaluación por nombre (casos conocidos públicamente)
+    const nombre = c.nombre.toLowerCase()
+    
+    // ROJO: Candidatos con condenas o casos muy graves
     if (
-      n.includes('keiko fujimori') ||
-      n.includes('rafael lópez aliaga') ||
-      n.includes('rafael lopez aliaga') ||
-      n.includes('antauro humala') ||
-      n.includes('vladimir cerrón') ||
-      n.includes('vladimir cerron') ||
-      n.includes('césar acuña') ||
-      n.includes('cesar acuña') ||
-      n.includes('cesar acuna')
+      nombre.includes('keiko fujimori') ||
+      nombre.includes('antauro humala') ||
+      nombre.includes('vladimir cerrón') ||
+      nombre.includes('vladimir cerron')
     ) {
       return 'cuestionado'
     }
+    
+    // NARANJA: Candidatos con investigaciones o denuncias
+    if (
+      nombre.includes('rafael lópez aliaga') ||
+      nombre.includes('rafael lopez aliaga') ||
+      nombre.includes('césar acuña') ||
+      nombre.includes('cesar acuña') ||
+      nombre.includes('cesar acuna') ||
+      nombre.includes('george forsyth')
+    ) {
+      return 'observado'
+    }
+    
+    // VERDE: Sin información negativa conocida
     return 'limpio'
   }
 
@@ -126,13 +162,13 @@ export function DetallePrecandidatos({ candidato, onCerrar }: PropiedadesDetalle
           </p>
           <div className="detalle-precandidatos__antecedentes">
             {(() => {
-              const estado = obtenerEstadoAntecedentes(candidato.nombre)
+              const estado = obtenerEstadoAntecedentes(candidato)
               const etiqueta =
                 estado === 'cuestionado'
-                  ? 'Antecedentes: revisar noticias y coberturas periodísticas'
-                  : estado === 'limpio'
-                  ? 'Antecedentes: sin registros relevantes en noticias'
-                  : 'Antecedentes: sin información suficiente'
+                  ? 'Antecedentes: Tiene condenas o casos graves - Revisar noticias'
+                  : estado === 'observado'
+                  ? 'Antecedentes: Investigaciones o denuncias en curso'
+                  : 'Antecedentes: Sin registros negativos relevantes'
               return (
                 <>
                   <span
@@ -140,14 +176,14 @@ export function DetallePrecandidatos({ candidato, onCerrar }: PropiedadesDetalle
                       'detalle-precandidatos__antecedentes-indicador ' +
                       (estado === 'cuestionado'
                         ? 'detalle-precandidatos__antecedentes-indicador--rojo'
-                        : estado === 'limpio'
-                        ? 'detalle-precandidatos__antecedentes-indicador--verde'
-                        : 'detalle-precandidatos__antecedentes-indicador--gris')
+                        : estado === 'observado'
+                        ? 'detalle-precandidatos__antecedentes-indicador--naranja'
+                        : 'detalle-precandidatos__antecedentes-indicador--verde')
                     }
                     aria-hidden="true"
                   />
                   <span className="detalle-precandidatos__antecedentes-texto">{etiqueta}</span>
-                  {estado === 'cuestionado' && (
+                  {(estado === 'cuestionado' || estado === 'observado') && (
                     <button
                       type="button"
                       className="detalle-precandidatos__antecedentes-boton"

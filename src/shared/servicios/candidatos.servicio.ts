@@ -12,9 +12,18 @@ export interface Candidato {
   partido: string
   cargo_postula: string
   edad?: number
+  // Ideología política del candidato
+  ideologia?: 'izquierda' | 'centro-izquierda' | 'centro' | 'centro-derecha' | 'derecha'
   // Estado ilustrativo de antecedentes, basado en cobertura mediática (no oficial)
   antecedentes_estado?: 'limpio' | 'cuestionado' | 'desconocido'
   antecedentes_detalle?: string
+  // Información de antecedentes detallada
+  antecedentes?: {
+    tiene_investigaciones?: boolean
+    tiene_condenas?: boolean
+    tiene_denuncias?: boolean
+    descripcion?: string
+  }
   datos_publicos?: DatosPublicos
   imagen?: string
   logo_partido?: string
