@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react'
 import type { Candidato } from '../../shared/servicios/candidatos.servicio'
+import { useLanguage } from '../../contexts/LanguageContext'
 
 type IdeologiaFilter = 'todos' | 'izquierda' | 'centro-izquierda' | 'centro' | 'centro-derecha' | 'derecha'
 
@@ -22,6 +23,7 @@ export function ListaCandidatos({
   candidatosComparacion = [],
   alToggleComparacion,
 }: PropiedadesListaCandidatos) {
+  const { t } = useLanguage();
   const [textoBusqueda, setTextoBusqueda] = useState('')
   // Filtros de ubicación
   const [departamento, setDepartamento] = useState<string>('Todos')
@@ -202,9 +204,9 @@ export function ListaCandidatos({
       {/* Encabezado con título y controles */}
       <div className="lista-candidatos__encabezado">
         <div className="lista-candidatos__titulo-seccion">
-          <h1 className="lista-candidatos__titulo">Conoce a los Precandidatos 2026</h1>
+          <h1 className="lista-candidatos__titulo">{t('candidates.title')}</h1>
           <p className="lista-candidatos__subtitulo">
-            Explora los perfiles y propuestas de cada precandidato a la presidencia.
+            {t('candidates.subtitle')}
           </p>
         </div>
 
@@ -218,7 +220,7 @@ export function ListaCandidatos({
               </svg>
               <input
                 type="text"
-                placeholder="Buscar por nombre o partido..."
+                placeholder={t('candidates.filters.search')}
                 value={textoBusqueda}
                 onChange={(e) => setTextoBusqueda(e.target.value)}
                 className="lista-candidatos__input-busqueda"

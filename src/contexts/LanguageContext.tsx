@@ -5,7 +5,7 @@ import type { Language } from './AccessibilityContext';
 import { translations } from '../utils/traducciones';
 
 interface LanguageContextType {
-  t: (key: string) => string;
+  t: (key: string) => any;
   currentLanguage: Language;
 }
 
@@ -14,7 +14,7 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const { language } = useAccessibility();
 
-  const t = (key: string): string => {
+  const t = (key: string): any => {
     const keys = key.split('.');
     let value: any = translations[language];
 
@@ -26,7 +26,7 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
       }
     }
 
-    return typeof value === 'string' ? value : key;
+    return value !== undefined ? value : key;
   };
 
   return (

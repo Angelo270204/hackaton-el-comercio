@@ -4,6 +4,7 @@ import { DetallePrecandidatos } from '../Components/DetallePrecandidatos'
 import { ComparadorCandidatos } from '../Components/ComparadorCandidatos/ComparadorCandidatos'
 import { DepartamentoFilter, type DepartamentoInfo } from '../Components/DepartamentoFilter'
 import { obtenerCandidatos, type Candidato } from '../shared/servicios/candidatos.servicio'
+import { useLanguage } from '../contexts/LanguageContext'
 import '../Components/Style.css'
 
 /**
@@ -11,6 +12,7 @@ import '../Components/Style.css'
  * Muestra la lista de candidatos a la izquierda y el detalle del seleccionado a la derecha
  */
 export function CandidatosPage() {
+  const { t } = useLanguage();
   const [candidatos, setCandidatos] = useState<Candidato[]>([])
   const [candidatoSeleccionado, setCandidatoSeleccionado] = useState<Candidato | null>(null)
   const [cargando, setCargando] = useState(true)
@@ -33,7 +35,7 @@ export function CandidatosPage() {
         setError(null)
       } catch (err) {
         console.error('Error al cargar candidatos:', err)
-        setError('No se pudieron cargar los candidatos. Por favor, intenta de nuevo.')
+        setError(t('candidates.noResults'))
       } finally {
         setCargando(false)
       }
@@ -190,7 +192,7 @@ export function CandidatosPage() {
     return (
       <div className="candidatos-page">
         <div className="candidatos-page__cargando">
-          <p>Cargando candidatos...</p>
+          <p>{t('candidates.loading')}...</p>
         </div>
       </div>
     )
@@ -233,7 +235,7 @@ export function CandidatosPage() {
               margin: '2rem',
             }}>
               <h3 style={{ color: '#856404', marginBottom: '0.75rem', fontSize: '1.25rem' }}>
-                No se encontraron candidatos
+                {t('candidates.noResults')}
               </h3>
               <p style={{ color: '#856404', margin: 0, fontSize: '1rem' }}>
                 No hay candidatos registrados para <strong>{departamentoSeleccionado}</strong>
