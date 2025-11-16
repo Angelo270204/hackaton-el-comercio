@@ -54,20 +54,8 @@ export function CandidatosPage() {
     }
   }, [candidatoSeleccionado])
 
-  // Bloquear scroll del fondo cuando el panel de detalle está abierto
-  useEffect(() => {
-    const originalOverflow = document.body.style.overflow
-
-    if (candidatoSeleccionado) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = originalOverflow || ''
-    }
-
-    return () => {
-      document.body.style.overflow = originalOverflow
-    }
-  }, [candidatoSeleccionado])
+  // NO bloqueamos el scroll del body para permitir scroll independiente
+  // en la lista de candidatos y en el panel de detalle al mismo tiempo
 
   // Manejar selección para comparar (hasta 3 candidatos)
   // Manejar selección para comparar (hasta 3 candidatos)
