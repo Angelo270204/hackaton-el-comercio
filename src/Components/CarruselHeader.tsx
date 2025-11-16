@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import ItemCarrusel from "./ItemCarrusel";
+import { useLanguage } from "../contexts/LanguageContext";
 import "../styles/CarruselHeader.css";
 
 // Definición del tipo de slide
@@ -15,43 +16,52 @@ interface Slide {
 }
 
 const CarruselHeader: React.FC = () => {
-  const [slides, setSlides] = useState<Slide[]>([]);
+  const { t } = useLanguage();
+  const slides: Slide[] = [
+    {
+      titulo: t('home.carousel.slide1.title'),
+      subtitulo: t('home.carousel.slide1.subtitle'),
+      badge: t('home.carousel.slide1.badge'),
+      botonCandidatos: t('home.carousel.slide1.buttonCandidates'),
+      botonCalendario: t('home.carousel.slide1.buttonCalendar'),
+      imagenFondo: "/images/banner/banner-hackaton.jpeg"
+    },
+    {
+      titulo: t('home.carousel.slide2.title'),
+      subtitulo: t('home.carousel.slide2.subtitle'),
+      badge: t('home.carousel.slide2.badge'),
+      botonCandidatos: t('home.carousel.slide2.buttonCandidates'),
+      botonCalendario: t('home.carousel.slide2.buttonCalendar'),
+      imagenFondo: "/images/banner/banner-hackaton.png"
+    }
+  ];
+
   const [actual, setActual] = useState<number>(0);
   const [autoSlide, setAutoSlide] = useState(true);
-  // Usar ReturnType<typeof setInterval> para compatibilidad universal
   const intervaloRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  // Cargar los datos del carrusel desde el JSON
-  useEffect(() => {
-    fetch("/data/slidersHome.json")
-      .then((res) => res.json())
-      .then((data) => setSlides(data));
-  }, []);
 
   // Auto-slide cada 3 segundos
   useEffect(() => {
-    if (autoSlide && slides.length > 1) {
+    if (autoSlide) {
       intervaloRef.current = setInterval(() => {
-        setActual((prev) => (prev + 1) % slides.length);
+        setActual((prev) => (prev + 1) % 2);
       }, 3000);
-      // El return debe ser una función que solo haga clearInterval
       return () => {
         if (intervaloRef.current) clearInterval(intervaloRef.current);
       };
     }
-    // Si no hay autoSlide, no retorna nada
     return;
-  }, [autoSlide, slides]);
+  }, [autoSlide]);
 
   // Ir al slide anterior
   const anterior = () => {
-    setActual((prev) => (prev - 1 + slides.length) % slides.length);
+    setActual((prev) => (prev - 1 + 2) % 2);
     setAutoSlide(false);
   };
 
   // Ir al slide siguiente
   const siguiente = () => {
-    setActual((prev) => (prev + 1) % slides.length);
+    setActual((prev) => (prev + 1) % 2);
     setAutoSlide(false);
   };
 
@@ -60,8 +70,6 @@ const CarruselHeader: React.FC = () => {
     setActual(idx);
     setAutoSlide(false);
   };
-
-  if (!slides.length) return null;
 
   return (
     <div className="carrusel-header">

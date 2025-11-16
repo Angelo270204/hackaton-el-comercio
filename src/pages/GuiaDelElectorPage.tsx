@@ -14,143 +14,145 @@ import {
   Shield,
   Lightbulb
 } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 import '../styles/guiaElector.css';
 
 type TabType = 'general' | 'antesVotar' | 'procesoVotacion' | 'multas' | 'prohibiciones' | 'recomendaciones';
 
 export const GuiaDelElectorPage: React.FC = () => {
+  const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState<TabType>('general');
 
   const tabs = [
-    { id: 'general' as TabType, label: 'Información General', icon: <BookOpen size={20} /> },
-    { id: 'antesVotar' as TabType, label: 'Antes de Votar', icon: <MapPin size={20} /> },
-    { id: 'procesoVotacion' as TabType, label: 'Proceso de Votación', icon: <Vote size={20} /> },
-    { id: 'multas' as TabType, label: 'Multas', icon: <DollarSign size={20} /> },
-    { id: 'prohibiciones' as TabType, label: 'Prohibiciones', icon: <XCircle size={20} /> },
-    { id: 'recomendaciones' as TabType, label: 'Recomendaciones', icon: <Lightbulb size={20} /> }
+    { id: 'general' as TabType, label: t('guideElector.tabs.general'), icon: <BookOpen size={20} /> },
+    { id: 'antesVotar' as TabType, label: t('guideElector.tabs.beforeVoting'), icon: <MapPin size={20} /> },
+    { id: 'procesoVotacion' as TabType, label: t('guideElector.tabs.votingProcess'), icon: <Vote size={20} /> },
+    { id: 'multas' as TabType, label: t('guideElector.tabs.fines'), icon: <DollarSign size={20} /> },
+    { id: 'prohibiciones' as TabType, label: t('guideElector.tabs.prohibitions'), icon: <XCircle size={20} /> },
+    { id: 'recomendaciones' as TabType, label: t('guideElector.tabs.recommendations'), icon: <Lightbulb size={20} /> }
   ];
 
   const cargosEleccion = [
     {
       icon: <Users size={24} />,
-      title: 'Presidente y Vicepresidentes',
-      description: 'Elegimos al Presidente de la República y sus dos vicepresidentes.'
+      title: t('guideElector.positions.president'),
+      description: t('guideElector.positions.presidentDesc')
     },
     {
       icon: <Users size={24} />,
-      title: 'Cámara de Diputados',
-      description: 'Representantes por cada departamento del país.'
+      title: t('guideElector.positions.deputies'),
+      description: t('guideElector.positions.deputiesDesc')
     },
     {
       icon: <Users size={24} />,
-      title: 'Cámara de Senadores',
-      description: 'Senadores nacionales y regionales.'
+      title: t('guideElector.positions.senators'),
+      description: t('guideElector.positions.senatorsDesc')
     },
     {
       icon: <Users size={24} />,
-      title: 'Parlamento Andino',
-      description: 'Representantes peruanos ante el organismo supranacional andino.'
+      title: t('guideElector.positions.andean'),
+      description: t('guideElector.positions.andeanDesc')
     }
   ];
 
   const requisitosVotar = [
-    'Ser mayor de 18 años',
-    'Estar inscrito en el padrón electoral',
-    'Pueden votar peruanos en Perú y en el extranjero',
-    'Voto obligatorio hasta los 70 años',
-    'Voto opcional después de los 70 años'
+    t('guideElector.requirements.req1'),
+    t('guideElector.requirements.req2'),
+    t('guideElector.requirements.req3'),
+    t('guideElector.requirements.req4'),
+    t('guideElector.requirements.req5')
   ];
 
   const documentosValidos = [
     {
       icon: <CheckCircle size={24} />,
-      title: 'DNI Azul',
-      description: 'Documento Nacional de Identidad tradicional',
+      title: t('guideElector.documents.blueDNI'),
+      description: t('guideElector.documents.blueDNIDesc'),
       valid: true
     },
     {
       icon: <CheckCircle size={24} />,
-      title: 'DNI Electrónico',
-      description: 'Versión moderna del DNI con chip',
+      title: t('guideElector.documents.electronicDNI'),
+      description: t('guideElector.documents.electronicDNIDesc'),
       valid: true
     },
     {
       icon: <CheckCircle size={24} />,
-      title: 'DNI Amarillo',
-      description: 'Para extranjeros residentes',
+      title: t('guideElector.documents.yellowDNI'),
+      description: t('guideElector.documents.yellowDNIDesc'),
       valid: true
     },
     {
       icon: <XCircle size={24} />,
-      title: 'NO válidos',
-      description: 'Pasaporte ni Licencia de conducir',
+      title: t('guideElector.documents.notValid'),
+      description: t('guideElector.documents.notValidDesc'),
       valid: false
     }
   ];
 
   const procesoLocal = [
-    { paso: '1', texto: 'Ubicar tu mesa de votación' },
-    { paso: '2', texto: 'Hacer cola correspondiente' },
-    { paso: '3', texto: 'Presentar tu DNI al miembro de mesa' },
-    { paso: '4', texto: 'Firmar el padrón electoral' },
-    { paso: '5', texto: 'Recibir la cédula de votación' },
-    { paso: '6', texto: 'Ingresar a la cabina secreta' },
-    { paso: '7', texto: 'Marcar tu voto' },
-    { paso: '8', texto: 'Depositar cédula en el ánfora' },
-    { paso: '9', texto: 'Recibir tinta indeleble en el dedo' },
-    { paso: '10', texto: 'Recibir constancia de votación (si aplica)' }
+    { paso: '1', texto: t('guideElector.votingProcess.step1') },
+    { paso: '2', texto: t('guideElector.votingProcess.step2') },
+    { paso: '3', texto: t('guideElector.votingProcess.step3') },
+    { paso: '4', texto: t('guideElector.votingProcess.step4') },
+    { paso: '5', texto: t('guideElector.votingProcess.step5') },
+    { paso: '6', texto: t('guideElector.votingProcess.step6') },
+    { paso: '7', texto: t('guideElector.votingProcess.step7') },
+    { paso: '8', texto: t('guideElector.votingProcess.step8') },
+    { paso: '9', texto: t('guideElector.votingProcess.step9') },
+    { paso: '10', texto: t('guideElector.votingProcess.step10') }
   ];
 
   const multasNoVotar = [
-    { distrito: 'Pobre extremo', monto: 'S/ 23.10', icon: <DollarSign size={20} /> },
-    { distrito: 'Pobre no extremo', monto: 'S/ 46.20', icon: <DollarSign size={20} /> },
-    { distrito: 'No pobre', monto: 'S/ 92.40', icon: <DollarSign size={20} /> }
+    { distrito: t('guideElector.fines.extremePoor'), monto: 'S/ 23.10', icon: <DollarSign size={20} /> },
+    { distrito: t('guideElector.fines.nonExtremePoor'), monto: 'S/ 46.20', icon: <DollarSign size={20} /> },
+    { distrito: t('guideElector.fines.notPoor'), monto: 'S/ 92.40', icon: <DollarSign size={20} /> }
   ];
 
   const multasMiembro = [
-    { razon: 'No asistir como miembro de mesa', monto: 'S/ 230.00' },
-    { razon: 'Retirarse antes de culminar', monto: 'S/ 230.00' }
+    { razon: t('guideElector.fines.notAttend'), monto: 'S/ 230.00' },
+    { razon: t('guideElector.fines.leaveEarly'), monto: 'S/ 230.00' }
   ];
 
   const prohibiciones = [
-    'Grabar o tomar fotos dentro de la cabina de votación',
-    'Mostrar tu voto a otras personas',
-    'Hacer propaganda electoral en el local',
-    'Suplantar identidad de otra persona',
-    'Ingresar al local con símbolos partidarios',
-    'Alterar el orden en el local de votación'
+    t('guideElector.prohibitions.proh1'),
+    t('guideElector.prohibitions.proh2'),
+    t('guideElector.prohibitions.proh3'),
+    t('guideElector.prohibitions.proh4'),
+    t('guideElector.prohibitions.proh5'),
+    t('guideElector.prohibitions.proh6')
   ];
 
   const recomendaciones = [
     {
       icon: <CheckCircle size={24} />,
-      title: 'Llegar temprano',
-      description: 'Evita las aglomeraciones y tendrás más tiempo.'
+      title: t('guideElector.recommendations.arriveEarly'),
+      description: t('guideElector.recommendations.arriveEarlyDesc')
     },
     {
       icon: <FileText size={24} />,
-      title: 'Revisa tu DNI',
-      description: 'Verifica días antes que tu documento esté en buen estado.'
+      title: t('guideElector.recommendations.checkDNI'),
+      description: t('guideElector.recommendations.checkDNIDesc')
     },
     {
       icon: <XCircle size={24} />,
-      title: 'No lleves propaganda',
-      description: 'Está prohibido ingresar con símbolos o publicidad política.'
+      title: t('guideElector.recommendations.noPropaganda'),
+      description: t('guideElector.recommendations.noPropagandaDesc')
     },
     {
       icon: <Users size={24} />,
-      title: 'Pide ayuda si tienes dudas',
-      description: 'Los miembros de mesa están para orientarte.'
+      title: t('guideElector.recommendations.askHelp'),
+      description: t('guideElector.recommendations.askHelpDesc')
     },
     {
       icon: <Shield size={24} />,
-      title: 'Prioridad especial',
-      description: 'Embarazadas, adultos mayores y personas con discapacidad tienen prioridad.'
+      title: t('guideElector.recommendations.priority'),
+      description: t('guideElector.recommendations.priorityDesc')
     },
     {
       icon: <MapPin size={24} />,
-      title: 'Consulta tu local con anticipación',
-      description: 'Ubica tu local de votación días antes en www.onpe.gob.pe'
+      title: t('guideElector.recommendations.checkLocation'),
+      description: t('guideElector.recommendations.checkLocationDesc')
     }
   ];
 
@@ -162,14 +164,13 @@ export const GuiaDelElectorPage: React.FC = () => {
           <div className="guia-elector__hero-content">
             <div className="guia-elector__hero-badge">
               <Vote size={20} />
-              <span>Guía Oficial</span>
+              <span>{t('guideElector.hero.badge')}</span>
             </div>
             <h1 className="guia-elector__hero-title">
-              Guía del <span className="guia-elector__hero-highlight">Elector</span>
+              {t('guideElector.hero.title')} <span className="guia-elector__hero-highlight">{t('guideElector.hero.titleHighlight')}</span>
             </h1>
             <p className="guia-elector__hero-description">
-              Todo lo que necesitas saber para ejercer tu derecho al voto en las 
-              Elecciones Generales Perú 2026. Información oficial y resumida.
+              {t('guideElector.hero.description')}
             </p>
           </div>
         </section>
@@ -202,10 +203,10 @@ export const GuiaDelElectorPage: React.FC = () => {
                 <div className="guia-elector__section-header">
                   <h2 className="guia-elector__section-title">
                     <PlayCircle size={32} className="inline-icon" />
-                    Video Instructivo ONPE
+                    {t('guideElector.general.videoTitle')}
                   </h2>
                   <p className="guia-elector__section-subtitle">
-                    Aprende cómo separar tu cédula de votación correctamente
+                    {t('guideElector.general.videoSubtitle')}
                   </p>
                 </div>
                 <div className="guia-elector__video-container">
@@ -223,11 +224,9 @@ export const GuiaDelElectorPage: React.FC = () => {
                       <AlertCircle size={24} />
                     </div>
                     <div>
-                      <h3 className="guia-elector__info-box-title">Importante sobre las cédulas</h3>
+                      <h3 className="guia-elector__info-box-title">{t('guideElector.general.importantBallots')}</h3>
                       <p className="guia-elector__info-box-text">
-                        La cédula de votación se separa en secciones. Los <strong>miembros de la Policía 
-                        Nacional y las Fuerzas Armadas</strong> recibirán una cédula especial diferente 
-                        a la del resto de ciudadanos.
+                        {t('guideElector.general.importantBallotsText')}
                       </p>
                     </div>
                   </div>
@@ -237,9 +236,9 @@ export const GuiaDelElectorPage: React.FC = () => {
               {/* ¿Qué se elige? */}
               <section className="guia-elector__section">
                 <div className="guia-elector__section-header">
-                  <h2 className="guia-elector__section-title">¿Qué se elige en 2026?</h2>
+                  <h2 className="guia-elector__section-title">{t('guideElector.general.whatElected')}</h2>
                   <p className="guia-elector__section-subtitle">
-                    Conoce los cargos por los que votarás
+                    {t('guideElector.general.whatElectedSubtitle')}
                   </p>
                 </div>
                 <div className="guia-elector__cards-grid">
@@ -258,9 +257,9 @@ export const GuiaDelElectorPage: React.FC = () => {
               {/* Requisitos para votar */}
               <section className="guia-elector__section">
                 <div className="guia-elector__section-header">
-                  <h2 className="guia-elector__section-title">Requisitos para Votar</h2>
+                  <h2 className="guia-elector__section-title">{t('guideElector.general.requirementsTitle')}</h2>
                   <p className="guia-elector__section-subtitle">
-                    Verifica si estás apto para participar
+                    {t('guideElector.general.requirementsSubtitle')}
                   </p>
                 </div>
                 <div className="guia-elector__checklist">
@@ -276,9 +275,9 @@ export const GuiaDelElectorPage: React.FC = () => {
               {/* Documentos válidos */}
               <section className="guia-elector__section">
                 <div className="guia-elector__section-header">
-                  <h2 className="guia-elector__section-title">Documentos Válidos</h2>
+                  <h2 className="guia-elector__section-title">{t('guideElector.general.documentsTitle')}</h2>
                   <p className="guia-elector__section-subtitle">
-                    Solo estos documentos son aceptados
+                    {t('guideElector.general.documentsSubtitle')}
                   </p>
                 </div>
                 <div className="guia-elector__documents-grid">
@@ -312,10 +311,10 @@ export const GuiaDelElectorPage: React.FC = () => {
                 <div className="guia-elector__section-header">
                   <h2 className="guia-elector__section-title">
                     <MapPin size={32} className="inline-icon" />
-                    ¿Dónde Votar?
+                    {t('guideElector.beforeVoting.whereVoteTitle')}
                   </h2>
                   <p className="guia-elector__section-subtitle">
-                    Consulta tu local de votación con anticipación
+                    {t('guideElector.beforeVoting.whereVoteSubtitle')}
                   </p>
                 </div>
                 
@@ -325,14 +324,14 @@ export const GuiaDelElectorPage: React.FC = () => {
                       <MapPin size={24} />
                     </div>
                     <div>
-                      <h3 className="guia-elector__info-box-title">Canales de consulta</h3>
+                      <h3 className="guia-elector__info-box-title">{t('guideElector.beforeVoting.channelsTitle')}</h3>
                       <p className="guia-elector__info-box-text">
-                        Puedes consultar tu local de votación en:
+                        {t('guideElector.beforeVoting.channelsText')}
                       </p>
                       <ul className="guia-elector__list">
-                        <li><strong>Página web:</strong> www.onpe.gob.pe</li>
-                        <li><strong>App móvil:</strong> ONPE (disponible en Play Store y App Store)</li>
-                        <li><strong>WhatsApp:</strong> Servicio de consulta ONPE</li>
+                        <li><strong>{t('guideElector.beforeVoting.website')}</strong> www.onpe.gob.pe</li>
+                        <li><strong>{t('guideElector.beforeVoting.mobileApp')}</strong> ONPE (disponible en Play Store y App Store)</li>
+                        <li><strong>{t('guideElector.beforeVoting.whatsapp')}</strong> {t('guideElector.beforeVoting.whatsappText')}</li>
                       </ul>
                     </div>
                   </div>
@@ -344,11 +343,9 @@ export const GuiaDelElectorPage: React.FC = () => {
                       <AlertCircle size={24} />
                     </div>
                     <div>
-                      <h3 className="guia-elector__info-box-title">Información importante</h3>
+                      <h3 className="guia-elector__info-box-title">{t('guideElector.beforeVoting.importantInfo')}</h3>
                       <p className="guia-elector__info-box-text">
-                        Al consultar tu local encontrarás: <strong>nombre del local, número de mesa, 
-                        número de orden y pabellón</strong>. Anota esta información o toma captura 
-                        de pantalla.
+                        {t('guideElector.beforeVoting.importantInfoText')}
                       </p>
                     </div>
                   </div>
@@ -360,10 +357,10 @@ export const GuiaDelElectorPage: React.FC = () => {
                 <div className="guia-elector__section-header">
                   <h2 className="guia-elector__section-title">
                     <Briefcase size={32} className="inline-icon" />
-                    ¿Qué Llevar el Día de la Votación?
+                    {t('guideElector.beforeVoting.whatBringTitle')}
                   </h2>
                   <p className="guia-elector__section-subtitle">
-                    Prepara estos elementos antes de salir
+                    {t('guideElector.beforeVoting.whatBringSubtitle')}
                   </p>
                 </div>
                 
@@ -372,9 +369,9 @@ export const GuiaDelElectorPage: React.FC = () => {
                     <div className="guia-elector__card-icon guia-elector__card-icon--required">
                       <FileText size={24} />
                     </div>
-                    <h3 className="guia-elector__card-title">DNI (Obligatorio)</h3>
+                    <h3 className="guia-elector__card-title">{t('guideElector.beforeVoting.dniRequired')}</h3>
                     <p className="guia-elector__card-description">
-                      Tu Documento Nacional de Identidad es indispensable para votar.
+                      {t('guideElector.beforeVoting.dniRequiredDesc')}
                     </p>
                   </div>
 
@@ -382,9 +379,9 @@ export const GuiaDelElectorPage: React.FC = () => {
                     <div className="guia-elector__card-icon guia-elector__card-icon--optional">
                       <CheckCircle size={24} />
                     </div>
-                    <h3 className="guia-elector__card-title">Lapicero azul (Opcional)</h3>
+                    <h3 className="guia-elector__card-title">{t('guideElector.beforeVoting.penOptional')}</h3>
                     <p className="guia-elector__card-description">
-                      La ONPE entrega lapiceros, pero puedes llevar el tuyo.
+                      {t('guideElector.beforeVoting.penOptionalDesc')}
                     </p>
                   </div>
 
@@ -392,9 +389,9 @@ export const GuiaDelElectorPage: React.FC = () => {
                     <div className="guia-elector__card-icon guia-elector__card-icon--optional">
                       <Shield size={24} />
                     </div>
-                    <h3 className="guia-elector__card-title">Mascarilla (Si aplica)</h3>
+                    <h3 className="guia-elector__card-title">{t('guideElector.beforeVoting.maskOptional')}</h3>
                     <p className="guia-elector__card-description">
-                      Si existiera recomendación sanitaria vigente.
+                      {t('guideElector.beforeVoting.maskOptionalDesc')}
                     </p>
                   </div>
                 </div>
@@ -409,9 +406,9 @@ export const GuiaDelElectorPage: React.FC = () => {
               {/* Proceso en el local */}
               <section className="guia-elector__section">
                 <div className="guia-elector__section-header">
-                  <h2 className="guia-elector__section-title">Proceso en el Local de Votación</h2>
+                  <h2 className="guia-elector__section-title">{t('guideElector.votingProcess.title')}</h2>
                   <p className="guia-elector__section-subtitle">
-                    Sigue estos pasos en orden
+                    {t('guideElector.votingProcess.subtitle')}
                   </p>
                 </div>
                 
@@ -502,10 +499,10 @@ export const GuiaDelElectorPage: React.FC = () => {
                 <div className="guia-elector__section-header">
                   <h2 className="guia-elector__section-title">
                     <DollarSign size={32} className="inline-icon" />
-                    Multas por No Votar
+                    {t('guideElector.fines.notVotingTitle')}
                   </h2>
                   <p className="guia-elector__section-subtitle">
-                    El monto varía según tu distrito
+                    {t('guideElector.fines.notVotingSubtitle')}
                   </p>
                 </div>
 
@@ -525,9 +522,9 @@ export const GuiaDelElectorPage: React.FC = () => {
               {/* Multas miembro de mesa */}
               <section className="guia-elector__section">
                 <div className="guia-elector__section-header">
-                  <h2 className="guia-elector__section-title">Multas para Miembros de Mesa</h2>
+                  <h2 className="guia-elector__section-title">{t('guideElector.fines.memberTitle')}</h2>
                   <p className="guia-elector__section-subtitle">
-                    Sanciones por incumplimiento de funciones
+                    {t('guideElector.fines.memberSubtitle')}
                   </p>
                 </div>
 
@@ -559,10 +556,10 @@ export const GuiaDelElectorPage: React.FC = () => {
                 <div className="guia-elector__section-header">
                   <h2 className="guia-elector__section-title">
                     <XCircle size={32} className="inline-icon" />
-                    Prohibiciones en el Local de Votación
+                    {t('guideElector.prohibitions.title')}
                   </h2>
                   <p className="guia-elector__section-subtitle">
-                    Evita sanciones conociendo lo que NO debes hacer
+                    {t('guideElector.prohibitions.subtitle')}
                   </p>
                 </div>
 
@@ -602,10 +599,10 @@ export const GuiaDelElectorPage: React.FC = () => {
                 <div className="guia-elector__section-header">
                   <h2 className="guia-elector__section-title">
                     <Lightbulb size={32} className="inline-icon" />
-                    Recomendaciones para el Día de Votación
+                    {t('guideElector.recommendations.title')}
                   </h2>
                   <p className="guia-elector__section-subtitle">
-                    Consejos útiles para una mejor experiencia electoral
+                    {t('guideElector.recommendations.subtitle')}
                   </p>
                 </div>
 

@@ -4,9 +4,11 @@ import { sendMessage } from '../../services/chatService';
 import type { Message } from '../../services/chatService';
 import { BotAvatar, BotAvatarSmall } from './BotAvatar';
 import { useAccessibility } from '../../contexts/AccessibilityContext';
+import { useLanguage } from '../../contexts/LanguageContext';
 import '../../styles/chatbot.css';
 
 export const ChatBot: React.FC = () => {
+  const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState('');
@@ -29,7 +31,7 @@ export const ChatBot: React.FC = () => {
       setTimeout(() => {
         const welcomeMessage: Message = {
           role: 'assistant',
-          content: '¡Hola! 👋 Soy tu asistente virtual para las Elecciones 2026 de Perú. Puedo ayudarte con consultas sobre miembros de mesa, proceso de votación, candidatos, fechas importantes y más. ¿En qué puedo ayudarte? 🗳️'
+          content: t('chatbot.welcome')
         };
         setMessages([welcomeMessage]);
         setTimeout(() => setIsSpeaking(false), 2000);
@@ -63,7 +65,7 @@ export const ChatBot: React.FC = () => {
       setIsSpeaking(false);
       const errorMessage: Message = {
         role: 'assistant',
-        content: 'Lo siento, hubo un error al procesar tu mensaje. Por favor, intenta nuevamente. Si el problema persiste, verifica que el servidor esté funcionando.'
+        content: t('chatbot.error')
       };
       setMessages(prev => [...prev, errorMessage]);
     } finally {
@@ -102,8 +104,8 @@ export const ChatBot: React.FC = () => {
                 <BotAvatarSmall isSpeaking={isSpeaking || isLoading} />
               </div>
               <div>
-                <h3 className="chatbot__title">Asistente Electoral</h3>
-                <p className="chatbot__subtitle">Elecciones 2026</p>
+                <h3 className="chatbot__title">{t('chatbot.title')}</h3>
+                <p className="chatbot__subtitle">{t('chatbot.subtitle')}</p>
               </div>
             </div>
             <button
@@ -123,7 +125,7 @@ export const ChatBot: React.FC = () => {
               </div>
               <div className="chatbot__welcome-content">
                 <p className="chatbot__welcome-text">
-                  Estoy aquí para ayudarte con información sobre las elecciones
+                  {t('chatbot.helpText')}
                 </p>
               </div>
             </div>
@@ -151,7 +153,7 @@ export const ChatBot: React.FC = () => {
                   <BotAvatarSmall isSpeaking={true} />
                 </div>
                 <div className="chatbot__message-content chatbot__message--loading" aria-live="polite">
-                  Escribiendo...
+                  {t('chatbot.typing')}
                 </div>
               </div>
             )}
@@ -161,7 +163,7 @@ export const ChatBot: React.FC = () => {
           <div className="chatbot__input-container">
             <textarea
               className="chatbot__input"
-              placeholder="Escribe tu pregunta sobre las elecciones..."
+              placeholder={t('chatbot.placeholder')}
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               onKeyPress={handleKeyPress}
