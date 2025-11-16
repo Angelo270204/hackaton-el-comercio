@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const quizPreguntas = [
   {
@@ -29,6 +30,7 @@ const quizPreguntas = [
 ];
 
 export const QuizMesa: React.FC = () => {
+  const { t } = useLanguage();
   const [respuestas, setRespuestas] = useState<(number|null)[]>(Array(quizPreguntas.length).fill(null));
   const [mostrarResultados, setMostrarResultados] = useState(false);
   const [preguntaActual, setPreguntaActual] = useState(0);
@@ -50,7 +52,7 @@ export const QuizMesa: React.FC = () => {
 
   return (
     <div style={{ maxWidth: 1200, margin: '2rem auto 3rem auto', background: '#fff', borderRadius: 18, boxShadow: '0 2px 16px #eaf6fb', padding: '2.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <h2 style={{ fontWeight: 700, fontSize: '2.2rem', marginBottom: '2rem', color: '#023E8A' }}>Quiz para Miembros de Mesa</h2>
+      <h2 style={{ fontWeight: 700, fontSize: '2.2rem', marginBottom: '2rem', color: '#023E8A' }}>{t('guideMembers.quiz.title')}</h2>
       <div style={{ width: '100%', maxWidth: 700, marginBottom: '2rem', background: '#f1f8fc', borderRadius: 14, padding: '2rem 1.5rem', boxShadow: '0 1px 8px #eaf6fb' }}>
         <div style={{ fontWeight: 600, fontSize: '1.25rem', marginBottom: '1.2rem', color: '#0077b6' }}>
           {preguntaActual + 1}. {quizPreguntas[preguntaActual].pregunta}
@@ -96,25 +98,25 @@ export const QuizMesa: React.FC = () => {
             onClick={anterior}
             disabled={preguntaActual === 0}
             style={{ background: '#eaf6fb', color: '#0077b6', fontWeight: 700, padding: '0.7rem 1.5rem', borderRadius: 8, border: 'none', fontSize: '1rem', cursor: preguntaActual === 0 ? 'not-allowed' : 'pointer', opacity: preguntaActual === 0 ? 0.5 : 1 }}
-          >Anterior</button>
+          >{t('guideMembers.quiz.previous')}</button>
           {preguntaActual < quizPreguntas.length - 1 ? (
             <button
               onClick={siguiente}
               style={{ background: '#0096c7', color: '#fff', fontWeight: 700, padding: '0.7rem 1.5rem', borderRadius: 8, border: 'none', fontSize: '1rem', cursor: 'pointer' }}
-            >Siguiente</button>
+            >{t('guideMembers.quiz.next')}</button>
           ) : !mostrarResultados ? (
             <button
               onClick={() => setMostrarResultados(true)}
               style={{ background: '#0096c7', color: '#fff', fontWeight: 700, padding: '0.7rem 1.5rem', borderRadius: 8, border: 'none', fontSize: '1rem', cursor: 'pointer' }}
-            >Ver resultados</button>
+            >{t('guideMembers.quiz.showResults')}</button>
           ) : null}
         </div>
       </div>
       {mostrarResultados && (
         <div style={{ fontWeight: 700, fontSize: '1.4rem', color: aciertos === quizPreguntas.length ? '#38b000' : '#d90429', marginTop: '1.5rem' }}>
           {aciertos === quizPreguntas.length
-            ? '¡Excelente! Todas tus respuestas son correctas.'
-            : `Respuestas correctas: ${aciertos} de ${quizPreguntas.length}`}
+            ? t('guideMembers.quiz.perfect')
+            : `${t('guideMembers.quiz.score')}: ${aciertos} ${t('guideMembers.quiz.of')} ${quizPreguntas.length}`}
         </div>
       )}
     </div>
@@ -152,6 +154,7 @@ interface TimelineStep {
 type TabType = 'general' | 'responsabilidades' | 'derechos' | 'documentos' | 'importante' | 'quiz';
 
 export const GuiaMiembrosPage: React.FC = () => {
+  const { t: _t } = useLanguage();
   const [activeTab, setActiveTab] = useState<TabType>('general');
   const [timelinePage, setTimelinePage] = useState<number>(0);
 
