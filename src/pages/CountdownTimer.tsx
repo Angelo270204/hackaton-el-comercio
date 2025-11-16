@@ -1,5 +1,6 @@
 // CountdownTimer.tsx
 import React, { useEffect, useState } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 import '../styles/countdownTimer.css';
 
 interface TimeLeft {
@@ -33,6 +34,7 @@ function calculateTimeLeft(targetDate: string): TimeLeft {
 
 export const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft(targetDate));
+  const { t } = useLanguage();
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -44,32 +46,32 @@ export const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) =>
 
   return (
     <div className="countdown">
-      <h2 className="countdown__title">Faltan para las Elecciones</h2>
+      <h2 className="countdown__title">{t('countdown.title')}</h2>
       <div className="countdown__grid">
         <div className="countdown__card countdown__card--highlight">
           <div className="countdown__number">{timeLeft.days}</div>
-          <div className="countdown__label">DÍAS</div>
+          <div className="countdown__label">{t('countdown.days')}</div>
         </div>
 
         <div className="countdown__card">
           <div className="countdown__number">
             {String(timeLeft.hours).padStart(2, '0')}
           </div>
-          <div className="countdown__label">HORAS</div>
+          <div className="countdown__label">{t('countdown.hours')}</div>
         </div>
 
         <div className="countdown__card">
           <div className="countdown__number">
             {String(timeLeft.minutes).padStart(2, '0')}
           </div>
-          <div className="countdown__label">MINUTOS</div>
+          <div className="countdown__label">{t('countdown.minutes')}</div>
         </div>
 
         <div className="countdown__card">
           <div className="countdown__number">
             {String(timeLeft.seconds).padStart(2, '0')}
           </div>
-          <div className="countdown__label">SEGUNDOS</div>
+          <div className="countdown__label">{t('countdown.seconds')}</div>
         </div>
       </div>
     </div>

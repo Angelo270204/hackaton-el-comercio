@@ -1290,3 +1290,172 @@
     padding-left: 16px;
   }
 }
+
+/* ========================================
+   MODO OSCURO - CANDIDATOS
+   ======================================== */
+.dark-mode .candidatos-page {
+  background: #0f172a;
+}
+
+.dark-mode .candidatos-page__layout {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+}
+
+.dark-mode .lista-candidatos__titulo {
+  color: #60a5fa;
+}
+
+.dark-mode .lista-candidatos__subtitulo {
+  color: #cbd5e1;
+}
+
+.dark-mode .lista-candidatos__contador {
+  color: #94a3b8;
+}
+
+.dark-mode .lista-candidatos__buscador {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.dark-mode .lista-candidatos__input-busqueda {
+  background: transparent;
+  color: #f1f5f9;
+}
+
+.dark-mode .lista-candidatos__input-busqueda::placeholder {
+  color: #64748b;
+}
+
+.dark-mode .lista-candidatos__selector {
+  background: #1e293b;
+  border-color: #334155;
+  color: #f1f5f9;
+}
+
+.dark-mode .lista-candidatos__limpiar {
+  background: #1e293b;
+  border-color: #334155;
+  color: #f1f5f9;
+}
+
+.dark-mode .lista-candidatos__chip {
+  background: #1e293b;
+  border-color: #334155;
+  color: #f1f5f9;
+}
+
+.dark-mode .lista-candidatos__chip--activo {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #ffffff;
+}
+
+.dark-mode .tarjeta-candidato {
+  background: rgba(30, 41, 59, 0.8);
+  border-color: rgba(51, 65, 85, 0.6);
+}
+
+.dark-mode .tarjeta-candidato:hover {
+  background: rgba(30, 41, 59, 0.95);
+  border-color: rgba(59, 130, 246, 0.5);
+}
+
+.dark-mode .tarjeta-candidato__nombre {
+  color: #f1f5f9;
+}
+
+.dark-mode .tarjeta-candidato__partido {
+  background: rgba(37, 99, 235, 0.15);
+  border-color: rgba(37, 99, 235, 0.3);
+  color: #93c5fd;
+}
+
+.dark-mode .tarjeta-candidato__info {
+  color: #cbd5e1;
+}
+
+.dark-mode .candidatos-page__detalle {
+  background: rgba(30, 41, 59, 0.98);
+  border-left-color: rgba(51, 65, 85, 0.6);
+}
+
+.dark-mode .detalle-precandidatos__btn-cerrar {
+  background: #334155;
+  color: #cbd5e1;
+}
+
+.dark-mode .detalle-precandidatos__btn-cerrar:hover {
+  background: #475569;
+  color: #60a5fa;
+}
+
+.dark-mode .detalle-precandidatos__nombre {
+  color: #60a5fa;
+}
+
+.dark-mode .detalle-precandidatos__partido,
+.dark-mode .detalle-precandidatos__cargo {
+  color: #cbd5e1;
+}
+
+.dark-mode .detalle-precandidatos__seccion-titulo {
+  color: #94a3b8;
+}
+
+.dark-mode .detalle-precandidatos__rol {
+  color: #e2e8f0;
+}
+
+.dark-mode .detalle-precandidatos__propuestas-titulo {
+  color: #60a5fa;
+}
+
+.dark-mode .detalle-precandidatos__tab {
+  color: #94a3b8;
+}
+
+.dark-mode .detalle-precandidatos__tab--activo {
+  color: #60a5fa;
+  border-bottom-color: #60a5fa;
+}
+
+.dark-mode .detalle-precandidatos__propuesta-item {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.dark-mode .detalle-precandidatos__propuesta-titulo {
+  color: #f1f5f9;
+}
+
+.dark-mode .detalle-precandidatos__propuesta-texto {
+  color: #cbd5e1;
+}
+
+.dark-mode .comparador-candidatos {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.dark-mode .comparador-candidatos__titulo {
+  color: #60a5fa;
+}
+
+.dark-mode .comparador-candidatos__subtitulo {
+  color: #94a3b8;
+}
+
+.dark-mode .comparador-candidatos__tarjeta {
+  background: #0f172a;
+  border-color: #334155;
+}
+
+.dark-mode .comparador-candidatos__nombre {
+  color: #f1f5f9;
+}
+
+.dark-mode .comparador-candidatos__cargo {
+  color: #94a3b8;
+}

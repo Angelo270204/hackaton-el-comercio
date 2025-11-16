@@ -989,3 +989,110 @@
 .dark-mode .guia-miembros__card-description {
   color: var(--color-text-muted);
 }
+
+.dark-mode .guia-miembros__section-title {
+  color: #f1f5f9;
+}
+
+.dark-mode .guia-miembros__section-subtitle {
+  color: #cbd5e1;
+}
+
+.dark-mode .guia-miembros__intro {
+  background: #1e293b;
+  border-left-color: #2563eb;
+}
+
+.dark-mode .guia-miembros__intro-text {
+  color: #cbd5e1;
+}
+
+.dark-mode .guia-miembros__intro-text strong {
+  color: #60a5fa;
+}
+
+.dark-mode .guia-miembros__timeline-section {
+  background: #1e293b;
+}
+
+.dark-mode .guia-miembros__timeline-content {
+  background: #0f172a;
+  border-color: #334155;
+}
+
+.dark-mode .guia-miembros__timeline-title {
+  color: #f1f5f9;
+}
+
+.dark-mode .guia-miembros__timeline-description {
+  color: #94a3b8;
+}
+
+.dark-mode .guia-miembros__benefit-card {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  border-color: #334155;
+}
+
+.dark-mode .guia-miembros__benefit-title {
+  color: #f1f5f9;
+}
+
+.dark-mode .guia-miembros__benefit-description {
+  color: #94a3b8;
+}
+
+.dark-mode .guia-miembros__info-box {
+  background: #1e3a8a;
+  border-color: #1e40af;
+}
+
+.dark-mode .guia-miembros__info-box-title {
+  color: #f1f5f9;
+}
+
+.dark-mode .guia-miembros__info-box-text {
+  color: #dbeafe;
+}
+
+.dark-mode .guia-miembros__checklist {
+  background: #1e293b;
+}
+
+.dark-mode .guia-miembros__checklist-item {
+  border-bottom-color: #334155;
+}
+
+.dark-mode .guia-miembros__checklist-text {
+  color: #cbd5e1;
+}
+
+.dark-mode .guia-miembros__sanctions-section {
+  background: #450a0a;
+  border-color: #991b1b;
+}
+
+.dark-mode .guia-miembros__sanction-card {
+  background: #1e293b;
+  border-left-color: #dc2626;
+}
+
+.dark-mode .guia-miembros__sanction-title {
+  color: #f1f5f9;
+}
+
+.dark-mode .guia-miembros__sanction-description {
+  color: #94a3b8;
+}
+
+.dark-mode .guia-miembros__download-card {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.dark-mode .guia-miembros__download-title {
+  color: #f1f5f9;
+}
+
+.dark-mode .guia-miembros__download-description {
+  color: #94a3b8;
+}

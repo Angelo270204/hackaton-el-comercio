@@ -992,3 +992,118 @@
 .dark-mode .donde-votar__subtitle {
   color: var(--color-text-muted, #cbd5e1);
 }
+
+.dark-mode .donde-votar__label {
+  color: #cbd5e1;
+}
+
+.dark-mode .donde-votar__input {
+  background: #1e293b;
+  border-color: #334155;
+  color: #f1f5f9;
+}
+
+.dark-mode .donde-votar__input::placeholder {
+  color: #64748b;
+}
+
+.dark-mode .donde-votar__results {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.dark-mode .donde-votar__location-card {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.dark-mode .donde-votar__location-name {
+  color: #f1f5f9;
+}
+
+.dark-mode .donde-votar__location-address {
+  color: #94a3b8;
+}
+
+.dark-mode .donde-votar__location-detail-label {
+  color: #94a3b8;
+}
+
+.dark-mode .donde-votar__location-detail-value {
+  color: #f1f5f9;
+}
+
+.dark-mode .donde-votar__user-info-inline {
+  background: #0f172a;
+  border-color: #334155;
+}
+
+.dark-mode .donde-votar__user-label {
+  color: #94a3b8;
+}
+
+.dark-mode .donde-votar__user-value {
+  color: #f1f5f9;
+}
+
+.dark-mode .donde-votar__map-card {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.dark-mode .donde-votar__instruction-card {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.dark-mode .donde-votar__instruction-title {
+  color: #f1f5f9;
+}
+
+.dark-mode .donde-votar__instruction-list li {
+  color: #cbd5e1;
+}
+
+.dark-mode .donde-votar__notice {
+  background: #1e3a8a;
+  border-color: #1e40af;
+}
+
+.dark-mode .donde-votar__notice-text {
+  color: #dbeafe;
+}
+
+.dark-mode .donde-votar__info-card {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.dark-mode .donde-votar__info-card-title {
+  color: #f1f5f9;
+}
+
+.dark-mode .donde-votar__info-card-text {
+  color: #94a3b8;
+}
+
+.dark-mode .donde-votar__info-card-list li {
+  color: #cbd5e1;
+}
+
+.dark-mode .donde-votar__tips {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.dark-mode .donde-votar__tips-title {
+  color: #f1f5f9;
+}
+
+.dark-mode .donde-votar__tip-card {
+  background: #0f172a;
+  border-color: #334155;
+}
+
+.dark-mode .donde-votar__tip-title {
+  color: #f1f5f9;
+}
