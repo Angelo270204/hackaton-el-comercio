@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import { MapPin, Users, Calendar, BookOpen, Sparkles, ArrowRight } from 'lucide-react';
 
 import { QuickAccessCard } from './QuickAccessCard';
+import CarruselHeader from '../Components/CarruselHeader';
 import { useLanguage } from '../contexts/LanguageContext';
 import '../styles/home.css';
 
@@ -39,38 +40,8 @@ export const HomePage: React.FC = () => {
   return (
     <div className="home">
       <div className="home__container">
-        {/* Hero Section with Banner */}
-        <section className="home__hero">
-          <div className="home__hero-banner">
-            <img
-              src="/images/banner/banner-hackaton.png"
-              alt="Elecciones 2026 - Banner"
-              className="home__hero-banner-image"
-            />
-            <div className="home__hero-overlay"></div>
-            <div className="home__hero-content">
-              <div className="home__hero-badge">
-                <Sparkles size={16} />
-                <span>{t('home.hero.badge')}</span>
-              </div>
-              <h1 className="home__hero-title">
-                {t('home.hero.title')} <span className="home__hero-highlight">{t('home.hero.titleHighlight')}</span>
-              </h1>
-              <p className="home__hero-description">
-                {t('home.hero.description')}
-              </p>
-              <div className="home__hero-actions">
-                <Link to="/candidatos" className="home__hero-btn home__hero-btn--primary">
-                  {t('home.hero.viewCandidates')}
-                  <ArrowRight size={20} />
-                </Link>
-                <Link to="/calendario" className="home__hero-btn home__hero-btn--secondary">
-                  {t('home.hero.viewCalendar')}
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* Carrusel Header reemplaza el hero estático */}
+        <CarruselHeader />
 
 
 

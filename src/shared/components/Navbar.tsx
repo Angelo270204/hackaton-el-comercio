@@ -78,8 +78,7 @@ export const Navbar: React.FC = () => {
       <div className="navbar__top">
         <div className="navbar__top-container">
           <Link to="/" className="navbar__logo" onClick={closeMenu}>
-            <Vote size={32} />
-            <span className="navbar__logo-text">Elecciones 2026</span>
+            <img src="/images/banner/logo.jpg" alt="Logo Elecciones 2026" style={{ height: '300px', width: 'auto' }} />
           </Link>
 
           <div className="navbar__countdown">
