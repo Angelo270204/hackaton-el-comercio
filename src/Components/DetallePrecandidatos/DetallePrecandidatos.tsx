@@ -32,6 +32,24 @@ type Pestaña = 'economia' | 'salud' | 'seguridad' | 'educacion' | 'otros'
 export function DetallePrecandidatos({ candidato, onCerrar }: PropiedadesDetallePrecandidatos) {
   const [pestana, setPestana] = useState<Pestaña>('economia')
 
+  const obtenerEstadoAntecedentes = (nombre: string): 'limpio' | 'cuestionado' | 'desconocido' => {
+    const n = nombre.toLowerCase()
+    if (
+      n.includes('keiko fujimori') ||
+      n.includes('rafael lópez aliaga') ||
+      n.includes('rafael lopez aliaga') ||
+      n.includes('antauro humala') ||
+      n.includes('vladimir cerrón') ||
+      n.includes('vladimir cerron') ||
+      n.includes('césar acuña') ||
+      n.includes('cesar acuña') ||
+      n.includes('cesar acuna')
+    ) {
+      return 'cuestionado'
+    }
+    return 'limpio'
+  }
+
   // Contenido de propuestas por pestaña (si no hay, usar texto de placeholder)
   function propuestasDe(c: Candidato | null, p: Pestaña) {
     if (!c) return SIN_PROPUESTAS
@@ -106,6 +124,47 @@ export function DetallePrecandidatos({ candidato, onCerrar }: PropiedadesDetalle
             <strong>Elecciones previas:</strong>{' '}
             {candidato.datos_publicos?.elecciones_previas ?? 'No ha participado anteriormente'}
           </p>
+          <div className="detalle-precandidatos__antecedentes">
+            {(() => {
+              const estado = obtenerEstadoAntecedentes(candidato.nombre)
+              const etiqueta =
+                estado === 'cuestionado'
+                  ? 'Antecedentes: revisar noticias y coberturas periodísticas'
+                  : estado === 'limpio'
+                  ? 'Antecedentes: sin registros relevantes en noticias'
+                  : 'Antecedentes: sin información suficiente'
+              return (
+                <>
+                  <span
+                    className={
+                      'detalle-precandidatos__antecedentes-indicador ' +
+                      (estado === 'cuestionado'
+                        ? 'detalle-precandidatos__antecedentes-indicador--rojo'
+                        : estado === 'limpio'
+                        ? 'detalle-precandidatos__antecedentes-indicador--verde'
+                        : 'detalle-precandidatos__antecedentes-indicador--gris')
+                    }
+                    aria-hidden="true"
+                  />
+                  <span className="detalle-precandidatos__antecedentes-texto">{etiqueta}</span>
+                  {estado === 'cuestionado' && (
+                    <button
+                      type="button"
+                      className="detalle-precandidatos__antecedentes-boton"
+                      onClick={() => {
+                        const seccion = document.getElementById('detalle-precandidatos-noticias')
+                        if (seccion) {
+                          seccion.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                        }
+                      }}
+                    >
+                      Ver noticias
+                    </button>
+                  )}
+                </>
+              )
+            })()}
+          </div>
           {candidato.formacion_academica && candidato.formacion_academica.length > 0 && (
             <div style={{ marginTop: 12 }}>
               <strong style={{ fontSize: 13 }}>Formación académica:</strong>
@@ -199,7 +258,7 @@ export function DetallePrecandidatos({ candidato, onCerrar }: PropiedadesDetalle
         </div>
 
         {/* Noticias */}
-        <div className="detalle-precandidatos__noticias">
+        <div className="detalle-precandidatos__noticias" id="detalle-precandidatos-noticias">
           <h3 className="detalle-precandidatos__noticias-titulo">Noticias Relacionadas</h3>
           {candidato.noticias && candidato.noticias.length > 0 ? (
             <div className="detalle-precandidatos__noticias-grid">

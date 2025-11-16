@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { ListaCandidatos } from '../Components/ListaCandidatos'
 import { DetallePrecandidatos } from '../Components/DetallePrecandidatos'
+import { ComparadorCandidatos } from '../Components/ComparadorCandidatos/ComparadorCandidatos'
 import { obtenerCandidatos, type Candidato } from '../shared/servicios/candidatos.servicio'
 import '../Components/Style.css'
 
@@ -14,6 +15,8 @@ export function CandidatosPage() {
   const [cargando, setCargando] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const detalleRef = useRef<HTMLDivElement | null>(null)
+  const [candidatosComparacion, setCandidatosComparacion] = useState<Candidato[]>([])
+  const comparadorRef = useRef<HTMLDivElement | null>(null)
 
   // Cargar lista de candidatos al montar el componente
   useEffect(() => {
@@ -39,7 +42,8 @@ export function CandidatosPage() {
 
   // Manejar selección de candidato
   const manejarSeleccion = (candidato: Candidato) => {
-    setCandidatoSeleccionado(candidato)
+    // Si se selecciona el mismo candidato que ya está abierto, cerrar el panel (toggle)
+    setCandidatoSeleccionado((actual) => (actual && actual.id === candidato.id ? null : candidato))
   }
 
   // Asegurar que el panel de detalle siempre inicie desde arriba
@@ -50,7 +54,41 @@ export function CandidatosPage() {
     }
   }, [candidatoSeleccionado])
 
-  // Nota: Se permite scroll del fondo; el panel está fijo y no se mueve.
+  // Bloquear scroll del fondo cuando el panel de detalle está abierto
+  useEffect(() => {
+    const originalOverflow = document.body.style.overflow
+
+    if (candidatoSeleccionado) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = originalOverflow || ''
+    }
+
+    return () => {
+      document.body.style.overflow = originalOverflow
+    }
+  }, [candidatoSeleccionado])
+
+  // Manejar selección para comparar (hasta 3 candidatos)
+  // Manejar selección para comparar (hasta 3 candidatos)
+  const manejarToggleComparacion = (candidato: Candidato) => {
+    setCandidatosComparacion((actual) => {
+      const existe = actual.some((c) => c.id === candidato.id)
+      if (existe) {
+        return actual.filter((c) => c.id !== candidato.id)
+      }
+      if (actual.length >= 3) {
+        return actual
+      }
+      return [...actual, candidato]
+    })
+  }
+
+  useEffect(() => {
+    if (candidatosComparacion.length > 0 && comparadorRef.current) {
+      comparadorRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }, [candidatosComparacion])
 
   // Mostrar estado de carga
   if (cargando) {
@@ -87,7 +125,17 @@ export function CandidatosPage() {
             candidatos={candidatos}
             candidatoSeleccionadoId={candidatoSeleccionado?.id ?? null}
             alSeleccionarCandidato={manejarSeleccion}
+            candidatosComparacion={candidatosComparacion}
+            alToggleComparacion={manejarToggleComparacion}
           />
+          {candidatosComparacion.length > 0 && (
+            <div className="candidatos-page__comparador-wrapper" ref={comparadorRef}>
+              <ComparadorCandidatos
+                candidatos={candidatosComparacion}
+                onCerrar={() => setCandidatosComparacion([])}
+              />
+            </div>
+          )}
         </div>
 
         {/* Columna derecha: Detalle del candidato seleccionado */}
