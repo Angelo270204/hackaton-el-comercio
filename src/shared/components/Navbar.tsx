@@ -129,7 +129,7 @@ export const Navbar: React.FC = () => {
                 className={`navbar__link ${isActiveLink('/') ? 'navbar__link--active' : ''}`}
                 onClick={closeMenu}
               >
-                Inicio
+                {t('navbar.home')}
               </Link>
             </li>
             <li className="navbar__item">
@@ -138,7 +138,7 @@ export const Navbar: React.FC = () => {
                 className={`navbar__link ${isActiveLink('/candidatos') ? 'navbar__link--active' : ''}`}
                 onClick={closeMenu}
               >
-                Candidatos
+                {t('navbar.candidates')}
               </Link>
             </li>
             <li className="navbar__item">
@@ -147,7 +147,7 @@ export const Navbar: React.FC = () => {
                 className={`navbar__link ${isActiveLink('/donde-votar') ? 'navbar__link--active' : ''}`}
                 onClick={closeMenu}
               >
-                Dónde Votar
+                {t('navbar.whereToVote')}
               </Link>
             </li>
             <li className="navbar__item">
@@ -156,7 +156,7 @@ export const Navbar: React.FC = () => {
                 className={`navbar__link ${isActiveLink('/guia-elector') ? 'navbar__link--active' : ''}`}
                 onClick={closeMenu}
               >
-                Guía del Elector
+                {t('navbar.guideElector')}
               </Link>
             </li>
             <li className="navbar__item">
@@ -165,7 +165,7 @@ export const Navbar: React.FC = () => {
                 className={`navbar__link navbar__link--cta ${isActiveLink('/guia-miembros') ? 'navbar__link--active' : ''}`}
                 onClick={closeMenu}
               >
-                Guía Miembros
+                {t('navbar.guideMembers')}
               </Link>
             </li>
           </ul>
