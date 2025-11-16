@@ -1,4 +1,127 @@
 import React, { useState } from 'react';
+
+const quizPreguntas = [
+  {
+    pregunta: '¿A qué hora deben presentarse los miembros de mesa?',
+    opciones: ['8:00 a.m.', '7:00 a.m.', '6:30 a.m.', '9:00 a.m.'],
+    respuesta: 1,
+  },
+  {
+    pregunta: '¿Qué función tiene el presidente de mesa?',
+    opciones: ['Supervisar el ingreso de votantes', 'Conducir y organizar toda la jornada electoral', 'Controlar la cola', 'Contar los votos'],
+    respuesta: 1,
+  },
+  {
+    pregunta: '¿Qué sucede si un miembro de mesa NO cumple su función?',
+    opciones: ['No pasa nada', 'Solo recibe una advertencia', 'Se le reemplaza sin sanción', 'Recibe una multa de S/ 230'],
+    respuesta: 3,
+  },
+  {
+    pregunta: '¿Qué deben hacer los miembros de mesa cuando termina la votación?',
+    opciones: ['Retirarse del local', 'Entregar el ánfora a ONPE sin conteo', 'Realizar el escrutinio y llenar las actas', 'Llamar a los fiscalizadores'],
+    respuesta: 2,
+  },
+  {
+    pregunta: '¿Quiénes conforman una mesa de sufragio?',
+    opciones: ['Un presidente y dos fiscalizadores', 'Solo un presidente', 'Un presidente, un secretario y un tercer miembro', 'Dos coordinadores de ONPE'],
+    respuesta: 2,
+  },
+];
+
+export const QuizMesa: React.FC = () => {
+  const [respuestas, setRespuestas] = useState<(number|null)[]>(Array(quizPreguntas.length).fill(null));
+  const [mostrarResultados, setMostrarResultados] = useState(false);
+  const [preguntaActual, setPreguntaActual] = useState(0);
+
+  const handleSeleccion = (opIdx: number) => {
+    const nuevas = [...respuestas];
+    nuevas[preguntaActual] = opIdx;
+    setRespuestas(nuevas);
+  };
+
+  const aciertos = respuestas.filter((r, idx) => r === quizPreguntas[idx].respuesta).length;
+
+  const siguiente = () => {
+    if (preguntaActual < quizPreguntas.length - 1) setPreguntaActual(preguntaActual + 1);
+  };
+  const anterior = () => {
+    if (preguntaActual > 0) setPreguntaActual(preguntaActual - 1);
+  };
+
+  return (
+    <div style={{ maxWidth: 1200, margin: '2rem auto 3rem auto', background: '#fff', borderRadius: 18, boxShadow: '0 2px 16px #eaf6fb', padding: '2.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <h2 style={{ fontWeight: 700, fontSize: '2.2rem', marginBottom: '2rem', color: '#023E8A' }}>Quiz para Miembros de Mesa</h2>
+      <div style={{ width: '100%', maxWidth: 700, marginBottom: '2rem', background: '#f1f8fc', borderRadius: 14, padding: '2rem 1.5rem', boxShadow: '0 1px 8px #eaf6fb' }}>
+        <div style={{ fontWeight: 600, fontSize: '1.25rem', marginBottom: '1.2rem', color: '#0077b6' }}>
+          {preguntaActual + 1}. {quizPreguntas[preguntaActual].pregunta}
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+          {quizPreguntas[preguntaActual].opciones.map((op, opIdx) => {
+            const seleccionada = respuestas[preguntaActual] === opIdx;
+            const esCorrecta = mostrarResultados && opIdx === quizPreguntas[preguntaActual].respuesta;
+            const esIncorrecta = mostrarResultados && seleccionada && !esCorrecta;
+            return (
+              <button
+                key={opIdx}
+                onClick={() => handleSeleccion(opIdx)}
+                disabled={mostrarResultados}
+                style={{
+                  padding: '1rem',
+                  borderRadius: 10,
+                  border: seleccionada ? '2px solid #0096c7' : '1px solid #ccc',
+                  background: mostrarResultados
+                    ? (esCorrecta ? '#bde5fa' : esIncorrecta ? '#ffb4b4' : '#f8fafc')
+                    : (seleccionada ? '#caf0f8' : '#f8fafc'),
+                  color: '#222',
+                  fontWeight: 500,
+                  fontSize: '1.05rem',
+                  cursor: mostrarResultados ? 'default' : 'pointer',
+                  boxShadow: seleccionada ? '0 2px 8px #eaf6fb' : 'none',
+                  transition: 'all 0.2s',
+                  minHeight: 56,
+                  display: 'block',
+                  textAlign: 'left',
+                }}
+              >
+                {op}
+                {esCorrecta && (
+                  <span style={{ marginLeft: 10, color: '#0096c7', fontWeight: 700 }}>✔</span>
+                )}
+              </button>
+            );
+          })}
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '2rem' }}>
+          <button
+            onClick={anterior}
+            disabled={preguntaActual === 0}
+            style={{ background: '#eaf6fb', color: '#0077b6', fontWeight: 700, padding: '0.7rem 1.5rem', borderRadius: 8, border: 'none', fontSize: '1rem', cursor: preguntaActual === 0 ? 'not-allowed' : 'pointer', opacity: preguntaActual === 0 ? 0.5 : 1 }}
+          >Anterior</button>
+          {preguntaActual < quizPreguntas.length - 1 ? (
+            <button
+              onClick={siguiente}
+              style={{ background: '#0096c7', color: '#fff', fontWeight: 700, padding: '0.7rem 1.5rem', borderRadius: 8, border: 'none', fontSize: '1rem', cursor: 'pointer' }}
+            >Siguiente</button>
+          ) : !mostrarResultados ? (
+            <button
+              onClick={() => setMostrarResultados(true)}
+              style={{ background: '#0096c7', color: '#fff', fontWeight: 700, padding: '0.7rem 1.5rem', borderRadius: 8, border: 'none', fontSize: '1rem', cursor: 'pointer' }}
+            >Ver resultados</button>
+          ) : null}
+        </div>
+      </div>
+      {mostrarResultados && (
+        <div style={{ fontWeight: 700, fontSize: '1.4rem', color: aciertos === quizPreguntas.length ? '#38b000' : '#d90429', marginTop: '1.5rem' }}>
+          {aciertos === quizPreguntas.length
+            ? '¡Excelente! Todas tus respuestas son correctas.'
+            : `Respuestas correctas: ${aciertos} de ${quizPreguntas.length}`}
+        </div>
+      )}
+    </div>
+  );
+};
+// ...existing code...
+// ...existing code...
 import { 
   CheckCircle, 
   Clock, 
@@ -26,7 +149,7 @@ interface TimelineStep {
   description: string;
 }
 
-type TabType = 'general' | 'responsabilidades' | 'derechos' | 'documentos' | 'importante';
+type TabType = 'general' | 'responsabilidades' | 'derechos' | 'documentos' | 'importante' | 'quiz';
 
 export const GuiaMiembrosPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabType>('general');
@@ -36,7 +159,8 @@ export const GuiaMiembrosPage: React.FC = () => {
     { id: 'responsabilidades' as TabType, label: 'Mis Responsabilidades', icon: <Shield size={20} /> },
     { id: 'derechos' as TabType, label: 'Derechos y Beneficios', icon: <Award size={20} /> },
     { id: 'documentos' as TabType, label: 'Documentos', icon: <FileText size={20} /> },
-    { id: 'importante' as TabType, label: 'Importante Saber', icon: <AlertCircle size={20} /> }
+    { id: 'importante' as TabType, label: 'Importante Saber', icon: <AlertCircle size={20} /> },
+    { id: 'quiz' as TabType, label: 'Quiz para Miembros', icon: <HelpCircle size={20} /> }
   ];
 
   const responsibilities = [
@@ -494,6 +618,15 @@ export const GuiaMiembrosPage: React.FC = () => {
                     </a>
                   </div>
                 </div>
+              </section>
+            </div>
+          )}
+
+          {/* QUIZ PARA MIEMBROS */}
+          {activeTab === 'quiz' && (
+            <div className="guia-miembros__tab-content">
+              <section className="guia-miembros__section">
+                <QuizMesa />
               </section>
             </div>
           )}

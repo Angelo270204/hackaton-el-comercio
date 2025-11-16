@@ -1,0 +1,306 @@
+[
+  {
+    "id": 1,
+    "nombre": "María Rodríguez",
+    "partido": "Partido Progresista",
+    "foto": "/images/candidatos/maria-rodriguez.jpg",
+    "ideologia": "izquierda",
+    "edad": 52,
+    "profesion": "Economista",
+    "experiencia": "Ex Ministra de Economía",
+    "biografia": "Economista con más de 25 años de experiencia en políticas públicas y desarrollo social.",
+    "propuestasPorSector": [
+      {
+        "sector": "Educación",
+        "descripcion": "Educación pública gratuita y de calidad en todos los niveles",
+        "semaforo": "verde"
+      },
+      {
+        "sector": "Salud",
+        "descripcion": "Sistema de salud universal y gratuito para todos los peruanos",
+        "semaforo": "verde"
+      },
+      {
+        "sector": "Economía",
+        "descripcion": "Aumento del salario mínimo a S/1,500 mensuales",
+        "semaforo": "amarillo"
+      },
+      {
+        "sector": "Medio Ambiente",
+        "descripcion": "Transición energética hacia fuentes 100% renovables para 2040",
+        "semaforo": "verde"
+      }
+    ],
+    "redes": {
+      "twitter": "@mariarodriguez",
+      "facebook": "mariarodriguezoficial",
+      "instagram": "mariarodriguez"
+    }
+  },
+  {
+    "id": 2,
+    "nombre": "Carlos Mendoza",
+    "partido": "Alianza Centrista",
+    "foto": "/images/candidatos/carlos-mendoza.jpg",
+    "ideologia": "centro",
+    "edad": 48,
+    "profesion": "Abogado",
+    "experiencia": "Ex Congresista y Alcalde de Lima",
+    "biografia": "Abogado especializado en derecho constitucional con amplia trayectoria en gestión pública.",
+    "propuestasPorSector": [
+      {
+        "sector": "Seguridad",
+        "descripcion": "Modernización de la Policía Nacional con tecnología de punta",
+        "semaforo": "verde"
+      },
+      {
+        "sector": "Educación",
+        "descripcion": "Inversión mixta público-privada en infraestructura educativa",
+        "semaforo": "amarillo"
+      },
+      {
+        "sector": "Economía",
+        "descripcion": "Incentivos fiscales para pequeñas y medianas empresas",
+        "semaforo": "verde"
+      },
+      {
+        "sector": "Salud",
+        "descripcion": "Fortalecimiento del sistema de salud con participación privada",
+        "semaforo": "amarillo"
+      }
+    ],
+    "redes": {
+      "twitter": "@carlosmendoza",
+      "facebook": "carlosmendozaperu",
+      "instagram": "carlosmendoza"
+    }
+  },
+  {
+    "id": 3,
+    "nombre": "Juan Pérez",
+    "partido": "Fuerza Liberal",
+    "foto": "/images/candidatos/juan-perez.jpg",
+    "ideologia": "derecha",
+    "edad": 55,
+    "profesion": "Empresario",
+    "experiencia": "Ex Ministro de Producción",
+    "biografia": "Empresario exitoso con experiencia en gestión privada y pública.",
+    "propuestasPorSector": [
+      {
+        "sector": "Economía",
+        "descripcion": "Reducción de impuestos y eliminación de trabas burocráticas",
+        "semaforo": "verde"
+      },
+      {
+        "sector": "Trabajo",
+        "descripcion": "Flexibilización laboral para fomentar la creación de empleos",
+        "semaforo": "rojo"
+      },
+      {
+        "sector": "Educación",
+        "descripcion": "Promoción de la educación privada con vouchers educativos",
+        "semaforo": "amarillo"
+      },
+      {
+        "sector": "Seguridad",
+        "descripcion": "Mano dura contra la delincuencia con aumento de penas",
+        "semaforo": "verde"
+      }
+    ],
+    "redes": {
+      "twitter": "@juanperezperu",
+      "facebook": "juanperezoficial",
+      "instagram": "juanperez"
+    }
+  },
+  {
+    "id": 4,
+    "nombre": "Ana Torres",
+    "partido": "Movimiento Social Democrático",
+    "foto": "/images/candidatos/ana-torres.jpg",
+    "ideologia": "centro-izquierda",
+    "edad": 46,
+    "profesion": "Médica",
+    "experiencia": "Ex Ministra de Salud",
+    "biografia": "Médica cirujana con especialización en salud pública y políticas sanitarias.",
+    "propuestasPorSector": [
+      {
+        "sector": "Salud",
+        "descripcion": "Reforma integral del sistema de salud con cobertura universal",
+        "semaforo": "verde"
+      },
+      {
+        "sector": "Educación",
+        "descripcion": "Aumento progresivo del presupuesto educativo al 6% del PBI",
+        "semaforo": "verde"
+      },
+      {
+        "sector": "Economía",
+        "descripcion": "Reforma tributaria progresiva con mayor carga a altos ingresos",
+        "semaforo": "amarillo"
+      },
+      {
+        "sector": "Medio Ambiente",
+        "descripcion": "Protección de áreas naturales y promoción de economía verde",
+        "semaforo": "verde"
+      }
+    ],
+    "redes": {
+      "twitter": "@anatorres",
+      "facebook": "anatorresoficial",
+      "instagram": "anatorres"
+    }
+  },
+  {
+    "id": 5,
+    "nombre": "Roberto Vargas",
+    "partido": "Renovación Nacional",
+    "foto": "/images/candidatos/roberto-vargas.jpg",
+    "ideologia": "centro-derecha",
+    "edad": 50,
+    "profesion": "Ingeniero",
+    "experiencia": "Ex Ministro de Transportes",
+    "biografia": "Ingeniero civil con amplia experiencia en infraestructura y desarrollo territorial.",
+    "propuestasPorSector": [
+      {
+        "sector": "Infraestructura",
+        "descripcion": "Plan nacional de carreteras con inversión privada",
+        "semaforo": "verde"
+      },
+      {
+        "sector": "Economía",
+        "descripcion": "Promoción de inversión extranjera con garantías jurídicas",
+        "semaforo": "verde"
+      },
+      {
+        "sector": "Educación",
+        "descripcion": "Educación técnica y formación para el empleo",
+        "semaforo": "verde"
+      },
+      {
+        "sector": "Seguridad",
+        "descripcion": "Fortalecimiento de las fuerzas armadas en zonas de conflicto",
+        "semaforo": "amarillo"
+      }
+    ],
+    "redes": {
+      "twitter": "@robertovargas",
+      "facebook": "robertovargasperu",
+      "instagram": "robertovargas"
+    }
+  },
+  {
+    "id": 6,
+    "nombre": "Lucía Fernández",
+    "partido": "Juntos por el Cambio",
+    "foto": "/images/candidatos/lucia-fernandez.jpg",
+    "ideologia": "centro-izquierda",
+    "edad": 44,
+    "profesion": "Socióloga",
+    "experiencia": "Ex Ministra de la Mujer",
+    "biografia": "Socióloga especializada en políticas de género e inclusión social.",
+    "propuestasPorSector": [
+      {
+        "sector": "Igualdad de Género",
+        "descripcion": "Ley de paridad en todos los niveles de gobierno",
+        "semaforo": "verde"
+      },
+      {
+        "sector": "Educación",
+        "descripcion": "Educación con enfoque de género e inclusión",
+        "semaforo": "verde"
+      },
+      {
+        "sector": "Trabajo",
+        "descripcion": "Igualdad salarial y protección de derechos laborales",
+        "semaforo": "verde"
+      },
+      {
+        "sector": "Economía",
+        "descripcion": "Apoyo a emprendimientos liderados por mujeres",
+        "semaforo": "amarillo"
+      }
+    ],
+    "redes": {
+      "twitter": "@luciafernandez",
+      "facebook": "luciafernandezoficial",
+      "instagram": "luciafernandez"
+    }
+  },
+  {
+    "id": 7,
+    "nombre": "Miguel Ángel Soto",
+    "partido": "Perú Libre Empresa",
+    "foto": "/images/candidatos/miguel-soto.jpg",
+    "ideologia": "derecha",
+    "edad": 58,
+    "profesion": "Contador",
+    "experiencia": "Ex Ministro de Economía",
+    "biografia": "Contador público con especialización en finanzas internacionales.",
+    "propuestasPorSector": [
+      {
+        "sector": "Economía",
+        "descripcion": "Reducción del tamaño del Estado y privatizaciones",
+        "semaforo": "rojo"
+      },
+      {
+        "sector": "Trabajo",
+        "descripcion": "Eliminación de la estabilidad laboral absoluta",
+        "semaforo": "rojo"
+      },
+      {
+        "sector": "Pensiones",
+        "descripcion": "Sistema de pensiones 100% privado",
+        "semaforo": "amarillo"
+      },
+      {
+        "sector": "Comercio",
+        "descripcion": "Apertura total al comercio internacional",
+        "semaforo": "verde"
+      }
+    ],
+    "redes": {
+      "twitter": "@miguelsoto",
+      "facebook": "miguelsotoperu",
+      "instagram": "miguelsoto"
+    }
+  },
+  {
+    "id": 8,
+    "nombre": "Patricia Ramos",
+    "partido": "Nueva Izquierda",
+    "foto": "/images/candidatos/patricia-ramos.jpg",
+    "ideologia": "izquierda",
+    "edad": 41,
+    "profesion": "Profesora",
+    "experiencia": "Líder sindical y activista social",
+    "biografia": "Profesora universitaria con amplia trayectoria en movimientos sociales.",
+    "propuestasPorSector": [
+      {
+        "sector": "Educación",
+        "descripcion": "Nacionalización de universidades privadas con fines de lucro",
+        "semaforo": "rojo"
+      },
+      {
+        "sector": "Trabajo",
+        "descripcion": "Jornada laboral de 6 horas sin reducción salarial",
+        "semaforo": "amarillo"
+      },
+      {
+        "sector": "Recursos Naturales",
+        "descripcion": "Nacionalización de recursos mineros y petroleros",
+        "semaforo": "rojo"
+      },
+      {
+        "sector": "Vivienda",
+        "descripcion": "Programa masivo de vivienda social gratuita",
+        "semaforo": "verde"
+      }
+    ],
+    "redes": {
+      "twitter": "@patriciaramos",
+      "facebook": "patriciaramosoficial",
+      "instagram": "patriciaramos"
+    }
+  }
+]

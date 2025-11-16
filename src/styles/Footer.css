@@ -1,8 +1,9 @@
 .footer {
-  background-color: #1e293b;
-  color: #e2e8f0;
+  background-color: var(--color-gray-900);
+  color: var(--color-gray-200);
   padding: 3rem 1rem 1.5rem;
   margin-top: 4rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .footer__container {
@@ -171,4 +172,54 @@
   .footer__content {
     gap: 3rem;
   }
+}
+
+/* ========================================
+   MODO OSCURO
+   ======================================== */
+.dark-mode .footer {
+  background-color: #1e293b;
+  color: #cbd5e1;
+}
+
+.dark-mode .footer__logo {
+  color: #ffffff;
+}
+
+.dark-mode .footer__description {
+  color: #94a3b8;
+}
+
+.dark-mode .footer__title {
+  color: #ffffff;
+}
+
+.dark-mode .footer__link {
+  color: #cbd5e1;
+}
+
+.dark-mode .footer__link:hover {
+  color: #60a5fa;
+}
+
+.dark-mode .footer__social-link {
+  background-color: #334155;
+  color: #cbd5e1;
+}
+
+.dark-mode .footer__social-link:hover {
+  background-color: #1e40af;
+  color: #ffffff;
+}
+
+.dark-mode .footer__bottom {
+  border-top-color: #475569;
+}
+
+.dark-mode .footer__copyright {
+  color: #94a3b8;
+}
+
+.dark-mode .footer__disclaimer {
+  color: #64748b;
 }

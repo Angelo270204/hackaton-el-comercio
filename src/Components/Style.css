@@ -21,6 +21,10 @@
   --grad-impacto: radial-gradient(1000px 600px at 10% -10%, rgba(47,110,211,0.18), transparent 55%), radial-gradient(900px 420px at 95% -5%, rgba(0,86,179,0.14), transparent 52%);
   --glass-bg: rgba(255,255,255,0.76);
   --glass-blur: 8px;
+  /* Ancho del panel detalle (ajustable) */
+  --detalle-width: 420px;
+  /* Desplazamiento vertical del top del panel (valores negativos extienden hacia arriba) */
+  --detalle-top-shift: -240px; /* Panel más alto para mejor visibilidad de la foto del candidato */
 }
 
 /* ========================================
@@ -41,6 +45,7 @@
   position: relative;
   background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0));
   border-radius: 14px;
+  min-height: calc(100vh - var(--navbar-altura) - 40px);
 }
 
 .candidatos-page__layout .candidatos-page__lista {
@@ -49,36 +54,75 @@
 
 .candidatos-page__layout--con-detalle .candidatos-page__lista {
   /* Reservar espacio para el panel fijo a la derecha + un pequeño colchón */
-  margin-right: calc(496px + 32px);
+  /* Espacio reducido para dejar el panel mucho más apegado */
+  /* reduje el colchón en 16px respecto al valor anterior para acercarlo más */
+  margin-right: calc(var(--detalle-width) - 8px);
 }
 
 .candidatos-page__lista {
   min-width: 0;
+  position: relative;
+  /* Sin overflow aquí - el contenido fluye naturalmente */
 }
+
+
 
 .candidatos-page__detalle {
   position: fixed;
-  top: calc(var(--navbar-altura, 120px) + 12px);
+  /* Aplicar desplazamiento vertical para extender el panel hacia arriba (más alto) */
+  top: calc(var(--navbar-altura, 120px) + var(--detalle-top-shift));
   right: 0;
   bottom: 0;
-  width: 496px;
+  width: var(--detalle-width);
   max-width: calc(100vw - 48px);
+  height: calc(100vh - var(--navbar-altura, 120px) - var(--detalle-top-shift));
   overflow-y: auto;
   overflow-x: hidden;
   overscroll-behavior: contain;
   scrollbar-width: thin;
-  scrollbar-color: rgba(0, 86, 179, 0.3) rgba(0, 0, 0, 0.05);
-  z-index: 999; /* por debajo del navbar (1000) */
+  scrollbar-color: rgba(0, 86, 179, 0.4) rgba(0, 0, 0, 0.05);
+  /* z-index aumentado para que tape la cuenta regresiva si es necesario */
+  z-index: 1050;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.2s ease, visibility 0.2s ease;
-  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
-  background: transparent;
+  /* Aparecer prácticamente pegado al borde derecho */
+  transform: translateX(0);
+  transition: transform 180ms cubic-bezier(.22,.9,.33,1), opacity 160ms ease, visibility 140ms ease;
+  /* Línea lateral izquierda que sale desde atrás */
+  box-shadow: -12px 0 24px -8px rgba(0, 86, 179, 0.15);
+  background: rgba(255,255,255,0.98);
+  border-left: 4px solid var(--color-primario);
+  border-top-left-radius: 18px;
+  border-bottom-left-radius: 18px;
+  backdrop-filter: blur(8px);
+  /* Asegurar que el scroll sea independiente de la lista */
+  pointer-events: auto;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Scrollbar webkit para el panel de detalle */
+.candidatos-page__detalle::-webkit-scrollbar {
+  width: 8px;
+}
+
+.candidatos-page__detalle::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+.candidatos-page__detalle::-webkit-scrollbar-thumb {
+  background: rgba(0, 86, 179, 0.4);
+  border-radius: 4px;
+}
+
+.candidatos-page__detalle::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 86, 179, 0.6);
 }
 
 .candidatos-page__detalle--visible {
   opacity: 1;
   visibility: visible;
+  transform: translateX(0);
 }
 
 .candidatos-page__cargando,
@@ -101,6 +145,7 @@
 
 .lista-candidatos {
   width: 100%;
+  padding-bottom: 10px;
 }
 
 .lista-candidatos__encabezado {
@@ -143,9 +188,35 @@
 
 .lista-candidatos__controles {
   display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.lista-candidatos__filtros-principales {
+  display: flex;
   gap: 10px;
   align-items: center;
   flex-wrap: wrap;
+}
+
+.lista-candidatos__filtros-avanzados {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 12px;
+  background: rgba(0, 86, 179, 0.03);
+  border-radius: 10px;
+  border: 1px solid rgba(0, 86, 179, 0.1);
+}
+
+.lista-candidatos__filtros-titulo {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-texto-secundario);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-right: 8px;
 }
 
 .lista-candidatos__resumen {
@@ -249,6 +320,13 @@
   box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.18);
 }
 
+.lista-candidatos__filtros-extra {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  flex: 1;
+}
+
 /* Filtros por partido */
 
 
@@ -281,6 +359,7 @@
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 16px 18px;
   justify-content: start;
+  padding-bottom: 10px;
 }
 
 .lista-candidatos__sin-resultados {
@@ -299,10 +378,10 @@
   background: var(--glass-bg);
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
-  border: 1px solid rgba(255,255,255,0.55);
+  border: 1px solid rgba(0,0,0,0.08);
   border-radius: 16px;
   cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-left-color 0.25s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -311,49 +390,62 @@
   position: relative;
   overflow: hidden;
   box-shadow: var(--sombra-suave);
+  /* Línea lateral izquierda por defecto (gris neutro) */
+  border-left: 5px solid var(--color-neutro);
 }
 
-/* Borde degradado animado */
-.tarjeta-candidato::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1.5px;
-  background: conic-gradient(from 220deg, color-mix(in srgb, var(--color-primario) 18%, #ffffff), rgba(255,255,255,0.7), color-mix(in srgb, var(--color-primario) 18%, #ffffff));
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-          mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-          mask-composite: exclude;
-  pointer-events: none;
-  opacity: 0.85;
+/* VERDE: Sin antecedentes negativos - CARD */
+.tarjeta-candidato--limpio {
+  border-left-color: #28a745;
+  box-shadow: -4px 0 12px -2px rgba(40, 167, 69, 0.3), var(--sombra-suave);
 }
 
-/* Brillo transversal al pasar el mouse */
-.tarjeta-candidato::after {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  background: linear-gradient(120deg, transparent 20%, rgba(255,255,255,0.45) 45%, transparent 60%);
-  transform: translateX(-120%);
-  transition: transform 700ms ease;
-  pointer-events: none;
+/* NARANJA: Investigaciones o denuncias en curso - CARD */
+.tarjeta-candidato--observado {
+  border-left-color: #ff9800;
+  box-shadow: -4px 0 12px -2px rgba(255, 152, 0, 0.3), var(--sombra-suave);
+}
+
+/* ROJO: Condenas o casos graves - CARD */
+.tarjeta-candidato--cuestionado {
+  border-left-color: #dc3545;
+  box-shadow: -4px 0 12px -2px rgba(220, 53, 69, 0.3), var(--sombra-suave);
 }
 
 .tarjeta-candidato:hover {
-  border-color: rgba(255,255,255,0.8);
   transform: translateY(-6px) scale(1.01);
   box-shadow: 0 14px 34px rgba(0,0,0,0.18);
 }
 
-.tarjeta-candidato:hover::after {
-  transform: translateX(120%);
+/* Mantener el color de la línea lateral en hover para cada estado */
+.tarjeta-candidato--limpio:hover {
+  box-shadow: -4px 0 16px -2px rgba(40, 167, 69, 0.4), 0 14px 34px rgba(0,0,0,0.18);
+}
+
+.tarjeta-candidato--observado:hover {
+  box-shadow: -4px 0 16px -2px rgba(255, 152, 0, 0.4), 0 14px 34px rgba(0,0,0,0.18);
+}
+
+.tarjeta-candidato--cuestionado:hover {
+  box-shadow: -4px 0 16px -2px rgba(220, 53, 69, 0.4), 0 14px 34px rgba(0,0,0,0.18);
 }
 
 .tarjeta-candidato--seleccionada {
-  border-color: rgba(255,255,255,0.85);
   box-shadow: 0 0 0 3px rgba(0,86,179,0.18), var(--sombra-fuerte);
   background: linear-gradient(0deg, rgba(0,86,179,0.05), rgba(0,86,179,0.05)), var(--glass-bg);
+}
+
+/* Mantener línea lateral de color en tarjeta seleccionada */
+.tarjeta-candidato--seleccionada.tarjeta-candidato--limpio {
+  box-shadow: -4px 0 12px -2px rgba(40, 167, 69, 0.4), 0 0 0 3px rgba(0,86,179,0.18), var(--sombra-fuerte);
+}
+
+.tarjeta-candidato--seleccionada.tarjeta-candidato--observado {
+  box-shadow: -4px 0 12px -2px rgba(255, 152, 0, 0.4), 0 0 0 3px rgba(0,86,179,0.18), var(--sombra-fuerte);
+}
+
+.tarjeta-candidato--seleccionada.tarjeta-candidato--cuestionado {
+  box-shadow: -4px 0 12px -2px rgba(220, 53, 69, 0.4), 0 0 0 3px rgba(0,86,179,0.18), var(--sombra-fuerte);
 }
 
 /* Overlay con logo agrandado al hacer hover */
@@ -366,12 +458,10 @@
   overflow: hidden;
   background: var(--color-neutro);
   margin-bottom: 12px;
-  border: 1px solid rgba(0,0,0,0.06);
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.10);
+  border: 3px solid rgba(0,0,0,0.12);
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.8), 0 4px 14px rgba(0,0,0,0.18);
   position: relative;
   z-index: 1;
-  padding: 2px; /* anillo más sutil */
-  background-image: conic-gradient(from 180deg at 50% 50%, color-mix(in srgb, var(--color-primario) 22%, transparent), rgba(255,255,255,0.5), color-mix(in srgb, var(--color-primario) 22%, transparent));
 }
 
 .tarjeta-candidato__imagen {
@@ -382,6 +472,8 @@
   border-radius: 50%;
 }
 
+/* Clases de imagen ya no necesitan estilos de antecedentes - se mueven a la card */
+
 .tarjeta-candidato__info {
   width: 100%;
   display: flex;
@@ -390,6 +482,12 @@
   gap: 6px;
   position: relative;
   z-index: 1;
+  padding: 12px 0 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: var(--color-texto);
+  font-size: 14px;
 }
 
 .tarjeta-candidato__nombre {
@@ -455,6 +553,27 @@
   box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.28), var(--sombra-fuerte);
 }
 
+.tarjeta-candidato__btn-comparar {
+  margin-top: 10px;
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 999px;
+  border: 1px solid var(--color-primario);
+  background: #ffffff;
+  color: var(--color-primario);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tarjeta-candidato__btn-comparar:hover {
+  background: rgba(0, 86, 179, 0.06);
+}
+
+.tarjeta-candidato__btn-comparar--activo {
+  background: var(--color-primario);
+  color: #ffffff;
+}
+
 .tarjeta-candidato__enlace {
   display: none;
 }
@@ -464,15 +583,14 @@
    ======================================== */
 
 .detalle-precandidatos {
-  background: var(--color-blanco);
-  border-left: 1px solid var(--color-borde);
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-  padding: 24px;
-  padding-top: 60px;
+  background: transparent;
+  /* Menos padding para que el formulario quede más pegado al contenedor */
+  padding: 12px 14px 18px 14px;
+  padding-top: 44px;
   min-height: 100%;
   position: relative;
-  height: 100%;
+  box-sizing: border-box;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__vacio {
@@ -482,62 +600,66 @@
   min-height: 300px;
   text-align: center;
   color: var(--color-texto-secundario);
-  font-size: 16px;
+  font-size: 18px;
   padding: 20px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__contenido {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
+  padding: 20px;
+  padding-bottom: 40px;
 }
 
 /* Botón cerrar del panel de detalle */
 .detalle-precandidatos__btn-cerrar {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 8px;
+  right: 8px;
   width: 36px;
   height: 36px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  border: 1px solid var(--color-neutro);
+  border: none;
   background: var(--color-blanco);
   color: var(--color-texto-secundario);
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1;
   cursor: pointer;
-  transition: all 0.2s ease;
-  z-index: 10;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.14s ease, box-shadow 0.14s ease, background 0.14s ease;
+  z-index: 20;
+  box-shadow: 0 6px 18px rgba(16,24,40,0.06);
 }
 
 .detalle-precandidatos__btn-cerrar:hover {
   color: var(--color-primario);
-  border-color: var(--color-primario);
-  background: rgba(0, 86, 179, 0.05);
-  box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.12);
-  transform: scale(1.05);
+  background: rgba(0, 86, 179, 0.04);
+  box-shadow: 0 10px 26px rgba(2,6,23,0.08);
+  transform: translateY(-2px) scale(1.03);
 }
 
 /* Perfil del candidato */
 .detalle-precandidatos__perfil {
   display: flex;
-  gap: 16px;
   align-items: center;
+  gap: 24px;
+  padding-top: 8px;
   padding-bottom: 20px;
-  border-bottom: 1px solid var(--color-neutro);
+  border-bottom: 2px solid var(--color-neutro);
+  margin-bottom: 4px;
 }
 
 .detalle-precandidatos__avatar {
-  width: 80px;
-  height: 80px;
+  width: 96px;
+  height: 96px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid var(--color-blanco);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .detalle-precandidatos__info-basica {
@@ -548,49 +670,102 @@
   font-size: 24px;
   font-weight: 700;
   color: var(--color-primario);
-  margin: 0 0 6px 0;
+  margin: 0 0 4px 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__partido {
-  font-size: 15px;
+  font-size: 17px;
   color: var(--color-texto-secundario);
   margin: 0 0 4px 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__cargo {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--color-texto);
   font-weight: 500;
   margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 /* Resumen */
 .detalle-precandidatos__resumen {
-  padding: 16px;
-  background: var(--color-fondo);
-  border-radius: 10px;
+  margin-bottom: 24px;
+}
+
+.detalle-precandidatos__antecedentes {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+  font-size: 14px;
+  color: var(--color-texto-secundario);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.detalle-precandidatos__antecedentes-indicador {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background-color: var(--color-neutro);
+}
+
+.detalle-precandidatos__antecedentes-indicador--verde {
+  background-color: #28a745;
+}
+
+.detalle-precandidatos__antecedentes-indicador--naranja {
+  background-color: #ff9800;
+}
+
+.detalle-precandidatos__antecedentes-indicador--rojo {
+  background-color: #dc3545;
+}
+
+.detalle-precandidatos__antecedentes-indicador--gris {
+  background-color: #bdbdbd;
+}
+
+.detalle-precandidatos__antecedentes-boton {
+  border: none;
+  background: transparent;
+  color: var(--color-primario);
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.detalle-precandidatos__antecedentes-boton:hover {
+  color: var(--color-acento);
 }
 
 .detalle-precandidatos__seccion-titulo {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--color-texto-secundario);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin: 0 0 10px 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__rol {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--color-texto);
   margin: 0 0 8px 0;
   line-height: 1.5;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__elecciones-previas {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--color-texto-secundario);
   margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__elecciones-previas strong {
@@ -602,13 +777,15 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  margin-top: 8px;
 }
 
 .detalle-precandidatos__propuestas-titulo {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   color: var(--color-primario);
   margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__tabs {
@@ -623,12 +800,13 @@
   border: none;
   background: transparent;
   color: var(--color-texto-secundario);
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   cursor: pointer;
   border-bottom: 2px solid transparent;
   margin-bottom: -2px;
   transition: all 0.2s;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__tab:hover {
@@ -654,17 +832,19 @@
 }
 
 .detalle-precandidatos__propuesta-titulo {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--color-texto);
   margin: 0 0 8px 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__propuesta-texto {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--color-texto-secundario);
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.6;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 /* ========================================
@@ -680,10 +860,11 @@
 }
 
 .detalle-precandidatos__hoja-vida-titulo {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   color: var(--color-primario);
   margin: 0 0 16px 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__hoja-vida-seccion {
@@ -695,12 +876,13 @@
 }
 
 .detalle-precandidatos__hoja-vida-subtitulo {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--color-texto);
   margin: 0 0 8px 0;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__hoja-vida-lista {
@@ -713,16 +895,18 @@
   padding: 8px 0 8px 16px;
   border-left: 2px solid var(--color-primario);
   margin-bottom: 8px;
-  font-size: 14px;
+  font-size: 16px;
   color: var(--color-texto);
-  line-height: 1.5;
+  line-height: 1.6;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__hoja-vida-texto {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--color-texto-secundario);
   line-height: 1.6;
   margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 /* Actividades */
@@ -734,10 +918,11 @@
 }
 
 .detalle-precandidatos__actividades-titulo {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   color: var(--color-primario);
   margin: 0 0 16px 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__actividades-lista {
@@ -754,24 +939,27 @@
 }
 
 .detalle-precandidatos__actividad-fecha {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--color-texto-secundario);
   margin: 0 0 6px 0;
   font-weight: 600;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__actividad-titulo {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--color-texto);
   margin: 0 0 4px 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__actividad-descripcion {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--color-texto-secundario);
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.6;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 /* Noticias */
@@ -783,10 +971,11 @@
 }
 
 .detalle-precandidatos__noticias-titulo {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   color: var(--color-primario);
   margin: 0 0 16px 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__noticias-grid {
@@ -816,28 +1005,43 @@
 }
 
 .detalle-precandidatos__noticia-fecha {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--color-texto-secundario);
   font-weight: 600;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__noticia-fuente {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--color-primario);
   font-weight: 600;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__noticia-titulo {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--color-texto);
   margin: 0 0 6px 0;
   line-height: 1.4;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__noticia-descripcion {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--color-texto-secundario);
+  line-height: 1.6;
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.detalle-precandidatos__sin-datos {
+  font-size: 16px;
+  color: var(--color-texto-secundario);
+  font-style: italic;
+  text-align: center;
+  padding: 20px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   margin: 0;
   line-height: 1.5;
 }
@@ -889,7 +1093,8 @@
   }
 
   .lista-candidatos__buscador,
-  .lista-candidatos__selector {
+  .lista-candidatos__selector,
+  .lista-candidatos__filtros-extra {
     width: 100%;
   }
 }
@@ -930,4 +1135,693 @@
   .detalle-precandidatos__tabs {
     flex-wrap: wrap;
   }
+}
+
+/* ========================================
+   COMPARADOR DE CANDIDATOS
+   ======================================== */
+
+.candidatos-page__comparador-wrapper {
+  margin-top: 32px;
+  padding-bottom: 15px;
+}
+
+/* ========================================
+   COMPARADOR ESTILO APPLE
+   ======================================== */
+
+.comparador-apple {
+  margin-top: 40px;
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Header sticky */
+.comparador-apple__header-sticky {
+  position: sticky;
+  top: var(--navbar-altura, 120px);
+  z-index: 100;
+  background: linear-gradient(180deg, #ffffff 0%, #f9fafb 100%);
+  border-bottom: 1px solid #e5e7eb;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.comparador-apple__header-content {
+  padding: 24px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.comparador-apple__header-text {
+  flex: 1;
+}
+
+.comparador-apple__titulo {
+  margin: 0 0 6px 0;
+  font-size: 32px;
+  font-weight: 700;
+  color: #1d1d1f;
+  letter-spacing: -0.5px;
+}
+
+.comparador-apple__subtitulo {
+  margin: 0;
+  font-size: 17px;
+  color: #6e6e73;
+  font-weight: 400;
+}
+
+.comparador-apple__btn-cerrar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 980px;
+  background: #f5f5f7;
+  color: #1d1d1f;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.comparador-apple__btn-cerrar:hover {
+  background: #e8e8ed;
+  transform: scale(1.02);
+}
+
+.comparador-apple__btn-cerrar-icono {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.comparador-apple__btn-cerrar-texto {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Candidatos header (tarjetas arriba) */
+.comparador-apple__candidatos-header {
+  display: grid;
+  grid-template-columns: 200px repeat(auto-fit, minmax(0, 1fr));
+  gap: 16px;
+  padding: 24px 32px 32px;
+  background: #ffffff;
+}
+
+.comparador-apple__categoria-spacer {
+  /* Espacio vacío para alinear */
+}
+
+.comparador-apple__candidato-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px 16px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #f9fafb 0%, #ffffff 100%);
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.comparador-apple__candidato-card:hover {
+  border-color: var(--color-primario);
+  box-shadow: 0 8px 24px rgba(0, 86, 179, 0.12);
+  transform: translateY(-4px);
+}
+
+.comparador-apple__candidato-avatar-wrapper {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 16px;
+  background: #f5f5f7;
+  border: 3px solid #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.comparador-apple__candidato-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.comparador-apple__candidato-nombre {
+  margin: 0 0 8px 0;
+  font-size: 19px;
+  font-weight: 600;
+  color: #1d1d1f;
+  line-height: 1.3;
+}
+
+.comparador-apple__candidato-partido {
+  margin: 0;
+  font-size: 14px;
+  color: var(--color-primario);
+  font-weight: 500;
+  padding: 6px 12px;
+  background: rgba(0, 86, 179, 0.08);
+  border-radius: 8px;
+}
+
+/* Tabla de comparación */
+.comparador-apple__tabla {
+  padding: 0 32px 32px;
+}
+
+/* Sección */
+.comparador-apple__seccion {
+  margin-bottom: 48px;
+}
+
+.comparador-apple__seccion:last-child {
+  margin-bottom: 0;
+}
+
+.comparador-apple__seccion-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #f5f5f7;
+}
+
+.comparador-apple__seccion-icono {
+  font-size: 28px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.comparador-apple__seccion-titulo {
+  margin: 0 0 4px 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1d1d1f;
+  letter-spacing: -0.3px;
+}
+
+.comparador-apple__seccion-descripcion {
+  margin: 0;
+  font-size: 15px;
+  color: #6e6e73;
+  font-weight: 400;
+}
+
+/* Filas */
+.comparador-apple__fila {
+  display: grid;
+  grid-template-columns: 200px repeat(auto-fit, minmax(0, 1fr));
+  gap: 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid #f5f5f7;
+}
+
+.comparador-apple__fila:last-child {
+  border-bottom: none;
+}
+
+.comparador-apple__fila--propuestas {
+  align-items: flex-start;
+  padding: 24px 0;
+}
+
+.comparador-apple__categoria {
+  display: flex;
+  align-items: center;
+  padding-right: 16px;
+}
+
+.comparador-apple__categoria-texto {
+  font-size: 16px;
+  font-weight: 600;
+  color: #424245;
+  line-height: 1.4;
+}
+
+.comparador-apple__valor {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 16px;
+  background: #f9fafb;
+  border-radius: 12px;
+}
+
+.comparador-apple__valor-texto {
+  font-size: 16px;
+  color: #1d1d1f;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.comparador-apple__valor-badge {
+  display: inline-block;
+  font-size: 15px;
+  color: #1d1d1f;
+  padding: 6px 14px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.comparador-apple__sin-datos {
+  font-size: 15px;
+  color: #86868b;
+  font-style: italic;
+}
+
+/* Propuestas */
+.comparador-apple__propuestas-contenedor {
+  width: 100%;
+}
+
+.comparador-apple__propuestas-count {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  background: rgba(0, 86, 179, 0.06);
+  border-radius: 8px;
+  border-left: 3px solid var(--color-primario);
+}
+
+.comparador-apple__propuestas-numero {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-primario);
+  line-height: 1;
+}
+
+.comparador-apple__propuestas-label {
+  font-size: 14px;
+  color: var(--color-primario);
+  font-weight: 500;
+}
+
+.comparador-apple__propuestas-lista {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.comparador-apple__propuesta-item {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+  align-items: flex-start;
+}
+
+.comparador-apple__propuesta-item:last-child {
+  margin-bottom: 0;
+}
+
+.comparador-apple__propuesta-bullet {
+  font-size: 20px;
+  color: var(--color-primario);
+  line-height: 1.5;
+  flex-shrink: 0;
+}
+
+.comparador-apple__propuesta-texto {
+  font-size: 15px;
+  color: #1d1d1f;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.comparador-apple__propuesta-item--mas {
+  justify-content: flex-start;
+}
+
+.comparador-apple__propuesta-mas {
+  font-size: 14px;
+  color: var(--color-primario);
+  font-weight: 600;
+  padding: 6px 12px;
+  background: rgba(0, 86, 179, 0.08);
+  border-radius: 6px;
+}
+
+/* Puntuación con barras */
+.comparador-apple__puntuacion-contenedor {
+  width: 100%;
+}
+
+.comparador-apple__puntuacion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+
+.comparador-apple__puntuacion-numero {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.comparador-apple__puntuacion-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #6e6e73;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.comparador-apple__barra-contenedor {
+  width: 100%;
+  height: 12px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.comparador-apple__barra-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.comparador-apple__barra--sin-datos {
+  background: #e5e7eb;
+}
+
+.comparador-apple__barra--bajo {
+  background: linear-gradient(90deg, #dc2626, #ef4444);
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
+}
+
+.comparador-apple__barra--medio {
+  background: linear-gradient(90deg, #f59e0b, #fbbf24);
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+}
+
+.comparador-apple__barra--alto {
+  background: linear-gradient(90deg, #16a34a, #22c55e);
+  box-shadow: 0 2px 8px rgba(22, 163, 74, 0.3);
+}
+
+/* Listas simples */
+.comparador-apple__lista-simple {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+}
+
+.comparador-apple__lista-item {
+  font-size: 15px;
+  color: #1d1d1f;
+  line-height: 1.6;
+  padding: 8px 0;
+  border-bottom: 1px solid #f5f5f7;
+}
+
+.comparador-apple__lista-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* Footer */
+.comparador-apple__footer {
+  padding: 24px 32px;
+  background: #f9fafb;
+  border-top: 1px solid #e5e7eb;
+}
+
+.comparador-apple__footer-texto {
+  margin: 0;
+  font-size: 15px;
+  color: #6e6e73;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .comparador-apple__candidatos-header,
+  .comparador-apple__fila {
+    grid-template-columns: 160px repeat(auto-fit, minmax(0, 1fr));
+  }
+
+  .comparador-apple__titulo {
+    font-size: 28px;
+  }
+
+  .comparador-apple__candidato-avatar-wrapper {
+    width: 80px;
+    height: 80px;
+  }
+
+  .comparador-apple__candidato-nombre {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 768px) {
+  .comparador-apple__header-content {
+    padding: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .comparador-apple__titulo {
+    font-size: 24px;
+  }
+
+  .comparador-apple__subtitulo {
+    font-size: 15px;
+  }
+
+  .comparador-apple__candidatos-header {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .comparador-apple__categoria-spacer {
+    display: none;
+  }
+
+  .comparador-apple__tabla {
+    padding: 0 20px 20px;
+  }
+
+  .comparador-apple__fila {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .comparador-apple__categoria {
+    padding: 12px;
+    background: #f9fafb;
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+
+  .comparador-apple__seccion-titulo {
+    font-size: 20px;
+  }
+
+  .comparador-apple__footer {
+    padding: 20px;
+  }
+}
+
+
+
+/* Badge de ideología política */
+.tarjeta-candidato__ideologia {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 12px;
+  margin-top: 4px;
+  background: rgba(108, 117, 125, 0.1);
+  color: #495057;
+  border: 1px solid rgba(108, 117, 125, 0.2);
+/* ========================================
+   MODO OSCURO - CANDIDATOS
+   ======================================== */
+.dark-mode .candidatos-page {
+  background: #0f172a;
+}
+
+.dark-mode .candidatos-page__layout {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+}
+
+.dark-mode .lista-candidatos__titulo {
+  color: #60a5fa;
+}
+
+.dark-mode .lista-candidatos__subtitulo {
+  color: #cbd5e1;
+}
+
+.dark-mode .lista-candidatos__contador {
+  color: #94a3b8;
+}
+
+.dark-mode .lista-candidatos__buscador {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.dark-mode .lista-candidatos__input-busqueda {
+  background: transparent;
+  color: #f1f5f9;
+}
+
+.dark-mode .lista-candidatos__input-busqueda::placeholder {
+  color: #64748b;
+}
+
+.dark-mode .lista-candidatos__selector {
+  background: #1e293b;
+  border-color: #334155;
+  color: #f1f5f9;
+}
+
+.dark-mode .lista-candidatos__limpiar {
+  background: #1e293b;
+  border-color: #334155;
+  color: #f1f5f9;
+}
+
+.dark-mode .lista-candidatos__chip {
+  background: #1e293b;
+  border-color: #334155;
+  color: #f1f5f9;
+}
+
+.dark-mode .lista-candidatos__chip--activo {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #ffffff;
+}
+
+.dark-mode .tarjeta-candidato {
+  background: rgba(30, 41, 59, 0.8);
+  border-color: rgba(51, 65, 85, 0.6);
+}
+
+.dark-mode .tarjeta-candidato:hover {
+  background: rgba(30, 41, 59, 0.95);
+  border-color: rgba(59, 130, 246, 0.5);
+}
+
+.dark-mode .tarjeta-candidato__nombre {
+  color: #f1f5f9;
+}
+
+.dark-mode .tarjeta-candidato__partido {
+  background: rgba(37, 99, 235, 0.15);
+  border-color: rgba(37, 99, 235, 0.3);
+  color: #93c5fd;
+}
+
+.dark-mode .tarjeta-candidato__info {
+  color: #cbd5e1;
+}
+
+.dark-mode .candidatos-page__detalle {
+  background: rgba(30, 41, 59, 0.98);
+  border-left-color: rgba(51, 65, 85, 0.6);
+}
+
+.dark-mode .detalle-precandidatos__btn-cerrar {
+  background: #334155;
+  color: #cbd5e1;
+}
+
+.dark-mode .detalle-precandidatos__btn-cerrar:hover {
+  background: #475569;
+  color: #60a5fa;
+}
+
+.dark-mode .detalle-precandidatos__nombre {
+  color: #60a5fa;
+}
+
+.dark-mode .detalle-precandidatos__partido,
+.dark-mode .detalle-precandidatos__cargo {
+  color: #cbd5e1;
+}
+
+.dark-mode .detalle-precandidatos__seccion-titulo {
+  color: #94a3b8;
+}
+
+.dark-mode .detalle-precandidatos__rol {
+  color: #e2e8f0;
+}
+
+.dark-mode .detalle-precandidatos__propuestas-titulo {
+  color: #60a5fa;
+}
+
+.dark-mode .detalle-precandidatos__tab {
+  color: #94a3b8;
+}
+
+.dark-mode .detalle-precandidatos__tab--activo {
+  color: #60a5fa;
+  border-bottom-color: #60a5fa;
+}
+
+.dark-mode .detalle-precandidatos__propuesta-item {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.dark-mode .detalle-precandidatos__propuesta-titulo {
+  color: #f1f5f9;
+}
+
+.dark-mode .detalle-precandidatos__propuesta-texto {
+  color: #cbd5e1;
+}
+
+.dark-mode .comparador-candidatos {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.dark-mode .comparador-candidatos__titulo {
+  color: #60a5fa;
+}
+
+.dark-mode .comparador-candidatos__subtitulo {
+  color: #94a3b8;
+}
+
+.dark-mode .comparador-candidatos__tarjeta {
+  background: #0f172a;
+  border-color: #334155;
+}
+
+.dark-mode .comparador-candidatos__nombre {
+  color: #f1f5f9;
+}
+
+.dark-mode .comparador-candidatos__cargo {
+  color: #94a3b8;
 }

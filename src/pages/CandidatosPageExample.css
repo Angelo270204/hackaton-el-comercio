@@ -1,0 +1,403 @@
+/* Página de candidatos */
+.candidatos-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header de la página */
+.candidatos-page__header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.candidatos-page__header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0 0 8px 0;
+}
+
+.candidatos-page__subtitle {
+  font-size: 16px;
+  color: #7f8c8d;
+  margin: 0;
+}
+
+/* Información de resultados */
+.candidatos-page__info {
+  background: #f8f9fa;
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.candidatos-page__info p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Estados de carga y error */
+.loading,
+.error {
+  text-align: center;
+  padding: 40px;
+  font-size: 18px;
+}
+
+.error {
+  color: #e74c3c;
+}
+
+.loading {
+  color: #3498db;
+}
+
+/* Lista de candidatos */
+.candidatos-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 24px;
+  margin-bottom: 100px;
+}
+
+/* Mensaje de no resultados */
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  color: #7f8c8d;
+  font-size: 16px;
+}
+
+/* Tarjeta de candidato */
+.candidate-card {
+  background: #ffffff;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.candidate-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+}
+
+.candidate-card--selected {
+  border-color: #3498db;
+  background: #f0f8ff;
+}
+
+/* Header de la tarjeta */
+.candidate-card__header {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.candidate-card__photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #e0e0e0;
+}
+
+.candidate-card__info {
+  flex: 1;
+}
+
+.candidate-card__name {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0 0 4px 0;
+}
+
+.candidate-card__party {
+  font-size: 14px;
+  color: #7f8c8d;
+  margin: 0 0 8px 0;
+}
+
+.candidate-card__ideology {
+  display: inline-block;
+  padding: 4px 12px;
+  background: #ecf0f1;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #34495e;
+  text-transform: capitalize;
+}
+
+/* Propuestas */
+.candidate-card__proposals {
+  margin-bottom: 16px;
+}
+
+.candidate-card__proposals h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0 0 8px 0;
+}
+
+.candidate-card__proposals ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.candidate-card__proposals li {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 8px;
+  padding-left: 12px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.candidate-card__proposals li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #3498db;
+}
+
+.proposal-sector {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+/* Semáforo */
+.semaforo {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-left: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  vertical-align: middle;
+}
+
+/* Acciones de la tarjeta */
+.candidate-card__actions {
+  margin-top: 16px;
+}
+
+.btn-select {
+  width: 100%;
+  padding: 10px 16px;
+  background: #ffffff;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  color: #3498db;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-select:hover:not(:disabled) {
+  background: #3498db;
+  color: #ffffff;
+}
+
+.btn-select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-select--active {
+  background: #3498db;
+  color: #ffffff;
+}
+
+.btn-select--active:hover {
+  background: #2980b9;
+  border-color: #2980b9;
+}
+
+/* Panel de comparación (fijo en la parte inferior) */
+.comparison-panel {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border-top: 3px solid #3498db;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  z-index: 100;
+}
+
+.comparison-panel__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.comparison-panel__header h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.btn-clear {
+  padding: 8px 16px;
+  background: transparent;
+  border: 2px solid #e74c3c;
+  border-radius: 6px;
+  color: #e74c3c;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-clear:hover {
+  background: #e74c3c;
+  color: #ffffff;
+}
+
+/* Candidatos seleccionados */
+.comparison-panel__selected {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  flex-wrap: wrap;
+}
+
+.selected-candidate {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #ecf0f1;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.btn-remove {
+  background: #e74c3c;
+  color: #ffffff;
+  border: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.btn-remove:hover {
+  background: #c0392b;
+  transform: scale(1.1);
+}
+
+/* Botón de comparar */
+.btn-compare {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  background: #27ae60;
+  border: none;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-compare:hover {
+  background: #229954;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .candidatos-page {
+    padding: 16px;
+  }
+
+  .candidatos-page__header h1 {
+    font-size: 24px;
+  }
+
+  .candidatos-page__subtitle {
+    font-size: 14px;
+  }
+
+  .candidatos-list {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 120px;
+  }
+
+  .candidate-card__header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .comparison-panel {
+    padding: 16px;
+  }
+
+  .comparison-panel__header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .btn-clear {
+    width: 100%;
+  }
+
+  .comparison-panel__selected {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .candidate-card__photo {
+    width: 60px;
+    height: 60px;
+  }
+
+  .candidate-card__name {
+    font-size: 18px;
+  }
+
+  .comparison-panel__selected {
+    flex-direction: column;
+  }
+
+  .selected-candidate {
+    justify-content: space-between;
+  }
+}
