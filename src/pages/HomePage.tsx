@@ -1,14 +1,46 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { MapPin, Users, Calendar, BookOpen, Sparkles, ArrowRight } from 'lucide-react';
 
 import { QuickAccessCard } from './QuickAccessCard';
 import CarruselHeader from '../Components/CarruselHeader';
 import { useLanguage } from '../contexts/LanguageContext';
+import { AppAvatar } from '../shared/components';
 import '../styles/home.css';
 
 export const HomePage: React.FC = () => {
   const { t } = useLanguage();
+
+  const [email, setEmail] = useState('');
+  const [isSubscribed, setIsSubscribed] = useState(false);
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem('elecciones_subscription');
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (parsed?.email) {
+          setEmail(parsed.email);
+          setIsSubscribed(true);
+        }
+      }
+    } catch {
+      // ignore read errors
+    }
+  }, []);
+
+  const handleSubscribe = (event: React.FormEvent) => {
+    event.preventDefault();
+    if (!email || !email.includes('@')) {
+      return;
+    }
+    try {
+      localStorage.setItem('elecciones_subscription', JSON.stringify({ email }));
+    } catch {
+      // ignore write errors
+    }
+    setIsSubscribed(true);
+  };
 
   const quickAccessItems = [
     {
@@ -42,8 +74,45 @@ export const HomePage: React.FC = () => {
       <div className="home__container">
         {/* Carrusel Header reemplaza el hero estático */}
         <CarruselHeader />
-
-
+        <section className="home__subscription">
+          <div className="home__subscription-avatar">
+            <AppAvatar />
+          </div>
+          <div className="home__subscription-content">
+            <div className="home__subscription-badge">
+              <Sparkles size={18} />
+              <span>No te pierdas ninguna fecha clave</span>
+            </div>
+            <h2 className="home__subscription-title">
+              Mantente al día con el calendario electoral 2026
+            </h2>
+            <p className="home__subscription-text">
+              Deja tu correo y la aplicación te avisará de los hitos más importantes del proceso electoral.
+            </p>
+            <form className="home__subscription-form" onSubmit={handleSubscribe}>
+              <input
+                type="email"
+                className="home__subscription-input"
+                placeholder="tu-correo@ejemplo.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                aria-label="Correo electrónico para recibir recordatorios del calendario electoral"
+              />
+              <button
+                type="submit"
+                className="home__subscription-button"
+                disabled={!email || !email.includes('@')}
+              >
+                Quiero recibir recordatorios
+              </button>
+            </form>
+            {isSubscribed && (
+              <p className="home__subscription-confirmation">
+                ¡Listo! Te avisaremos de las fechas clave del calendario electoral.
+              </p>
+            )}
+          </div>
+        </section>
 
         {/* Quick Access Cards */}
         <section className="home__section">
