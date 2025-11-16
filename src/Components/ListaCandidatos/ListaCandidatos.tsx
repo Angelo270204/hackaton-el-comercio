@@ -5,6 +5,8 @@ interface PropiedadesListaCandidatos {
   candidatos: Candidato[]
   candidatoSeleccionadoId: number | string | null
   alSeleccionarCandidato: (candidato: Candidato) => void
+  candidatosComparacion?: Candidato[]
+  alToggleComparacion?: (candidato: Candidato) => void
 }
 
 /**
@@ -14,13 +16,41 @@ interface PropiedadesListaCandidatos {
 export function ListaCandidatos({
   candidatos,
   candidatoSeleccionadoId,
-  alSeleccionarCandidato
+  alSeleccionarCandidato,
+  candidatosComparacion = [],
+  alToggleComparacion,
 }: PropiedadesListaCandidatos) {
   const [textoBusqueda, setTextoBusqueda] = useState('')
   // Filtros de ubicación
   const [departamento, setDepartamento] = useState<string>('Todos')
   const [provincia, setProvincia] = useState<string>('Todos')
   const [distrito, setDistrito] = useState<string>('Todos')
+  const [partidoFiltro, setPartidoFiltro] = useState<string>('Todos')
+  const [sectorInteres, setSectorInteres] = useState<'todos' | 'economia' | 'salud' | 'seguridad' | 'educacion' | 'otros'>('todos')
+
+  const obtenerEstadoAntecedentes = (c: Candidato): 'limpio' | 'cuestionado' | 'desconocido' => {
+    const nombre = c.nombre.toLowerCase()
+    if (
+      nombre.includes('keiko fujimori') ||
+      nombre.includes('rafael lópez aliaga') ||
+      nombre.includes('rafael lopez aliaga') ||
+      nombre.includes('antauro humala') ||
+      nombre.includes('vladimir cerrón') ||
+      nombre.includes('vladimir cerron') ||
+      nombre.includes('césar acuña') ||
+      nombre.includes('cesar acuña') ||
+      nombre.includes('cesar acuna')
+    ) {
+      return 'cuestionado'
+    }
+    return 'limpio'
+  }
+
+  const etiquetaAntecedentes = (estado: 'limpio' | 'cuestionado' | 'desconocido') => {
+    if (estado === 'cuestionado') return 'Antecedentes: revisar noticias'
+    if (estado === 'limpio') return 'Antecedentes: sin registros relevantes en noticias'
+    return 'Antecedentes: sin información suficiente'
+  }
 
   // Obtener listas únicas de ubicación desde los candidatos (si existen)
   const departamentos = useMemo(() => {
@@ -55,6 +85,14 @@ export function ListaCandidatos({
     return Array.from(set)
   }, [candidatos, departamento, provincia])
 
+  const partidos = useMemo(() => {
+    const set = new Set<string>(['Todos'])
+    candidatos.forEach((c) => {
+      if (c.partido) set.add(c.partido)
+    })
+    return Array.from(set)
+  }, [candidatos])
+
   // Filtrar y ordenar candidatos según los controles
   const candidatosFiltrados = useMemo(() => {
     let resultado = [...candidatos]
@@ -70,6 +108,10 @@ export function ListaCandidatos({
       resultado = resultado.filter((c) => (c as any).distrito === distrito)
     }
 
+    if (partidoFiltro !== 'Todos') {
+      resultado = resultado.filter((c) => c.partido === partidoFiltro)
+    }
+
     // Filtrar por búsqueda
     if (textoBusqueda.trim()) {
       const busqueda = textoBusqueda.toLowerCase()
@@ -80,14 +122,23 @@ export function ListaCandidatos({
       )
     }
 
+    if (sectorInteres !== 'todos') {
+      resultado = resultado.filter((c) => {
+        const propuestasSector = c.propuestas?.[sectorInteres]
+        return Array.isArray(propuestasSector) && propuestasSector.length > 0
+      })
+    }
+
     return resultado
-  }, [candidatos, textoBusqueda, departamento, provincia, distrito])
+  }, [candidatos, textoBusqueda, departamento, provincia, distrito, partidoFiltro, sectorInteres])
 
   const limpiarFiltros = () => {
     setTextoBusqueda('')
     setDepartamento('Todos')
     setProvincia('Todos')
     setDistrito('Todos')
+    setPartidoFiltro('Todos')
+    setSectorInteres('todos')
   }
 
   // Función para obtener la ruta de la imagen
@@ -175,6 +226,33 @@ export function ListaCandidatos({
               ))}
             </select>
           </div>
+          <div className="lista-candidatos__filtros-extra">
+            <select
+              value={partidoFiltro}
+              onChange={(e) => setPartidoFiltro(e.target.value)}
+              className="lista-candidatos__selector"
+              aria-label="Filtrar por partido"
+            >
+              {partidos.map((p) => (
+                <option key={p} value={p}>
+                  {p === 'Todos' ? 'Partido: Todos' : p}
+                </option>
+              ))}
+            </select>
+            <select
+              value={sectorInteres}
+              onChange={(e) => setSectorInteres(e.target.value as any)}
+              className="lista-candidatos__selector"
+              aria-label="Filtrar por sector de interés"
+            >
+              <option value="todos">Sector: Todos</option>
+              <option value="economia">Economía</option>
+              <option value="salud">Salud</option>
+              <option value="seguridad">Seguridad</option>
+              <option value="educacion">Educación</option>
+              <option value="otros">Otros</option>
+            </select>
+          </div>
         </div>
       </div>
       {/* Resumen y acciones */}
@@ -196,7 +274,9 @@ export function ListaCandidatos({
         ) : (
           candidatosFiltrados.map((candidato) => {
             const estaSeleccionado = candidatoSeleccionadoId === candidato.id
+            const enComparacion = candidatosComparacion.some((c) => c.id === candidato.id)
             const rutaImagen = obtenerImagen(candidato)
+            const estadoAntecedentes = obtenerEstadoAntecedentes(candidato)
 
             return (
               <article
@@ -214,7 +294,9 @@ export function ListaCandidatos({
                   }
                 }}
               >
-                <div className="tarjeta-candidato__imagen-contenedor">
+                <div
+                  className={`tarjeta-candidato__imagen-contenedor tarjeta-candidato__imagen-contenedor--${estadoAntecedentes}`}
+                >
                   <img
                     src={rutaImagen}
                     alt={`Foto de ${candidato.nombre}`}
@@ -243,6 +325,20 @@ export function ListaCandidatos({
                     />
                   )}
                   <div className="tarjeta-candidato__cta">Ver detalle</div>
+                  {alToggleComparacion && (
+                    <button
+                      type="button"
+                      className={`tarjeta-candidato__btn-comparar ${
+                        enComparacion ? 'tarjeta-candidato__btn-comparar--activo' : ''
+                      }`}
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        alToggleComparacion(candidato)
+                      }}
+                    >
+                      {enComparacion ? 'Quitar de la comparativa' : 'Agregar a la comparativa'}
+                    </button>
+                  )}
                 </div>
               </article>
             )
