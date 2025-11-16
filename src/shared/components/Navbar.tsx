@@ -32,15 +32,14 @@ function calculateTimeLeft(targetDate: string): TimeLeft {
 export const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { t } = useLanguage();
-  const location = useLocation(); // Para detectar la ruta actual y marcar el item activo
+  const location = useLocation();
+
   const ELECTION_DATE = "2026-04-12T08:00:00";
   const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft(ELECTION_DATE));
 
-  // Función para determinar si un link está activo según la ruta actual
+  // 🔥 versión mejor (feature/mejoras)
   const isActive = (path: string) => {
-    if (path === '/') {
-      return location.pathname === '/';
-    }
+    if (path === "/") return location.pathname === "/";
     return location.pathname.startsWith(path);
   };
 
@@ -73,13 +72,8 @@ export const Navbar: React.FC = () => {
     updateNavbarOffsetVar();
   }, [isMenuOpen]);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const closeMenu = () => setIsMenuOpen(false);
 
   return (
     <nav className="navbar">
@@ -121,15 +115,12 @@ export const Navbar: React.FC = () => {
       {/* Segunda fila: Navegación */}
       <div className="navbar__bottom">
         <div className="navbar__bottom-container">
-          <button
-            className="navbar__toggle"
-            onClick={toggleMenu}
-            aria-label="Toggle menu"
-          >
+          <button className="navbar__toggle" onClick={toggleMenu}>
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
 
           <ul className={`navbar__menu ${isMenuOpen ? 'navbar__menu--open' : ''}`}>
+            
             <li className="navbar__item">
               <Link 
                 to="/" 
@@ -139,6 +130,7 @@ export const Navbar: React.FC = () => {
                 Inicio
               </Link>
             </li>
+
             <li className="navbar__item">
               <Link 
                 to="/candidatos" 
@@ -148,6 +140,7 @@ export const Navbar: React.FC = () => {
                 Candidatos
               </Link>
             </li>
+
             <li className="navbar__item">
               <Link 
                 to="/calendario" 
@@ -157,6 +150,7 @@ export const Navbar: React.FC = () => {
                 Calendario
               </Link>
             </li>
+
             <li className="navbar__item">
               <Link 
                 to="/donde-votar" 
@@ -166,8 +160,8 @@ export const Navbar: React.FC = () => {
                 Dónde Votar
               </Link>
             </li>
+
             <li className="navbar__item">
-              {/* Guía Miembros sin fondo azul, igual que los demás items */}
               <Link 
                 to="/guia-miembros" 
                 className={`navbar__link ${isActive('/guia-miembros') ? 'navbar__link--active' : ''}`}
@@ -176,6 +170,7 @@ export const Navbar: React.FC = () => {
                 Guía Miembros
               </Link>
             </li>
+
           </ul>
         </div>
       </div>

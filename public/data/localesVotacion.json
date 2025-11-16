@@ -8,7 +8,12 @@
     "distrito": "Chimbote",
     "departamento": "Áncash",
     "lat": -9.06012326661338,
-    "lng": -78.58601780089927
+    "lng": -78.58601780089927,
+    "transporte": {
+      "referencias": "En Chimbote Centro. A espaldas de la Plaza 28 de Julio, cerca al Puesto de Salud 'El Progreso'.",
+      "rutas": ["Cualquier combi/colectivo al 'Centro' o 'Plaza 28 de Julio'.", "Mototaxi desde el Mercado Central."],
+      "tiempoAprox": "5 min caminando desde la Plaza de Armas."
+    }
   },
   {
     "dni": "12345679",
@@ -19,7 +24,12 @@
     "distrito": "Chimbote",
     "departamento": "Áncash",
     "lat": -9.067559017609625,
-    "lng": -78.59422670903821
+    "lng": -78.59422670903821,
+    "transporte": {
+      "referencias": "En Chimbote Centro. A una cuadra de la Av. Pardo (altura de la Catedral).",
+      "rutas": ["Cualquier combi/colectivo que vaya por la Av. Pardo.", "Acceso peatonal desde la Plaza de Armas."],
+      "tiempoAprox": "10 min caminando desde la Plaza de Armas."
+    }
   },
   {
     "dni": "98765432",
@@ -30,7 +40,12 @@
     "distrito": "Chimbote",
     "departamento": "Áncash",
     "lat": -9.082799876210316, 
-    "lng": -78.58256009250364
+    "lng": -78.58256009250364,
+    "transporte": {
+      "referencias": "A una cuadra de la Av. Enrique Meiggs (altura cuadra 6-7). Cerca de la Comisaría de Chimbote.",
+      "rutas": ["Combis/colectivos que transitan por Av. Meiggs.", "Mototaxi desde la Av. Pardo."],
+      "tiempoAprox": "10 min en combi desde el centro."
+    }
   },
   
   {
@@ -42,7 +57,12 @@
     "distrito": "Chimbote",
     "departamento": "Áncash",
     "lat": -9.122739207829232,
-    "lng": -78.53159984719922
+    "lng": -78.53159984719922,
+    "transporte": {
+      "referencias": "En Nuevo Chimbote. A pocas cuadras de la Av. Pacífico y el Óvalo La Familia.",
+      "rutas": ["Combis/colectivos que recorren la Av. Pacífico (bajar en Óvalo La Familia).", "Mototaxi desde la Plaza Mayor de NCH."],
+      "tiempoAprox": "5-10 min en mototaxi desde la Av. Central NCH."
+    }
   },
   {
     "dni": "45678901",
@@ -53,7 +73,12 @@
     "distrito": "Chimbote",
     "departamento": "Áncash",
     "lat": -9.091991336156047,
-    "lng": -78.57025464027011
+    "lng": -78.57025464027011,
+    "transporte": {
+      "referencias": "En Chimbote. A la altura de la cuadra 15 de Av. Enrique Meiggs. Cerca del Hospital La Caleta.",
+      "rutas": ["Cualquier combi/colectivo que transite por la Av. Meiggs.", "Línea 2 (Combis) - Paradero 'Hospital La Caleta'."],
+      "tiempoAprox": "15 min en combi desde el centro."
+    }
   },
  
   {
@@ -65,7 +90,12 @@
     "distrito": "Chimbote",
     "departamento": "Áncash",
     "lat": -9.081097410349154,
-    "lng": -78.58224086879515
+    "lng": -78.58224086879515,
+    "transporte": {
+      "referencias": "En plena Av. Enrique Meiggs (cuadra 6). Frente al Vivero Forestal de Chimbote.",
+      "rutas": ["Cualquier combi/colectivo por Av. Meiggs (Línea 2, etc.). Paradero 'El Politécnico'.", "Mototaxi desde la Av. Pardo."],
+      "tiempoAprox": "10 min en combi desde la Plaza de Armas."
+    }
   },
   {
     "dni": "78901234",
@@ -76,7 +106,12 @@
     "distrito": "Chimbote",
     "departamento": "Áncash",
     "lat": -9.052623577448061,
-    "lng": -78.57437894720043
+    "lng": -78.57437894720043,
+    "transporte": {
+      "referencias": "En la Prolongación Buenos Aires (parte alta). Cerca del 'Parque del Avión'.",
+      "rutas": ["Líneas de colectivo que van a 'Buenos Aires Alto'.", "Mototaxi desde el Hospital 'El Progreso'."],
+      "tiempoAprox": "15-20 min en mototaxi desde el centro."
+    }
   },
   {
     "dni": "10000001",
@@ -87,7 +122,12 @@
     "distrito": "Nuevo Chimbote",
     "departamento": "Áncash",
     "lat": -9.127413548859026,
-    "lng": -78.52908663185654
+    "lng": -78.52908663185654,
+    "transporte": {
+      "referencias": "En Nuevo Chimbote. Cerca al cruce de Av. Agraria con Av. Chimbote. Próximo al Mercado 'Los Olivos'.",
+      "rutas": ["Combis/colectivos que van por toda la Av. Agraria.", "Línea 'E' (Ruta E)."],
+      "tiempoAprox": "10 min en mototaxi desde la Plaza Mayor NCH."
+    }
   },
   {
     "dni": "10000002",
@@ -98,7 +138,12 @@
     "distrito": "Nuevo Chimbote",
     "departamento": "Áncash",
     "lat": -9.138105368928496, 
-    "lng": -78.5097991471989
+    "lng": -78.5097991471989,
+    "transporte": {
+      "referencias": "En la Av. Los Héroes (ex-Ruta A). Cerca del Puesto de Salud 'San Luis de la Paz'.",
+      "rutas": ["Línea 'A' (Combis) - Paradero 'Colegio San Luis'.", "Mototaxi desde la Av. Pacífico o Av. Agraria."],
+      "tiempoAprox": "10-15 min desde el Óvalo La Familia."
+    }
   },
   {
     "dni": "10000003",
@@ -109,7 +154,12 @@
     "distrito": "Nuevo Chimbote",
     "departamento": "Áncash",
     "lat": -9.115301130862434, 
-    "lng": -78.54442916624083
+    "lng": -78.54442916624083,
+    "transporte": {
+      "referencias": "En Urb. Casuarinas (Nuevo Chimbote), cerca a la Av. La Marina (Panamericana Norte).",
+      "rutas": ["Cualquier combi/colectivo que vaya por la Panamericana Norte (Av. La Marina).", "Línea 'S' (Combis) - Paradero 'Casuarinas'."],
+      "tiempoAprox": "10 min desde la Plaza Mayor NCH."
+    }
   },
   {
     "dni": "10000004",
@@ -120,7 +170,12 @@
     "distrito": "Nuevo Chimbote",
     "departamento": "Áncash",
     "lat": -9.0882508736709,
-    "lng": -78.56896904280674
+    "lng": -78.56896904280674,
+    "transporte": {
+      "referencias": "En la Urb. San Juan (Chimbote). A una cuadra de Av. Enrique Meiggs (altura cuadra 16).",
+      "rutas": ["Combis/colectivos que van por Av. Meiggs, bajar en 'Grifo San Juan'.", "Mototaxi desde 'Mundo Mejor'."],
+      "tiempoAprox": "10 min caminando desde Av. Meiggs."
+    }
   },
   {
     "dni": "12345678",
@@ -131,7 +186,12 @@
     "distrito": "Nuevo Chimbote",
     "departamento": "Áncash",
     "lat": -9.123378503175472, 
-    "lng": -78.5111469494179
+    "lng": -78.5111469494179,
+    "transporte": {
+      "referencias": "Dentro del campus de la Universidad Nacional del Santa (UNS). Al costado de la Biblioteca Central.",
+      "rutas": ["Línea 'U' (Combis) - Paradero 'UNS'.", "Cualquier colectivo que entre a la Av. Universitaria."],
+      "tiempoAprox": "5 min caminando desde la puerta principal de la UNS."
+    }
   },
   
   {
@@ -143,7 +203,12 @@
     "distrito": "Nuevo Chimbote",
     "departamento": "Áncash",
     "lat": -9.11652308424938, 
-    "lng": -78.50550398952811
+    "lng": -78.50550398952811,
+    "transporte": {
+      "referencias": "En el P.J. Villa María (Nuevo Chimbote). Cerca al Mercado 'Villa María'.",
+      "rutas": ["Línea 'V' (Combis) - Paradero 'Mercado Villa María'.", "Mototaxi desde la Av. Agraria."],
+      "tiempoAprox": "15 min en mototaxi desde la Plaza Mayor NCH."
+    }
   },
   {
     "dni": "10000008",
@@ -154,7 +219,12 @@
     "distrito": "Nuevo Chimbote",
     "departamento": "Áncash",
     "lat": -9.0583875909942, 
-    "lng": -78.58656024720025
+    "lng": -78.58656024720025,
+    "transporte": {
+      "referencias": "En Chimbote Centro. A una cuadra de la Plaza 28 de Julio. Cerca del Puesto de Salud 'El Progreso'.",
+      "rutas": ["Cualquier combi/colectivo que vaya a la 'Plaza 28 de Julio'.", "Acceso peatonal desde el Mercado Central."],
+      "tiempoAprox": "5 min caminando desde el Mercado Central."
+    }
   },
   
   {
@@ -166,6 +236,10 @@
     "distrito": "Nuevo Chimbote",
     "departamento": "Áncash",
     "lat": -9.120648970501172, 
-    "lng": -78.5169220048705
+    "lng": -78.5169220048705,
+    "transporte": {
+      "referencias": "En Nuevo Chimbote, P.J. 'Yugoslavia'. Cerca del Puesto de Salud 'Yugoslavia' y Av. Agraria.",
+      "rutas": ["Combis/colectivos que van por Av. Agraria.", "Línea 'E' - Paradero 'Yugoslavia'."]
+    }
   }
 ]
