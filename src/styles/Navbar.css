@@ -200,6 +200,54 @@
 }
 
 /* ============================================
+   ESTADO ACTIVO CON ANIMACIÓN
+   ============================================ */
+
+.navbar__link--active {
+  position: relative;
+  color: var(--color-primary);
+  font-weight: var(--font-bold);
+}
+
+.navbar__link--active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  border-radius: 2px;
+  animation: expandWidth 0.4s ease-out forwards;
+}
+
+@keyframes expandWidth {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  100% {
+    width: 80%;
+    opacity: 1;
+  }
+}
+
+/* Efecto de brillo sutil en el link activo */
+.navbar__link--active {
+  animation: subtleGlow 2s ease-in-out infinite;
+}
+
+@keyframes subtleGlow {
+  0%, 100% {
+    text-shadow: 0 0 2px rgba(37, 99, 235, 0.2);
+  }
+  50% {
+    text-shadow: 0 0 8px rgba(37, 99, 235, 0.4);
+  }
+}
+
+/* ============================================
    RESPONSIVE: Tablet
    ============================================ */
 
@@ -296,14 +344,30 @@
   }
 
   .navbar__link--cta {
-    background-color: var(--color-primary);
-    color: var(--color-white);
+    color: var(--color-primary);
+    font-weight: var(--font-semibold);
     padding: 0.5rem 1rem;
   }
 
   .navbar__link--cta:hover {
-    background-color: var(--color-primary-hover);
-    color: var(--color-white);
+    background-color: var(--color-gray-50);
+    color: var(--color-primary);
+  }
+
+  /* Estado activo en desktop - línea inferior en lugar de fondo */
+  .navbar__link--active:not(.navbar__link--cta) {
+    background-color: transparent;
+    color: var(--color-primary);
+  }
+
+  .navbar__link--active:not(.navbar__link--cta)::after {
+    bottom: -0.25rem;
+  }
+
+  /* CTA activo usa el mismo estilo que los demás links */
+  .navbar__link--cta.navbar__link--active {
+    background-color: transparent;
+    color: var(--color-primary);
   }
 }
 
@@ -358,6 +422,78 @@
   color: #94a3b8;
 }
 
+.dark-mode .navbar__link--active {
+  color: #60a5fa;
+}
+
+.dark-mode .navbar__link--active::after {
+  background: linear-gradient(90deg, #60a5fa, #3b82f6);
+}
+
+.dark-mode .navbar__link--cta {
+  color: #60a5fa;
+}
+
+.dark-mode .navbar__link--cta:hover {
+  background-color: var(--color-gray-100);
+  color: #60a5fa;
+}
+
+.dark-mode .navbar__link--cta.navbar__link--active {
+  background-color: transparent;
+  color: #60a5fa;
+}
+
+/* ========================================
+   ALTO CONTRASTE
+   ======================================== */
+
+.high-contrast .navbar__bottom {
+  background-color: #000000;
+  border-bottom: 3px solid #ffffff;
+}
+
+.high-contrast .navbar__menu {
+  background-color: #000000;
+  border-top: 2px solid #ffffff;
+}
+
+.high-contrast .navbar__link {
+  color: #ffffff;
+}
+
+.high-contrast .navbar__link:hover {
+  background-color: #333333;
+  color: #ffff00;
+}
+
+.high-contrast .navbar__link--active {
+  color: #ffff00;
+}
+
+.high-contrast .navbar__link--active::after {
+  background: #ffff00;
+}
+
+.high-contrast .navbar__link--cta {
+  color: #ffffff;
+  font-weight: var(--font-bold);
+}
+
+.high-contrast .navbar__link--cta:hover {
+  background-color: #333333;
+  color: #ffff00;
+}
+
+.high-contrast .navbar__link--cta.navbar__link--active {
+  background-color: transparent;
+  color: #ffff00;
+}
+
+.high-contrast .navbar__toggle {
+  color: #ffffff;
+}
+
 /* ============================================
    RESPONSIVE: Large Desktop
    ============================================ */
@@ -382,6 +518,7 @@
 
   .navbar__link--cta {
     padding: 0.625rem 1.25rem;
+    font-weight: var(--font-bold);
   }
 }
 

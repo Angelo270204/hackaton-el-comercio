@@ -416,3 +416,224 @@
     font-size: 1rem;
   }
 }
+
+/* ========================================
+   MODO OSCURO - FILTROS DEPARTAMENTO
+   ======================================== */
+
+.dark-mode .filtros-bar {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+.dark-mode .filtros-bar__titulo {
+  color: #f1f5f9;
+}
+
+.dark-mode .filtro-btn {
+  background: rgba(30, 41, 59, 0.95);
+  color: #cbd5e1;
+  border-color: #334155;
+}
+
+.dark-mode .filtro-btn:hover {
+  background: #334155;
+  color: #f1f5f9;
+}
+
+.dark-mode .filtro-btn--activo {
+  background: #334155;
+  border-color: #60a5fa;
+  color: #60a5fa;
+}
+
+.dark-mode .filtro-btn--expandido {
+  background: #334155;
+}
+
+.dark-mode .filtro-btn__badge {
+  background: #60a5fa;
+  color: #0f172a;
+}
+
+.dark-mode .filtros-bar__limpiar {
+  background: rgba(220, 38, 38, 0.95);
+  color: #ffffff;
+}
+
+.dark-mode .filtros-bar__limpiar:hover {
+  background: #991b1b;
+}
+
+.dark-mode .departamento-dropdown {
+  background: #1e293b;
+  border-bottom-color: #334155;
+}
+
+.dark-mode .departamento-dropdown__contenido {
+  background: #1e293b;
+}
+
+.dark-mode .departamento-dropdown__header {
+  border-bottom-color: #334155;
+}
+
+.dark-mode .departamento-dropdown__titulo {
+  color: #f1f5f9;
+}
+
+.dark-mode .departamento-dropdown__subtitulo {
+  color: #94a3b8;
+}
+
+.dark-mode .departamento-card {
+  background: #0f172a;
+  border-color: #334155;
+}
+
+.dark-mode .departamento-card:hover {
+  border-color: #475569;
+}
+
+.dark-mode .departamento-card--seleccionado {
+  border-color: #60a5fa;
+  box-shadow: 0 4px 16px rgba(96, 165, 250, 0.25);
+}
+
+.dark-mode .departamento-card__info {
+  background: #0f172a;
+}
+
+.dark-mode .departamento-card__nombre {
+  color: #f1f5f9;
+}
+
+.dark-mode .departamento-card__candidatos {
+  color: #94a3b8;
+}
+
+.dark-mode .departamento-dropdown::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+.dark-mode .departamento-dropdown::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
+.dark-mode .departamento-dropdown::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* ========================================
+   ALTO CONTRASTE - FILTROS DEPARTAMENTO
+   ======================================== */
+
+.high-contrast .filtros-bar {
+  background: #000000;
+  border-bottom: 3px solid #ffffff;
+}
+
+.high-contrast .filtros-bar__titulo {
+  color: #ffff00;
+}
+
+.high-contrast .filtro-btn {
+  background: #1a1a1a;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
+
+.high-contrast .filtro-btn:hover {
+  background: #333333;
+  border-color: #ffff00;
+  color: #ffff00;
+}
+
+.high-contrast .filtro-btn--activo {
+  background: #333333;
+  border: 2px solid #ffff00;
+  color: #ffff00;
+}
+
+.high-contrast .filtro-btn--expandido {
+  background: #333333;
+  border: 2px solid #ffffff;
+}
+
+.high-contrast .filtro-btn__badge {
+  background: #ffff00;
+  color: #000000;
+}
+
+.high-contrast .filtros-bar__limpiar {
+  background: #1a1a1a;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
+
+.high-contrast .filtros-bar__limpiar:hover {
+  background: #333333;
+  border-color: #ffff00;
+  color: #ffff00;
+}
+
+.high-contrast .departamento-dropdown {
+  background: #000000;
+  border-bottom: 3px solid #ffffff;
+}
+
+.high-contrast .departamento-dropdown__header {
+  border-bottom: 2px solid #ffffff;
+}
+
+.high-contrast .departamento-dropdown__titulo {
+  color: #ffff00;
+}
+
+.high-contrast .departamento-dropdown__subtitulo {
+  color: #ffffff;
+}
+
+.high-contrast .departamento-card {
+  background: #1a1a1a;
+  border: 2px solid #ffffff;
+}
+
+.high-contrast .departamento-card:hover {
+  background: #333333;
+  border-color: #ffff00;
+}
+
+.high-contrast .departamento-card--seleccionado {
+  border: 3px solid #ffff00;
+  background: #333333;
+}
+
+.high-contrast .departamento-card__check {
+  background: #ffff00;
+  color: #000000;
+}
+
+.high-contrast .departamento-card__info {
+  background: #1a1a1a;
+}
+
+.high-contrast .departamento-card__nombre {
+  color: #ffffff;
+}
+
+.high-contrast .departamento-card__candidatos {
+  color: #ffffff;
+}
+
+.high-contrast .departamento-dropdown::-webkit-scrollbar-track {
+  background: #000000;
+  border-left: 1px solid #ffffff;
+}
+
+.high-contrast .departamento-dropdown::-webkit-scrollbar-thumb {
+  background: #ffffff;
+}
+
+.high-contrast .departamento-dropdown::-webkit-scrollbar-thumb:hover {
+  background: #ffff00;
+}
