@@ -2,13 +2,22 @@ import React, { useEffect, useRef, useState } from "react";
 import ItemCarrusel from "./ItemCarrusel";
 import "../styles/CarruselHeader.css";
 
-// CarruselHeader.jsx: Carrusel principal del header de la homepage
-// Lee los datos desde /data/slidersHome.json y muestra los slides
-const CarruselHeader = () => {
-  const [slides, setSlides] = useState([]);
-  const [actual, setActual] = useState(0);
+// Definición del tipo de slide
+interface Slide {
+  titulo: string;
+  subtitulo: string;
+  badge: string;
+  botonCandidatos: string;
+  botonCalendario: string;
+  imagenFondo: string;
+}
+
+const CarruselHeader: React.FC = () => {
+  const [slides, setSlides] = useState<Slide[]>([]);
+  const [actual, setActual] = useState<number>(0);
   const [autoSlide, setAutoSlide] = useState(true);
-  const intervaloRef = useRef(null);
+  // Usar ReturnType<typeof setInterval> para compatibilidad universal
+  const intervaloRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   // Cargar los datos del carrusel desde el JSON
   useEffect(() => {
@@ -23,8 +32,13 @@ const CarruselHeader = () => {
       intervaloRef.current = setInterval(() => {
         setActual((prev) => (prev + 1) % slides.length);
       }, 3000);
-      return () => clearInterval(intervaloRef.current);
+      // El return debe ser una función que solo haga clearInterval
+      return () => {
+        if (intervaloRef.current) clearInterval(intervaloRef.current);
+      };
     }
+    // Si no hay autoSlide, no retorna nada
+    return;
   }, [autoSlide, slides]);
 
   // Ir al slide anterior
@@ -40,7 +54,7 @@ const CarruselHeader = () => {
   };
 
   // Ir a un slide específico (dots)
-  const irASlide = (idx) => {
+  const irASlide = (idx: number) => {
     setActual(idx);
     setAutoSlide(false);
   };

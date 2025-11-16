@@ -2,10 +2,21 @@ import React from "react";
 import { Link } from "react-router";
 import "../styles/CarruselHeader.css";
 
-// ItemCarrusel.jsx: Renderiza un slide individual del carrusel
-// Recibe los datos del slide y si está visible
-const ItemCarrusel = ({ datos, visible }) => {
-  // Desestructura los datos del slide
+// Definición de las props con tipado explícito
+interface ItemCarruselProps {
+  datos: {
+    titulo: string;
+    subtitulo: string;
+    badge: string;
+    botonCandidatos: string;
+    botonCalendario: string;
+    imagenFondo: string;
+  };
+  visible: boolean;
+}
+
+// ItemCarrusel.tsx: Renderiza un slide individual del carrusel
+const ItemCarrusel: React.FC<ItemCarruselProps> = ({ datos, visible }) => {
   const {
     titulo,
     subtitulo,
