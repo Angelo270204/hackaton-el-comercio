@@ -1,0 +1,141 @@
+/* Contenedor del filtro select */
+.ideology-filter-select {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Label del select */
+.ideology-filter-select__label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #2c3e50;
+  white-space: nowrap;
+  margin: 0;
+}
+
+/* Select principal */
+.ideology-filter-select__select {
+  flex: 1;
+  max-width: 300px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #2c3e50;
+  background-color: #f8f9fa;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%232c3e50' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+
+.ideology-filter-select__select:hover {
+  border-color: #3498db;
+  background-color: #ffffff;
+}
+
+.ideology-filter-select__select:focus {
+  border-color: #3498db;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+/* Opciones del select */
+.ideology-filter-select__select option {
+  padding: 10px;
+  font-size: 14px;
+  background-color: #ffffff;
+  color: #2c3e50;
+}
+
+/* Responsive para tablets */
+@media (max-width: 768px) {
+  .ideology-filter-select {
+    padding: 14px 16px;
+    gap: 10px;
+  }
+
+  .ideology-filter-select__label {
+    font-size: 14px;
+  }
+
+  .ideology-filter-select__select {
+    max-width: 250px;
+    font-size: 13px;
+  }
+}
+
+/* Responsive para móviles */
+@media (max-width: 480px) {
+  .ideology-filter-select {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding: 12px 16px;
+  }
+
+  .ideology-filter-select__label {
+    font-size: 13px;
+  }
+
+  .ideology-filter-select__select {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+/* Variante compacta (opcional) */
+.ideology-filter-select--compact {
+  padding: 10px 16px;
+  margin-bottom: 12px;
+}
+
+.ideology-filter-select--compact .ideology-filter-select__label {
+  font-size: 13px;
+}
+
+.ideology-filter-select--compact .ideology-filter-select__select {
+  padding: 8px 14px;
+  font-size: 13px;
+}
+
+/* Dark mode support (opcional) */
+@media (prefers-color-scheme: dark) {
+  .ideology-filter-select {
+    background: #2c3e50;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  .ideology-filter-select__label {
+    color: #ecf0f1;
+  }
+
+  .ideology-filter-select__select {
+    background-color: #34495e;
+    border-color: #4a5f7f;
+    color: #ecf0f1;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23ecf0f1' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  }
+
+  .ideology-filter-select__select:hover,
+  .ideology-filter-select__select:focus {
+    background-color: #3d566e;
+    border-color: #3498db;
+  }
+
+  .ideology-filter-select__select option {
+    background-color: #34495e;
+    color: #ecf0f1;
+  }
+}
