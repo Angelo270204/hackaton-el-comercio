@@ -1,6 +1,7 @@
 .navbar {
   background-color: var(--color-white);
   position: relative;
+  transition: background-color 0.3s ease;
 }
 
 /* ============================================
@@ -109,6 +110,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   position: relative;
   z-index: 1;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .navbar__bottom-container {
@@ -153,7 +155,7 @@
   transform: translateY(-100%);
   opacity: 0;
   visibility: hidden;
-  transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease, background-color 0.3s ease;
   border-top: 2px solid var(--color-primary);
   z-index: 999;
 }
@@ -302,6 +304,43 @@
     background-color: var(--color-primary-hover);
     color: var(--color-white);
   }
+}
+
+/* ========================================
+   MODO OSCURO
+   ======================================== */
+.dark-mode .navbar {
+  background-color: var(--color-bg-card);
+}
+
+.dark-mode .navbar__bottom {
+  background-color: var(--color-bg-card);
+  border-bottom-color: var(--color-primary);
+}
+
+.dark-mode .navbar__menu {
+  background-color: var(--color-bg-card);
+}
+
+.dark-mode .navbar__toggle {
+  color: var(--color-text);
+}
+
+.dark-mode .navbar__link {
+  color: var(--color-text);
+}
+
+.dark-mode .navbar__link:hover {
+  background-color: var(--color-gray-100);
+  color: var(--color-primary);
+}
+
+.dark-mode .navbar__countdown-number {
+  color: var(--color-gray-900);
+}
+
+.dark-mode .navbar__countdown-text {
+  color: var(--color-gray-700);
 }
 
 /* ============================================

@@ -1,6 +1,7 @@
 .guia-miembros {
   min-height: 100vh;
-  background: linear-gradient(to bottom, #f8fafc 0%, #ffffff 100%);
+  background: linear-gradient(to bottom, var(--color-bg) 0%, var(--color-bg-card) 100%);
+  transition: background 0.3s ease;
 }
 
 .guia-miembros__container {
@@ -943,4 +944,48 @@
 .guia-miembros__faq-card:focus {
   outline: 3px solid #1e40af;
   outline-offset: 2px;
+}
+
+/* ============================================
+   MODO OSCURO
+   ============================================ */
+.dark-mode .guia-miembros {
+  background: linear-gradient(to bottom, #0f172a 0%, #1e293b 100%);
+}
+
+.dark-mode .guia-miembros__hero-title {
+  color: var(--color-text);
+}
+
+.dark-mode .guia-miembros__hero-description {
+  color: var(--color-text-muted);
+}
+
+.dark-mode .guia-miembros__tabs {
+  background: linear-gradient(to bottom, #0f172a 0%, #1e293b 100%);
+}
+
+.dark-mode .guia-miembros__tab {
+  background-color: var(--color-bg-card);
+  border-color: var(--color-border);
+  color: var(--color-text-muted);
+}
+
+.dark-mode .guia-miembros__tab--active {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  border-color: var(--color-primary);
+}
+
+.dark-mode .guia-miembros__card {
+  background-color: var(--color-bg-card);
+  border-color: var(--color-border);
+}
+
+.dark-mode .guia-miembros__card-title {
+  color: var(--color-text);
+}
+
+.dark-mode .guia-miembros__card-description {
+  color: var(--color-text-muted);
 }
