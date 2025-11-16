@@ -1,6 +1,7 @@
 .home {
   min-height: 100vh;
-  background: linear-gradient(to bottom, #f8fafc 0%, #ffffff 100%);
+  background: linear-gradient(to bottom, var(--color-bg) 0%, var(--color-bg-card) 100%);
+  transition: background 0.3s ease;
 }
 
 .home__container {
@@ -165,15 +166,151 @@
 .home__section-title {
   font-size: 2rem;
   font-weight: 700;
-  color: #1e293b;
+  color: var(--color-text);
   margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
 }
 
 .home__section-subtitle {
   font-size: 1.125rem;
-  color: #64748b;
+  color: var(--color-text-muted);
   max-width: 600px;
   margin: 0 auto;
+  transition: color 0.3s ease;
+}
+
+/* Subscription section */
+.home__subscription {
+  margin: 2.5rem 0 3.5rem;
+  padding: 1.75rem 1.5rem;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 40%, #1e40af 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+  color: #ffffff;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.4);
+}
+
+.home__subscription-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 20%, #fbbf24 0%, #1d4ed8 60%, #0b1120 100%);
+  padding: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home__subscription-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(248, 250, 252, 0.1);
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #e5e7eb;
+}
+
+.home__subscription-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 0.75rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.home__subscription-text {
+  font-size: 0.98rem;
+  color: #e5e7eb;
+  text-align: center;
+  max-width: 520px;
+  margin: 0.25rem auto 1.25rem;
+}
+
+.home__subscription-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 520px;
+}
+
+.home__subscription-input {
+  padding: 0.85rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  background-color: rgba(15, 23, 42, 0.8);
+  color: #e5e7eb;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.home__subscription-input::placeholder {
+  color: #9ca3af;
+}
+
+.home__subscription-input:focus {
+  border-color: #fbbf24;
+  box-shadow: 0 0 0 1px rgba(251, 191, 36, 0.7);
+}
+
+.home__subscription-button {
+  padding: 0.85rem 1.5rem;
+  border-radius: 999px;
+  border: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  background-color: #fbbf24;
+  color: #1f2937;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.home__subscription-button:hover:enabled {
+  background-color: #f59e0b;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(251, 191, 36, 0.35);
+}
+
+.home__subscription-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.home__subscription-confirmation {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: #bbf7d0;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .home__subscription {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 2.5rem;
+  }
+
+  .home__subscription-content {
+    flex: 1;
+    margin-left: 1.75rem;
+  }
+
+  .home__subscription-title {
+    text-align: left;
+    font-size: 1.75rem;
+  }
+
+  .home__subscription-text,
+  .home__subscription-confirmation {
+    text-align: left;
+  }
 }
 
 /* Quick Access Grid */
@@ -190,13 +327,14 @@
 
 /* Info Banner */
 .home__info-banner {
-  background: linear-gradient(135deg, #1e293b 0%, #1e3a5f 100%);
+  background: linear-gradient(135deg, var(--color-gray-900) 0%, var(--color-primary) 100%);
   border-radius: 1rem;
   padding: 3rem 2rem;
   text-align: center;
   color: #ffffff;
-  box-shadow: 0 10px 30px rgba(30, 41, 59, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   margin-bottom: 2rem;
+  transition: background 0.3s ease;
 }
 
 .home__info-content {
@@ -331,4 +469,28 @@
   .home__hero-description {
     font-size: 0.9rem;
   }
+}
+
+/* ========================================
+   MODO OSCURO
+   ======================================== */
+.dark-mode .home {
+  background: linear-gradient(to bottom, #0f172a 0%, #1e293b 100%);
+}
+
+.dark-mode .home__info-banner {
+  background: linear-gradient(135deg, #1e293b 0%, #1e40af 100%);
+}
+
+.dark-mode .home__info-link {
+  background-color: var(--color-primary);
+  color: #ffffff;
+}
+
+.dark-mode .home__info-link:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.dark-mode .home__subscription {
+  background: linear-gradient(135deg, #020617 0%, #020617 35%, #1e40af 100%);
 }

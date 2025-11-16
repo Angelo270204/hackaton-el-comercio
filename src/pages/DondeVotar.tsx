@@ -1,5 +1,138 @@
-﻿import React, { useState, useEffect, useRef } from 'react';
-import { Search, MapPin, User, AlertCircle, Info, CheckCircle, Clock, Shield, FileText, Navigation } from 'lucide-react';
+﻿
+
+// Modal y botón para el quiz
+import React, { useState, useEffect, useRef } from 'react';
+
+// Componente QuizElector
+const quizPreguntasElector = [
+  {
+    pregunta: '¿Qué documento necesitas para votar?',
+    opciones: ['Carné universitario', 'Pasaporte', 'Identidad digital', 'DNI (vigente o caducado)'],
+    respuesta: 3,
+  },
+  {
+    pregunta: '¿Cuál es el horario oficial de votación?',
+    opciones: ['6:00 a.m. – 3:00 p.m.', '7:00 a.m. – 5:00 p.m.', '8:00 a.m. – 6:00 p.m.', '9:00 a.m. – 4:00 p.m.'],
+    respuesta: 1,
+  },
+  {
+    pregunta: '¿Cuál es la consecuencia de no votar si vives en un distrito “no pobre”?',
+    opciones: ['Sin sanción', 'Multa de S/ 46', 'Multa de S/ 92', 'Multa de S/ 120'],
+    respuesta: 2,
+  },
+  {
+    pregunta: '¿Cuántos votos preferenciales puedes marcar para Congreso?',
+    opciones: ['Ninguno', 'Uno', 'Dos', 'Tres'],
+    respuesta: 1,
+  },
+  {
+    pregunta: '¿Qué debes hacer si te equivocas al marcar la cédula?',
+    opciones: ['Dejarla así y entregarla', 'Pedir una nueva cédula al presidente de mesa', 'Salir del local', 'Llamar a un fiscalizador'],
+    respuesta: 1,
+  },
+];
+
+const QuizElector: React.FC = () => {
+  const [respuestas, setRespuestas] = useState<(number|null)[]>(Array(quizPreguntasElector.length).fill(null));
+  const [mostrarResultados, setMostrarResultados] = useState(false);
+  const [preguntaActual, setPreguntaActual] = useState(0);
+
+  const handleSeleccion = (pregIdx: number, opIdx: number) => {
+    const nuevas = [...respuestas];
+    nuevas[pregIdx] = opIdx;
+    setRespuestas(nuevas);
+  };
+
+  const aciertos = respuestas.filter((r, idx) => r === quizPreguntasElector[idx].respuesta).length;
+  const totalPreguntas = quizPreguntasElector.length;
+
+  return (
+    <div style={{ width: '100%', maxWidth: 1200, position: 'relative', background: '#fff', borderRadius: 14, boxShadow: '0 2px 12px #eaf6fb', padding: '1.2rem', fontSize: '0.98rem', margin: '2rem auto 4rem auto' }}>
+      <h2 style={{ fontWeight: 700, fontSize: '1.25rem', marginBottom: '1rem', color: '#023E8A', textAlign: 'center' }}>Quiz para Electores</h2>
+      <div style={{ marginBottom: '1.2rem' }}>
+        <div style={{ fontWeight: 700, fontSize: '1.15rem', marginBottom: '0.7rem', textAlign: 'center' }}>{preguntaActual + 1}. {quizPreguntasElector[preguntaActual].pregunta}</div>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.7rem', marginBottom: '0.7rem' }}>
+          {quizPreguntasElector[preguntaActual].opciones.map((op, opIdx) => (
+            <button
+              key={opIdx}
+              onClick={() => handleSeleccion(preguntaActual, opIdx)}
+              disabled={mostrarResultados}
+              style={{
+                width: '100%',
+                textAlign: 'left',
+                padding: '0.7rem 0.7rem',
+                borderRadius: 8,
+                border: respuestas[preguntaActual] === opIdx ? '2px solid #0096c7' : '1px solid #ccc',
+                background: respuestas[preguntaActual] === opIdx ? '#caf0f8' : '#f8fafc',
+                color: '#222',
+                fontWeight: 500,
+                fontSize: '1rem',
+                cursor: mostrarResultados ? 'default' : 'pointer',
+                boxShadow: respuestas[preguntaActual] === opIdx ? '0 2px 8px #eaf6fb' : 'none',
+                transition: 'all 0.2s',
+                outline: 'none',
+                borderColor: mostrarResultados && opIdx === quizPreguntasElector[preguntaActual].respuesta ? '#0096c7' : respuestas[preguntaActual] === opIdx ? '#0096c7' : '#ccc',
+                display: 'block',
+              }}
+            >
+              {op}
+              {mostrarResultados && opIdx === quizPreguntasElector[preguntaActual].respuesta && (
+                <span style={{ marginLeft: 8, color: '#0096c7', fontWeight: 700 }}>✔</span>
+              )}
+            </button>
+          ))}
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <button
+            onClick={() => setPreguntaActual((prev) => Math.max(prev - 1, 0))}
+            disabled={preguntaActual === 0}
+            style={{ background: '#eaf6fb', color: '#023E8A', fontWeight: 700, padding: '0.5rem 1.2rem', borderRadius: 8, border: 'none', fontSize: '1rem', cursor: preguntaActual === 0 ? 'not-allowed' : 'pointer' }}
+          >Anterior</button>
+          <span style={{ fontWeight: 500, fontSize: '1rem', color: '#666' }}>Pregunta {preguntaActual + 1} de {totalPreguntas}</span>
+          <button
+            onClick={() => setPreguntaActual((prev) => Math.min(prev + 1, totalPreguntas - 1))}
+            disabled={preguntaActual === totalPreguntas - 1}
+            style={{ background: '#0096c7', color: '#fff', fontWeight: 700, padding: '0.5rem 1.2rem', borderRadius: 8, border: 'none', fontSize: '1rem', cursor: preguntaActual === totalPreguntas - 1 ? 'not-allowed' : 'pointer' }}
+          >Siguiente</button>
+        </div>
+      </div>
+      {!mostrarResultados ? (
+        <button
+          onClick={() => setMostrarResultados(true)}
+          style={{ background: '#0096c7', color: '#fff', fontWeight: 700, padding: '0.6rem 1.2rem', borderRadius: 8, border: 'none', fontSize: '1rem', marginTop: '0.5rem', cursor: 'pointer', width: '100%' }}
+        >Ver resultados</button>
+      ) : (
+        <div style={{ fontWeight: 700, fontSize: '1.1rem', color: aciertos === quizPreguntasElector.length ? '#38b000' : '#d90429', marginTop: '1rem', textAlign: 'center' }}>
+          {aciertos === quizPreguntasElector.length
+            ? '¡Excelente! Todas tus respuestas son correctas.'
+            : `Respuestas correctas: ${aciertos} de ${quizPreguntasElector.length}`}
+        </div>
+      )}
+    </div>
+  );
+};
+
+// Modal y botón para el quiz
+const QuizElectorStaticBtn: React.FC = () => {
+  const [showQuiz, setShowQuiz] = useState(false);
+  return (
+    <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <button
+        onClick={() => setShowQuiz(true)}
+        style={{
+          display: 'flex', alignItems: 'center', gap: 10,
+          background: '#0096c7', color: '#fff', fontWeight: 700,
+          padding: '0.7rem 1.3rem', borderRadius: 10, border: 'none', fontSize: '1.1rem', margin: '2rem auto', cursor: 'pointer', boxShadow: '0 2px 8px #eaf6fb', maxWidth: 320
+        }}
+      >
+        <HelpCircle size={24} />
+        Quiz para Electores
+      </button>
+      {showQuiz && <QuizElector />}
+    </div>
+  );
+};
+import { Search, MapPin, User, AlertCircle, Info, CheckCircle, Clock, Shield, FileText, Navigation, HelpCircle } from 'lucide-react';
 import '../styles/dondeVotar.css';
 
 declare global {
@@ -413,28 +546,32 @@ export const DondeVotar: React.FC = () => {
 
         {/* Empty State - Helpful Tips */}
         {!resultado && !error && (
-          <section className="donde-votar__tips">
-            <h3 className="donde-votar__tips-title">¿Cómo funciona?</h3>
-            <div className="donde-votar__tips-grid">
-              <div className="donde-votar__tip-card">
-                <div className="donde-votar__tip-number">1</div>
-                <h4 className="donde-votar__tip-title">Ingresa tu número de DNI (8 dígitos) en el campo de búsqueda</h4>
+          <>
+            <section className="donde-votar__tips">
+              <h3 className="donde-votar__tips-title">¿Cómo funciona?</h3>
+              <div className="donde-votar__tips-grid">
+                <div className="donde-votar__tip-card">
+                  <div className="donde-votar__tip-number">1</div>
+                  <h4 className="donde-votar__tip-title">Ingresa tu número de DNI (8 dígitos) en el campo de búsqueda</h4>
+                </div>
+                <div className="donde-votar__tip-card">
+                  <div className="donde-votar__tip-number">2</div>
+                  <h4 className="donde-votar__tip-title">Haz clic en "Buscar" para encontrar tu centro de votación</h4>
+                </div>
+                <div className="donde-votar__tip-card">
+                  <div className="donde-votar__tip-number">3</div>
+                  <h4 className="donde-votar__tip-title">Revisa la información de tu mesa y ubicación</h4>
+                </div>
+                <div className="donde-votar__tip-card">
+                  <div className="donde-votar__tip-number">4</div>
+                  <h4 className="donde-votar__tip-title">Usa "Ver Ruta" para obtener indicaciones de cómo llegar</h4>
+                </div>
               </div>
-              <div className="donde-votar__tip-card">
-                <div className="donde-votar__tip-number">2</div>
-                <h4 className="donde-votar__tip-title">Haz clic en "Buscar" para encontrar tu centro de votación</h4>
-              </div>
-              <div className="donde-votar__tip-card">
-                <div className="donde-votar__tip-number">3</div>
-                <h4 className="donde-votar__tip-title">Revisa la información de tu mesa y ubicación</h4>
-              </div>
-              <div className="donde-votar__tip-card">
-                <div className="donde-votar__tip-number">4</div>
-                <h4 className="donde-votar__tip-title">Usa "Ver Ruta" para obtener indicaciones de cómo llegar</h4>
-              </div>
-            </div>
-          </section>
+            </section>
+            <QuizElectorStaticBtn />
+          </>
         )}
+     
       </div>
     </div>
   );

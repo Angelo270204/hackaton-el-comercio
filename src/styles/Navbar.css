@@ -1,6 +1,7 @@
 .navbar {
   background-color: var(--color-white);
   position: relative;
+  transition: background-color 0.3s ease;
 }
 
 /* ============================================
@@ -21,9 +22,9 @@
 .navbar__top-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0.625rem 1rem;
+  padding: 0.1rem 1rem 0.1rem 1rem;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 1rem;
   flex-wrap: wrap;
@@ -31,13 +32,14 @@
 
 .navbar__logo {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.75rem;
   text-decoration: none;
   color: var(--color-white);
   font-weight: var(--font-bold);
   font-size: var(--font-size-xl);
   transition: opacity 0.3s ease;
+  height: 120px;
 }
 
 .navbar__logo:hover {
@@ -109,6 +111,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   position: relative;
   z-index: 1;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .navbar__bottom-container {
@@ -153,7 +156,7 @@
   transform: translateY(-100%);
   opacity: 0;
   visibility: hidden;
-  transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease, background-color 0.3s ease;
   border-top: 2px solid var(--color-primary);
   z-index: 999;
 }
@@ -304,6 +307,57 @@
   }
 }
 
+/* ========================================
+   MODO OSCURO
+   ======================================== */
+.dark-mode .navbar {
+  background-color: var(--color-bg-card);
+}
+
+.dark-mode .navbar__top {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  border-bottom-color: var(--color-primary);
+}
+
+.dark-mode .navbar__bottom {
+  background-color: var(--color-bg-card);
+  border-bottom-color: var(--color-primary);
+}
+
+.dark-mode .navbar__menu {
+  background-color: var(--color-bg-card);
+}
+
+.dark-mode .navbar__toggle {
+  color: var(--color-text);
+}
+
+.dark-mode .navbar__link {
+  color: var(--color-text);
+}
+
+.dark-mode .navbar__link:hover {
+  background-color: var(--color-gray-100);
+  color: var(--color-primary);
+}
+
+.dark-mode .navbar__countdown-label {
+  color: #f1f5f9;
+}
+
+.dark-mode .navbar__countdown-item {
+  background-color: rgba(30, 41, 59, 0.95);
+  border-color: #475569;
+}
+
+.dark-mode .navbar__countdown-number {
+  color: #f1f5f9;
+}
+
+.dark-mode .navbar__countdown-text {
+  color: #94a3b8;
+}
+
 /* ============================================
    RESPONSIVE: Large Desktop
    ============================================ */
@@ -328,5 +382,35 @@
 
   .navbar__link--cta {
     padding: 0.625rem 1.25rem;
+  }
+}
+
+/* Logo más grande y navbar más reducido */
+.navbar__logo img {
+  display: block;
+  max-height: 180px;
+  width: auto;
+  object-fit: contain;
+  margin: 0 auto 0 0;
+  padding: 0;
+  position: relative;
+  top: -25px;
+}
+
+.navbar__top-container {
+  min-height: 70px;
+  align-items: flex-start;
+  box-sizing: border-box;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .navbar__logo img {
+    max-height: 200px;
+    top: -35px;
+  }
+  .navbar__top-container {
+    min-height: 80px;
   }
 }
