@@ -1,18 +1,33 @@
 [
   {
-    "titulo": "Prepárate para las Elecciones 2026",
-    "subtitulo": "Toda la información que necesitas para ejercer tu derecho al voto de manera informada. Conoce a los candidatos, encuentra tu local de votación y mantente actualizado con el proceso electoral.",
-    "badge": "Elecciones Generales Perú",
-    "botonCandidatos": "Ver Candidatos",
-    "botonCalendario": "Ver Calendario",
-    "imagenFondo": "/images/banner/banner-hackaton.jpeg"
-  },
-  {
-    "titulo": "Participa y decide el futuro",
-    "subtitulo": "Infórmate sobre el proceso electoral, los partidos y los candidatos. Tu voto es tu voz.",
-    "badge": "Elecciones Generales Perú",
-    "botonCandidatos": "Ver Candidatos",
+    "titulo": "Todo lo que necesitas para votar en 2026",
+    "subtitulo": "Consulta rápidamente tu información electoral: local de votación, calendario, precandidatos y más. Fácil, claro y confiable.",
+    "badge": "Bienvenida",
+    "botonDondeVotar": "Dónde Votar",
     "botonCalendario": "Ver Calendario",
     "imagenFondo": "/images/banner/banner-hackaton.png"
+  },
+  {
+    "titulo": "¿Dónde te toca votar?",
+    "subtitulo": "Evita confusiones. Encuentra tu local, tu mesa y tu número de orden en solo unos segundos.",
+    "badge": "Consulta Rápida",
+    "imagenFondo": "/images/banner/vot.jpg"
+  },
+  {
+    "titulo": "Compara propuestas y decide con claridad",
+    "subtitulo": "Revisa perfiles, trayectorias y propuestas de los precandidatos de forma clara y resumida.",
+    "badge": "Precandidatos 2026",
+    "botonCandidatos": "Explorar Candidatos",
+    "imagenFondo": "/images/banner/partidos.jpg"
+  },
+  {
+    "titulo": "Noticias verificadas del proceso electoral",
+    "subtitulo": "Mantente informado con actualizaciones confiables sobre las Elecciones 2026.",
+    "badge": "Noticias Relevantes",
+    "botonNoticia": {
+      "texto": "Leer Noticia Completa",
+      "url": "https://elcomercio.pe/politica/elecciones/"
+    },
+    "imagenFondo": "/images/banner/ult.jpg"
   }
 ]

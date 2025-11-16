@@ -4,10 +4,58 @@
   transition: background 0.3s ease;
 }
 
+/* Eliminar espacio blanco entre navbar y carrusel */
 .home__container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 0 1rem;
+}
+
+/* Quitar espacio blanco entre navbar y carrusel */
+.home__container > .carrusel-header {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  background: transparent !important;
+}
+
+/* Forzar que el primer hijo de .home no tenga margen ni padding arriba */
+.home > *:first-child {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.carrusel-header {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  background: transparent !important;
+}
+
+.home__container > .carrusel-header {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  background: none !important;
+}
+
+.carrusel-header {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.home__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Eliminar espacio superior extra entre navbar y carrusel */
+.carrusel-header {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+.home__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 /* Hero Section with Banner */
