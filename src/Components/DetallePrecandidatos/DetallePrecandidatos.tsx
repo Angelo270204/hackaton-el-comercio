@@ -184,18 +184,14 @@ export function DetallePrecandidatos({ candidato, onCerrar }: PropiedadesDetalle
                   />
                   <span className="detalle-precandidatos__antecedentes-texto">{etiqueta}</span>
                   {(estado === 'cuestionado' || estado === 'observado') && (
-                    <button
-                      type="button"
+                    <a
+                      href={`https://elcomercio.pe/buscar/${candidato.nombre.toLowerCase().replace(/\s+/g, '+')}/todas/descendiente/?query=${candidato.nombre.toLowerCase().replace(/\s+/g, '+')}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="detalle-precandidatos__antecedentes-boton"
-                      onClick={() => {
-                        const seccion = document.getElementById('detalle-precandidatos-noticias')
-                        if (seccion) {
-                          seccion.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                        }
-                      }}
                     >
-                      Ver noticias
-                    </button>
+                      Ver noticias en El Comercio
+                    </a>
                   )}
                 </>
               )
