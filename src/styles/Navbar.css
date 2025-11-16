@@ -313,6 +313,11 @@
   background-color: var(--color-bg-card);
 }
 
+.dark-mode .navbar__top {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  border-bottom-color: var(--color-primary);
+}
+
 .dark-mode .navbar__bottom {
   background-color: var(--color-bg-card);
   border-bottom-color: var(--color-primary);
@@ -335,12 +340,21 @@
   color: var(--color-primary);
 }
 
+.dark-mode .navbar__countdown-label {
+  color: #f1f5f9;
+}
+
+.dark-mode .navbar__countdown-item {
+  background-color: rgba(30, 41, 59, 0.95);
+  border-color: #475569;
+}
+
 .dark-mode .navbar__countdown-number {
-  color: var(--color-gray-900);
+  color: #f1f5f9;
 }
 
 .dark-mode .navbar__countdown-text {
-  color: var(--color-gray-700);
+  color: #94a3b8;
 }
 
 /* ============================================

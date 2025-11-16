@@ -343,6 +343,94 @@
     top: 0;
   }
 }
+
+/* ========================================
+   MODO OSCURO - CALENDARIO
+   ======================================== */
+.dark-mode .calendario-grid-wrapper {
+  background: #1e293b;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .calendario-title {
+  color: #60a5fa;
+}
+
+.dark-mode .calendario-nav-btn {
+  background: #2563eb;
+}
+
+.dark-mode .calendario-nav-btn:hover {
+  background: #1d4ed8;
+}
+
+.dark-mode .calendario-dia {
+  background: #0f172a;
+  border-color: #334155;
+}
+
+.dark-mode .calendario-dia:hover {
+  background: #1e293b;
+}
+
+.dark-mode .calendario-dia-vacio {
+  background: #1e293b;
+}
+
+.dark-mode .calendario-numero {
+  color: #f1f5f9;
+}
+
+.dark-mode .calendario-modal-content {
+  background: #1e293b;
+  border-color: #2563eb;
+}
+
+.dark-mode .calendario-modal-titulo {
+  color: #60a5fa;
+}
+
+.dark-mode .calendario-modal-fecha {
+  color: #cbd5e1;
+}
+
+.dark-mode .calendario-modal-descripcion {
+  color: #94a3b8;
+}
+
+.dark-mode .timeline-wrapper {
+  background: transparent;
+}
+
+.dark-mode .timeline {
+  background: transparent;
+}
+
+.dark-mode .timeline-title {
+  color: #f1f5f9;
+}
+
+.dark-mode .timeline-year {
+  color: #94a3b8;
+}
+
+.dark-mode .timeline-event-info-content {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.dark-mode .timeline-event-info-title {
+  color: #60a5fa;
+}
+
+.dark-mode .timeline-event-info-date {
+  color: #cbd5e1;
+}
+
+.dark-mode .timeline-event-info-description {
+  color: #94a3b8;
+}
+
 /* Timeline styles */
 .timeline-wrapper {
   margin: 4rem auto 1rem auto;
