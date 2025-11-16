@@ -50,8 +50,6 @@
 
 .candidatos-page__layout .candidatos-page__lista {
   transition: margin-right 0.25s ease;
-  overflow-y: auto;
-  max-height: calc(100vh - var(--navbar-altura) - 40px);
 }
 
 .candidatos-page__layout--con-detalle .candidatos-page__lista {
@@ -64,32 +62,10 @@
 .candidatos-page__lista {
   min-width: 0;
   position: relative;
-  /* Asegurar que el scroll funcione incluso cuando el detalle está abierto */
-  overflow-y: auto;
-  overflow-x: hidden;
-  /* Estilos de scrollbar personalizados */
-  scrollbar-width: thin;
-  scrollbar-color: rgba(0, 86, 179, 0.3) rgba(0, 0, 0, 0.05);
+  /* Sin overflow aquí - el contenido fluye naturalmente */
 }
 
-/* Scrollbar webkit para la columna de lista */
-.candidatos-page__lista::-webkit-scrollbar {
-  width: 8px;
-}
 
-.candidatos-page__lista::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.05);
-  border-radius: 4px;
-}
-
-.candidatos-page__lista::-webkit-scrollbar-thumb {
-  background: rgba(0, 86, 179, 0.3);
-  border-radius: 4px;
-}
-
-.candidatos-page__lista::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 86, 179, 0.5);
-}
 
 .candidatos-page__detalle {
   position: fixed;
@@ -99,6 +75,7 @@
   bottom: 0;
   width: var(--detalle-width);
   max-width: calc(100vw - 48px);
+  height: calc(100vh - var(--navbar-altura, 120px) - var(--detalle-top-shift));
   overflow-y: auto;
   overflow-x: hidden;
   overscroll-behavior: contain;
@@ -111,14 +88,16 @@
   /* Aparecer prácticamente pegado al borde derecho */
   transform: translateX(0);
   transition: transform 180ms cubic-bezier(.22,.9,.33,1), opacity 160ms ease, visibility 140ms ease;
-  box-shadow: -8px 0 40px rgba(0, 0, 0, 0.12);
+  /* Línea lateral izquierda que sale desde atrás */
+  box-shadow: -12px 0 24px -8px rgba(0, 86, 179, 0.15);
   background: rgba(255,255,255,0.98);
-  border-left: 1px solid rgba(0,0,0,0.06);
+  border-left: 4px solid var(--color-primario);
   border-top-left-radius: 18px;
   border-bottom-left-radius: 18px;
   backdrop-filter: blur(8px);
   /* Asegurar que el scroll sea independiente de la lista */
   pointer-events: auto;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 /* Scrollbar webkit para el panel de detalle */
@@ -166,6 +145,7 @@
 
 .lista-candidatos {
   width: 100%;
+  padding-bottom: 10px;
 }
 
 .lista-candidatos__encabezado {
@@ -379,6 +359,7 @@
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 16px 18px;
   justify-content: start;
+  padding-bottom: 10px;
 }
 
 .lista-candidatos__sin-resultados {
@@ -397,10 +378,10 @@
   background: var(--glass-bg);
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
-  border: 3px solid rgba(255,255,255,0.55);
+  border: 1px solid rgba(0,0,0,0.08);
   border-radius: 16px;
   cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-left-color 0.25s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -409,36 +390,62 @@
   position: relative;
   overflow: hidden;
   box-shadow: var(--sombra-suave);
+  /* Línea lateral izquierda por defecto (gris neutro) */
+  border-left: 5px solid var(--color-neutro);
 }
 
 /* VERDE: Sin antecedentes negativos - CARD */
 .tarjeta-candidato--limpio {
-  border-color: #2ecc71;
-  box-shadow: 0 0 0 2px rgba(46, 204, 113, 0.3), 0 0 20px rgba(46, 204, 113, 0.4), var(--sombra-suave);
+  border-left-color: #28a745;
+  box-shadow: -4px 0 12px -2px rgba(40, 167, 69, 0.3), var(--sombra-suave);
 }
 
 /* NARANJA: Investigaciones o denuncias en curso - CARD */
 .tarjeta-candidato--observado {
-  border-color: #ff9800;
-  box-shadow: 0 0 0 2px rgba(255, 152, 0, 0.3), 0 0 20px rgba(255, 152, 0, 0.4), var(--sombra-suave);
+  border-left-color: #ff9800;
+  box-shadow: -4px 0 12px -2px rgba(255, 152, 0, 0.3), var(--sombra-suave);
 }
 
 /* ROJO: Condenas o casos graves - CARD */
 .tarjeta-candidato--cuestionado {
-  border-color: #ff4b5c;
-  box-shadow: 0 0 0 2px rgba(255, 75, 92, 0.3), 0 0 20px rgba(255, 75, 92, 0.4), var(--sombra-suave);
+  border-left-color: #dc3545;
+  box-shadow: -4px 0 12px -2px rgba(220, 53, 69, 0.3), var(--sombra-suave);
 }
 
 .tarjeta-candidato:hover {
-  border-color: rgba(255,255,255,0.8);
   transform: translateY(-6px) scale(1.01);
   box-shadow: 0 14px 34px rgba(0,0,0,0.18);
 }
 
+/* Mantener el color de la línea lateral en hover para cada estado */
+.tarjeta-candidato--limpio:hover {
+  box-shadow: -4px 0 16px -2px rgba(40, 167, 69, 0.4), 0 14px 34px rgba(0,0,0,0.18);
+}
+
+.tarjeta-candidato--observado:hover {
+  box-shadow: -4px 0 16px -2px rgba(255, 152, 0, 0.4), 0 14px 34px rgba(0,0,0,0.18);
+}
+
+.tarjeta-candidato--cuestionado:hover {
+  box-shadow: -4px 0 16px -2px rgba(220, 53, 69, 0.4), 0 14px 34px rgba(0,0,0,0.18);
+}
+
 .tarjeta-candidato--seleccionada {
-  border-color: rgba(255,255,255,0.85);
   box-shadow: 0 0 0 3px rgba(0,86,179,0.18), var(--sombra-fuerte);
   background: linear-gradient(0deg, rgba(0,86,179,0.05), rgba(0,86,179,0.05)), var(--glass-bg);
+}
+
+/* Mantener línea lateral de color en tarjeta seleccionada */
+.tarjeta-candidato--seleccionada.tarjeta-candidato--limpio {
+  box-shadow: -4px 0 12px -2px rgba(40, 167, 69, 0.4), 0 0 0 3px rgba(0,86,179,0.18), var(--sombra-fuerte);
+}
+
+.tarjeta-candidato--seleccionada.tarjeta-candidato--observado {
+  box-shadow: -4px 0 12px -2px rgba(255, 152, 0, 0.4), 0 0 0 3px rgba(0,86,179,0.18), var(--sombra-fuerte);
+}
+
+.tarjeta-candidato--seleccionada.tarjeta-candidato--cuestionado {
+  box-shadow: -4px 0 12px -2px rgba(220, 53, 69, 0.4), 0 0 0 3px rgba(0,86,179,0.18), var(--sombra-fuerte);
 }
 
 /* Overlay con logo agrandado al hacer hover */
@@ -582,8 +589,8 @@
   padding-top: 44px;
   min-height: 100%;
   position: relative;
-  height: 100%;
   box-sizing: border-box;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__vacio {
@@ -593,8 +600,9 @@
   min-height: 300px;
   text-align: center;
   color: var(--color-texto-secundario);
-  font-size: 16px;
+  font-size: 18px;
   padding: 20px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__contenido {
@@ -659,23 +667,26 @@
 }
 
 .detalle-precandidatos__nombre {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 700;
   color: var(--color-primario);
   margin: 0 0 4px 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__partido {
-  font-size: 15px;
+  font-size: 17px;
   color: var(--color-texto-secundario);
   margin: 0 0 4px 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__cargo {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--color-texto);
   font-weight: 500;
   margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 /* Resumen */
@@ -689,8 +700,9 @@
   flex-wrap: wrap;
   gap: 6px;
   margin-top: 6px;
-  font-size: 12px;
+  font-size: 14px;
   color: var(--color-texto-secundario);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__antecedentes-indicador {
@@ -720,10 +732,11 @@
   border: none;
   background: transparent;
   color: var(--color-primario);
-  font-size: 11px;
+  font-size: 14px;
   cursor: pointer;
   text-decoration: underline;
   padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__antecedentes-boton:hover {
@@ -731,25 +744,28 @@
 }
 
 .detalle-precandidatos__seccion-titulo {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--color-texto-secundario);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin: 0 0 10px 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__rol {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--color-texto);
   margin: 0 0 8px 0;
   line-height: 1.5;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__elecciones-previas {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--color-texto-secundario);
   margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__elecciones-previas strong {
@@ -765,10 +781,11 @@
 }
 
 .detalle-precandidatos__propuestas-titulo {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   color: var(--color-primario);
   margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__tabs {
@@ -783,12 +800,13 @@
   border: none;
   background: transparent;
   color: var(--color-texto-secundario);
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   cursor: pointer;
   border-bottom: 2px solid transparent;
   margin-bottom: -2px;
   transition: all 0.2s;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__tab:hover {
@@ -814,17 +832,19 @@
 }
 
 .detalle-precandidatos__propuesta-titulo {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--color-texto);
   margin: 0 0 8px 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__propuesta-texto {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--color-texto-secundario);
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.6;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 /* ========================================
@@ -840,10 +860,11 @@
 }
 
 .detalle-precandidatos__hoja-vida-titulo {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   color: var(--color-primario);
   margin: 0 0 16px 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__hoja-vida-seccion {
@@ -855,12 +876,13 @@
 }
 
 .detalle-precandidatos__hoja-vida-subtitulo {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--color-texto);
   margin: 0 0 8px 0;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__hoja-vida-lista {
@@ -873,16 +895,18 @@
   padding: 8px 0 8px 16px;
   border-left: 2px solid var(--color-primario);
   margin-bottom: 8px;
-  font-size: 14px;
+  font-size: 16px;
   color: var(--color-texto);
-  line-height: 1.5;
+  line-height: 1.6;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__hoja-vida-texto {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--color-texto-secundario);
   line-height: 1.6;
   margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 /* Actividades */
@@ -894,10 +918,11 @@
 }
 
 .detalle-precandidatos__actividades-titulo {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   color: var(--color-primario);
   margin: 0 0 16px 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__actividades-lista {
@@ -914,24 +939,27 @@
 }
 
 .detalle-precandidatos__actividad-fecha {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--color-texto-secundario);
   margin: 0 0 6px 0;
   font-weight: 600;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__actividad-titulo {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--color-texto);
   margin: 0 0 4px 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__actividad-descripcion {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--color-texto-secundario);
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.6;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 /* Noticias */
@@ -943,10 +971,11 @@
 }
 
 .detalle-precandidatos__noticias-titulo {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   color: var(--color-primario);
   margin: 0 0 16px 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__noticias-grid {
@@ -976,28 +1005,43 @@
 }
 
 .detalle-precandidatos__noticia-fecha {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--color-texto-secundario);
   font-weight: 600;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__noticia-fuente {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--color-primario);
   font-weight: 600;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__noticia-titulo {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--color-texto);
   margin: 0 0 6px 0;
   line-height: 1.4;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .detalle-precandidatos__noticia-descripcion {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--color-texto-secundario);
+  line-height: 1.6;
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.detalle-precandidatos__sin-datos {
+  font-size: 16px;
+  color: var(--color-texto-secundario);
+  font-style: italic;
+  text-align: center;
+  padding: 20px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   margin: 0;
   line-height: 1.5;
 }
@@ -1099,6 +1143,7 @@
 
 .candidatos-page__comparador-wrapper {
   margin-top: 32px;
+  padding-bottom: 15px;
 }
 
 .comparador-candidatos {

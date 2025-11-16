@@ -87,4 +87,12 @@ body {
   background-color: var(--color-bg);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
