@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, Loader2, Sparkles } from 'lucide-react';
-import { sendMessage, Message } from '../../services/chatService';
+import { sendMessage } from '../../services/chatService';
+import type { Message } from '../../services/chatService';
 import '../../styles/chatbot.css';
 
 export const ChatBot: React.FC = () => {
