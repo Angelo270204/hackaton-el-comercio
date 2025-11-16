@@ -1,5 +1,6 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import React, { useState } from 'react';
+import { useLanguage } from '../../contexts/LanguageContext';
 import './TimelineHorizontal.css';
 
 interface Evento {
@@ -11,43 +12,43 @@ interface Evento {
 }
 
 // Obtener todas las fechas de las fases (solo las primeras 22)
-const obtenerTodasLasFechas = (): Evento[] => {
+const obtenerTodasLasFechas = (t: (key: string) => string): Evento[] => {
   const fases = [
     {
       nombre: 'Fechas de Elecciones',
       eventos: [
-        { titulo: 'Primarias (afiliados y no afiliados)', year: '2025', color: '#2563eb', icon: 'calendar', numero: '01', fecha: '30 de noviembre de 2025' },
-        { titulo: 'Primarias (delegados)', year: '2025', color: '#2563eb', icon: 'calendar', numero: '02', fecha: '7 de diciembre de 2025' },
-        { titulo: 'Elecciones generales (primera vuelta)', year: '2026', color: '#2563eb', icon: 'calendar', numero: '03', fecha: '12 de abril de 2026' },
-        { titulo: 'Segunda vuelta presidencial (si aplica)', year: '2026', color: '#2563eb', icon: 'calendar', numero: '04', fecha: '7 de junio de 2026' },
+        { titulo: t('calendar.events.primaryAffiliates'), year: '2025', color: '#2563eb', icon: 'calendar', numero: '01', fecha: t('calendar.dates.nov30_2025') },
+        { titulo: t('calendar.events.primaryDelegates'), year: '2025', color: '#2563eb', icon: 'calendar', numero: '02', fecha: t('calendar.dates.dec7_2025') },
+        { titulo: t('calendar.events.generalElectionsFirst'), year: '2026', color: '#2563eb', icon: 'calendar', numero: '03', fecha: t('calendar.dates.apr12_2026') },
+        { titulo: t('calendar.events.secondRound'), year: '2026', color: '#2563eb', icon: 'calendar', numero: '04', fecha: t('calendar.dates.jun7_2026') },
       ]
     },
     {
       nombre: 'Fechas Relevantes del Proceso Electoral',
       eventos: [
-        { titulo: 'Límite para solicitar alianzas electorales', year: '2025', color: '#48cae4', icon: 'users', numero: '05', fecha: '2 de agosto de 2025' },
-        { titulo: 'Límite para inscribir alianzas en el ROP', year: '2025', color: '#00b4d8', icon: 'book', numero: '06', fecha: '1 de septiembre de 2025' },
-        { titulo: 'Cierre del padrón electoral', year: '2025', color: '#90e0ef', icon: 'users', numero: '07', fecha: '14 de octubre de 2025' },
-        { titulo: 'Primarias (afiliados y no afiliados)', year: '2025', color: '#2563eb', icon: 'calendar', numero: '08', fecha: '30 de noviembre de 2025' },
-        { titulo: 'Primarias (delegados)', year: '2025', color: '#2563eb', icon: 'calendar', numero: '09', fecha: '7 de diciembre de 2025' },
-        { titulo: 'Aprobación del padrón electoral definitivo', year: '2025', color: '#48cae4', icon: 'book', numero: '10', fecha: '13 de diciembre de 2025' },
-        { titulo: 'Fecha límite para inscribir fórmulas y listas de candidatos', year: '2025', color: '#00b4d8', icon: 'book', numero: '11', fecha: '23 de diciembre de 2025' },
-        { titulo: 'Fin de plazo para renuncia/retiro de candidatos', year: '2026', color: '#90e0ef', icon: 'users', numero: '12', fecha: '11 de febrero de 2026' },
-        { titulo: 'Fin para tachas y exclusiones (1ra instancia)', year: '2026', color: '#48cae4', icon: 'book', numero: '13', fecha: '26 de febrero de 2026' },
-        { titulo: 'Fin de apelaciones por tachas/exclusiones', year: '2026', color: '#00b4d8', icon: 'book', numero: '14', fecha: '13 de marzo de 2026' },
-        { titulo: 'Inscripción definitiva de candidaturas', year: '2026', color: '#2563eb', icon: 'calendar', numero: '15', fecha: '14 de marzo de 2026' },
-        { titulo: 'Último día para exclusión por situación jurídica', year: '2026', color: '#90e0ef', icon: 'users', numero: '16', fecha: '11 de abril de 2026' },
-        { titulo: 'Elecciones generales', year: '2026', color: '#2563eb', icon: 'calendar', numero: '17', fecha: '12 de abril de 2026' },
-        { titulo: 'Segunda vuelta presidencial (si aplica)', year: '2026', color: '#2563eb', icon: 'calendar', numero: '18', fecha: '7 de junio de 2026' },
+        { titulo: t('calendar.events.allianceDeadline'), year: '2025', color: '#48cae4', icon: 'users', numero: '05', fecha: t('calendar.dates.aug2_2025') },
+        { titulo: t('calendar.events.allianceRegistration'), year: '2025', color: '#00b4d8', icon: 'book', numero: '06', fecha: t('calendar.dates.sep1_2025') },
+        { titulo: t('calendar.events.electoralRollClosure'), year: '2025', color: '#90e0ef', icon: 'users', numero: '07', fecha: t('calendar.dates.oct14_2025') },
+        { titulo: t('calendar.events.primaryAffiliates'), year: '2025', color: '#2563eb', icon: 'calendar', numero: '08', fecha: t('calendar.dates.nov30_2025') },
+        { titulo: t('calendar.events.primaryDelegates'), year: '2025', color: '#2563eb', icon: 'calendar', numero: '09', fecha: t('calendar.dates.dec7_2025') },
+        { titulo: t('calendar.events.finalRollApproval'), year: '2025', color: '#48cae4', icon: 'book', numero: '10', fecha: t('calendar.dates.dec13_2025') },
+        { titulo: t('calendar.events.candidateRegistration'), year: '2025', color: '#00b4d8', icon: 'book', numero: '11', fecha: t('calendar.dates.dec23_2025') },
+        { titulo: t('calendar.events.candidateWithdrawal'), year: '2026', color: '#90e0ef', icon: 'users', numero: '12', fecha: t('calendar.dates.feb11_2026') },
+        { titulo: t('calendar.events.challengesFirst'), year: '2026', color: '#48cae4', icon: 'book', numero: '13', fecha: t('calendar.dates.feb26_2026') },
+        { titulo: t('calendar.events.challengesAppeals'), year: '2026', color: '#00b4d8', icon: 'book', numero: '14', fecha: t('calendar.dates.mar13_2026') },
+        { titulo: t('calendar.events.finalCandidates'), year: '2026', color: '#2563eb', icon: 'calendar', numero: '15', fecha: t('calendar.dates.mar14_2026') },
+        { titulo: t('calendar.events.legalExclusion'), year: '2026', color: '#90e0ef', icon: 'users', numero: '16', fecha: t('calendar.dates.apr11_2026') },
+        { titulo: t('calendar.events.generalElections'), year: '2026', color: '#2563eb', icon: 'calendar', numero: '17', fecha: t('calendar.dates.apr12_2026') },
+        { titulo: t('calendar.events.secondRoundElection'), year: '2026', color: '#2563eb', icon: 'calendar', numero: '18', fecha: t('calendar.dates.jun7_2026') },
       ]
     },
     {
       nombre: 'Fechas para Miembros de Mesa',
       eventos: [
-        { titulo: 'Sorteo de miembros de mesa', year: '2026', color: '#48cae4', icon: 'users', numero: '19', fecha: 'Hasta el 1 de febrero de 2026' },
-        { titulo: 'Publicación de seleccionados', year: '2026', color: '#00b4d8', icon: 'users', numero: '20', fecha: 'Febrero – marzo de 2026' },
-        { titulo: 'Capacitaciones ONPE', year: '2026', color: '#90e0ef', icon: 'book', numero: '21', fecha: 'Organización e instalación de mesas de sufragio' },
-        { titulo: 'Instalación de mesas para primera vuelta', year: '2026', color: '#2563eb', icon: 'calendar', numero: '22', fecha: '12 de abril de 2026' },
+        { titulo: t('calendar.events.pollWorkersDraw'), year: '2026', color: '#48cae4', icon: 'users', numero: '19', fecha: t('calendar.dates.feb1_2026') },
+        { titulo: t('calendar.events.pollWorkersPublication'), year: '2026', color: '#00b4d8', icon: 'users', numero: '20', fecha: t('calendar.dates.feb_mar_2026') },
+        { titulo: t('calendar.events.pollWorkersTraining'), year: '2026', color: '#90e0ef', icon: 'book', numero: '21', fecha: t('calendar.dates.training') },
+        { titulo: t('calendar.events.pollTablesSetup'), year: '2026', color: '#2563eb', icon: 'calendar', numero: '22', fecha: t('calendar.dates.apr12_2026') },
       ]
     }
   ];
@@ -73,7 +74,8 @@ const agruparFechas = (fechas: Evento[]): Evento[][] => {
 };
 
 export const TimelineHorizontal: React.FC = () => {
-  const todasLasFechas = obtenerTodasLasFechas();
+  const { t } = useLanguage();
+  const todasLasFechas = obtenerTodasLasFechas(t);
   const grupos = agruparFechas(todasLasFechas);
   const [grupoActual, setGrupoActual] = useState(0);
 
@@ -93,24 +95,24 @@ export const TimelineHorizontal: React.FC = () => {
   return (
     <div className="timeline-horizontal-container">
       <div className="timeline-horizontal-header">
-        <h2 className="timeline-horizontal-title">Cronograma Electoral</h2>
+        <h2 className="timeline-horizontal-title">{t('calendar.title')}</h2>
         <div className="timeline-horizontal-pagination">
           <button
             className="timeline-horizontal-nav-btn"
             onClick={grupoAnterior}
             disabled={grupoActual === 0}
-            aria-label="Grupo anterior"
+            aria-label={t('calendar.pagination.previous')}
           >
             <ChevronLeft size={20} />
           </button>
           <span className="timeline-horizontal-pagination-info">
-            {indiceInicial + 1} - {indiceFinal + 1} de {todasLasFechas.length}
+            {indiceInicial + 1} - {indiceFinal + 1} {t('calendar.pagination.of')} {todasLasFechas.length}
           </span>
           <button
             className="timeline-horizontal-nav-btn"
             onClick={siguienteGrupo}
             disabled={grupoActual === totalGrupos - 1}
-            aria-label="Siguiente grupo"
+            aria-label={t('calendar.pagination.next')}
           >
             <ChevronRight size={20} />
           </button>
@@ -143,7 +145,7 @@ export const TimelineHorizontal: React.FC = () => {
                       }}
                     >
                       <div className="timeline-horizontal-circle-inner">
-                        <div className="timeline-horizontal-week-label">FECHA</div>
+                        <div className="timeline-horizontal-week-label">{t('calendar.dateLabel')}</div>
                         <div className="timeline-horizontal-week-number">{evento.numero}</div>
                       </div>
                     </div>
