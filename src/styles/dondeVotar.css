@@ -4,7 +4,7 @@
 
 .donde-votar {
   min-height: calc(100vh - 200px);
-  background: #f8fafc;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
   padding: 2rem 0;
 }
 

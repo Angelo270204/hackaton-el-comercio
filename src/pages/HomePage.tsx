@@ -173,7 +173,7 @@ export const HomePage: React.FC = () => {
             <p className="home__info-description">
               {t('home.infoBanner.description')}
             </p>
-            <Link to="/guia-miembros" className="home__info-link">
+            <Link to="/guia-elector" className="home__info-link">
               {t('home.infoBanner.link')}
               <ArrowRight size={18} />
             </Link>

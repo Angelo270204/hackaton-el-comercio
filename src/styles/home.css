@@ -1,6 +1,6 @@
 .home {
   min-height: 100vh;
-  background: linear-gradient(to bottom, var(--color-bg) 0%, var(--color-bg-card) 100%);
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
   transition: background 0.3s ease;
 }
 
@@ -336,6 +336,7 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.25rem;
+  justify-items: center;
 }
 
 .home__card-link {
@@ -458,7 +459,8 @@
 /* Large Desktop */
 @media (min-width: 1024px) {
   .home__quick-access-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, minmax(280px, 350px));
+    justify-content: center;
   }
 
   .home__info-banner {
