@@ -118,7 +118,8 @@ const QuizElectorStaticBtn: React.FC = () => {
   return (
     <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <button
-        onClick={() => setShowQuiz(true)}
+        onClick={() => setShowQuiz(prev => !prev)}
+        aria-expanded={showQuiz}
         style={{
           display: 'flex', alignItems: 'center', gap: 10,
           background: '#0096c7', color: '#fff', fontWeight: 700,
@@ -134,6 +135,8 @@ const QuizElectorStaticBtn: React.FC = () => {
 };
 import { Search, MapPin, User, AlertCircle, Info, CheckCircle, Clock, Shield, FileText, Navigation, HelpCircle } from 'lucide-react';
 import '../styles/dondeVotar.css';
+
+// Modelo de fechas importantes eliminado a solicitud
 
 declare global {
   interface Window {
@@ -159,6 +162,7 @@ export const DondeVotar: React.FC = () => {
   const [resultado, setResultado] = useState<LocalVotacion | null>(null);
   const [error, setError] = useState('');
   const [isSearching, setIsSearching] = useState(false);
+  // Estado para fechas importantes eliminado
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<any>(null);
   const markerRef = useRef<any>(null);
@@ -364,6 +368,8 @@ export const DondeVotar: React.FC = () => {
 
   return (
     <div className="donde-votar">
+      {/* Se eliminó el modal de Fechas Importantes */}
+
       <div className="donde-votar__container">
         {/* Header Section */}
         <section className="donde-votar__header">

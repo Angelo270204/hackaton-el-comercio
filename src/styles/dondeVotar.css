@@ -7,12 +7,251 @@
   background: var(--color-bg, #f8fafc);
   padding: 2rem 0;
   transition: background 0.3s ease;
+  position: relative;
 }
 
 .donde-votar__container {
   max-width: 900px;
   margin: 0 auto;
   padding: 0 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ================================
+   Sidebar de Fechas Relevantes
+   ================================ */
+
+.donde-votar__fechas-sidebar {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  width: 360px;
+  max-height: 85vh;
+  background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+  border: 2px solid #2563eb;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(37, 99, 235, 0.25);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  animation: slideInRight 0.4s ease-out;
+  overflow: hidden;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+.donde-votar__fechas-sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  border-bottom: 2px solid #1e40af;
+}
+
+.donde-votar__fechas-sidebar-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.donde-votar__fechas-sidebar-icon {
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.donde-votar__fechas-sidebar-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.donde-votar__fechas-sidebar-close {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.donde-votar__fechas-sidebar-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.donde-votar__fechas-sidebar-message {
+  padding: 1.25rem 1.5rem;
+  background: #fef3c7;
+  border-bottom: 1px solid #fde047;
+}
+
+.donde-votar__fechas-sidebar-message strong {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #92400e;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.donde-votar__fechas-sidebar-message p {
+  font-size: 0.875rem;
+  color: #78350f;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.donde-votar__fechas-sidebar-list {
+  padding: 1rem 1.5rem 1.5rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.donde-votar__fechas-sidebar-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background: #ffffff;
+  border-radius: 10px;
+  margin-bottom: 0.75rem;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+}
+
+.donde-votar__fechas-sidebar-item:last-child {
+  margin-bottom: 0;
+}
+
+.donde-votar__fechas-sidebar-item:hover {
+  border-color: #2563eb;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.15);
+  transform: translateX(-2px);
+}
+
+.donde-votar__fechas-sidebar-item-number {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.donde-votar__fechas-sidebar-item-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.donde-votar__fechas-sidebar-item-titulo {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1e293b;
+  line-height: 1.4;
+}
+
+.donde-votar__fechas-sidebar-item-fecha {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #2563eb;
+}
+
+@media (max-width: 1200px) {
+  .donde-votar__fechas-sidebar {
+    width: 320px;
+    right: 10px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .donde-votar__fechas-sidebar {
+    width: 300px;
+    right: 10px;
+  }
+
+  .donde-votar__fechas-sidebar-title {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .donde-votar__fechas-sidebar {
+    position: fixed;
+    top: auto;
+    bottom: 20px;
+    right: 20px;
+    left: 20px;
+    width: auto;
+    max-width: 400px;
+    margin: 0 auto;
+    transform: none;
+    max-height: 60vh;
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .donde-votar__fechas-sidebar {
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+    max-height: 50vh;
+  }
+
+  .donde-votar__fechas-sidebar-header {
+    padding: 1rem 1.25rem;
+  }
+
+  .donde-votar__fechas-sidebar-title {
+    font-size: 1rem;
+  }
+
+  .donde-votar__fechas-sidebar-message {
+    padding: 1rem 1.25rem;
+  }
+
+  .donde-votar__fechas-sidebar-list {
+    padding: 0.75rem 1.25rem 1rem;
+  }
+
+  .donde-votar__fechas-sidebar-item {
+    padding: 0.875rem;
+  }
 }
 
 /* ================================
