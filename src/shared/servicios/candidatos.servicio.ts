@@ -12,6 +12,9 @@ export interface Candidato {
   partido: string
   cargo_postula: string
   edad?: number
+  // Estado ilustrativo de antecedentes, basado en cobertura mediática (no oficial)
+  antecedentes_estado?: 'limpio' | 'cuestionado' | 'desconocido'
+  antecedentes_detalle?: string
   datos_publicos?: DatosPublicos
   imagen?: string
   logo_partido?: string
