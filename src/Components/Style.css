@@ -615,31 +615,33 @@
 
 /* Botón cerrar del panel de detalle */
 .detalle-precandidatos__btn-cerrar {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  width: 36px;
-  height: 36px;
+  position: fixed;
+  top: calc(var(--navbar-altura, 120px) + var(--detalle-top-shift, 0px) + 16px);
+  right: 16px;
+  width: 40px;
+  height: 40px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  border: none;
-  background: var(--color-blanco);
-  color: var(--color-texto-secundario);
-  font-size: 20px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  color: #64748b;
+  font-size: 28px;
+  font-weight: 300;
   line-height: 1;
   cursor: pointer;
-  transition: transform 0.14s ease, box-shadow 0.14s ease, background 0.14s ease;
-  z-index: 20;
-  box-shadow: 0 6px 18px rgba(16,24,40,0.06);
+  transition: all 0.2s ease;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .detalle-precandidatos__btn-cerrar:hover {
-  color: var(--color-primario);
-  background: rgba(0, 86, 179, 0.04);
-  box-shadow: 0 10px 26px rgba(2,6,23,0.08);
-  transform: translateY(-2px) scale(1.03);
+  color: #dc2626;
+  background: #fee2e2;
+  border-color: #fca5a5;
+  box-shadow: 0 6px 20px rgba(220, 38, 38, 0.25);
+  transform: scale(1.1);
 }
 
 /* Perfil del candidato */
@@ -1080,6 +1082,11 @@
     transform: none;
   }
 
+  .detalle-precandidatos__btn-cerrar {
+    top: calc(var(--navbar-altura, 120px) + 24px);
+    right: 16px;
+  }
+
   .candidatos-page__detalle--visible {
     transform: none;
   }
@@ -1131,6 +1138,15 @@
 
   .detalle-precandidatos {
     padding: 16px;
+    padding-top: 60px;
+  }
+
+  .detalle-precandidatos__btn-cerrar {
+    top: calc(var(--navbar-altura, 120px) + 20px);
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    font-size: 24px;
   }
 
   .detalle-precandidatos__perfil {
@@ -1756,13 +1772,17 @@
 }
 
 .dark-mode .detalle-precandidatos__btn-cerrar {
-  background: #334155;
+  background: #1e293b;
   color: #cbd5e1;
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 .dark-mode .detalle-precandidatos__btn-cerrar:hover {
-  background: #475569;
-  color: #60a5fa;
+  background: #dc2626;
+  color: #ffffff;
+  border-color: #ef4444;
+  box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
 }
 
 .dark-mode .detalle-precandidatos__nombre {

@@ -5,6 +5,7 @@ import { MapPin, Users, BookOpen, Sparkles, ArrowRight } from 'lucide-react';
 import { QuickAccessCard } from './QuickAccessCard';
 import CarruselHeader from '../Components/CarruselHeader';
 import { TimelineHorizontal } from '../Components/TimelineHorizontal';
+import NoticiasElComercio from '../Components/Noticias/NoticiasElComercio';
 import { useLanguage } from '../contexts/LanguageContext';
 import '../styles/home.css';
 
@@ -165,6 +166,9 @@ export const HomePage: React.FC = () => {
         <section className="home__section">
           <TimelineHorizontal />
         </section>
+
+        {/* Noticias de El Comercio */}
+        <NoticiasElComercio />
 
         {/* Info Banner */}
         <section className="home__info-banner">
