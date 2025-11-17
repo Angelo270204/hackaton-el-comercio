@@ -154,17 +154,17 @@ interface TimelineStep {
 type TabType = 'general' | 'responsabilidades' | 'derechos' | 'documentos' | 'importante' | 'quiz';
 
 export const GuiaMiembrosPage: React.FC = () => {
-  const { t: _t } = useLanguage();
+  const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState<TabType>('general');
   const [timelinePage, setTimelinePage] = useState<number>(0);
 
   const tabs = [
-    { id: 'general' as TabType, label: 'Información General', icon: <BookOpen size={20} /> },
-    { id: 'responsabilidades' as TabType, label: 'Mis Responsabilidades', icon: <Shield size={20} /> },
-    { id: 'derechos' as TabType, label: 'Derechos y Beneficios', icon: <Award size={20} /> },
-    { id: 'documentos' as TabType, label: 'Documentos', icon: <FileText size={20} /> },
-    { id: 'importante' as TabType, label: 'Importante Saber', icon: <AlertCircle size={20} /> },
-    { id: 'quiz' as TabType, label: 'Quiz para Miembros', icon: <HelpCircle size={20} /> }
+    { id: 'general' as TabType, label: t('guideMembers.tabs.general'), icon: <BookOpen size={20} /> },
+    { id: 'responsabilidades' as TabType, label: t('guideMembers.tabs.responsibilities'), icon: <Shield size={20} /> },
+    { id: 'derechos' as TabType, label: t('guideMembers.tabs.rights'), icon: <Award size={20} /> },
+    { id: 'documentos' as TabType, label: t('guideMembers.tabs.documents'), icon: <FileText size={20} /> },
+    { id: 'importante' as TabType, label: t('guideMembers.tabs.important'), icon: <AlertCircle size={20} /> },
+    { id: 'quiz' as TabType, label: t('guideMembers.tabs.quiz'), icon: <HelpCircle size={20} /> }
   ];
 
   const responsibilities = [
@@ -319,14 +319,13 @@ export const GuiaMiembrosPage: React.FC = () => {
           <div className="guia-miembros__hero-content">
             <div className="guia-miembros__hero-badge">
               <Users size={20} />
-              <span>Guía Oficial</span>
+              <span>{t('guideMembers.hero.badge')}</span>
             </div>
             <h1 className="guia-miembros__hero-title">
-              Guía para <span className="guia-miembros__hero-highlight">Miembros de Mesa</span>
+              {t('guideMembers.hero.title')} <span className="guia-miembros__hero-highlight">{t('guideMembers.hero.titleHighlight')}</span>
             </h1>
             <p className="guia-miembros__hero-description">
-              Todo lo que necesitas saber para cumplir tu rol como miembro de mesa 
-              en las Elecciones 2026. Información organizada y fácil de navegar.
+              {t('guideMembers.hero.description')}
             </p>
           </div>
         </section>
