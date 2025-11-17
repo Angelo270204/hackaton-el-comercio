@@ -108,7 +108,7 @@
 }
 
 .accessibility__title {
-  font-size: 1.25rem;
+  font-size: 1.25em;
   font-weight: 600;
   margin: 0;
   color: #ffffff;
@@ -191,7 +191,7 @@
 }
 
 .accessibility__option-title {
-  font-size: 0.9375rem;
+  font-size: 1em;
   font-weight: 600;
   margin: 0 0 0.25rem 0;
   color: var(--text-primary, #0f172a);
@@ -199,7 +199,7 @@
 }
 
 .accessibility__option-description {
-  font-size: 0.8125rem;
+  font-size: 0.875em;
   color: var(--text-secondary, #64748b);
   margin: 0;
   line-height: 1.4;
@@ -291,7 +291,7 @@
 .accessibility__font-size-display {
   min-width: 45px;
   text-align: center;
-  font-size: 0.875rem;
+  font-size: 1em;
   font-weight: 600;
   color: var(--text-primary, #0f172a);
 }
@@ -303,6 +303,7 @@
   display: flex;
   gap: 0.5rem;
   flex-shrink: 0;
+  flex-wrap: wrap;
 }
 
 .accessibility__lang-btn {
@@ -311,11 +312,16 @@
   border: 1px solid var(--control-border, #e2e8f0);
   border-radius: 0.375rem;
   color: var(--text-primary, #0f172a);
-  font-size: 0.875rem;
+  font-size: inherit;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
   outline: none;
+  white-space: nowrap;
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .accessibility__lang-btn:hover {
@@ -401,7 +407,7 @@
   color: var(--reset-color, #dc2626);
   border: 1px solid var(--reset-border, #fecaca);
   border-radius: 0.5rem;
-  font-size: 0.9375rem;
+  font-size: 1em;
   font-weight: 500;
   cursor: pointer;
   display: flex;
@@ -534,6 +540,14 @@
     width: 40px;
     height: 40px;
   }
+
+  .accessibility__language-selector {
+    width: 100%;
+  }
+
+  .accessibility__lang-btn {
+    flex: 1;
+  }
 }
 
 @media (max-width: 480px) {
@@ -546,7 +560,27 @@
   }
 
   .accessibility__title {
-    font-size: 1.125rem;
+    font-size: 1.125em;
+  }
+
+  .accessibility__option-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .accessibility__language-selector {
+    width: 100%;
+  }
+
+  .accessibility__lang-btn {
+    flex: 1;
+    padding: 0.75rem 0.5rem;
+  }
+
+  .accessibility__controls {
+    width: 100%;
+    justify-content: center;
   }
 }
 
