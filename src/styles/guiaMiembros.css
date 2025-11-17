@@ -58,45 +58,52 @@
 
 .guia-miembros__hero {
   text-align: center;
-  padding: 0.5rem 0 2rem;
-  max-width: 800px;
-  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  background: #1e40af;
+  border-radius: 20px;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 24px rgba(30, 64, 175, 0.2);
 }
 
 .guia-miembros__hero-content {
   position: relative;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .guia-miembros__hero-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: #eff6ff;
-  color: #1e40af;
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
   padding: 0.5rem 1rem;
-  border-radius: 2rem;
+  border-radius: 50px;
   font-size: 0.875rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
-  border: 1px solid #dbeafe;
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .guia-miembros__hero-title {
   font-size: 2.5rem;
   font-weight: 800;
-  color: #1e293b;
+  color: #ffffff;
   line-height: 1.2;
   margin-bottom: 1.5rem;
 }
 
 .guia-miembros__hero-highlight {
-  color: #1e40af;
+  background: linear-gradient(135deg, #90e0ef 0%, #caf0f8 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   position: relative;
 }
 
 .guia-miembros__hero-description {
   font-size: 1.125rem;
-  color: #64748b;
+  color: #caf0f8;
   line-height: 1.7;
   max-width: 700px;
   margin: 0 auto;

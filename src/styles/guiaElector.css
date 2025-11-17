@@ -20,7 +20,7 @@
 .guia-elector__hero {
   text-align: center;
   padding: 3rem 1.5rem;
-  background: linear-gradient(135deg, #0077b6 0%, #023e8a 100%);
+  background: #1e40af;
   border-radius: 20px;
   margin-bottom: 2rem;
   box-shadow: 0 8px 24px rgba(2, 62, 138, 0.2);
@@ -115,7 +115,7 @@
 }
 
 .guia-elector__tab--active {
-  background: linear-gradient(135deg, #0096c7 0%, #0077b6 100%);
+  background: #1e40af;
   color: #ffffff;
   border-color: #023e8a;
   box-shadow: 0 4px 12px rgba(0, 119, 182, 0.3);

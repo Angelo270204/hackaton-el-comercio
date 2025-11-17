@@ -33,6 +33,22 @@ const CarruselHeader: React.FC = () => {
       botonCandidatos: t('home.carousel.slide2.buttonCandidates'),
       botonCalendario: t('home.carousel.slide2.buttonCalendar'),
       imagenFondo: "/images/banner/banner-hackaton.png"
+    },
+    {
+      titulo: t('home.carousel.slide3.title'),
+      subtitulo: t('home.carousel.slide3.subtitle'),
+      badge: t('home.carousel.slide3.badge'),
+      botonCandidatos: t('home.carousel.slide3.buttonCandidates'),
+      botonCalendario: t('home.carousel.slide3.buttonCalendar'),
+      imagenFondo: "/images/banner/partidos.jpg"
+    },
+    {
+      titulo: t('home.carousel.slide4.title'),
+      subtitulo: t('home.carousel.slide4.subtitle'),
+      badge: t('home.carousel.slide4.badge'),
+      botonCandidatos: t('home.carousel.slide4.buttonCandidates'),
+      botonCalendario: t('home.carousel.slide4.buttonCalendar'),
+      imagenFondo: "/images/banner/vot.jpg"
     }
   ];
 
@@ -44,7 +60,7 @@ const CarruselHeader: React.FC = () => {
   useEffect(() => {
     if (autoSlide) {
       intervaloRef.current = setInterval(() => {
-        setActual((prev) => (prev + 1) % 2);
+        setActual((prev) => (prev + 1) % 4);
       }, 3000);
       return () => {
         if (intervaloRef.current) clearInterval(intervaloRef.current);
@@ -55,13 +71,13 @@ const CarruselHeader: React.FC = () => {
 
   // Ir al slide anterior
   const anterior = () => {
-    setActual((prev) => (prev - 1 + 2) % 2);
+    setActual((prev) => (prev - 1 + 4) % 4);
     setAutoSlide(false);
   };
 
   // Ir al slide siguiente
   const siguiente = () => {
-    setActual((prev) => (prev + 1) % 2);
+    setActual((prev) => (prev + 1) % 4);
     setAutoSlide(false);
   };
 

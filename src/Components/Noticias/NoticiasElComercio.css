@@ -1,0 +1,455 @@
+/* ============================================
+   NOTICIAS EL COMERCIO - SECTION
+   ============================================ */
+
+.noticias-comercio {
+  padding: 4rem 1rem;
+  background: linear-gradient(
+    to bottom,
+    #f8fafc 0%,
+    #f1f5f9 100%
+  );
+}
+
+.noticias-comercio__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+
+.noticias-comercio__header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.noticias-comercio__header-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.noticias-comercio__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #dbeafe;
+  color: #1e40af;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  border: 1px solid #93c5fd;
+}
+
+.noticias-comercio__title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.noticias-comercio__title-highlight {
+  color: #1e40af;
+  position: relative;
+}
+
+.noticias-comercio__subtitle {
+  font-size: 1.125rem;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+/* ============================================
+   GRID DE NOTICIAS
+   ============================================ */
+
+.noticias-comercio__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* ============================================
+   CARD DE NOTICIA
+   ============================================ */
+
+.noticias-comercio__card {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.noticias-comercio__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.noticias-comercio__card--destacada {
+  border: 2px solid #1e40af;
+}
+
+.noticias-comercio__imagen-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: #e2e8f0;
+}
+
+.noticias-comercio__imagen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.noticias-comercio__card:hover .noticias-comercio__imagen {
+  transform: scale(1.05);
+}
+
+.noticias-comercio__categoria {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #1e40af;
+  color: #ffffff;
+  padding: 0.375rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.noticias-comercio__content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.noticias-comercio__fecha {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  color: #64748b;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.noticias-comercio__fecha svg {
+  color: #94a3b8;
+}
+
+.noticias-comercio__card-titulo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+.noticias-comercio__card--destacada .noticias-comercio__card-titulo {
+  font-size: 1.5rem;
+  color: #1e40af;
+}
+
+.noticias-comercio__descripcion {
+  color: #64748b;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+  flex: 1;
+}
+
+.noticias-comercio__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #1e40af;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  align-self: flex-start;
+}
+
+.noticias-comercio__link:hover {
+  gap: 0.75rem;
+  color: #1e3a8a;
+}
+
+.noticias-comercio__link svg {
+  transition: transform 0.2s ease;
+}
+
+.noticias-comercio__link:hover svg {
+  transform: translateX(2px);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+.noticias-comercio__footer {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 2px solid #e2e8f0;
+}
+
+.noticias-comercio__ver-mas {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #1e40af;
+  color: #ffffff;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.2);
+}
+
+.noticias-comercio__ver-mas:hover {
+  background: #1e3a8a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(30, 64, 175, 0.3);
+  gap: 0.75rem;
+}
+
+/* ============================================
+   LOADING Y ERROR STATES
+   ============================================ */
+
+.noticias-comercio__loading,
+.noticias-comercio__error {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.noticias-comercio__loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  color: #64748b;
+  font-size: 1.125rem;
+}
+
+.noticias-comercio__spinner {
+  animation: spin 1s linear infinite;
+  color: #1e40af;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.noticias-comercio__error {
+  color: #dc2626;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+/* ============================================
+   RESPONSIVE - TABLET
+   ============================================ */
+
+@media (min-width: 640px) {
+  .noticias-comercio__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .noticias-comercio__card--destacada {
+    grid-column: span 2;
+    flex-direction: row;
+  }
+
+  .noticias-comercio__card--destacada .noticias-comercio__imagen-container {
+    width: 50%;
+    height: auto;
+    min-height: 300px;
+  }
+
+  .noticias-comercio__card--destacada .noticias-comercio__content {
+    padding: 2rem;
+    width: 50%;
+  }
+
+  .noticias-comercio__imagen-container {
+    height: 220px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE - DESKTOP
+   ============================================ */
+
+@media (min-width: 1024px) {
+  .noticias-comercio {
+    padding: 5rem 2rem;
+  }
+
+  .noticias-comercio__grid {
+    gap: 2rem;
+  }
+
+  .noticias-comercio__title {
+    font-size: 3rem;
+  }
+
+  .noticias-comercio__card--destacada .noticias-comercio__imagen-container {
+    min-height: 350px;
+  }
+
+  .noticias-comercio__imagen-container {
+    height: 240px;
+  }
+}
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+.dark-mode .noticias-comercio {
+  background: linear-gradient(
+    to bottom,
+    #0f172a 0%,
+    #1e293b 100%
+  );
+}
+
+.dark-mode .noticias-comercio__badge {
+  background: rgba(59, 130, 246, 0.2);
+  color: #93c5fd;
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.dark-mode .noticias-comercio__title {
+  color: #f1f5f9;
+}
+
+.dark-mode .noticias-comercio__title-highlight {
+  color: #60a5fa;
+}
+
+.dark-mode .noticias-comercio__subtitle {
+  color: #cbd5e1;
+}
+
+.dark-mode .noticias-comercio__card {
+  background: #1e293b;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .noticias-comercio__card:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+}
+
+.dark-mode .noticias-comercio__card--destacada {
+  border-color: #3b82f6;
+}
+
+.dark-mode .noticias-comercio__imagen-container {
+  background: #0f172a;
+}
+
+.dark-mode .noticias-comercio__categoria {
+  background: #3b82f6;
+}
+
+.dark-mode .noticias-comercio__fecha {
+  color: #94a3b8;
+}
+
+.dark-mode .noticias-comercio__card-titulo {
+  color: #f1f5f9;
+}
+
+.dark-mode .noticias-comercio__card--destacada .noticias-comercio__card-titulo {
+  color: #60a5fa;
+}
+
+.dark-mode .noticias-comercio__descripcion {
+  color: #cbd5e1;
+}
+
+.dark-mode .noticias-comercio__link {
+  color: #60a5fa;
+}
+
+.dark-mode .noticias-comercio__link:hover {
+  color: #93c5fd;
+}
+
+.dark-mode .noticias-comercio__footer {
+  border-top-color: #334155;
+}
+
+.dark-mode .noticias-comercio__ver-mas {
+  background: #3b82f6;
+}
+
+.dark-mode .noticias-comercio__ver-mas:hover {
+  background: #2563eb;
+}
+
+.dark-mode .noticias-comercio__loading {
+  color: #cbd5e1;
+}
+
+.dark-mode .noticias-comercio__spinner {
+  color: #60a5fa;
+}
+
+.dark-mode .noticias-comercio__error {
+  color: #fca5a5;
+  background: #7f1d1d;
+  border-color: #991b1b;
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .noticias-comercio__card,
+  .noticias-comercio__imagen,
+  .noticias-comercio__link,
+  .noticias-comercio__ver-mas {
+    transition: none;
+  }
+
+  .noticias-comercio__spinner {
+    animation: none;
+  }
+}
+
+.noticias-comercio__link:focus-visible,
+.noticias-comercio__ver-mas:focus-visible {
+  outline: 2px solid #1e40af;
+  outline-offset: 2px;
+}
+
+.dark-mode .noticias-comercio__link:focus-visible,
+.dark-mode .noticias-comercio__ver-mas:focus-visible {
+  outline-color: #60a5fa;
+}
