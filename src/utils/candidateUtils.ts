@@ -1,4 +1,4 @@
-import { Candidate, IdeologiaFilter, Ideologia } from '../types/candidate';
+import type { Candidate, IdeologiaFilter, Ideologia } from '../types/candidate';
 
 /**
  * Filtra candidatos por ideología

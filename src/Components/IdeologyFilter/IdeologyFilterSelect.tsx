@@ -1,5 +1,6 @@
 import React from 'react';
-import { IdeologiaFilter, IDEOLOGIA_LABELS } from '../../types/candidate';
+import type { IdeologiaFilter } from '../../types/candidate';
+import { IDEOLOGIA_LABELS } from '../../types/candidate';
 import './IdeologyFilterSelect.css';
 
 interface IdeologyFilterSelectProps {

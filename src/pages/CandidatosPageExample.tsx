@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import IdeologyFilter from '../Components/IdeologyFilter';
-import { Candidate, IdeologiaFilter } from '../types/candidate';
+import type { Candidate } from '../types/candidate';
 import { useCandidateFilter } from '../hooks/useCandidateFilter';
 import './CandidatosPageExample.css';
 

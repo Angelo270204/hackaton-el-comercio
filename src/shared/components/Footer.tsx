@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { Vote, Mail, Github, Twitter, Facebook } from 'lucide-react';
+import { Mail, Github, Twitter, Facebook } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import '../../styles/Footer.css';
 

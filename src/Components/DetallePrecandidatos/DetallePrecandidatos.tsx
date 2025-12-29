@@ -8,14 +8,7 @@ interface PropiedadesDetallePrecandidatos {
 
 // Función utilitaria: retorna un avatar determinístico según el id
 // Se usa la carpeta public/images/partido-candidato con archivos unnamed_###.jpg/png
-const totalAvatares = 84 // según los recursos encontrados
-function rutaAvatarPorId(id: number | string) {
-  const num = typeof id === 'number' ? id : parseInt(String(id), 10) || 1
-  const idx = ((num - 1) % totalAvatares) + 2 // del 2 al 84
-  const pad = String(idx).padStart(3, '0')
-  // Intento principal .jpg; si falla, en <img onError> caerá al genérico
-  return `/images/partido-candidato/unnamed_${pad}.jpg`
-}
+// Nota: función de ruta de avatar eliminada porque no se estaba usando.
 
 // Texto de apoyo cuando no existan propuestas en el JSON
 const SIN_PROPUESTAS = [

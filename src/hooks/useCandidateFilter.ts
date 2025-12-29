@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { Candidate, IdeologiaFilter } from '../types/candidate';
+import type { Candidate, IdeologiaFilter } from '../types/candidate';
 
 /**
  * Hook personalizado para manejar el filtrado de candidatos por ideología

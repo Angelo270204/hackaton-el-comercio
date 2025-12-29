@@ -1,5 +1,6 @@
-import React, { createContext, useContext, useState, useMemo, ReactNode } from 'react';
-import { Candidate, IdeologiaFilter } from '../types/candidate';
+import React, { createContext, useContext, useState, useMemo } from 'react';
+import type { ReactNode } from 'react';
+import type { Candidate, IdeologiaFilter } from '../types/candidate';
 import { filterCandidatesByIdeology, cleanSelectedCandidates } from '../utils/candidateUtils';
 
 /**
