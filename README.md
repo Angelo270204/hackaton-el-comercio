@@ -117,13 +117,13 @@ npm run lint
 
 Los datos de candidatos y configuraciones se encuentran en \`/public/data/\`:
 
-- \`candidatos.json\` - Información de precandidatos presidenciales
-- \`diputados.json\` - Candidatos a diputados
-- \`senadores_nacional.json\` - Candidatos a senadores nacionales
-- \`senadores_regional.json\` - Candidatos a senadores regionales
-- \`parlamento_andino.json\` - Candidatos al parlamento andino
-- \`localesVotacion.json\` - Datos de locales de votación
-- \`slidersHome.json\` - Configuración del carrusel principal
+- `candidatos.json` - Información de precandidatos presidenciales
+- `diputados.json` - Candidatos a diputados
+- `senadores_nacional.json` - Candidatos a senadores nacionales
+- `senadores_regional.json` - Candidatos a senadores regionales
+- `parlamento_andino.json` - Candidatos al parlamento andino
+- `localesVotacion.json` - Datos de locales de votación
+- `slidersHome.json` - Configuración del carrusel principal
 
 ---
 
